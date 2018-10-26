@@ -866,7 +866,7 @@ on a.stockno = b.stockno"
         '    Form2.transarticleno.DataSource = Form2.loadinputBindingSource
         '    Form2.transtypecolor.DataSource = Form2.loadinputBindingSource
         '    Form2.transcosthead.DisplayMember = "COSTHEAD"
-        '    Form2.transarticleno.DisplayMember = "ARTICLENO"
+        '    'Form2.transarticleno.DisplayMember = "articleno"
         '    Form2.transtypecolor.DisplayMember = "TYPECOLOR"
         '    Form2.transdescription.DataBindings.Clear()
         '    Form2.transphysical.DataBindings.Clear()
@@ -1076,8 +1076,8 @@ on a.stockno = b.stockno"
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
             bs.DataMember = "stocks_tb"
-            Form2.transarticleno.DataSource = bs
-            Form2.transarticleno.DisplayMember = "articleno"
+            'Form2.transarticleno.DataSource = bs
+            'Form2.transarticleno.DisplayMember = "articleno"
             Form2.transdescription.DataBindings.Clear()
             Form2.transphysical.DataBindings.Clear()
             Form2.transfree.DataBindings.Clear()
@@ -1112,8 +1112,8 @@ on a.stockno = b.stockno"
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
             bs.DataMember = "stocks_tb"
-            Form2.transarticleno.DataSource = bs
-            Form2.transarticleno.DisplayMember = "articleno"
+            'Form2.transarticleno.DataSource = bs
+            'Form2.transarticleno.DisplayMember = "articleno"
             Form2.transdescription.DataBindings.Clear()
             Form2.transphysical.DataBindings.Clear()
             Form2.transfree.DataBindings.Clear()
@@ -1148,8 +1148,8 @@ on a.stockno = b.stockno"
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
             bs.DataMember = "stocks_tb"
-            Form2.transarticleno.DataSource = bs
-            Form2.transarticleno.DisplayMember = "articleno"
+            'Form2.transarticleno.DataSource = bs
+            'Form2.transarticleno.DisplayMember = "articleno"
             Form2.transdescription.DataBindings.Clear()
             Form2.transphysical.DataBindings.Clear()
             Form2.transfree.DataBindings.Clear()
@@ -1184,8 +1184,8 @@ on a.stockno = b.stockno"
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
             bs.DataMember = "stocks_tb"
-            Form2.transarticleno.DataSource = bs
-            Form2.transarticleno.DisplayMember = "articleno"
+            'Form2.transarticleno.DataSource = bs
+            'Form2.transarticleno.DisplayMember = "articleno"
             Form2.transdescription.DataBindings.Clear()
             Form2.transphysical.DataBindings.Clear()
             Form2.transfree.DataBindings.Clear()

@@ -4,9 +4,8 @@ Public Class genreferenceFRM
     Dim sql As New sql
     Dim da As New SqlDataAdapter
     Private Sub genreferenceFRM_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadreference()
-        reference.SelectedIndex = -1
-        reference.Focus()
+
+
     End Sub
     Public Sub loadreference()
         Try
@@ -182,6 +181,16 @@ Public Class genreferenceFRM
     Private Sub reference_KeyDown(sender As Object, e As KeyEventArgs) Handles reference.KeyDown
         If e.KeyData = Keys.Enter Then
             KryptonButton5.PerformClick()
+        End If
+    End Sub
+
+    Private Sub reference_MouseDown(sender As Object, e As MouseEventArgs) Handles reference.MouseDown
+        Dim sindex As Integer = reference.SelectedIndex
+        loadreference()
+        If sindex <= reference.Items.Count Then
+            reference.SelectedIndex = sindex
+        Else
+            reference.SelectedIndex = -1
         End If
     End Sub
 End Class

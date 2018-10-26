@@ -285,13 +285,14 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
 
         End If
     End Sub
@@ -314,13 +315,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
 
         End If
     End Sub
@@ -343,13 +344,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub returnprocess()
@@ -370,13 +371,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub supplyprocess()
@@ -397,13 +398,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub spareprocess()
@@ -424,13 +425,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub addadjustmentprocess()
@@ -451,13 +452,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub minadjustmentprocess()
@@ -478,13 +479,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub issueprocess()
@@ -509,13 +510,13 @@ Public Class Form2
             loadinputgridviews()
             'sql.loadstocks()
             'sql.loadtransactions(toprows.Text)
-            Dim II As Integer = transarticleno.SelectedIndex
-            sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
-            If II > transarticleno.Items.Count - 1 Then
-                transarticleno.SelectedIndex = -1
-            Else
-                transarticleno.SelectedIndex = II
-            End If
+            'Dim II As Integer = transarticleno.SelectedIndex
+            'sql.articlenoinput(transcosthead.Text, transtypecolor.Text)
+            'If II > transarticleno.Items.Count - 1 Then
+            '    transarticleno.SelectedIndex = -1
+            'Else
+            '    transarticleno.SelectedIndex = II
+            'End If
         End If
     End Sub
     Public Sub loadinputgridviews()
@@ -707,7 +708,7 @@ update reference_tb set
         'End If
     End Sub
 
-    Private Sub transarticleno_MouseDown(sender As Object, e As MouseEventArgs) Handles transarticleno.MouseDown
+    Private Sub transarticleno_MouseDown(sender As Object, e As MouseEventArgs)
 
         'transdescription.Text = ""
         'transphysical.Text = 0
