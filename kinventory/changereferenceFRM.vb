@@ -12,9 +12,9 @@ Public Class changereferenceFRM
         If MessageBox.Show("save changes", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Exit Sub
         End If
-        Dim str As String = "
+        Dim str As String = "declare @add as varchar(100) = (select fulladd from kmdidata.dbo.addendum_to_contract_tb where job_order_no = '" & jo.Text & "')
                             update trans_tb set reference = '" & reference.Text & "' , jo = '" & jo.Text & "' where reference = '" & oldreference & "' and jo = '" & oldjo & "'
-                            update reference_tb set reference = '" & reference.Text & "' , jo = '" & jo.Text & "' where reference = '" & oldreference & "' and jo = '" & oldjo & "'"
+                            update reference_tb set address=@add,reference = '" & reference.Text & "' , jo = '" & jo.Text & "' where reference = '" & oldreference & "' and jo = '" & oldjo & "'"
         Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
             Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
                 Try

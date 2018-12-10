@@ -225,6 +225,7 @@ update trans_tb set qty = 0,xyzref='canceled' where stockno = '" & stockno & "' 
         Try
             sql.sqlcon.Open()
             Dim str As String = "
+                                    declare @clbal as decimal(10,2)=(select sum(isnull(CAST(right(remarks, charindex('=', reverse(remarks) + '=') - 1) AS FLOAT),0)) from trans_tb where ISNUMERIC(right(remarks, charindex('=', reverse(remarks) + '=') - 1))=1  AND STOCKNO='" & stockno & "')
                                     declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation')+0
                                     declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Order')+0
@@ -240,7 +241,7 @@ update trans_tb set qty = 0,xyzref='canceled' where stockno = '" & stockno & "' 
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
             update stocks_tb set 
-                                    
+                                    clbal=@clbal-@issueallocation,
                                     physical=(QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment),
                                     allocation = @allocation-(@issueallocation+@cancelalloc),
                                     free=(((QTY+@totalreceipt+@return+@addadjustment)-(@allocation-@cancelalloc)))-(@issue+@minadjustment),
@@ -467,7 +468,7 @@ insert into trans_tb
             reference.DataSource = bs
             reference.DisplayMember = "reference"
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.tostring)
         Finally
             sql.sqlcon.Close()
         End Try

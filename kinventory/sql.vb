@@ -68,6 +68,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("NETAMOUNT").DefaultCellStyle.Format = "N2"
             Form2.stocksgridview.Columns("CONSUMPTION").DefaultCellStyle.Format = "N2"
             Form2.stocksgridview.Columns("MYLOCATION").DefaultCellStyle.Format = "N2"
+            Form2.stocksgridview.Columns("CLBAL").DefaultCellStyle.Format = "N2"
 
             Form2.stocksgridview.Columns("ALLOCATION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("FREE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -84,6 +85,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("NETAMOUNT").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("CONSUMPTION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("MYLOCATION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            Form2.stocksgridview.Columns("CLBAL").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             managecols()
             loadsearchbox()
             fillform()
@@ -149,6 +151,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("NETAMOUNT").DefaultCellStyle.Format = "N2"
             Form2.stocksgridview.Columns("CONSUMPTION").DefaultCellStyle.Format = "N2"
             Form2.stocksgridview.Columns("MYLOCATION").DefaultCellStyle.Format = "N2"
+            Form2.stocksgridview.Columns("CLBAL").DefaultCellStyle.Format = "N2"
 
             Form2.stocksgridview.Columns("ALLOCATION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("FREE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -165,6 +168,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("NETAMOUNT").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("CONSUMPTION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             Form2.stocksgridview.Columns("MYLOCATION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            Form2.stocksgridview.Columns("CLBAL").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             fillform()
             managecols()
 
@@ -3163,7 +3167,56 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             Dim ds As New DataSet
             ds.Clear()
             Dim bs As New BindingSource
-            Dim str As String = "select * from stocks_tb"
+
+            Dim phasedout As String
+            Dim toorder As String
+            If Form2.reportpasedout.Checked = True Then
+                phasedout = " phasedout like '%yes%'"
+            Else
+                phasedout = " phasedout = phasedout"
+            End If
+            If Form2.reporttoorder.Checked = True Then
+                toorder = " toorder='yes'"
+            Else
+                toorder = " toorder=toorder"
+            End If
+
+            Dim str As String
+            Dim a As String = Form2.reportsupplier.Text
+            Dim b As String = Form2.reportheader.Text
+            Dim c As String = Form2.reportcosthead.Text
+            Dim d As String = Form2.reporttypecolor.Text
+            Dim f As String = Form2.reportstatus.Text
+
+            If a = "" Then
+                a = " supplier = supplier"
+            Else
+                a = " supplier = '" & a & "'"
+            End If
+            If b = "" Then
+                b = " header = header"
+            Else
+                b = " header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " costhead = costhead"
+            Else
+                c = " costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " typecolor = typecolor"
+            Else
+                d = " typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " status = status"
+            Else
+                f = " status = '" & f & "'"
+            End If
+            str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+
+
+
             sqlcmd = New SqlCommand(str, sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
@@ -3541,7 +3594,7 @@ UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno='" & stock
                 read.Close()
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString)
         Finally
             sqlcon.Close()
         End Try

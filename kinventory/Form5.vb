@@ -1134,4 +1134,8 @@ and typecolor = '" & newtypecolor.Text & "' and articleno = '" & newarticleno.Te
         genreferenceFRM.Text = "form5"
         genreferenceFRM.ShowDialog()
     End Sub
+
+    Private Sub KryptonGroup1_Paint(sender As Object, e As PaintEventArgs) Handles KryptonGroup1.Paint
+
+    End Sub
 End Class

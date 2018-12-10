@@ -874,7 +874,8 @@ update reference_tb set
 
                 'sql.loadstocks()
                 'sql.loadtransactions(toprows.Text)
-                sql.searchreference(receiptreference.Text, receiptstockno.Text)
+                'sql.searchreference(receiptreference.Text, receiptstockno.Text)
+                sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
             End If
         ElseIf retainbal.Checked = True Then
             If myreceipt <= 0 Then
@@ -886,15 +887,6 @@ update reference_tb set
             Else
 
 
-                locationform.articleno.Text = receiptarticleno.Text + " - " + "Receipt"
-                locationform.KryptonButton4.Visible = True
-                locationform.KryptonButton5.Visible = False
-                locationform.addr.Visible = True
-                locationform.minusr.Visible = False
-                locationform.balance.Text = receiptqty.Text
-                locationform.TRANSTYPE.Text = "Receipt"
-                locationform.stockno.Text = receiptstockno.Text
-                locationform.ShowDialog()
 
 
 
@@ -952,7 +944,21 @@ update reference_tb set
                 updatestock(receiptstockno.Text, receiptreference.Text, receiptjo.Text)
                 'sql.loadstocks()
                 'sql.loadtransactions(toprows.Text)
-                sql.searchreference(receiptreference.Text, receiptstockno.Text)
+                'sql.searchreference(receiptreference.Text, receiptstockno.Text)
+
+
+
+                locationform.articleno.Text = receiptarticleno.Text + " - " + "Receipt"
+                locationform.KryptonButton4.Visible = True
+                locationform.KryptonButton5.Visible = False
+                locationform.addr.Visible = True
+                locationform.minusr.Visible = False
+                locationform.balance.Text = receiptqty.Text
+                locationform.TRANSTYPE.Text = "Receipt"
+                locationform.stockno.Text = receiptstockno.Text
+                locationform.ShowDialog()
+
+                sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
             End If
         End If
     End Sub
@@ -964,10 +970,10 @@ declare @id as integer = (select max(TRANSNO)+1 from trans_tb)
 insert into trans_tb
   (TRANSNO,STOCKNO,
             TRANSTYPE,
-            TRANSDATE,[
+            TRANSDATE,
             DUEDATE,
             QTY,
-            REFERENCE,
+            REFERENCE,jo,
             ACCOUNT,
             CONTROLNO,
             XYZ,
@@ -981,7 +987,7 @@ select
             TRANSDATE,
             DUEDATE,
             " & bal & ",
-            REFERENCE,
+            REFERENCE,jo,
             ACCOUNT,
             CONTROLNO,
             '',
@@ -992,7 +998,7 @@ select
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString)
         Finally
             sql.sqlcon.Close()
         End Try
@@ -1958,77 +1964,34 @@ a.*,
             Dim d As String = reporttypecolor.Text
             Dim f As String = reportstatus.Text
 
-            Dim acol As String = "supplier"
-            Dim bcol As String = "header"
-            Dim ccol As String = "costhead"
-            Dim dcol As String = "typecolor"
-            Dim fcol As String = "status"
-
-            If a = "" And b = "" And c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And Not c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & ccol & "='" & c & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And Not c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And Not c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And Not c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And Not c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And Not c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf a = "" And Not b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And Not c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And Not c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And Not c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And Not c = "" And d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And Not c = "" And d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And Not c = "" And Not d = "" And f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & phasedout & " and " & toorder & ""
-            ElseIf Not a = "" And Not b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                str = "select * from stocks_tb where " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and " & phasedout & " and " & toorder & ""
+            If a = "" Then
+                a = " supplier = supplier"
+            Else
+                a = " supplier = '" & a & "'"
             End If
+            If b = "" Then
+                b = " header = header"
+            Else
+                b = " header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " costhead = costhead"
+            Else
+                c = " costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " typecolor = typecolor"
+            Else
+                d = " typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " status = status"
+            Else
+                f = " status = '" & f & "'"
+            End If
+            str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+
+
 
             sql.reporting(str + " order by articleno asc")
             Form8.ShowDialog()
@@ -2109,84 +2072,34 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
             Dim dcol As String = "a.typecolor"
             Dim fcol As String = "a.status"
 
-
-
-            'If reportsupplier.Text = "" And reportstatus.Text = "" Then
-            '    condition = " and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            'ElseIf Not reportsupplier.Text = "" And Not reportstatus.Text = "" Then
-            '    condition = " and a.supplier='" & reportsupplier.Text & "' and a.status= '" & reportstatus.Text & "' and a.phasedout like '%" & phasedout & "%'  and a.toorder='" & toorder & "' "
-            'ElseIf reportsupplier.Text = "" And Not reportstatus.Text = "" Then
-            '    condition = " and a.status= '" & reportstatus.Text & "' and a.phasedout like '%" & phasedout & "%'  and a.toorder='" & toorder & "' "
-            'ElseIf Not reportsupplier.Text = "" And reportstatus.Text = "" Then
-            '    condition = " and a.supplier='" & reportsupplier.Text & "' and a.phasedout like '%" & phasedout & "%'  and a.toorder='" & toorder & "' "
-            'End If
-
-            If a = "" And b = "" And c = "" And d = "" And f = "" Then
-
-                condition = " and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And c = "" And d = "" And Not f = "" Then
-                condition = " and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And c = "" And Not d = "" And f = "" Then
-                condition = " and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And Not c = "" And d = "" And f = "" Then
-                condition = " and " & ccol & "='" & c & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And Not c = "" And d = "" And Not f = "" Then
-                condition = " and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And Not c = "" And Not d = "" And f = "" Then
-                condition = " and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And c = "" And d = "" And f = "" Then
-                condition = " and " & bcol & "='" & b & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And c = "" And d = "" And Not f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And c = "" And Not d = "" And f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And Not c = "" And d = "" And f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And Not c = "" And d = "" And Not f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And Not c = "" And Not d = "" And f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf a = "" And Not b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And c = "" And d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And c = "" And d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And c = "" And Not d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And Not c = "" And d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & ccol & "='" & c & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And Not c = "" And d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And Not c = "" And Not d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And c = "" And d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And c = "" And d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And c = "" And Not d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And Not c = "" And d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And Not c = "" And d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And Not c = "" And Not d = "" And f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
-            ElseIf Not a = "" And Not b = "" And Not c = "" And Not d = "" And Not f = "" Then
-                condition = " and " & acol & "='" & a & "' and " & bcol & "='" & b & "' and " & ccol & "='" & c & "' and " & dcol & "='" & d & "' and " & fcol & "='" & f & "' and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "' "
+            If a = "" Then
+                a = " a.supplier = a.supplier"
+            Else
+                a = " a.supplier = '" & a & "'"
             End If
+            If b = "" Then
+                b = " a.header = a.header"
+            Else
+                b = " a.header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " a.costhead = a.costhead"
+            Else
+                c = " a.costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " a.typecolor = a.typecolor"
+            Else
+                d = " a.typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " a.status = a.status"
+            Else
+                f = " a.status = '" & f & "'"
+            End If
+
+            condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "'"
+
             Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
             sql.anualreporting(mystr, updateneedtoorder)
             Form7.ShowDialog()
@@ -2226,6 +2139,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
         Try
 
             Dim str As String = "
+                                    declare @clbal as decimal(10,2)=(select sum(isnull(CAST(right(remarks, charindex('=', reverse(remarks) + '=') - 1) AS FLOAT),0)) from trans_tb where ISNUMERIC(right(remarks, charindex('=', reverse(remarks) + '=') - 1))=1  AND STOCKNO='" & stockno & "')
                                     declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation')+0
                                     declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Order')+0
@@ -2241,7 +2155,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
             update stocks_tb set 
-                                    
+                                    clbal=@clbal-@issueallocation,
                                     physical=(QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment),
                                     allocation = @allocation-(@issueallocation+@cancelalloc),
                                     free=(((QTY+@totalreceipt+@return+@addadjustment)-(@allocation-@cancelalloc)))-(@issue+@minadjustment),
@@ -3405,6 +3319,19 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub transdescription_TextChanged(sender As Object, e As EventArgs) Handles transdescription.TextChanged
+
+    End Sub
+
+    Private Sub ConsumptionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsumptionToolStripMenuItem.Click
+        Dim STOCKNO As String = ""
+        For I As Integer = 0 To stocksStocksno.Items.Count - 1
+            STOCKNO = stocksStocksno.Items(I).ToString
+            sql.calculateanualconsumption(STOCKNO, CDate(transdate.Text).Year.ToString)
+        Next
+        KryptonButton1.PerformClick()
+    End Sub
+
+    Private Sub KryptonGroup9_Panel_Paint(sender As Object, e As PaintEventArgs) Handles KryptonGroup9.Panel.Paint
 
     End Sub
 End Class
