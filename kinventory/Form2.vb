@@ -2521,9 +2521,9 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
 
     Private Sub KryptonButton26_Click(sender As Object, e As EventArgs) Handles KryptonButton26.Click
-        updatep2()
-        gettoupdate(transdate.Text)
-        stocksgridview.SelectAll()
+        'updatep2()
+        'gettoupdate(transdate.Text)
+        'stocksgridview.SelectAll()
 
         ProgressBar2.Visible = True
         ProgressBar2.Maximum = stocksStocksno.Items.Count
@@ -2545,8 +2545,8 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
             MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ProgressBar2.Visible = False
         End If
-
-        gettoupdate(transdate.Text)
+        KryptonButton1.PerformClick()
+        'gettoupdate(transdate.Text)
     End Sub
     Public Sub updatep2()
         Try
@@ -2943,7 +2943,7 @@ select physical2 from stocks_tb where stockno='" & stockno & "'"
 declare @unitprice as decimal(10,2)=(select unitprice from stocks_tb where stockno='" & stockno & "')
 declare @xrate as decimal(10,2)=(select xrate from stocks_tb where stockno='" & stockno & "')
 declare @disc as decimal(10,2)=(select disc from stocks_tb where stockno='" & stockno & "')
-declare @ufactor as decimal(10,2)=(select xrate from stocks_tb where stockno='" & stockno & "')
+declare @ufactor as decimal(10,2)=(select ufactor from stocks_tb where stockno='" & stockno & "')
 
 declare @netamount as decimal(10,2)=((@unitprice-((@disc*0.01)*@unitprice))*@xrate)*(" & qty & "*@ufactor)
 
@@ -2978,6 +2978,7 @@ a.TRANSDATE,
 a.DUEDATE,
 a.QTY,
 a.REFERENCE,
+a.jo,
 a.ACCOUNT,
 a.CONTROLNO,
 a.xyz,
