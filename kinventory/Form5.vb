@@ -519,9 +519,8 @@ update reference_tb set
             KryptonLabel23.Text = "Minimum Qty"
             Dim allocation = (alloc - initial) + newqty
             If allocation < issue Then
-
                 MessageBox.Show("allocation must be greater tha or equal to issue qty
-minimum adjustmment for this transaction is " & minimum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                   minimum adjustmment for this transaction is " & minimum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 qty.Focus()
             End If
         ElseIf IsNumeric(qty.text) And transtype.text = "Issue" And xyz.text = "Allocation" Then

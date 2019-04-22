@@ -1134,14 +1134,14 @@ select
     End Sub
 
     Private Sub receiptreference_TextChanged(sender As Object, e As EventArgs) Handles receiptreference.TextChanged
-        genjo("receipt", receiptreference.Text, receiptjo, "trans_tb", "jo")
-        sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
+        'genjo("receipt", receiptreference.Text, receiptjo, "trans_tb", "jo")
+        'sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
 
     End Sub
 
     Private Sub issuereference_TextChanged(sender As Object, e As EventArgs) Handles issuereference.TextChanged
-        genjo("issue", issuereference.Text, issuejo, "trans_tb", "jo")
-        sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
+        'genjo("issue", issuereference.Text, issuejo, "trans_tb", "jo")
+        'sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
 
     End Sub
 
@@ -3117,7 +3117,7 @@ a.header,sum(a.netamount) as MOVING,( select sum(netamount) from stocks_tb where
     End Sub
 
     Private Sub reffromreference_TextChanged(sender As Object, e As EventArgs) Handles reffromreference.TextChanged
-        genjo("reference", reffromreference.Text, reffromjo, "trans_tb", "jo")
+        'genjo("reference", reffromreference.Text, reffromjo, "trans_tb", "jo")
     End Sub
 
     Private Sub reffromjo_MouseDown(sender As Object, e As MouseEventArgs) Handles reffromjo.MouseDown
@@ -3129,7 +3129,7 @@ a.header,sum(a.netamount) as MOVING,( select sum(netamount) from stocks_tb where
     End Sub
 
     Private Sub transreference_TextChanged(sender As Object, e As EventArgs) Handles transreference.TextChanged
-        genjo("transmanager", transreference.Text, transjo, "trans_tb", "jo")
+        'genjo("transmanager", transreference.Text, transjo, "trans_tb", "jo")
     End Sub
 
     Private Sub transjo_MouseDown(sender As Object, e As MouseEventArgs) Handles transjo.MouseDown
@@ -3142,7 +3142,7 @@ a.header,sum(a.netamount) as MOVING,( select sum(netamount) from stocks_tb where
     End Sub
 
     Private Sub issuejo_TextChanged(sender As Object, e As EventArgs) Handles issuejo.TextChanged
-        sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
+        'sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
     End Sub
     Private Sub receiptjo_MouseDown(sender As Object, e As MouseEventArgs) Handles receiptjo.MouseDown
         genjo("receipt", receiptreference.Text, receiptjo, "trans_tb", "jo")
@@ -3334,5 +3334,24 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     Private Sub KryptonGroup9_Panel_Paint(sender As Object, e As PaintEventArgs) Handles KryptonGroup9.Panel.Paint
 
+    End Sub
+
+    Private Sub receiptreference_KeyDown(sender As Object, e As KeyEventArgs) Handles receiptreference.KeyDown
+        If e.KeyData = Keys.Enter Then
+            genjo("receipt", receiptreference.Text, receiptjo, "trans_tb", "jo")
+            sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
+        End If
+    End Sub
+
+    Private Sub issuereference_KeyDown(sender As Object, e As KeyEventArgs) Handles issuereference.KeyDown, issuejo.KeyDown
+        If e.KeyData = Keys.Enter Then
+            Select Case sender.name
+                Case "issuereference"
+                    genjo("issue", issuereference.Text, issuejo, "trans_tb", "jo")
+                    sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
+                Case "issuejo"
+                    sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
+            End Select
+        End If
     End Sub
 End Class
