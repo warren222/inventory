@@ -25,6 +25,7 @@ Partial Class managecolumns
         Me.supplier = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.header = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.mylocation = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.physical2 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.Stockno = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
@@ -76,7 +77,7 @@ Partial Class managecolumns
         Me.tcosthead = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
-        Me.header = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.CLBAL = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -107,6 +108,7 @@ Partial Class managecolumns
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.CLBAL)
         Me.TabPage1.Controls.Add(Me.header)
         Me.TabPage1.Controls.Add(Me.mylocation)
         Me.TabPage1.Controls.Add(Me.physical2)
@@ -141,6 +143,18 @@ Partial Class managecolumns
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Stocks Columns"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'header
+        '
+        Me.header.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.header.Location = New System.Drawing.Point(275, 18)
+        Me.header.Name = "header"
+        Me.header.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.header.Size = New System.Drawing.Size(69, 19)
+        Me.header.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.header.TabIndex = 42
+        Me.header.Text = "Header"
+        Me.header.Values.Text = "Header"
         '
         'mylocation
         '
@@ -777,17 +791,17 @@ Partial Class managecolumns
         Me.KryptonButton2.TabIndex = 13
         Me.KryptonButton2.Values.Text = "Cancel"
         '
-        'header
+        'CLBAL
         '
-        Me.header.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.header.Location = New System.Drawing.Point(275, 18)
-        Me.header.Name = "header"
-        Me.header.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.header.Size = New System.Drawing.Size(69, 19)
-        Me.header.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.header.TabIndex = 42
-        Me.header.Text = "Header"
-        Me.header.Values.Text = "Header"
+        Me.CLBAL.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.CLBAL.Location = New System.Drawing.Point(275, 43)
+        Me.CLBAL.Name = "CLBAL"
+        Me.CLBAL.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.CLBAL.Size = New System.Drawing.Size(67, 19)
+        Me.CLBAL.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CLBAL.TabIndex = 76
+        Me.CLBAL.Text = "CLBAL"
+        Me.CLBAL.Values.Text = "CLBAL"
         '
         'managecolumns
         '
@@ -866,4 +880,5 @@ Partial Class managecolumns
     Friend WithEvents mylocation As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents adjqty As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents header As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Friend WithEvents CLBAL As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
 End Class

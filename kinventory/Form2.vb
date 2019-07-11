@@ -3258,6 +3258,8 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        sql.rf()
+
         genreferenceFRM.Text = "transman"
         genreferenceFRM.ShowDialog()
     End Sub

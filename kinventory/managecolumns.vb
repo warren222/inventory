@@ -170,6 +170,12 @@ Public Class managecolumns
         Else
             header1 = " "
         End If
+        Dim clbal1 As String
+        If CLBAL.Checked = True Then
+            clbal1 = "clbal "
+        Else
+            clbal1 = " "
+        End If
         colmns = stockno1 + supplier1 +
             costhead1 + typecolor1 + articleno1 +
             discount1 + unitprice1 + physical1 +
@@ -177,7 +183,7 @@ Public Class managecolumns
             minimum1 + issue1 + status1 + phasedout1 +
             basedcolor1 + inputted1 + toorder1 + tofoil1 +
             balalloc1 + physical21 + weight1 + xrate1 +
-            netamount1 + consumption1 + mylocation1 + header1
+            netamount1 + consumption1 + mylocation1 + header1 + clbal1
         colmns = Trim(colmns)
         sql.managecols()
 
@@ -512,7 +518,11 @@ Public Class managecolumns
             Else
                 header.Checked = False
             End If
-
+            If scolumns.Contains("clbal") Then
+                CLBAL.Checked = True
+            Else
+                CLBAL.Checked = False
+            End If
 
             'transaction
             If tcolumns.Contains("transno") Then

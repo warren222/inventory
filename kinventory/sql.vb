@@ -804,6 +804,45 @@ on a.stockno = b.stockno"
             End While
             readerr.Close()
 
+            'Dim referenceds As New DataSet
+            'referenceds.Clear()
+            'Dim transbs As New BindingSource
+            'Dim ref As String = "Select distinct reference from trans_tb"
+            'sqlcmd = New SqlCommand(ref, sqlcon)
+            'da.SelectCommand = sqlcmd
+            'da.Fill(referenceds, "trans_tb")
+            'transbs.DataSource = referenceds
+            'transbs.DataMember = "trans_tb"
+            'Form2.transreference.DataSource = transbs
+            'Form2.transreference.DisplayMember = "reference"
+            'Form2.transreference.SelectedIndex = -1
+
+            'Dim costheadds As New DataSet
+            'Dim costheadbs As New BindingSource
+            'costheadds.Clear()
+
+            'Dim costhead As String = "Select distinct b.costhead from stocks_tb As b inner join trans_tb As a On a.stockno = b.stockno"
+            'sqlcmd = New SqlCommand(costhead, sqlcon)
+            'da.SelectCommand = sqlcmd
+            'da.Fill(costheadds, "stocks_tb")
+            'costheadbs.DataSource = costheadds
+            'costheadbs.DataMember = "stocks_tb"
+            'Form2.transactioncosthead.DataSource = costheadbs
+            'Form2.transactioncosthead.DisplayMember = "costhead"
+            'Form2.transactioncosthead.SelectedIndex = -1
+
+            'notifycritical()
+            tmanagecols()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
+    Public Sub rf()
+        Try
+            da = New SqlDataAdapter
+            sqlcon.Open()
             Dim referenceds As New DataSet
             referenceds.Clear()
             Dim transbs As New BindingSource
@@ -830,15 +869,13 @@ on a.stockno = b.stockno"
             Form2.transactioncosthead.DataSource = costheadbs
             Form2.transactioncosthead.DisplayMember = "costhead"
             Form2.transactioncosthead.SelectedIndex = -1
-
-            notifycritical()
-            tmanagecols()
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
             sqlcon.Close()
         End Try
     End Sub
+
     'Public Sub goback()
     '    scrollval = scrollval - 100
     '    If scrollval <= 0 Then
@@ -4074,6 +4111,11 @@ accttype='" & acctype & "' where id = '" & id & "'"
                 Form2.stocksgridview.Columns("header").Visible = True
             Else
                 Form2.stocksgridview.Columns("header").Visible = False
+            End If
+            If managecolumns.CLBAL.Checked = True Then
+                Form2.stocksgridview.Columns("CLBAL").Visible = True
+            Else
+                Form2.stocksgridview.Columns("CLBAL").Visible = False
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
