@@ -755,7 +755,11 @@ UNIT='" & unit & "' where stockno='" & stockno & "'"
                                                      from trans_tb as a inner join stocks_tb as b
                                                     on a.stockno = b.stockno order by a.transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
+
+            da = New SqlDataAdapter
+
             da.SelectCommand = sqlcmd
+            da.SelectCommand.CommandTimeout = 30000
             da.Fill(ds, "trans_tb")
             Form2.transgridview.DataSource = Nothing
             Form2.transBindingSource.DataSource = ds
@@ -809,6 +813,7 @@ on a.stockno = b.stockno"
             Dim transbs As New BindingSource
             Dim ref As String = "Select distinct reference from trans_tb"
             sqlcmd = New SqlCommand(ref, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(referenceds, "trans_tb")
             transbs.DataSource = referenceds
@@ -823,6 +828,7 @@ on a.stockno = b.stockno"
 
             Dim costhead As String = "Select distinct b.costhead from stocks_tb As b inner join trans_tb As a On a.stockno = b.stockno"
             sqlcmd = New SqlCommand(costhead, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(costheadds, "stocks_tb")
             costheadbs.DataSource = costheadds
@@ -862,6 +868,7 @@ on a.stockno = b.stockno"
 
             Dim costhead As String = "Select distinct b.costhead from stocks_tb As b inner join trans_tb As a On a.stockno = b.stockno"
             sqlcmd = New SqlCommand(costhead, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(costheadds, "stocks_tb")
             costheadbs.DataSource = costheadds
@@ -933,6 +940,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "Select distinct costhead from stocks_tb where " & phasedout & ""
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -953,6 +961,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "Select distinct costhead from stocks_tb order by costhead asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -973,6 +982,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "Select distinct costhead from stocks_tb order by costhead asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -993,6 +1003,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "Select distinct typecolor from stocks_tb where costhead = '" & costhead & "' " & phasedout & ""
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1013,6 +1024,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "Select distinct typecolor from stocks_tb where " & phasedout & ""
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1033,6 +1045,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct typecolor from stocks_tb where costhead = '" & costhead & "' order by typecolor asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1053,6 +1066,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct typecolor from stocks_tb order by typecolor asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1073,6 +1087,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct typecolor from stocks_tb where costhead = '" & costhead & "' order by typecolor asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1093,6 +1108,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct typecolor from stocks_tb order by typecolor asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1113,6 +1129,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno,unitprice,xrate,ufactor from stocks_tb where costhead = '" & costhead & "' and typecolor='" & typecolor & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1149,6 +1166,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno,unitprice,xrate,ufactor from stocks_tb where " & a & " ='" & phasedout & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1185,6 +1203,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno,unitprice,xrate,ufactor from stocks_tb where costhead = '" & costhead & "' and  " & a & " ='" & phasedout & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1221,6 +1240,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno,unitprice,xrate,ufactor from stocks_tb where typecolor = '" & typecolor & "' and  " & a & " ='" & phasedout & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1257,6 +1277,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where costhead = '" & costhead & "' and typecolor='" & typecolor & "' order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1280,6 +1301,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb  order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1303,6 +1325,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where costhead = '" & costhead & "'  order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1326,6 +1349,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where articleno = '" & articleno & "'  order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1349,6 +1373,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where costhead = '" & costhead & "' and typecolor='" & typecolor & "' order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1372,6 +1397,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1395,6 +1421,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where costhead = '" & costhead & "' order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1418,6 +1445,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select  articleno,description,physical,free,unit,stockno from stocks_tb where typecolor = '" & typecolor & "' order by articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1441,6 +1469,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct reference from REFERENCE_tb where STOCKORDER > 0 order by reference asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "REFERENCE_tb")
             bs.DataSource = ds
@@ -1461,6 +1490,7 @@ on a.stockno = b.stockno"
             ds.Clear()
             Dim str As String = "select distinct reference from trans_tb where transtype = 'Allocation' order by reference asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -1686,6 +1716,7 @@ inner join stocks_tb as b
 on a.stockno = b.stockno 
 where a.reference='" & reference & "' and a.transtype = 'Order' AND a.XYZREF=''"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -1699,6 +1730,7 @@ where a.reference='" & reference & "' and a.transtype = 'Order' AND a.XYZREF=''"
             xds.Clear()
             Dim xstr As String = "select STOCKNO,TYPECOLOR,ARTICLENO,QTY,PHYSICAL,ALLOCATION,FREE,STOCKORDER,MINIMUM from stocks_tb where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(xstr, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(xds, "stocks_tb")
             xbs.DataSource = xds
@@ -1719,6 +1751,7 @@ where a.reference='" & reference & "' and a.transtype = 'Order' AND a.XYZREF=''"
             xds.Clear()
             Dim xstr As String = "select STOCKNO,TYPECOLOR,ARTICLENO,QTY,PHYSICAL,ALLOCATION,FREE,STOCKORDER,MINIMUM from stocks_tb where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(xstr, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(xds, "stocks_tb")
             xbs.DataSource = xds
@@ -1739,6 +1772,7 @@ where a.reference='" & reference & "' and a.transtype = 'Order' AND a.XYZREF=''"
             xds.Clear()
             Dim xstr As String = "select STOCKNO,TYPECOLOR,ARTICLENO,QTY,PHYSICAL,ALLOCATION,FREE,STOCKORDER,MINIMUM from stocks_tb where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(xstr, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(xds, "stocks_tb")
             xbs.DataSource = xds
@@ -1771,6 +1805,7 @@ inner join stocks_tb as b
 on b.stockno=a.stockno
  where a.reference='" & reference & "' AND A.JO = '" & jo & "' and a.stockno = '" & stockno & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
             bs.DataSource = ds
@@ -1784,6 +1819,7 @@ on b.stockno=a.stockno
             xds.Clear()
             Dim xstr As String = "select STOCKNO,TYPECOLOR,ARTICLENO,QTY,PHYSICAL,ALLOCATION,FREE,STOCKORDER,MINIMUM from stocks_tb where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(xstr, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(xds, "stocks_tb")
             xbs.DataSource = xds
@@ -1829,6 +1865,7 @@ inner join stocks_tb as b on a.stockno = b.stockno
 where a.reference='" & reference & "' and a.jo ='" & jo & "' and a.qty>0 and a.transtype = 'Order' and a.xyzref=''
 order by b.articleno asc"
             sqlcmd = New SqlCommand(Str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -1889,6 +1926,7 @@ inner join stocks_tb as b on a.stockno = b.stockno
 where a.reference='" & reference & "' and a.jo ='" & jo & "' and a.stockno = '" & stocksno & "' and a.transtype = 'Order' and a.xyzref=''
 order by b.articleno asc"
             sqlcmd = New SqlCommand(Str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -1941,6 +1979,7 @@ inner join stocks_tb as b
 on b.stockno=a.stockno
  where a.reference='" & reference & "' and a.jo='" & jo & "' and a.ALLOCATION>0"
             sqlcmd = New SqlCommand(Str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
             bs.DataSource = ds
@@ -1977,6 +2016,7 @@ inner join stocks_tb as b
 on b.stockno=a.stockno
  where a.reference='" & reference & "' and a.jo='" & jo & "' and a.stockno = '" & stockno & "'"
             sqlcmd = New SqlCommand(Str, sqlcon)
+            da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
             bs.DataSource = ds

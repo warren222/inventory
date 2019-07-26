@@ -3154,31 +3154,32 @@ a.header,sum(a.netamount) as MOVING,( select sum(netamount) from stocks_tb where
     End Sub
 
     Private Sub UpdateReferenceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateReferenceToolStripMenuItem.Click
-        Dim selecteditems As DataGridViewSelectedRowCollection = transgridview.SelectedRows
-        Dim reflist As ArrayList = New ArrayList(selecteditems.Count)
-        Dim stlist As ArrayList = New ArrayList(selecteditems.Count)
-        Dim jolist As ArrayList = New ArrayList(selecteditems.Count)
+        'Dim selecteditems As DataGridViewSelectedRowCollection = transgridview.SelectedRows
+        'Dim reflist As ArrayList = New ArrayList(selecteditems.Count)
+        'Dim stlist As ArrayList = New ArrayList(selecteditems.Count)
+        'Dim jolist As ArrayList = New ArrayList(selecteditems.Count)
 
-        For Each selecteditem As DataGridViewRow In selecteditems
-            reflist.Add(selecteditem.Cells("reference").Value.ToString)
-            stlist.Add(selecteditem.Cells("stockno").Value.ToString)
-            jolist.Add(selecteditem.Cells("jo").Value.ToString)
-        Next
-        ProgressBar2.Visible = True
-        ProgressBar2.Maximum = reflist.Count
-        ProgressBar2.Value = 0
-        For i As Integer = 0 To reflist.Count - 1
-            Dim reference As String = reflist(i).ToString
-            Dim stockno As String = stlist(i).ToString
-            Dim jo As String = jolist(i).ToString
-            updatereferencerecord(reference, jo, stockno)
-            updatestock(stockno, reference, jo)
-            ProgressBar2.Value += 1
-        Next
-        If ProgressBar2.Value = ProgressBar2.Maximum Then
-            MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            ProgressBar2.Visible = False
-        End If
+        'For Each selecteditem As DataGridViewRow In selecteditems
+        '    reflist.Add(selecteditem.Cells("reference").Value.ToString)
+        '    stlist.Add(selecteditem.Cells("stockno").Value.ToString)
+        '    jolist.Add(selecteditem.Cells("jo").Value.ToString)
+        'Next
+        'ProgressBar2.Visible = True
+        'ProgressBar2.Maximum = reflist.Count
+        'ProgressBar2.Value = 0
+        'For i As Integer = 0 To reflist.Count - 1
+        '    Dim reference As String = reflist(i).ToString
+        '    Dim stockno As String = stlist(i).ToString
+        '    Dim jo As String = jolist(i).ToString
+        '    updatereferencerecord(reference, jo, stockno)
+        '    updatestock(stockno, reference, jo)
+        '    ProgressBar2.Value += 1
+        'Next
+        'If ProgressBar2.Value = ProgressBar2.Maximum Then
+        '    MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    ProgressBar2.Visible = False
+        'End If
+        updatereferenceFRM.Show()
     End Sub
     Public Sub updatereferencerecord(ByVal reference As String, ByVal jo As String, ByVal stockno As String)
         Try

@@ -29,7 +29,7 @@
     <PublisherName>Warren</PublisherName>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -406,6 +406,12 @@
     <Compile Include="transfer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="updatereferenceFRM.Designer.vb">
+      <DependentUpon>updatereferenceFRM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updatereferenceFRM.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="accountinginventory.resx">
@@ -538,6 +544,9 @@
     <EmbeddedResource Include="Report6.rdlc" />
     <EmbeddedResource Include="transfer.resx">
       <DependentUpon>transfer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updatereferenceFRM.resx">
+      <DependentUpon>updatereferenceFRM.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
