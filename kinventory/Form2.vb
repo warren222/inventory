@@ -3179,7 +3179,7 @@ a.header,sum(a.netamount) as MOVING,( select sum(netamount) from stocks_tb where
         '    MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
         '    ProgressBar2.Visible = False
         'End If
-        updatereferenceFRM.Show()
+        updatereferenceFRM.ShowDialog()
     End Sub
     Public Sub updatereferencerecord(ByVal reference As String, ByVal jo As String, ByVal stockno As String)
         Try

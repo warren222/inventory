@@ -22,9 +22,12 @@ Partial Class updatereferenceFRM
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gv = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.gv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'gv
@@ -32,21 +35,19 @@ Partial Class updatereferenceFRM
         Me.gv.AllowUserToAddRows = False
         Me.gv.AllowUserToDeleteRows = False
         Me.gv.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.gv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.gv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.gv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.gv.ColumnHeadersHeight = 30
         Me.gv.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.gv.Location = New System.Drawing.Point(12, 12)
+        Me.gv.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gv.Location = New System.Drawing.Point(0, 0)
         Me.gv.Name = "gv"
         Me.gv.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.gv.ReadOnly = True
         Me.gv.RowHeadersWidth = 40
         Me.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gv.Size = New System.Drawing.Size(473, 396)
+        Me.gv.Size = New System.Drawing.Size(508, 386)
         Me.gv.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.gv.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.gv.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -66,18 +67,40 @@ Partial Class updatereferenceFRM
         Me.gv.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
         Me.gv.TabIndex = 1
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(392, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 26)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "update"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 386)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(508, 34)
+        Me.Panel1.TabIndex = 3
+        '
         'updatereferenceFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(751, 420)
+        Me.ClientSize = New System.Drawing.Size(508, 420)
         Me.Controls.Add(Me.gv)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "updatereferenceFRM"
         Me.Text = "updatereferenceFRM"
         CType(Me.gv, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents gv As ComponentFactory.Krypton.Toolkit.KryptonDataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Panel1 As Panel
 End Class

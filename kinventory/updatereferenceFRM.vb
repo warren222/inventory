@@ -150,4 +150,42 @@ Public Class updatereferenceFRM
             End Using
         End Using
     End Sub
+    Dim stockno As New ArrayList
+
+    Private Sub gv_SelectionChanged(sender As Object, e As EventArgs) Handles gv.SelectionChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        gv.SelectAll()
+        Dim selecteditems As DataGridViewSelectedRowCollection = gv.SelectedRows
+        Dim reflist As ArrayList = New ArrayList(selecteditems.Count)
+        Dim stlist As ArrayList = New ArrayList(selecteditems.Count)
+        Dim jolist As ArrayList = New ArrayList(selecteditems.Count)
+
+        For Each selecteditem As DataGridViewRow In selecteditems
+            reflist.Add(selecteditem.Cells("reference").Value.ToString)
+            stlist.Add(selecteditem.Cells("stockno").Value.ToString)
+            jolist.Add(selecteditem.Cells("jo").Value.ToString)
+        Next
+        Form2.ProgressBar2.Visible = True
+        Form2.ProgressBar2.Maximum = reflist.Count
+        Form2.ProgressBar2.Value = 0
+        For i As Integer = 0 To reflist.Count - 1
+            Dim reference As String = reflist(i).ToString
+            Dim stockno As String = stlist(i).ToString
+            Dim jo As String = jolist(i).ToString
+            Form2.updatereferencerecord(reference, jo, stockno)
+            Form2.updatestock(stockno, reference, jo)
+            Form2.ProgressBar2.Value += 1
+        Next
+        If Form2.ProgressBar2.Value = Form2.ProgressBar2.Maximum Then
+            MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Form2.ProgressBar2.Visible = False
+        End If
+    End Sub
+
+    Private Sub updatereferenceFRM_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Me.Dispose()
+    End Sub
 End Class
