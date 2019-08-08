@@ -263,6 +263,21 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         updatestock(stockno.Text, reference.Text, JO.Text)
         sql.selecttransrec(transno.Text)
 
+
+        If KryptonCheckBox8.Checked = True Then
+            chagexrate.changerate(transno.Text, xrate.Text)
+        End If
+        If KryptonCheckBox1.Checked = True Then
+            chagexrate.changeunit(transno.Text, unit.Text)
+        End If
+        If KryptonCheckBox2.Checked = True Then
+            chagexrate.changeufactor(transno.Text, ufactor.Text)
+        End If
+        If KryptonCheckBox3.Checked = True Then
+            chagexrate.changedisc(transno.Text, discount.Text)
+        End If
+
+
         Form2.KryptonButton11.PerformClick()
         sql.selectreference(stockno.Text, reference.Text, JO.Text)
         KryptonButton3.PerformClick()
@@ -270,6 +285,8 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         'If itcame.Text = "A" Then
         '    Form4.KryptonButton4.PerformClick()
         'End If
+
+
     End Sub
     Public Sub updatenewreference(ByVal transno As String, ByVal reference As String, ByVal jo As String)
         Try
@@ -914,6 +931,10 @@ update reference_tb set
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        KryptonCheckBox8.Checked = False
+        KryptonCheckBox4.Checked = False
+        KryptonCheckBox5.Checked = False
+        KryptonCheckBox3.Checked = False
         Me.Close()
     End Sub
 
@@ -1135,6 +1156,10 @@ and typecolor = '" & newtypecolor.Text & "' and articleno = '" & newarticleno.Te
     End Sub
 
     Private Sub KryptonGroup1_Paint(sender As Object, e As PaintEventArgs) Handles KryptonGroup1.Paint
+
+    End Sub
+
+    Private Sub KryptonCheckBox8_CheckedChanged(sender As Object, e As EventArgs) Handles KryptonCheckBox8.CheckedChanged
 
     End Sub
 End Class

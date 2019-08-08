@@ -2917,7 +2917,11 @@ a.ACCOUNT,
 a.CONTROLNO,
 a.xyzref,
 a.balqty,
-a.adjustmentqty
+a.adjustmentqty,
+a.unitprice,
+a.ufactor,
+a.xrate,
+a.disc
  from trans_tb as a inner join stocks_tb as b
 on a.stockno = b.stockno where a.transno='" & transno & "'"
             Dim ds As New DataSet
@@ -2975,9 +2979,15 @@ on a.stockno = b.stockno where a.transno='" & transno & "'"
             Form5.newtypecolor.DataBindings.Add("text", bs, "TYPECOLOR")
             Form5.newarticleno.DataBindings.Add("text", bs, "ARTICLENO")
 
+            Form5.unit.DataBindings.Clear()
+            Form5.ufactor.DataBindings.Clear()
+            Form5.xrate.DataBindings.Clear()
+            Form5.discount.DataBindings.Clear()
 
-
-
+            Form5.unit.DataBindings.Add("text", bs, "unitprice")
+            Form5.ufactor.DataBindings.Add("text", bs, "ufactor")
+            Form5.xrate.DataBindings.Add("text", bs, "xrate")
+            Form5.discount.DataBindings.Add("text", bs, "disc")
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
