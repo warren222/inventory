@@ -276,6 +276,7 @@ Partial Class Form2
         Me.reportsupplier = New System.Windows.Forms.ComboBox()
         Me.KryptonGroup11 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.KryptonButton33 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
+        Me.vchk = New System.Windows.Forms.CheckBox()
         Me.net = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.balphysical = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.myphysical = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
@@ -463,7 +464,7 @@ Partial Class Form2
         Me.transactionmenustrip.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem})
         Me.transactionmenustrip.Name = "transactionmenustrip"
-        Me.transactionmenustrip.Size = New System.Drawing.Size(165, 158)
+        Me.transactionmenustrip.Size = New System.Drawing.Size(165, 136)
         '
         'TransDateToolStripMenuItem
         '
@@ -3687,6 +3688,7 @@ Partial Class Form2
         'KryptonGroup11.Panel
         '
         Me.KryptonGroup11.Panel.Controls.Add(Me.KryptonButton33)
+        Me.KryptonGroup11.Panel.Controls.Add(Me.vchk)
         Me.KryptonGroup11.Size = New System.Drawing.Size(149, 95)
         Me.KryptonGroup11.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup11.TabIndex = 460
@@ -3703,6 +3705,16 @@ Partial Class Form2
         Me.KryptonButton33.StateCommon.Border.Rounding = 0
         Me.KryptonButton33.TabIndex = 460
         Me.KryptonButton33.Values.Text = "Foil Order"
+        '
+        'vchk
+        '
+        Me.vchk.AutoSize = True
+        Me.vchk.Location = New System.Drawing.Point(20, 15)
+        Me.vchk.Name = "vchk"
+        Me.vchk.Size = New System.Drawing.Size(84, 21)
+        Me.vchk.TabIndex = 461
+        Me.vchk.Text = "summary"
+        Me.vchk.UseVisualStyleBackColor = True
         '
         'net
         '
@@ -4334,6 +4346,7 @@ Partial Class Form2
         CType(Me.myyear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KryptonGroup11.Panel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup11.Panel.ResumeLayout(False)
+        Me.KryptonGroup11.Panel.PerformLayout()
         CType(Me.KryptonGroup11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup11.ResumeLayout(False)
         CType(Me.mydummyDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4646,4 +4659,5 @@ Partial Class Form2
     Friend WithEvents KryptonButton33 As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents transarticleno As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents ConsumptionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents vchk As CheckBox
 End Class

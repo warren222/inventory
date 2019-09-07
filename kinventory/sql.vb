@@ -4304,6 +4304,8 @@ accttype='" & acctype & "' where id = '" & id & "'"
         End Try
     End Sub
     Public Sub getfoilcolor()
+
+
         Dim str As String = "select *,isnull((((FOILWITHA+FOILWITHB)/1000.00)*(iif(UFACTOR<=1,5.8,UFACTOR)))*(iif(FREE<0,FREE*-1,FREE)),0) as area from stocks_tb where not foilcolor = '' and free < 0"
         Dim ds As New inventoryds
         ds.Clear()

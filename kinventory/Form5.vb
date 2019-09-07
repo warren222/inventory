@@ -117,6 +117,19 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
         End Try
     End Sub
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
+        If KryptonCheckBox8.Checked = True Then
+            chagexrate.changerate(cuttinglist.transno.Text, xrate.Text)
+        End If
+        If KryptonCheckBox5.Checked = True Then
+            chagexrate.changeunit(cuttinglist.transno.Text, unit.Text)
+        End If
+        If KryptonCheckBox4.Checked = True Then
+            chagexrate.changeufactor(cuttinglist.transno.Text, ufactor.Text)
+        End If
+        If KryptonCheckBox3.Checked = True Then
+            chagexrate.changedisc(cuttinglist.transno.Text, discount.Text)
+        End If
+
         If Form1.Label2.Text = "Allocation" Then
             If transtype.Text = "Allocation" Then
                 one()
@@ -263,19 +276,6 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         updatestock(stockno.Text, reference.Text, JO.Text)
         sql.selecttransrec(transno.Text)
 
-
-        If KryptonCheckBox8.Checked = True Then
-            chagexrate.changerate(transno.Text, xrate.Text)
-        End If
-        If KryptonCheckBox1.Checked = True Then
-            chagexrate.changeunit(transno.Text, unit.Text)
-        End If
-        If KryptonCheckBox2.Checked = True Then
-            chagexrate.changeufactor(transno.Text, ufactor.Text)
-        End If
-        If KryptonCheckBox3.Checked = True Then
-            chagexrate.changedisc(transno.Text, discount.Text)
-        End If
 
 
         Form2.KryptonButton11.PerformClick()

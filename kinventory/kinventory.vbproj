@@ -29,7 +29,7 @@
     <PublisherName>Warren</PublisherName>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -74,10 +74,11 @@
     <ApplicationIcon>inventory-maintenance-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>8745F6425C2A281802F1AD5C974B34F5E0B7379F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>225FFCCDA3F8E17BBCF1A796F05DD4F655F3A02A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>kinventory_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -561,7 +562,6 @@
     <None Include="inventoryds.xss">
       <DependentUpon>inventoryds.xsd</DependentUpon>
     </None>
-    <None Include="kinventory_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest">
       <SubType>Designer</SubType>
     </None>
