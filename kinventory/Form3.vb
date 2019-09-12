@@ -1,4 +1,6 @@
-﻿Public Class Form3
+﻿Imports System.Data.SqlClient
+
+Public Class Form3
     Dim sql As New sql
     Dim drag As Boolean
     Dim xm As Integer
@@ -8,17 +10,24 @@
         If Me.Text = "New" Or Me.Text = "Copy" Then
             remove()
             sql.Newstock(supplier.Text,
-costhead.Text,
-ufactor.Text,
-typecolor.Text,
-monetary.Text,
-articleno.Text,
-unitprice.Text,
-description.Text,
-qty.Text,
-unit.Text,
-location.Text,
-header.Text, colorbased.Text, xrate.Text)
+                        costhead.Text,
+                        ufactor.Text,
+                        typecolor.Text,
+                        monetary.Text,
+                        articleno.Text,
+                        unitprice.Text,
+                        description.Text,
+                        qty.Text,
+                        unit.Text,
+                        location.Text,
+                        header.Text,
+                        colorbased.Text,
+                        xrate.Text,
+                         foilwitha.Text,
+                         foilwithb.Text,
+                         foilcolor.Text,
+                         tofoil.Text,
+                         toorder.Text)
             'sql.loadstocks()
             Form2.KryptonButton1.PerformClick()
             Button1.PerformClick()
@@ -31,7 +40,12 @@ unitprice.Text,
 description.Text,
 unit.Text,
 location.Text,
-min.Text, colorbased.Text, xrate.Text)
+min.Text, colorbased.Text, xrate.Text,
+                         foilwitha.Text,
+                         foilwithb.Text,
+                         foilcolor.Text,
+                         tofoil.Text,
+                         toorder.Text)
             sql.loadstocks(Form2.stocktoprows.Text)
             Form2.KryptonButton1.PerformClick()
             Button1.PerformClick()
@@ -197,5 +211,41 @@ min.Text, colorbased.Text, xrate.Text)
     Private Sub xrate_Leave(sender As Object, e As EventArgs) Handles xrate.Leave
         Dim name As String = "X-Rate"
         validnumber(xrate, name)
+    End Sub
+
+    Private Sub foilwitha_MouseDown(sender As Object, e As MouseEventArgs) Handles foilwitha.MouseDown, foilcolor.MouseDown, foilwithb.MouseDown
+        loadfoiling(sender)
+    End Sub
+    Public Sub loadfoiling(ByVal sender As Object)
+        Try
+            Dim SQLCMD As New SqlCommand
+            sql.sqlcon.Open()
+            Dim col As String
+            Select Case sender.name
+                Case "foilwitha"
+                    col = "FOILWITHA"
+                Case "foilcolor"
+                    col = "FOILCOLOR"
+                Case "foilwithb"
+                    col = "FOILWITHB"
+            End Select
+
+            Dim ds As New DataSet
+            ds.Clear()
+            Dim bs As New BindingSource
+            Dim da As New SqlDataAdapter
+            Dim str As String = "select distinct " & col & " from stocks_tb"
+            sqlcmd = New SqlCommand(str, sql.sqlcon)
+            da.SelectCommand = sqlcmd
+            da.Fill(ds, "stocks_tb")
+            bs.DataSource = ds
+            bs.DataMember = "stocks_tb"
+            sender.datasource = bs
+            sender.displaymember = "" & col & ""
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            sql.sqlcon.Close()
+        End Try
     End Sub
 End Class

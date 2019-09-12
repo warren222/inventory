@@ -153,4 +153,8 @@ Public Class Form10
             sql.sqlcon.Close()
         End Try
     End Sub
+
+    Private Sub Form10_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Me.Dispose()
+    End Sub
 End Class

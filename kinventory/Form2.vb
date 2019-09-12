@@ -118,7 +118,12 @@ Public Class Form2
             Form3.header.Text = stocksgridview.Item("HEADER", e.RowIndex).Value.ToString
             Form3.min.Text = stocksgridview.Item("MINIMUM", e.RowIndex).Value.ToString
             Form3.colorbased.Text = stocksgridview.Item("COLORBASED", e.RowIndex).Value.ToString
-            Form3.xrate.Text = stocksgridview.Item("XRATE", e.RowIndex).Value.ToString
+            Form3.foilwitha.Text = stocksgridview.Item("foilwitha", e.RowIndex).Value.ToString
+            Form3.foilwithb.Text = stocksgridview.Item("foilwithb", e.RowIndex).Value.ToString
+            Form3.foilcolor.Text = stocksgridview.Item("foilcolor", e.RowIndex).Value.ToString
+            Form3.tofoil.Text = stocksgridview.Item("tofoil", e.RowIndex).Value.ToString
+            Form3.toorder.Text = stocksgridview.Item("toorder", e.RowIndex).Value.ToString
+
 
             Form4.stockno.Text = stocksgridview.Item("STOCKNO", e.RowIndex).Value.ToString
             Form4.supplier.Text = stocksgridview.Item("SUPPLIER", e.RowIndex).Value.ToString

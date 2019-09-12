@@ -538,7 +538,12 @@ order by A.articleno asc"
                  ByVal unit As String,
                  ByVal location As String,
                  ByVal header As String,
-                 ByVal colorbased As String, ByVal xrate As String)
+                 ByVal colorbased As String, ByVal xrate As String,
+                        ByVal foilwitha As String,
+                        ByVal foilwithb As String,
+                        ByVal foilcolor As String,
+                        ByVal tofoil As String,
+                        ByVal toorder As String)
         Try
             sqlcon.Open()
             Dim find As String = "select * from stocks_tb where costhead='" & costhead & "' and typecolor='" & typecolor & "' and articleno='" & articleno & "'"
@@ -571,6 +576,11 @@ minimum,
 ISSUE,
 colorbased,
 xrate,
+foilwitha,
+foilwithb,
+foilcolor,
+tofoil,
+toorder,
 INPUTTED)values(@id,'" & supplier & "'," &
                           "'" & costhead & "'," &
                           "'" & ufactor & "'," &
@@ -591,6 +601,11 @@ INPUTTED)values(@id,'" & supplier & "'," &
                                 "'0'," &
                           "'" & colorbased & "'," &
                             "'" & xrate & "'," &
+                            "'" & foilwitha & "'," &
+                            "'" & foilwithb & "'," &
+                            "'" & foilcolor & "'," &
+                            "'" & tofoil & "'," &
+                            "'" & toorder & "'," &
              "'" & Form1.Label1.Text & "')"
                 sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.ExecuteNonQuery()
@@ -610,7 +625,12 @@ INPUTTED)values(@id,'" & supplier & "'," &
                ByVal unit As String,
                ByVal location As String,
                ByVal min As String,
-                            ByVal colorbased As String, ByVal xrate As String)
+                            ByVal colorbased As String, ByVal xrate As String,
+                        ByVal foilwitha As String,
+                        ByVal foilwithb As String,
+                        ByVal foilcolor As String,
+                        ByVal tofoil As String,
+                        ByVal toorder As String)
         Try
             sqlcon.Open()
             Dim str As String = "update stocks_tb set 
@@ -622,6 +642,11 @@ unit='" & unit & "',
 location='" & location & "',
 minimum='" & min & "',
 colorbased='" & colorbased & "',
+foilwitha = '" & foilwitha & "',
+foilwithb = '" & foilwithb & "',
+foilcolor = '" & foilcolor & "',
+tofoil = '" & tofoil & "',
+toorder = '" & toorder & "',
 xrate = '" & xrate & "'
 where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sqlcon)
