@@ -213,7 +213,7 @@ values (@id,'" & stockno & "'," &
               "''," &
          "''," &
            "@bal," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             sqlcmd = New SqlCommand(newcancelalloc, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
             MessageBox.Show("All allocation has been cancelled", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -297,12 +297,12 @@ values (@id,'" & stockno & "'," &
 
     Private Sub editreference_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         meme = 0
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
             KryptonButton1.Enabled = False
             KryptonButton5.Enabled = False
             KryptonButton6.Enabled = False
             KryptonButton7.Enabled = False
-        ElseIf Form1.Label2.Text = "Admin" Or Form1.Label2.Text = "Encoder" Then
+        ElseIf Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Then
             KryptonButton1.Enabled = True
             KryptonButton5.Enabled = True
             KryptonButton6.Enabled = True

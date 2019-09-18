@@ -389,7 +389,7 @@ Public Class Form4
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DATETYPE.SelectedIndex = 0
-        If Form1.Label2.Text = "Guest" Or Form1.Label2.Text = "Encoder" Then
+        If Form1.accounttype.Text = "Guest" Or Form1.accounttype.Text = "Encoder" Then
             savebtn.Enabled = False
         Else
             savebtn.Enabled = True

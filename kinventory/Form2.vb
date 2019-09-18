@@ -7,7 +7,7 @@ Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer2.Start()
-        Me.Text = Form1.Label2.Text
+        Me.Text = Form1.accounttype.Text
         toprows.SelectedIndex = 0
         reftoprows.SelectedIndex = 0
         stocktoprows.SelectedIndex = 0
@@ -17,7 +17,7 @@ Public Class Form2
         Timer1.Start()
         myyear.Text = Today.Date.Year
 
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
             'stocks
             KryptonButton2.Enabled = False
             KryptonButton3.Enabled = False
@@ -30,7 +30,7 @@ Public Class Form2
             KryptonButton8.Enabled = False
             'reference
             KryptonButton14.Enabled = False
-        ElseIf Form1.Label2.Text = "Admin" Then
+        ElseIf Form1.accounttype.Text = "Admin" Then
             KryptonButton2.Enabled = True
             KryptonButton3.Enabled = True
             KryptonButton23.Enabled = True
@@ -42,7 +42,7 @@ Public Class Form2
             KryptonButton8.Enabled = True
             'reference
             KryptonButton14.Enabled = True
-        ElseIf Form1.Label2.Text = "Encoder" Then
+        ElseIf Form1.accounttype.Text = "Encoder" Then
             KryptonButton2.Enabled = False
             KryptonButton3.Enabled = False
             KryptonButton23.Enabled = False
@@ -54,7 +54,7 @@ Public Class Form2
             KryptonButton8.Enabled = True
             'reference
             KryptonButton14.Enabled = True
-        ElseIf Form1.Label2.Text = "Allocation" Then
+        ElseIf Form1.accounttype.Text = "Allocation" Then
             KryptonButton2.Enabled = False
             KryptonButton3.Enabled = False
             KryptonButton23.Enabled = False
@@ -998,7 +998,7 @@ select
             '',
             '',
             REMARKS,ufactor,unitprice,disc,xrate,(unitprice*xrate)*(" & bal & "*ufactor),
-            '" & Form1.Label1.Text & "'
+            '" & Form1.nickname.Text & "'
             from trans_tb where transno = " & transno & ""
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
@@ -2724,7 +2724,7 @@ select * from stocks_tb where tofoil='yes' order by articleno asc"
 
             Dim str As String = "select * from stocks_tb where tofoil='yes'"
             Dim ds As New inventoryds
-            ds.Clear
+            ds.Clear()
             Dim da As New SqlDataAdapter
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             da.SelectCommand = sqlcmd
@@ -3034,7 +3034,7 @@ on a.stockno = b.stockno where A.STOCKNO='" & STOCKNO & "' and a.TRANSTYPE='Rece
 
 
     Private Sub KryptonButton31_Click(sender As Object, e As EventArgs) Handles KryptonButton31.Click
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
 
         Else
             checklisted.ShowDialog()

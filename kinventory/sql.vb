@@ -606,7 +606,7 @@ INPUTTED)values(@id,'" & supplier & "'," &
                             "'" & foilcolor & "'," &
                             "'" & tofoil & "'," &
                             "'" & toorder & "'," &
-             "'" & Form1.Label1.Text & "')"
+             "'" & Form1.nickname.Text & "')"
                 sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.ExecuteNonQuery()
                 MessageBox.Show("New stocks Added!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1607,7 +1607,7 @@ insert into trans_tb
                   "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             ElseIf transtype = "Order" Or transtype = "Receipt" Then
                 str = "
 declare @id as integer = (select isnull(max(isnull(TRANSNO,0)),0)+1 from trans_tb)
@@ -1638,7 +1638,7 @@ insert into trans_tb
                    "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             Else
                 str = "
 declare @id as integer = (select isnull(max(isnull(TRANSNO,0)),0)+1 from trans_tb)
@@ -1669,7 +1669,7 @@ insert into trans_tb
                     "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             End If
 
             sqlcmd = New SqlCommand(str, sqlcon)
@@ -3428,10 +3428,10 @@ UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno='" & stock
                 da.Fill(ds, "account_tb")
                 bs.DataSource = ds
                 bs.DataMember = "account_tb"
-                Form1.Label1.DataBindings.Clear()
-                Form1.Label1.DataBindings.Add("text", bs, "nickname")
-                Form1.Label2.DataBindings.Clear()
-                Form1.Label2.DataBindings.Add("text", bs, "ACCTTYPE")
+                Form1.nickname.DataBindings.Clear()
+                Form1.nickname.DataBindings.Add("text", bs, "nickname")
+                Form1.accounttype.DataBindings.Clear()
+                Form1.accounttype.DataBindings.Add("text", bs, "ACCTTYPE")
                 Form9.KryptonLabel2.DataBindings.Clear()
                 Form9.KryptonLabel2.DataBindings.Add("text", bs, "ACCTTYPE")
                 Dim scolumns As String

@@ -81,7 +81,7 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
     End Sub
 
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.Label2.Text = "Admin" Or Form1.Label2.Text = "Encoder" Or Form1.Label2.Text = "Allocation" Then
+        If Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Or Form1.accounttype.Text = "Allocation" Then
             KryptonButton1.Enabled = True
         Else
             KryptonButton1.Enabled = False
@@ -117,28 +117,33 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
         End Try
     End Sub
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
-        If KryptonCheckBox8.Checked = True Then
-            chagexrate.changerate(cuttinglist.transno.Text, xrate.Text)
-        End If
-        If KryptonCheckBox5.Checked = True Then
-            chagexrate.changeunit(cuttinglist.transno.Text, unit.Text)
-        End If
-        If KryptonCheckBox4.Checked = True Then
-            chagexrate.changeufactor(cuttinglist.transno.Text, ufactor.Text)
-        End If
-        If KryptonCheckBox3.Checked = True Then
-            chagexrate.changedisc(cuttinglist.transno.Text, discount.Text)
-        End If
+        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Then
+            If KryptonCheckBox8.Checked = True Then
+                chagexrate.changerate(cuttinglist.transno.Text, xrate.Text)
+            End If
+            If KryptonCheckBox5.Checked = True Then
+                chagexrate.changeunit(cuttinglist.transno.Text, unit.Text)
+            End If
+            If KryptonCheckBox4.Checked = True Then
+                chagexrate.changeufactor(cuttinglist.transno.Text, ufactor.Text)
+            End If
+            If KryptonCheckBox3.Checked = True Then
+                chagexrate.changedisc(cuttinglist.transno.Text, discount.Text)
+            End If
 
-        If Form1.Label2.Text = "Allocation" Then
-            If transtype.Text = "Allocation" Then
-                one()
+            If Form1.accounttype.Text = "Allocation" Then
+                If transtype.Text = "Allocation" Then
+                    one()
+                Else
+                    MsgBox("access denied!")
+                End If
             Else
-                MsgBox("access denied!")
+                one()
             End If
         Else
-            one()
+            MessageBox.Show("Invalid Access", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
+
     End Sub
     Public Sub one()
         Dim x As Double

@@ -198,7 +198,7 @@ values (@id,'" & stockno & "'," &
               "''," &
          "''," &
           "@bal," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             sqlcmd = New SqlCommand(newcancelalloc, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
         Catch ex As Exception
@@ -283,10 +283,10 @@ values (@id,'" & stockno & "'," &
     End Sub
 
     Private Sub cancelall_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
             KryptonButton2.Enabled = False
             KryptonButton1.Enabled = False
-        ElseIf Form1.Label2.Text = "Admin" Or Form1.Label2.Text = "Encoder" Then
+        ElseIf Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Then
             KryptonButton2.Enabled = True
             KryptonButton1.Enabled = True
         End If

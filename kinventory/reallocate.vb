@@ -51,7 +51,7 @@ select
             '',
             '',
             '',
-            '" & Form1.Label1.Text & "'
+            '" & Form1.nickname.Text & "'
  from trans_tb where transno = '" & tno & "' and transtype='CancelAlloc'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
@@ -138,9 +138,9 @@ update reference_tb set
     End Sub
 
     Private Sub reallocate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
             cancelorderbtn.Enabled = False
-        ElseIf Form1.Label2.Text = "Admin" Or Form1.Label2.Text = "Encoder" Then
+        ElseIf Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Then
             cancelorderbtn.Enabled = True
         End If
 

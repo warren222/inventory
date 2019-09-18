@@ -189,7 +189,7 @@ Public Class managecolumns
 
         Try
             sql.sqlcon.Open()
-            Dim str As String = "update account_tb set stockscolumns='" & colmns & "' where nickname='" & Form1.Label1.Text & "'"
+            Dim str As String = "update account_tb set stockscolumns='" & colmns & "' where nickname='" & Form1.nickname.Text & "'"
             Dim sqlcmd As New SqlCommand
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
@@ -352,7 +352,7 @@ Public Class managecolumns
         sql.tmanagecols()
         Try
             sql.sqlcon.Open()
-            Dim str As String = "update account_tb set transcolumns='" & colmns & "' where nickname='" & Form1.Label1.Text & "'"
+            Dim str As String = "update account_tb set transcolumns='" & colmns & "' where nickname='" & Form1.nickname.Text & "'"
             Dim sqlcmd As New SqlCommand
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
@@ -371,7 +371,7 @@ Public Class managecolumns
     Public Sub closeme()
         Try
             sql.sqlcon.Open()
-            Dim str As String = "select stockscolumns,transcolumns from account_tb where nickname='" & Form1.Label1.Text & "'"
+            Dim str As String = "select stockscolumns,transcolumns from account_tb where nickname='" & Form1.nickname.Text & "'"
             Dim sqlcmd As New SqlCommand
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             Dim scolumns As String

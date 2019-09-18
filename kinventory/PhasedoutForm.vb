@@ -304,7 +304,7 @@ update stocks_tb set unitprice='" & myval & "' where stockno='" & stockno & "'"
     End Sub
 
     Private Sub PhasedoutForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.Label2.Text = "Admin" Or Form1.Label1.Text = "Noreen" Then
+        If Form1.accounttype.Text = "Admin" Or Form1.nickname.Text = "Noreen" Then
             KryptonButton1.Enabled = True
         Else
             KryptonButton1.Enabled = False

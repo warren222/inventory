@@ -29,8 +29,8 @@ Partial Class Form1
         Me.AccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.accounttype = New System.Windows.Forms.Label()
+        Me.nickname = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -84,31 +84,31 @@ Partial Class Form1
         Me.ManageColumnsToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.ManageColumnsToolStripMenuItem.Text = "Manage Columns"
         '
-        'Label2
+        'accounttype
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(57, 17)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
-        Me.Label2.TabIndex = 458
-        Me.Label2.Text = "Label2"
+        Me.accounttype.AutoSize = True
+        Me.accounttype.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.accounttype.Location = New System.Drawing.Point(57, 17)
+        Me.accounttype.Name = "accounttype"
+        Me.accounttype.Size = New System.Drawing.Size(39, 13)
+        Me.accounttype.TabIndex = 458
+        Me.accounttype.Text = "Label2"
         '
-        'Label1
+        'nickname
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(12, 17)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 457
-        Me.Label1.Text = "Label1"
+        Me.nickname.AutoSize = True
+        Me.nickname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.nickname.Location = New System.Drawing.Point(12, 17)
+        Me.nickname.Name = "nickname"
+        Me.nickname.Size = New System.Drawing.Size(39, 13)
+        Me.nickname.TabIndex = 457
+        Me.nickname.Text = "Label1"
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.nickname)
+        Me.Panel1.Controls.Add(Me.accounttype)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 24)
         Me.Panel1.Name = "Panel1"
@@ -144,8 +144,8 @@ Partial Class Form1
     Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AccountsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManageAccountsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents accounttype As Label
+    Friend WithEvents nickname As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ManageColumnsToolStripMenuItem As ToolStripMenuItem
 End Class

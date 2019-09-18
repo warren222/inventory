@@ -210,7 +210,7 @@ insert into trans_tb
             "''," &
               "''," &
          "''," &
-            "'" & Form1.Label1.Text & "')
+            "'" & Form1.nickname.Text & "')
 
 update trans_tb set qty = 0,xyzref='canceled' where stockno = '" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "' and xyzref='' and transtype='Order'"
             sqlcmd = New SqlCommand(newcancelorder, sql.sqlcon)
@@ -334,7 +334,7 @@ insert into trans_tb
             "''," &
               "''," &
          "''," &
-            "'" & Form1.Label1.Text & "')
+            "'" & Form1.nickname.Text & "')
 
 declare @id1 as integer =(select max(transno)+1 from trans_tb)
 
@@ -358,7 +358,7 @@ insert into trans_tb
             "''," &
               "''," &
          "''," &
-            "'" & Form1.Label1.Text & "')"
+            "'" & Form1.nickname.Text & "')"
             sqlcmd = New SqlCommand(newcancelalloc, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
 
@@ -610,9 +610,9 @@ insert into trans_tb
 
     Private Sub multimove_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         meme = 0
-        If Form1.Label2.Text = "Guest" Then
+        If Form1.accounttype.Text = "Guest" Then
             KryptonButton1.Enabled = False
-        ElseIf Form1.Label2.Text = "Admin" Or Form1.Label2.Text = "Encoder" Then
+        ElseIf Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Then
             KryptonButton1.Enabled = True
         End If
     End Sub
