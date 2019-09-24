@@ -1612,12 +1612,18 @@ select
         End If
         Dim x As Integer = costheadsearch.SelectedIndex
         Dim ssupplier As String = supplier.Text
+        Dim headertxt As String = headercmb.Text
         If ssupplier = "" Then
             ssupplier = " supplier"
         Else
             ssupplier = "'" & ssupplier & "'"
         End If
-        sql.loadcostheadsearch(ssupplier, phasedout)
+        If headertxt = "" Then
+            headertxt = " header"
+        Else
+            headertxt = "'" & headertxt & "'"
+        End If
+        sql.loadcostheadsearch(ssupplier, headertxt, phasedout)
         typecolorsearch.Text = ""
         articlenosearch.Text = ""
         If x > costheadsearch.Items.Count - 1 Then
@@ -1638,6 +1644,7 @@ select
         Dim x As Integer = typecolorsearch.SelectedIndex
         Dim ssupplier As String = supplier.Text
         Dim scosthead As String = costheadsearch.Text
+        Dim headertxt As String = headercmb.Text
         If ssupplier = "" Then
             ssupplier = " supplier"
         Else
@@ -1648,7 +1655,12 @@ select
         Else
             scosthead = "'" & scosthead & "'"
         End If
-        sql.loadtypecolorsearch(ssupplier, scosthead, phasedout)
+        If headertxt = "" Then
+            headertxt = " header"
+        Else
+            headertxt = "'" & headertxt & "'"
+        End If
+        sql.loadtypecolorsearch(ssupplier, headertxt, scosthead, phasedout)
         articlenosearch.Text = ""
         If x > typecolorsearch.Items.Count - 1 Then
             typecolorsearch.SelectedIndex = -1
@@ -1668,7 +1680,7 @@ select
         Dim ssupplier As String = supplier.Text
         Dim scosthead As String = costheadsearch.Text
         Dim stypecolor As String = typecolorsearch.Text
-
+        Dim headertxt As String = headercmb.Text
         If ssupplier = "" Then
             ssupplier = " supplier"
         Else
@@ -1684,7 +1696,14 @@ select
         Else
             stypecolor = "'" & stypecolor & "'"
         End If
-        sql.loadarticlesearch(ssupplier, scosthead, stypecolor, phasedout)
+
+        If headertxt = "" Then
+            headertxt = " header"
+        Else
+            headertxt = "'" & headertxt & "'"
+        End If
+
+        sql.loadarticlesearch(ssupplier, headertxt, scosthead, stypecolor, phasedout)
 
         If x > articlenosearch.Items.Count - 1 Then
             articlenosearch.SelectedIndex = -1
@@ -1741,13 +1760,14 @@ select
         'sql.searchstocks(search)
 
         Dim phasedout As String = "Yes"
-
+        Dim z As String = headercmb.Text
         Dim a As String = supplier.Text
         Dim b As String = costheadsearch.Text
         Dim c As String = typecolorsearch.Text
         Dim d As String = articlenosearch.Text
         Dim f As String = status.Text
         Dim g As String = phasedout
+        Dim zcol As String = "header"
         Dim acol As String = " Supplier"
         Dim bcol As String = " Costhead"
         Dim ccol As String = " typecolor"
@@ -1759,6 +1779,12 @@ select
             gcol = " phasedout"
         Else
             gcol = " not phasedout"
+        End If
+
+        If z = "" Then
+            z = " header"
+        Else
+            z = "'" & z & "'"
         End If
 
         If a = "" Then
@@ -1799,6 +1825,7 @@ select
 
         Dim condition As String
         condition = " where 
+" & zcol & " = " & z & " and 
 " & acol & " = " & a & " and 
 " & bcol & " = " & b & " and
 " & ccol & " = " & c & " and 
@@ -2437,6 +2464,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
         Else
             PHASEDOUT = " NOT PHASEDOUT = 'Yes'"
         End If
+
         sql.loadsuppliersearch(PHASEDOUT)
         costheadsearch.Text = ""
         typecolorsearch.Text = ""
@@ -3360,6 +3388,31 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
                 Case "issuejo"
                     sql.selectissuereferencerecord(issuereference.Text, issuejo.Text)
             End Select
+        End If
+    End Sub
+
+    Private Sub header_MouseDown(sender As Object, e As MouseEventArgs) Handles headercmb.MouseDown
+        Dim phasedout As String
+        If phasedoutsearch.Checked = True Then
+            phasedout = " and phasedout = 'Yes'"
+        Else
+            phasedout = " and not phasedout = 'Yes'"
+        End If
+        Dim x As Integer = headercmb.SelectedIndex
+        Dim ssupplier As String = supplier.Text
+        If ssupplier = "" Then
+            ssupplier = " supplier"
+        Else
+            ssupplier = "'" & ssupplier & "'"
+        End If
+        sql.loadheadersearch(ssupplier, phasedout)
+        costheadsearch.Text = ""
+        typecolorsearch.Text = ""
+        articlenosearch.Text = ""
+        If x > headercmb.Items.Count - 1 Then
+            headercmb.SelectedIndex = -1
+        Else
+            headercmb.SelectedIndex = x
         End If
     End Sub
 End Class

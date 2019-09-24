@@ -117,7 +117,7 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
         End Try
     End Sub
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
-        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Then
+        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Or Form1.nickname.Text = "Joy" Then
             If KryptonCheckBox8.Checked = True Then
                 chagexrate.changerate(cuttinglist.transno.Text, xrate.Text)
             End If

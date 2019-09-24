@@ -287,13 +287,33 @@ order by A.articleno asc"
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub loadcostheadsearch(ByVal supplier As String, ByVal phasedout As String)
+    Public Sub loadheadersearch(ByVal supplier As String, ByVal phasedout As String)
+        Try
+            sqlcon.Open()
+            Dim ds As New DataSet
+            Dim bs As New BindingSource
+            bs.Clear()
+            Dim str As String = "select distinct header from stocks_tb where supplier  = " & supplier & " " & phasedout & ""
+            sqlcmd = New SqlCommand(str, sqlcon)
+            da.SelectCommand = sqlcmd
+            da.Fill(ds, "stocks_tb")
+            bs.DataSource = ds
+            bs.DataMember = "stocks_tb"
+            Form2.headercmb.DataSource = bs
+            Form2.headercmb.DisplayMember = "header"
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
+    Public Sub loadcostheadsearch(ByVal supplier As String, ByVal header As String, ByVal phasedout As String)
         Try
             sqlcon.Open()
             Dim costheadds As New DataSet
             Dim costheadbindingsource As New BindingSource
             costheadds.Clear()
-            Dim str As String = "select distinct costhead from stocks_tb where supplier  = " & supplier & " " & phasedout & ""
+            Dim str As String = "select distinct costhead from stocks_tb where supplier  = " & supplier & " and header = " & header & " " & phasedout & ""
             sqlcmd = New SqlCommand(str, sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(costheadds, "stocks_tb")
@@ -307,13 +327,13 @@ order by A.articleno asc"
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub loadtypecolorsearch(ByVal supplier As String, ByVal costhead As String, ByVal phasedout As String)
+    Public Sub loadtypecolorsearch(ByVal supplier As String, ByVal header As String, ByVal costhead As String, ByVal phasedout As String)
         Try
             sqlcon.Open()
             Dim typecolords As New DataSet
             Dim typecolorbs As New BindingSource
             typecolords.Clear()
-            Dim str1 As String = "select distinct typecolor from stocks_tb where supplier = " & supplier & " and costhead=" & costhead & " " & phasedout & ""
+            Dim str1 As String = "select distinct typecolor from stocks_tb where supplier = " & supplier & " and header = " & header & " and costhead=" & costhead & " " & phasedout & ""
             sqlcmd = New SqlCommand(str1, sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(typecolords, "stocks_tb")
@@ -327,13 +347,13 @@ order by A.articleno asc"
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub loadarticlesearch(ByVal supplier As String, ByVal costhead As String, ByVal typec As String, ByVal phasedout As String)
+    Public Sub loadarticlesearch(ByVal supplier As String, ByVal header As String, ByVal costhead As String, ByVal typec As String, ByVal phasedout As String)
         Try
             sqlcon.Open()
             Dim articleds As New DataSet
             Dim articlebs As New BindingSource
             articleds.Clear()
-            Dim str2 As String = "select distinct articleno from stocks_tb where supplier=" & supplier & " and costhead=" & costhead & " and typecolor=" & typec & " " & phasedout & ""
+            Dim str2 As String = "select distinct articleno from stocks_tb where supplier=" & supplier & " and header= " & header & " and costhead=" & costhead & " and typecolor=" & typec & " " & phasedout & ""
             sqlcmd = New SqlCommand(str2, sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(articleds, "stocks_tb")

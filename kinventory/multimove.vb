@@ -188,10 +188,19 @@ Public Class multimove
             sql.sqlcon.Open()
             Dim newcancelorder As String = "
   declare @order as decimal(10,2)=(select  COALESCE(stockorder,0) from reference_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "')+0
-
+declare @unitprice as decimal(10,2) = (select unitprice from stocks_tb where STOCKNO = '" & nstockno & "')
+declare @ufactor as decimal(10,2) = (select UFACTOR from stocks_tb where STOCKNO = '" & nstockno & "')
+declare @DISC as decimal(10,2) = (select DISC from stocks_tb where STOCKNO = '" & nstockno & "')
+declare @XRATE as decimal(10,2) = (select XRATE from stocks_tb where STOCKNO = '" & nstockno & "')
 declare @id as integer =(select max(transno)+1 from trans_tb)
+
 insert into trans_tb 
-     (transno,STOCKNO,
+     (transno,
+                STOCKNO,
+                unitprice,
+                UFACTOR,
+                DISC,
+                XRATE,
             TRANSTYPE,
             TRANSDATE,
             DUEDATE,
@@ -199,7 +208,7 @@ insert into trans_tb
             REFERENCE,jo,
             ACCOUNT,
             CONTROLNO,XYZ,XYZREF,REMARKS,INPUTTED) values (@id,'" & nstockno & "'," &
-         "'Order'," &
+         "@unitprice,@ufactor,@DISC,@XRATE,'Order'," &
          "'" & Form2.transdate.Text & "'," &
          "''," &
          "@order," &
@@ -211,7 +220,7 @@ insert into trans_tb
               "''," &
          "''," &
             "'" & Form1.nickname.Text & "')
-
+update trans_tb set netamount=((unitprice-((disc*0.01)*unitprice))*xrate)*(qty*ufactor) where transno = @id
 update trans_tb set qty = 0,xyzref='canceled' where stockno = '" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "' and xyzref='' and transtype='Order'"
             sqlcmd = New SqlCommand(newcancelorder, sql.sqlcon)
             sqlcmd.ExecuteNonQuery()
@@ -309,16 +318,16 @@ update reference_tb set
         Try
             sql.sqlcon.Open()
             Dim newcancelalloc As String = "
-  declare @allocation as decimal(10,2)=(select  COALESCE(allocation,0) from reference_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "')+0
+declare @allocation as decimal(10,2)=(select  COALESCE(allocation,0) from reference_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "')+0
 declare @id as integer =(select max(transno)+1 from trans_tb)
 
 insert into trans_tb 
-     (transno,STOCKNO,
+           (transno,STOCKNO,
             TRANSTYPE,
             TRANSDATE,
             DUEDATE,
             QTY,
-  balqty,
+             balqty,
             REFERENCE,jo,
             ACCOUNT,
             CONTROLNO,XYZ,XYZREF,REMARKS,INPUTTED) values (@id,'" & nstockno & "'," &

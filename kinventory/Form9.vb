@@ -49,7 +49,6 @@
         drag = True
         xm = Cursor.Position.X - Me.Left
         ym = Cursor.Position.Y - Me.Top
-
     End Sub
 
     Private Sub Panel3_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel3.MouseMove

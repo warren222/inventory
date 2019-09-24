@@ -175,6 +175,8 @@ Public Class genreferenceFRM
             Form2.reference.Text = reference.Text
         ElseIf Me.Text = "transman" Then
             Form2.transreference.Text = reference.Text
+        ElseIf Me.Text = "form5" Then
+            Form5.newreference.Text = reference.Text
         End If
     End Sub
 
