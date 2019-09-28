@@ -1279,7 +1279,8 @@ select
                             a.XRATE,
                             A.NETAMOUNT,
                             A.INPUTTED,
-                            A.ADJUSTMENTQTY
+                            A.ADJUSTMENTQTY,
+                            A.PRODUCTIONALLOCATION
                             from trans_tb as a inner join stocks_tb as b
                             on a.stockno = b.stockno
                             " & where & " order by a.transdate desc"
@@ -3414,5 +3415,10 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
         Else
             headercmb.SelectedIndex = x
         End If
+    End Sub
+
+    Private Sub ProductionAllocationDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductionAllocationDateToolStripMenuItem.Click
+        Form6.KryptonLabel1.Text = "Production Allocation date"
+        Form6.ShowDialog()
     End Sub
 End Class

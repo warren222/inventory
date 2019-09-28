@@ -796,7 +796,8 @@ UNIT='" & unit & "' where stockno='" & stockno & "'"
                                                     a.XRATE,
                                                     A.NETAMOUNT,
                                                     A.INPUTTED,
-                                                    A.ADJUSTMENTQTY
+                                                    A.ADJUSTMENTQTY,
+                                                    A.PRODUCTIONALLOCATION
                                                      from trans_tb as a inner join stocks_tb as b
                                                     on a.stockno = b.stockno order by a.transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)

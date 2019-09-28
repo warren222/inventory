@@ -19,7 +19,7 @@
 
     Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If localaccess.Checked = True Then
-            myaccess.Text = "192.168.1.21,49107"
+            myaccess.Text = "192.168.1.35,49107"
         Else
             myaccess.Text = "121.58.229.248,49107"
         End If

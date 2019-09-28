@@ -21,6 +21,14 @@ Public Class Form6
             Next
             Form2.KryptonButton11.PerformClick()
             Button1.PerformClick()
+        ElseIf KryptonLabel1.Text = "Production Allocation date" Then
+            For i As Integer = 0 To transno.Items.Count - 1
+                Dim trno As String = transno.Items(i)
+                Dim str As String = "update trans_tb set productionallocation='" & transdate.Text & "' where transno = '" & trno & "'"
+                update(str)
+            Next
+            Form2.KryptonButton11.PerformClick()
+            Button1.PerformClick()
         Else
         End If
     End Sub
