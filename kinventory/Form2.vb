@@ -594,9 +594,13 @@ update trans_tb set ufactor=@ufactor,unitprice=@unitprice,xrate=@xrate,netamount
                                     declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
+
+                                    declare @productionallocation as decimal(10,2)=(select COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation' and not PRODUCTIONALLOCATION = '')+0
+                                    declare @multiply as decimal(10,2) = (select case when @productionallocation=0 then 0 else 1 end)
             update stocks_tb set  
                                     physical=(QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment),
                                     allocation = @allocation-(@issueallocation+@cancelalloc),
+                                    PRODUCTIONALLOCATION=(@productionallocation-(@issueallocation+@cancelalloc))*@multiply,
                                     free=(((QTY+@totalreceipt+@return+@addadjustment)-(@allocation-@cancelalloc)))-(@issue+@minadjustment),
                                     stockorder=@order-@receiptorder,
                                     issue=@totalissue
@@ -1934,7 +1938,7 @@ a.*,
         End Try
     End Sub
 
-    Private Sub KryptonButton16_Click(sender As Object, e As EventArgs) Handles KryptonButton16.Click
+    Private Sub KryptonButton16_Click(sender As Object, e As EventArgs) Handles alltransactionsbtn.Click
         sql.alltransaction()
         AllTrans.ShowDialog()
     End Sub
@@ -1956,14 +1960,14 @@ a.*,
         e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
     End Sub
 
-    Private Sub KryptonButton17_Click(sender As Object, e As EventArgs) Handles KryptonButton17.Click
+    Private Sub KryptonButton17_Click(sender As Object, e As EventArgs) Handles refreshdatabtn.Click
         sql.loadstocks(stocktoprows.Text)
         sql.loadtransactions(toprows.Text)
         sql.referencetb(reftoprows.Text)
     End Sub
 
     Private Sub KryptonButton18_Click(sender As Object, e As EventArgs) Handles KryptonButton18.Click
-        KryptonButton26.PerformClick()
+        physicaldatebtn.PerformClick()
         sql.loaddummies()
         mydummyDataGridView1.SelectAll()
         If ir.Checked = True And scr.Checked = False Then
@@ -2185,12 +2189,16 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
                                     declare @issue as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
                                     declare @receiptorder as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Receipt' AND XYZ='Order')+0
                                     declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
+
+                                    declare @productionallocation as decimal(10,2)=(select COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation' and not PRODUCTIONALLOCATION = '')+0
+                                    declare @multiply as decimal(10,2) = (select case when @productionallocation=0 then 0 else 1 end)
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
             update stocks_tb set 
                                     clbal=@clbal-@issueallocation,
                                     physical=(QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment),
                                     allocation = @allocation-(@issueallocation+@cancelalloc),
+                                    PRODUCTIONALLOCATION=(@productionallocation-(@issueallocation+@cancelalloc))*@multiply,
                                     free=(((QTY+@totalreceipt+@return+@addadjustment)-(@allocation-@cancelalloc)))-(@issue+@minadjustment),
                                     stockorder=@order-@receiptorder,
                                     issue=@totalissue
@@ -2205,7 +2213,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
         End Try
     End Sub
 
-    Private Sub KryptonButton20_Click(sender As Object, e As EventArgs) Handles KryptonButton20.Click
+    Private Sub KryptonButton20_Click(sender As Object, e As EventArgs) Handles updatedatabtn.Click
         ProgressBar2.Visible = True
         ProgressBar2.Maximum = stocksStocksno.Items.Count
         ProgressBar2.Value = 0
@@ -2554,7 +2562,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
 
 
-    Private Sub KryptonButton26_Click(sender As Object, e As EventArgs) Handles KryptonButton26.Click
+    Private Sub KryptonButton26_Click(sender As Object, e As EventArgs) Handles physicaldatebtn.Click
         'updatep2()
         'gettoupdate(transdate.Text)
         'stocksgridview.SelectAll()
@@ -2847,8 +2855,8 @@ select * from stocks_tb where tofoil='yes' order by articleno asc"
         chagexrate.ShowDialog()
     End Sub
 
-    Private Sub KryptonButton27_Click(sender As Object, e As EventArgs) Handles KryptonButton27.Click
-        KryptonButton26.PerformClick()
+    Private Sub KryptonButton27_Click(sender As Object, e As EventArgs) Handles allnetamountbtn.Click
+        physicaldatebtn.PerformClick()
         KryptonButton15.PerformClick()
         stocksgridview.SelectAll()
         ProgressBar2.Visible = True
@@ -2868,7 +2876,7 @@ select * from stocks_tb where tofoil='yes' order by articleno asc"
         End If
         accountingreport.ShowDialog()
     End Sub
-    Private Sub KryptonButton28_Click(sender As Object, e As EventArgs) Handles KryptonButton28.Click
+    Private Sub KryptonButton28_Click(sender As Object, e As EventArgs) Handles selectednetamount.Click
 
 
         ProgressBar2.Visible = True
@@ -3038,7 +3046,7 @@ on a.stockno = b.stockno where A.STOCKNO='" & STOCKNO & "' and a.TRANSTYPE='Rece
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Private Sub KryptonButton30_Click(sender As Object, e As EventArgs) Handles KryptonButton30.Click
+    Private Sub KryptonButton30_Click(sender As Object, e As EventArgs) Handles accountingreportgbtn.Click
         accountingreport.ShowDialog()
     End Sub
 
@@ -3090,7 +3098,7 @@ on a.stockno = b.stockno where A.STOCKNO='" & STOCKNO & "' and a.TRANSTYPE='Rece
         End If
     End Sub
 
-    Private Sub KryptonButton32_Click(sender As Object, e As EventArgs) Handles KryptonButton32.Click
+    Private Sub KryptonButton32_Click(sender As Object, e As EventArgs) Handles accountingheaderreportbtn.Click
         Try
             sql.sqlcon.Open()
             Dim str As String = "  SELECT

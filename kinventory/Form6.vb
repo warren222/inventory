@@ -50,11 +50,14 @@ Public Class Form6
     End Sub
 
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Form1.accounttype.Text = "Guest" Then
-            cancelorderbtn.Enabled = False
+        If Form1.accounttype.Text = "Guest" And Form1.nickname.Text = "Duff" And KryptonLabel1.Text = "Production Allocation date" Then
+            cancelorderbtn.Enabled = True
         ElseIf Form1.accounttype.Text = "Admin" Or Form1.accounttype.Text = "Encoder" Then
             cancelorderbtn.Enabled = True
+        Else
+            cancelorderbtn.Enabled = False
         End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
