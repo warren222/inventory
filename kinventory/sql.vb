@@ -626,7 +626,7 @@ INPUTTED)values(@id,'" & supplier & "'," &
                             "'" & foilcolor & "'," &
                             "'" & tofoil & "'," &
                             "'" & toorder & "'," &
-             "'" & Form1.nickname.Text & "')"
+             "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
                 sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.ExecuteNonQuery()
                 MessageBox.Show("New stocks Added!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1628,7 +1628,7 @@ insert into trans_tb
                   "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.nickname.Text & "')"
+            "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
             ElseIf transtype = "Order" Or transtype = "Receipt" Then
                 str = "
 declare @id as integer = (select isnull(max(isnull(TRANSNO,0)),0)+1 from trans_tb)
@@ -1659,7 +1659,7 @@ insert into trans_tb
                    "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.nickname.Text & "')"
+            "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
             Else
                 str = "
 declare @id as integer = (select isnull(max(isnull(TRANSNO,0)),0)+1 from trans_tb)
@@ -1690,7 +1690,7 @@ insert into trans_tb
                     "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
-            "'" & Form1.nickname.Text & "')"
+            "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
             End If
 
             sqlcmd = New SqlCommand(str, sqlcon)
