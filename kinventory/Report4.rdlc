@@ -236,6 +236,51 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HEADER">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!HEADER.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>HEADER</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>5</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
               <Height>0.1875in</Height>
               <TablixCells>
                 <TablixCell>
@@ -460,8 +505,6 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
               <KeepTogether>true</KeepTogether>
             </TablixMember>
             <TablixMember>
@@ -478,14 +521,14 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember>
-                  <Group Name="TYPECOLOR">
+                  <Group Name="HEADER">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!TYPECOLOR.Value</GroupExpression>
+                      <GroupExpression>=Fields!HEADER.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!TYPECOLOR.Value</Value>
+                      <Value>=Fields!HEADER.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixMembers>
@@ -493,7 +536,24 @@
                       <KeepWithGroup>After</KeepWithGroup>
                     </TablixMember>
                     <TablixMember>
-                      <Group Name="Details1" />
+                      <Group Name="TYPECOLOR">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!TYPECOLOR.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!TYPECOLOR.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <KeepWithGroup>After</KeepWithGroup>
+                        </TablixMember>
+                        <TablixMember>
+                          <Group Name="Details1" />
+                        </TablixMember>
+                      </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
@@ -502,7 +562,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Height>0.80208in</Height>
+        <Height>1.05208in</Height>
         <Width>7.99306in</Width>
         <Style>
           <Border>
@@ -511,7 +571,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.80208in</Height>
+    <Height>1.05208in</Height>
     <Style />
   </Body>
   <Width>8in</Width>
