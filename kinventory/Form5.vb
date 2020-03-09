@@ -120,7 +120,8 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
         If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Or Form1.nickname.Text = "Joy" Or
             (Form1.nickname.Text = "jayson" And transtype.Text = "Allocation") Or
             (Form1.nickname.Text = "chad" And transtype.Text = "Allocation") Or
-                (Form1.nickname.Text = "apa" And transtype.Text = "Allocation") Or
+                (Form1.nickname.Text = "aly" And transtype.Text = "Allocation") Or
+                   (Form1.nickname.Text = "apa" And transtype.Text = "Allocation") Or
             (Form1.nickname.Text = "Juan" And transtype.Text = "Allocation") Then
             If KryptonCheckBox8.Checked = True Then
                 chagexrate.changerate(cuttinglist.transno.Text, xrate.Text)
