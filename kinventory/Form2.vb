@@ -2082,65 +2082,73 @@ from STOCKS_TB AS a
 inner join CONSUMPTIONTB as b
 on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
-
             Dim phasedout As String
-            If reportpasedout.Checked = True Then
-                phasedout = "yes"
-            Else
-                phasedout = ""
-            End If
             Dim toorder As String
-            If reporttoorder.Checked = True Then
-                toorder = "yes"
+            If reportpasedout.Checked = True Then
+                phasedout = " a.phasedout like '%yes%'"
             Else
-                toorder = ""
+                phasedout = " a.phasedout = ''"
             End If
+            If reporttoorder.Checked = True Then
+                toorder = " a.toorder='yes'"
+            Else
+                toorder = " a.toorder=a.toorder"
+            End If
+
+
+
 
             Dim condition As String
-            Dim a As String = reportsupplier.Text
-            Dim b As String = reportheader.Text
-            Dim c As String = reportcosthead.Text
-            Dim d As String = reporttypecolor.Text
-            Dim f As String = reportstatus.Text
+                Dim a As String = reportsupplier.Text
+                Dim b As String = reportheader.Text
+                Dim c As String = reportcosthead.Text
+                Dim d As String = reporttypecolor.Text
+                Dim f As String = reportstatus.Text
 
-            Dim acol As String = "a.supplier"
-            Dim bcol As String = "a.header"
-            Dim ccol As String = "a.costhead"
-            Dim dcol As String = "a.typecolor"
-            Dim fcol As String = "a.status"
+                Dim acol As String = "a.supplier"
+                Dim bcol As String = "a.header"
+                Dim ccol As String = "a.costhead"
+                Dim dcol As String = "a.typecolor"
+                Dim fcol As String = "a.status"
 
-            If a = "" Then
-                a = " a.supplier = a.supplier"
-            Else
-                a = " a.supplier = '" & a & "'"
-            End If
-            If b = "" Then
-                b = " a.header = a.header"
-            Else
-                b = " a.header = '" & b & "'"
-            End If
-            If c = "" Then
-                c = " a.costhead = a.costhead"
-            Else
-                c = " a.costhead = '" & c & "'"
-            End If
-            If d = "" Then
-                d = " a.typecolor = a.typecolor"
-            Else
-                d = " a.typecolor = '" & d & "'"
-            End If
-            If f = "" Then
-                f = " a.status = a.status"
-            Else
-                f = " a.status = '" & f & "'"
-            End If
+                If a = "" Then
+                    a = " a.supplier = a.supplier"
+                Else
+                    a = " a.supplier = '" & a & "'"
+                End If
+                If b = "" Then
+                    b = " a.header = a.header"
+                Else
+                    b = " a.header = '" & b & "'"
+                End If
+                If c = "" Then
+                    c = " a.costhead = a.costhead"
+                Else
+                    c = " a.costhead = '" & c & "'"
+                End If
+                If d = "" Then
+                    d = " a.typecolor = a.typecolor"
+                Else
+                    d = " a.typecolor = '" & d & "'"
+                End If
+                If f = "" Then
+                    f = " a.status = a.status"
+                Else
+                    f = " a.status = '" & f & "'"
+                End If
 
-            condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and a.phasedout like '%" & phasedout & "%' and a.toorder='" & toorder & "'"
+
+
+            If reportpasedout.Checked = True And reporttoorder.Checked = True Then
+                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
+            Else
+                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+            End If
 
             Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-            sql.anualreporting(mystr, updateneedtoorder)
-            Form7.ShowDialog()
-        End If
+                sql.anualreporting(mystr, updateneedtoorder)
+                Form7.ShowDialog()
+            End If
     End Sub
 
 

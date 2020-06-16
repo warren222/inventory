@@ -3294,7 +3294,7 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub loaddummies()
+    Public Sub ld()
         Try
             sqlcon.Open()
             Dim ds As New DataSet
@@ -3346,7 +3346,80 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             Else
                 f = " status = '" & f & "'"
             End If
+
             str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+
+            sqlcmd = New SqlCommand(str, sqlcon)
+            da.SelectCommand = sqlcmd
+            da.Fill(ds, "stocks_tb")
+            bs.DataSource = ds
+            bs.DataMember = "stocks_tb"
+            Form2.mydummyDataGridView1.DataSource = bs
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
+    Public Sub scr()
+        Try
+            sqlcon.Open()
+            Dim ds As New DataSet
+            ds.Clear()
+            Dim bs As New BindingSource
+
+            Dim phasedout As String
+            Dim toorder As String
+            If Form2.reportpasedout.Checked = True Then
+                phasedout = " a.phasedout like '%yes%'"
+            Else
+                phasedout = " a.phasedout = ''"
+            End If
+            If Form2.reporttoorder.Checked = True Then
+                toorder = " a.toorder='yes'"
+            Else
+                toorder = " a.toorder=a.toorder"
+            End If
+
+            Dim str As String
+            Dim a As String = Form2.reportsupplier.Text
+            Dim b As String = Form2.reportheader.Text
+            Dim c As String = Form2.reportcosthead.Text
+            Dim d As String = Form2.reporttypecolor.Text
+            Dim f As String = Form2.reportstatus.Text
+
+            If a = "" Then
+                a = " supplier = supplier"
+            Else
+                a = " supplier = '" & a & "'"
+            End If
+            If b = "" Then
+                b = " header = header"
+            Else
+                b = " header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " costhead = costhead"
+            Else
+                c = " costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " typecolor = typecolor"
+            Else
+                d = " typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " status = status"
+            Else
+                f = " status = '" & f & "'"
+            End If
+
+
+            If Form2.reportpasedout.Checked = True And Form2.reporttoorder.Checked = True Then
+                str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
+            Else
+                str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and and " & phasedout & " and " & toorder & ""
+            End If
 
 
 
@@ -3361,6 +3434,15 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
         Finally
             sqlcon.Close()
         End Try
+    End Sub
+    Public Sub loaddummies()
+        If Form2.scr.Checked = True Then
+            scr()
+        ElseIf Form2.ir.Checked = True Then
+            ld()
+        Else
+            ld()
+        End If
     End Sub
     Public Sub calculateanualconsumption(ByVal stockno As String, ByVal myyear As String)
         Try
