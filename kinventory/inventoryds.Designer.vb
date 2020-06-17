@@ -859,6 +859,12 @@ Partial Public Class inventoryds
         
         Private columnAREA As Global.System.Data.DataColumn
         
+        Private columnKMDIVALUE As Global.System.Data.DataColumn
+        
+        Private columnAMOUNTINEUR As Global.System.Data.DataColumn
+        
+        Private columnAMOUNTINPHP As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1183,6 +1189,30 @@ Partial Public Class inventoryds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property KMDIVALUEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKMDIVALUE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AMOUNTINEURColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAMOUNTINEUR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AMOUNTINPHPColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAMOUNTINPHP
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1255,9 +1285,12 @@ Partial Public Class inventoryds
                     ByVal FOILWITHA As Decimal,  _
                     ByVal FOILWITHB As Decimal,  _
                     ByVal FOILCOLOR As String,  _
-                    ByVal AREA As Decimal) As STOCKS_TBRow
+                    ByVal AREA As Decimal,  _
+                    ByVal KMDIVALUE As Decimal,  _
+                    ByVal AMOUNTINEUR As Decimal,  _
+                    ByVal AMOUNTINPHP As Decimal) As STOCKS_TBRow
             Dim rowSTOCKS_TBRow As STOCKS_TBRow = CType(Me.NewRow,STOCKS_TBRow)
-            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA}
+            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA, KMDIVALUE, AMOUNTINEUR, AMOUNTINPHP}
             rowSTOCKS_TBRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSTOCKS_TBRow)
             Return rowSTOCKS_TBRow
@@ -1316,6 +1349,9 @@ Partial Public Class inventoryds
             Me.columnFOILWITHB = MyBase.Columns("FOILWITHB")
             Me.columnFOILCOLOR = MyBase.Columns("FOILCOLOR")
             Me.columnAREA = MyBase.Columns("AREA")
+            Me.columnKMDIVALUE = MyBase.Columns("KMDIVALUE")
+            Me.columnAMOUNTINEUR = MyBase.Columns("AMOUNTINEUR")
+            Me.columnAMOUNTINPHP = MyBase.Columns("AMOUNTINPHP")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1393,6 +1429,12 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnFOILCOLOR)
             Me.columnAREA = New Global.System.Data.DataColumn("AREA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAREA)
+            Me.columnKMDIVALUE = New Global.System.Data.DataColumn("KMDIVALUE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKMDIVALUE)
+            Me.columnAMOUNTINEUR = New Global.System.Data.DataColumn("AMOUNTINEUR", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAMOUNTINEUR)
+            Me.columnAMOUNTINPHP = New Global.System.Data.DataColumn("AMOUNTINPHP", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAMOUNTINPHP)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2778,6 +2820,51 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property KMDIVALUE() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.KMDIVALUEColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KMDIVALUE' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.KMDIVALUEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AMOUNTINEUR() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.AMOUNTINEURColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AMOUNTINEUR' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.AMOUNTINEURColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AMOUNTINPHP() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.AMOUNTINPHPColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AMOUNTINPHP' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.AMOUNTINPHPColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSTOCKNONull() As Boolean
             Return Me.IsNull(Me.tableSTOCKS_TB.STOCKNOColumn)
         End Function
@@ -3206,6 +3293,42 @@ Partial Public Class inventoryds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetAREANull()
             Me(Me.tableSTOCKS_TB.AREAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsKMDIVALUENull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.KMDIVALUEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetKMDIVALUENull()
+            Me(Me.tableSTOCKS_TB.KMDIVALUEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAMOUNTINEURNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.AMOUNTINEURColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAMOUNTINEURNull()
+            Me(Me.tableSTOCKS_TB.AMOUNTINEURColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAMOUNTINPHPNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.AMOUNTINPHPColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAMOUNTINPHPNull()
+            Me(Me.tableSTOCKS_TB.AMOUNTINPHPColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

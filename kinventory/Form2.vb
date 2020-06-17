@@ -1970,7 +1970,7 @@ a.*,
         physicaldatebtn.PerformClick()
         sql.loaddummies()
         mydummyDataGridView1.SelectAll()
-        If ir.Checked = True And scr.Checked = False Then
+        If ir.Checked = True Then
             Dim phasedout As String
             Dim toorder As String
             If reportpasedout.Checked = True Then
@@ -2032,9 +2032,10 @@ a.*,
 
             sql.reporting(str + " order by articleno asc")
             Form8.ShowDialog()
-        ElseIf ir.Checked = False And scr.Checked = True Then
+        ElseIf scr.Checked = True Or esv.Checked = True Then
             Dim parReportParam1 As New ReportParameter("buffermonth", Me.mymonth.Text)
             Form7.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+            ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
             Dim updateneedtoorder As String = "
 declare @buffmonth as decimal(10,2) = '" & mymonth.Text & "'
 update
@@ -2077,7 +2078,10 @@ b.STOCKNO,
 b.CONSUMPTION,
 b.MYYEAR,
 a.weight,
- @TOWEIGHT AS TOTALWEIGHT
+ @TOWEIGHT AS TOTALWEIGHT,
+(((a.STOCKORDER*a.UFACTOR)+(a.PHYSICAL*a.UFACTOR))-(a.ALLOCATION*a.UFACTOR)) AS KMDIVALUE,
+((((a.STOCKORDER*a.UFACTOR)+(a.PHYSICAL*a.UFACTOR))-(a.ALLOCATION*a.UFACTOR))*a.UNITPRICE) as AMOUNTINEUR,
+(((((a.STOCKORDER*a.UFACTOR)+(a.PHYSICAL*a.UFACTOR))-(a.ALLOCATION*a.UFACTOR))*a.UNITPRICE)*60) as AMOUNTINPHP
 from STOCKS_TB AS a
 inner join CONSUMPTIONTB as b
 on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
@@ -2145,10 +2149,18 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
                 condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
             End If
 
-            Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+            If scr.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
                 sql.anualreporting(mystr, updateneedtoorder)
                 Form7.ShowDialog()
+            ElseIf esv.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                sql.anualreportingESV(mystr, updateneedtoorder)
+                ESVfrm.ShowDialog()
             End If
+
+
+        End If
     End Sub
 
 
