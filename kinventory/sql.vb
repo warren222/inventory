@@ -3371,14 +3371,14 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             Dim phasedout As String
             Dim toorder As String
             If Form2.reportpasedout.Checked = True Then
-                phasedout = " a.phasedout like '%yes%'"
+                phasedout = " phasedout like '%yes%'"
             Else
-                phasedout = " a.phasedout = ''"
+                phasedout = " phasedout = ''"
             End If
             If Form2.reporttoorder.Checked = True Then
-                toorder = " a.toorder='yes'"
+                toorder = " toorder='yes'"
             Else
-                toorder = " a.toorder=a.toorder"
+                toorder = " toorder=toorder"
             End If
 
             Dim str As String
@@ -3418,7 +3418,7 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             If Form2.reportpasedout.Checked = True And Form2.reporttoorder.Checked = True Then
                 str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
             Else
-                str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and and " & phasedout & " and " & toorder & ""
+                str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
             End If
 
 
