@@ -3334,6 +3334,46 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             sqlcon.Close()
         End Try
     End Sub
+    Public Sub anualreportingESVP(ByVal str As String, ByVal anualreporting As String)
+        Try
+            sqlcon.Open()
+            sqlcmd = New SqlCommand(anualreporting, sqlcon)
+            sqlcmd.ExecuteNonQuery()
+
+            Form2.ProgressBar1.Visible = True
+            Form2.ProgressBar1.Maximum = Form2.mydummycombobox.Items.Count
+            Form2.ProgressBar1.Value = 0
+            For i As Integer = 0 To Form2.mydummycombobox.Items.Count - 1
+                Dim s As String = Form2.mydummycombobox.Items(i).ToString
+                Dim v As String = "
+declare @totalneedtoorder as decimal(10,2)=(select sum(needtoorder) from stocks_tb where COLORBASED='" & s & "' and needtoorder > 0)
+
+update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)) where stockno = '" & s & "'
+
+"
+                sqlcmd = New SqlCommand(v, sqlcon)
+                sqlcmd.ExecuteNonQuery()
+                Form2.ProgressBar1.Value += 1
+            Next
+            If Form2.ProgressBar1.Value = Form2.ProgressBar1.Maximum Then
+                MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Form2.ProgressBar1.Visible = False
+            End If
+
+
+            Dim ds As New inventoryds
+            ds.Clear()
+            Dim da As New SqlDataAdapter
+            sqlcmd = New SqlCommand(str, sqlcon)
+            da.SelectCommand = sqlcmd
+            da.Fill(ds.STOCKS_TB)
+            ESVPfrm.STOCKS_TBBindingSource.DataSource = ds.STOCKS_TB.DefaultView
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            sqlcon.Close()
+        End Try
+    End Sub
     Public Sub ld()
         Try
             sqlcon.Open()
@@ -3476,7 +3516,7 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
         End Try
     End Sub
     Public Sub loaddummies()
-        If Form2.scr.Checked = True Or Form2.esv.Checked = True Then
+        If Form2.scr.Checked = True Or Form2.esv.Checked = True Or Form2.esvp.Checked = True Then
             scr()
         ElseIf Form2.ir.Checked = True Then
             ld()

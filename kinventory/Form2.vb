@@ -2032,10 +2032,11 @@ a.*,
 
             sql.reporting(str + " order by articleno asc")
             Form8.ShowDialog()
-        ElseIf scr.Checked = True Or esv.Checked = True Then
+        ElseIf scr.Checked = True Or esv.Checked = True Or esvp.Checked = True Then
             Dim parReportParam1 As New ReportParameter("buffermonth", Me.mymonth.Text)
             Form7.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
             ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+            ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
             Dim updateneedtoorder As String = "
 declare @buffmonth as decimal(10,2) = '" & mymonth.Text & "'
 update
@@ -2157,6 +2158,10 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
                 Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
                 sql.anualreportingESV(mystr, updateneedtoorder)
                 ESVfrm.ShowDialog()
+            ElseIf esvp.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                sql.anualreportingESVP(mystr, updateneedtoorder)
+                ESVPfrm.ShowDialog()
             End If
 
 

@@ -406,6 +406,12 @@
     <Compile Include="reportForms\ESVfrm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="reportForms\ESVPfrm.Designer.vb">
+      <DependentUpon>ESVPfrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reportForms\ESVPfrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="sql.vb" />
     <Compile Include="transfer.Designer.vb">
       <DependentUpon>transfer.vb</DependentUpon>
@@ -552,6 +558,10 @@
     <EmbeddedResource Include="reportForms\ESVfrm.resx">
       <DependentUpon>ESVfrm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="reportForms\ESVPfrm.resx">
+      <DependentUpon>ESVPfrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report\ESVPrpt.rdlc" />
     <EmbeddedResource Include="report\ESVrpt.rdlc" />
     <EmbeddedResource Include="transfer.resx">
       <DependentUpon>transfer.vb</DependentUpon>

@@ -256,6 +256,7 @@ Partial Class Form2
         Me.refstock = New System.Windows.Forms.ComboBox()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.KryptonGroup9 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.esv = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.KryptonLabel59 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.reportheader = New System.Windows.Forms.ComboBox()
         Me.KryptonLabel58 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -326,7 +327,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.esv = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
+        Me.esvp = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -609,7 +610,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 808
+        Me.KryptonSplitContainer3.SplitterDistance = 803
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -3455,6 +3456,7 @@ Partial Class Form2
         '
         'KryptonGroup9.Panel
         '
+        Me.KryptonGroup9.Panel.Controls.Add(Me.esvp)
         Me.KryptonGroup9.Panel.Controls.Add(Me.esv)
         Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonLabel59)
         Me.KryptonGroup9.Panel.Controls.Add(Me.reportheader)
@@ -3480,6 +3482,16 @@ Partial Class Form2
         Me.KryptonGroup9.Size = New System.Drawing.Size(764, 298)
         Me.KryptonGroup9.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup9.TabIndex = 445
+        '
+        'esv
+        '
+        Me.esv.Location = New System.Drawing.Point(548, 115)
+        Me.esv.Name = "esv"
+        Me.esv.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.esv.Size = New System.Drawing.Size(176, 19)
+        Me.esv.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.esv.TabIndex = 462
+        Me.esv.Values.Text = "Estd. Stock Value Report"
         '
         'KryptonLabel59
         '
@@ -3562,7 +3574,7 @@ Partial Class Form2
         'ProgressBar1
         '
         Me.ProgressBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ProgressBar1.Location = New System.Drawing.Point(369, 193)
+        Me.ProgressBar1.Location = New System.Drawing.Point(369, 221)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(371, 10)
         Me.ProgressBar1.TabIndex = 454
@@ -3570,7 +3582,7 @@ Partial Class Form2
         '
         'KryptonLabel53
         '
-        Me.KryptonLabel53.Location = New System.Drawing.Point(548, 140)
+        Me.KryptonLabel53.Location = New System.Drawing.Point(548, 168)
         Me.KryptonLabel53.Name = "KryptonLabel53"
         Me.KryptonLabel53.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel53.Size = New System.Drawing.Size(108, 19)
@@ -3580,7 +3592,7 @@ Partial Class Form2
         '
         'mymonth
         '
-        Me.mymonth.Location = New System.Drawing.Point(548, 161)
+        Me.mymonth.Location = New System.Drawing.Point(548, 189)
         Me.mymonth.Maximum = New Decimal(New Integer() {12, 0, 0, 0})
         Me.mymonth.Name = "mymonth"
         Me.mymonth.Size = New System.Drawing.Size(98, 23)
@@ -3610,7 +3622,7 @@ Partial Class Form2
         '
         'KryptonLabel52
         '
-        Me.KryptonLabel52.Location = New System.Drawing.Point(369, 228)
+        Me.KryptonLabel52.Location = New System.Drawing.Point(369, 256)
         Me.KryptonLabel52.Name = "KryptonLabel52"
         Me.KryptonLabel52.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel52.Size = New System.Drawing.Size(39, 19)
@@ -3620,7 +3632,7 @@ Partial Class Form2
         '
         'myyear
         '
-        Me.myyear.Location = New System.Drawing.Point(414, 228)
+        Me.myyear.Location = New System.Drawing.Point(414, 256)
         Me.myyear.Maximum = New Decimal(New Integer() {2100, 0, 0, 0})
         Me.myyear.Minimum = New Decimal(New Integer() {1900, 0, 0, 0})
         Me.myyear.Name = "myyear"
@@ -3631,7 +3643,7 @@ Partial Class Form2
         'KryptonButton19
         '
         Me.KryptonButton19.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton19.Location = New System.Drawing.Point(540, 228)
+        Me.KryptonButton19.Location = New System.Drawing.Point(540, 256)
         Me.KryptonButton19.Name = "KryptonButton19"
         Me.KryptonButton19.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton19.Size = New System.Drawing.Size(200, 28)
@@ -3689,7 +3701,7 @@ Partial Class Form2
         'KryptonButton18
         '
         Me.KryptonButton18.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton18.Location = New System.Drawing.Point(369, 155)
+        Me.KryptonButton18.Location = New System.Drawing.Point(369, 183)
         Me.KryptonButton18.Name = "KryptonButton18"
         Me.KryptonButton18.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton18.Size = New System.Drawing.Size(97, 28)
@@ -4249,15 +4261,15 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'esv
+        'esvp
         '
-        Me.esv.Location = New System.Drawing.Point(548, 115)
-        Me.esv.Name = "esv"
-        Me.esv.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.esv.Size = New System.Drawing.Size(176, 19)
-        Me.esv.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.esv.TabIndex = 462
-        Me.esv.Values.Text = "Estd. Stock Value Report"
+        Me.esvp.Location = New System.Drawing.Point(548, 143)
+        Me.esvp.Name = "esvp"
+        Me.esvp.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.esvp.Size = New System.Drawing.Size(204, 19)
+        Me.esvp.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.esvp.TabIndex = 463
+        Me.esvp.Values.Text = "Estd. Stock Value Report Php"
         '
         'Form2
         '
@@ -4708,4 +4720,5 @@ Partial Class Form2
     Friend WithEvents headercmb As ComboBox
     Friend WithEvents ProductionAllocationDateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents esv As ComponentFactory.Krypton.Toolkit.KryptonRadioButton
+    Friend WithEvents esvp As ComponentFactory.Krypton.Toolkit.KryptonRadioButton
 End Class
