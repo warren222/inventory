@@ -865,6 +865,20 @@ Partial Public Class inventoryds
         
         Private columnAMOUNTINPHP As Global.System.Data.DataColumn
         
+        Private columnXRATE As Global.System.Data.DataColumn
+        
+        Private columnPPHYSICAL As Global.System.Data.DataColumn
+        
+        Private columnPALLOCATION As Global.System.Data.DataColumn
+        
+        Private columnPFREE As Global.System.Data.DataColumn
+        
+        Private columnPSTOCKORDER As Global.System.Data.DataColumn
+        
+        Private columnPKMDIVALUE As Global.System.Data.DataColumn
+        
+        Private columnSTOCKORDER2 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1213,6 +1227,62 @@ Partial Public Class inventoryds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property XRATEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnXRATE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PPHYSICALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPPHYSICAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PALLOCATIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPALLOCATION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PFREEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPFREE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PSTOCKORDERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPSTOCKORDER
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PKMDIVALUEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPKMDIVALUE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property STOCKORDER2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSTOCKORDER2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1288,9 +1358,16 @@ Partial Public Class inventoryds
                     ByVal AREA As Decimal,  _
                     ByVal KMDIVALUE As Decimal,  _
                     ByVal AMOUNTINEUR As Decimal,  _
-                    ByVal AMOUNTINPHP As Decimal) As STOCKS_TBRow
+                    ByVal AMOUNTINPHP As Decimal,  _
+                    ByVal XRATE As Decimal,  _
+                    ByVal PPHYSICAL As Decimal,  _
+                    ByVal PALLOCATION As Decimal,  _
+                    ByVal PFREE As Decimal,  _
+                    ByVal PSTOCKORDER As Decimal,  _
+                    ByVal PKMDIVALUE As Decimal,  _
+                    ByVal STOCKORDER2 As Decimal) As STOCKS_TBRow
             Dim rowSTOCKS_TBRow As STOCKS_TBRow = CType(Me.NewRow,STOCKS_TBRow)
-            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA, KMDIVALUE, AMOUNTINEUR, AMOUNTINPHP}
+            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA, KMDIVALUE, AMOUNTINEUR, AMOUNTINPHP, XRATE, PPHYSICAL, PALLOCATION, PFREE, PSTOCKORDER, PKMDIVALUE, STOCKORDER2}
             rowSTOCKS_TBRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSTOCKS_TBRow)
             Return rowSTOCKS_TBRow
@@ -1352,6 +1429,13 @@ Partial Public Class inventoryds
             Me.columnKMDIVALUE = MyBase.Columns("KMDIVALUE")
             Me.columnAMOUNTINEUR = MyBase.Columns("AMOUNTINEUR")
             Me.columnAMOUNTINPHP = MyBase.Columns("AMOUNTINPHP")
+            Me.columnXRATE = MyBase.Columns("XRATE")
+            Me.columnPPHYSICAL = MyBase.Columns("PPHYSICAL")
+            Me.columnPALLOCATION = MyBase.Columns("PALLOCATION")
+            Me.columnPFREE = MyBase.Columns("PFREE")
+            Me.columnPSTOCKORDER = MyBase.Columns("PSTOCKORDER")
+            Me.columnPKMDIVALUE = MyBase.Columns("PKMDIVALUE")
+            Me.columnSTOCKORDER2 = MyBase.Columns("STOCKORDER2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1435,6 +1519,20 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnAMOUNTINEUR)
             Me.columnAMOUNTINPHP = New Global.System.Data.DataColumn("AMOUNTINPHP", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAMOUNTINPHP)
+            Me.columnXRATE = New Global.System.Data.DataColumn("XRATE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnXRATE)
+            Me.columnPPHYSICAL = New Global.System.Data.DataColumn("PPHYSICAL", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPPHYSICAL)
+            Me.columnPALLOCATION = New Global.System.Data.DataColumn("PALLOCATION", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPALLOCATION)
+            Me.columnPFREE = New Global.System.Data.DataColumn("PFREE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPFREE)
+            Me.columnPSTOCKORDER = New Global.System.Data.DataColumn("PSTOCKORDER", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPSTOCKORDER)
+            Me.columnPKMDIVALUE = New Global.System.Data.DataColumn("PKMDIVALUE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPKMDIVALUE)
+            Me.columnSTOCKORDER2 = New Global.System.Data.DataColumn("STOCKORDER2", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSTOCKORDER2)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2865,6 +2963,111 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property XRATE() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.XRATEColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'XRATE' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.XRATEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PPHYSICAL() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PPHYSICALColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PPHYSICAL' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PPHYSICALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PALLOCATION() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PALLOCATIONColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PALLOCATION' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PALLOCATIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PFREE() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PFREEColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PFREE' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PFREEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PSTOCKORDER() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PSTOCKORDERColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PSTOCKORDER' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PSTOCKORDERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PKMDIVALUE() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PKMDIVALUEColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PKMDIVALUE' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PKMDIVALUEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property STOCKORDER2() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.STOCKORDER2Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'STOCKORDER2' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.STOCKORDER2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSTOCKNONull() As Boolean
             Return Me.IsNull(Me.tableSTOCKS_TB.STOCKNOColumn)
         End Function
@@ -3329,6 +3532,90 @@ Partial Public Class inventoryds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetAMOUNTINPHPNull()
             Me(Me.tableSTOCKS_TB.AMOUNTINPHPColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsXRATENull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.XRATEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetXRATENull()
+            Me(Me.tableSTOCKS_TB.XRATEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPPHYSICALNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PPHYSICALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPPHYSICALNull()
+            Me(Me.tableSTOCKS_TB.PPHYSICALColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPALLOCATIONNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PALLOCATIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPALLOCATIONNull()
+            Me(Me.tableSTOCKS_TB.PALLOCATIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPFREENull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PFREEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPFREENull()
+            Me(Me.tableSTOCKS_TB.PFREEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPSTOCKORDERNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PSTOCKORDERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPSTOCKORDERNull()
+            Me(Me.tableSTOCKS_TB.PSTOCKORDERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPKMDIVALUENull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PKMDIVALUEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPKMDIVALUENull()
+            Me(Me.tableSTOCKS_TB.PKMDIVALUEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSTOCKORDER2Null() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.STOCKORDER2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSTOCKORDER2Null()
+            Me(Me.tableSTOCKS_TB.STOCKORDER2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     

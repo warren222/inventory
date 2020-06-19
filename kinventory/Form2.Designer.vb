@@ -256,6 +256,7 @@ Partial Class Form2
         Me.refstock = New System.Windows.Forms.ComboBox()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.KryptonGroup9 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.esvp = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.esv = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.KryptonLabel59 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.reportheader = New System.Windows.Forms.ComboBox()
@@ -327,7 +328,6 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.esvp = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -610,7 +610,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 803
+        Me.KryptonSplitContainer3.SplitterDistance = 798
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -3483,6 +3483,16 @@ Partial Class Form2
         Me.KryptonGroup9.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup9.TabIndex = 445
         '
+        'esvp
+        '
+        Me.esvp.Location = New System.Drawing.Point(548, 143)
+        Me.esvp.Name = "esvp"
+        Me.esvp.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.esvp.Size = New System.Drawing.Size(213, 19)
+        Me.esvp.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.esvp.TabIndex = 463
+        Me.esvp.Values.Text = "Estd. Stock Value Report (Php)"
+        '
         'esv
         '
         Me.esv.Location = New System.Drawing.Point(548, 115)
@@ -4260,16 +4270,6 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Name = "ConsumptionToolStripMenuItem"
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
-        '
-        'esvp
-        '
-        Me.esvp.Location = New System.Drawing.Point(548, 143)
-        Me.esvp.Name = "esvp"
-        Me.esvp.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.esvp.Size = New System.Drawing.Size(204, 19)
-        Me.esvp.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.esvp.TabIndex = 463
-        Me.esvp.Values.Text = "Estd. Stock Value Report Php"
         '
         'Form2
         '

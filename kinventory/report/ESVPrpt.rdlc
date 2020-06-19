@@ -827,7 +827,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=format((Fields!PHYSICAL.Value*Fields!UFACTOR.Value),"N2")</Value>
+                              <Value>=format(Fields!PPHYSICAL.Value,"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -861,7 +861,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FORMAT((Fields!ALLOCATION.Value*Fields!UFACTOR.Value),"N2")</Value>
+                              <Value>=FORMAT(Fields!PALLOCATION.Value,"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -929,7 +929,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FORMAT((Fields!FREE.Value*Fields!UFACTOR.Value),"N2")</Value>
+                              <Value>=FORMAT(Fields!PFREE.Value,"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -963,7 +963,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FORMAT((Fields!STOCKORDER.Value*Fields!UFACTOR.Value),"N2")</Value>
+                              <Value>=FORMAT(Fields!PSTOCKORDER.Value,"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -997,7 +997,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FORMAT(Fields!KMDIVALUE.Value,"N2")</Value>
+                              <Value>=FORMAT(Fields!PKMDIVALUE.Value,"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -1197,7 +1197,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=format(Sum(Fields!PHYSICAL.Value, "DataSet1"),"n2")</Value>
+                              <Value>=format(Sum(Fields!PPHYSICAL.Value, "DataSet1"),"n2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1232,7 +1232,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=format(Sum(Fields!ALLOCATION.Value, "DataSet1"),"n2")</Value>
+                              <Value>=format(Sum(Fields!PALLOCATION.Value, "DataSet1"),"n2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1335,9 +1335,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=FORMAT(Sum(Fields!PSTOCKORDER.Value, "DataSet1"),"N2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1358,6 +1359,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1369,7 +1371,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=format(Sum(Fields!KMDIVALUE.Value, "DataSet1"),"n2")</Value>
+                              <Value>=format(Sum(Fields!PKMDIVALUE.Value, "DataSet1"),"n2")</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1840,6 +1842,30 @@
         </Field>
         <Field Name="AMOUNTINPHP">
           <DataField>AMOUNTINPHP</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="XRATE">
+          <DataField>XRATE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PPHYSICAL">
+          <DataField>PPHYSICAL</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PALLOCATION">
+          <DataField>PALLOCATION</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PFREE">
+          <DataField>PFREE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PSTOCKORDER">
+          <DataField>PSTOCKORDER</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PKMDIVALUE">
+          <DataField>PKMDIVALUE</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
