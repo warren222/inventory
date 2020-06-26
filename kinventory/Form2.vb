@@ -66,6 +66,9 @@ Public Class Form2
             KryptonButton8.Enabled = False
             'reference
             KryptonButton14.Enabled = False
+            If Form1.nickname.Text = "Joy" Then
+                KryptonButton14.Enabled = True
+            End If
             transaction.Text = "Allocation"
             transaction.Enabled = False
         End If
