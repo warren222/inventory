@@ -885,6 +885,12 @@ Partial Public Class inventoryds
         
         Private columnPHYSICAL1 As Global.System.Data.DataColumn
         
+        Private columnPHYSICAL1unit As Global.System.Data.DataColumn
+        
+        Private columnALLOCATION1unit As Global.System.Data.DataColumn
+        
+        Private columnSTOCKORDER2unit As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1313,6 +1319,30 @@ Partial Public Class inventoryds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PHYSICAL1unitColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPHYSICAL1unit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ALLOCATION1unitColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnALLOCATION1unit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property STOCKORDER2unitColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSTOCKORDER2unit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1398,9 +1428,12 @@ Partial Public Class inventoryds
                     ByVal STOCKORDER2 As Decimal,  _
                     ByVal ANNUALCONSUMPTION As Decimal,  _
                     ByVal ALLOCATION1 As Decimal,  _
-                    ByVal PHYSICAL1 As Decimal) As STOCKS_TBRow
+                    ByVal PHYSICAL1 As Decimal,  _
+                    ByVal PHYSICAL1unit As Decimal,  _
+                    ByVal ALLOCATION1unit As Decimal,  _
+                    ByVal STOCKORDER2unit As Decimal) As STOCKS_TBRow
             Dim rowSTOCKS_TBRow As STOCKS_TBRow = CType(Me.NewRow,STOCKS_TBRow)
-            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA, KMDIVALUE, AMOUNTINEUR, AMOUNTINPHP, XRATE, PPHYSICAL, PALLOCATION, PFREE, PSTOCKORDER, PKMDIVALUE, STOCKORDER2, ANNUALCONSUMPTION, ALLOCATION1, PHYSICAL1}
+            Dim columnValuesArray() As Object = New Object() {STOCKNO, SUPPLIER, COSTHEAD, UFACTOR, TYPECOLOR, MONETARY, ARTICLENO, UNITPRICE, DESCRIPTION, QTY, UNIT, LOCATION, HEADER, PHYSICAL, ALLOCATION, FREE, STOCKORDER, MINIMUM, ISSUE, AVEUSAGE, STATUS, PHASEDOUT, COLORBASED, CONSUMPTION, NEEDTOORDER, FINALNEEDTOORDER, TOORDER, PHYSICAL2, BALALLOC, WEIGHT, TOTALWEIGHT, NETAMOUNT, FOILWITHA, FOILWITHB, FOILCOLOR, AREA, KMDIVALUE, AMOUNTINEUR, AMOUNTINPHP, XRATE, PPHYSICAL, PALLOCATION, PFREE, PSTOCKORDER, PKMDIVALUE, STOCKORDER2, ANNUALCONSUMPTION, ALLOCATION1, PHYSICAL1, PHYSICAL1unit, ALLOCATION1unit, STOCKORDER2unit}
             rowSTOCKS_TBRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSTOCKS_TBRow)
             Return rowSTOCKS_TBRow
@@ -1472,6 +1505,9 @@ Partial Public Class inventoryds
             Me.columnANNUALCONSUMPTION = MyBase.Columns("ANNUALCONSUMPTION")
             Me.columnALLOCATION1 = MyBase.Columns("ALLOCATION1")
             Me.columnPHYSICAL1 = MyBase.Columns("PHYSICAL1")
+            Me.columnPHYSICAL1unit = MyBase.Columns("PHYSICAL1unit")
+            Me.columnALLOCATION1unit = MyBase.Columns("ALLOCATION1unit")
+            Me.columnSTOCKORDER2unit = MyBase.Columns("STOCKORDER2unit")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1575,6 +1611,12 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnALLOCATION1)
             Me.columnPHYSICAL1 = New Global.System.Data.DataColumn("PHYSICAL1", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPHYSICAL1)
+            Me.columnPHYSICAL1unit = New Global.System.Data.DataColumn("PHYSICAL1unit", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPHYSICAL1unit)
+            Me.columnALLOCATION1unit = New Global.System.Data.DataColumn("ALLOCATION1unit", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnALLOCATION1unit)
+            Me.columnSTOCKORDER2unit = New Global.System.Data.DataColumn("STOCKORDER2unit", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSTOCKORDER2unit)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3155,6 +3197,51 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PHYSICAL1unit() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.PHYSICAL1unitColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PHYSICAL1unit' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.PHYSICAL1unitColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ALLOCATION1unit() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.ALLOCATION1unitColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ALLOCATION1unit' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.ALLOCATION1unitColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property STOCKORDER2unit() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSTOCKS_TB.STOCKORDER2unitColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'STOCKORDER2unit' in table 'STOCKS_TB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSTOCKS_TB.STOCKORDER2unitColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSTOCKNONull() As Boolean
             Return Me.IsNull(Me.tableSTOCKS_TB.STOCKNOColumn)
         End Function
@@ -3739,6 +3826,42 @@ Partial Public Class inventoryds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPHYSICAL1Null()
             Me(Me.tableSTOCKS_TB.PHYSICAL1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPHYSICAL1unitNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.PHYSICAL1unitColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPHYSICAL1unitNull()
+            Me(Me.tableSTOCKS_TB.PHYSICAL1unitColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsALLOCATION1unitNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.ALLOCATION1unitColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetALLOCATION1unitNull()
+            Me(Me.tableSTOCKS_TB.ALLOCATION1unitColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSTOCKORDER2unitNull() As Boolean
+            Return Me.IsNull(Me.tableSTOCKS_TB.STOCKORDER2unitColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSTOCKORDER2unitNull()
+            Me(Me.tableSTOCKS_TB.STOCKORDER2unitColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
