@@ -1221,6 +1221,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1643,7 +1644,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>OverallTotalPages</rd:DefaultName>
-          <Top>0cm</Top>
           <Left>5.85312in</Left>
           <Height>0.25in</Height>
           <Width>2.09375in</Width>
