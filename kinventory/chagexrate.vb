@@ -83,10 +83,21 @@ update trans_tb set netamount=((unitprice-((disc*0.01)*unitprice))*" & rate & ")
             Else
 
             End If
+
+            Try
+                Dim updatestock As String = "declare @stockno as varchar(100) = (select stockno from trans_tb where transno = '" & tno & "')
+                                   update [stocks_tb] set [XRATE] = '" & rate & "' where stockno = @stockno"
+                sqlcmd = New SqlCommand(updatestock, sql.sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+
+
         Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
+                MsgBox(ex.ToString)
+            Finally
+                sql.sqlcon.Close()
         End Try
     End Sub
     Public Sub changeunit(ByVal tno As String, ByVal unit As String)
@@ -144,6 +155,15 @@ update trans_tb set netamount=(xrate*(" & unit & "-((disc*0.01)*" & unit & ")))*
             Else
 
             End If
+
+            Try
+                Dim updatestock As String = "declare @stockno as varchar(100) = (select stockno from trans_tb where transno = '" & tno & "')
+                                   update [stocks_tb] set [UNITPRICE] = '" & unit & "' where stockno = @stockno"
+                sqlcmd = New SqlCommand(updatestock, sql.sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
@@ -196,6 +216,15 @@ update trans_tb set netamount=(xrate*(unitprice-((disc*0.01)*unitprice))*(qty*" 
             Else
 
             End If
+
+            Try
+                Dim updatestock As String = "declare @stockno as varchar(100) = (select stockno from trans_tb where transno = '" & tno & "')
+                                   update [stocks_tb] set [UFACTOR] = '" & ufactor & "' where stockno = @stockno"
+                sqlcmd = New SqlCommand(updatestock, sql.sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
@@ -248,6 +277,15 @@ update trans_tb set netamount=(xrate*(unitprice-((" & disc & "*0.01)*unitprice))
             Else
 
             End If
+
+            Try
+                Dim updatestock As String = "declare @stockno as varchar(100) = (select stockno from trans_tb where transno = '" & tno & "')
+                                   update [stocks_tb] set [DISC] = '" & disc & "' where stockno = @stockno"
+                sqlcmd = New SqlCommand(updatestock, sql.sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
