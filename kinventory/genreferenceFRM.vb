@@ -42,8 +42,40 @@ Public Class genreferenceFRM
 
         ' databaseform()
     End Sub
+    Function turnover() As Boolean
+        Dim x As Boolean = False
+        Try
+
+            Dim cs As String = "select * from turnoveraccesstb"
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Using sqlcmd As SqlCommand = New SqlCommand(cs, sqlcon)
+                    Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                        If rd.HasRows Then
+                            x = True
+                        Else
+                            x = False
+                        End If
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return x
+    End Function
+
+
     Public Sub databaseform()
         Try
+            Dim t As String
+            Dim x As Boolean = turnover()
+            If x = True Then
+                t = "turn_over"
+            Else
+                t = "''"
+            End If
             sql.sqlcon.Close()
             sql.sqlcon.Open()
             Dim ds As New DataSet
@@ -59,7 +91,7 @@ Public Class genreferenceFRM
                                  from 
                                  kmdidata.dbo.addendum_to_contract_tb 
                                  where 
-                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = ''
+                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = " & t & "
 
                                  union 
 
@@ -89,7 +121,7 @@ Public Class genreferenceFRM
                                  from 
                                  hauserdb.dbo.addendum_to_contract_tb 
                                  where 
-                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = '' order by project_label"
+                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = " & t & " order by project_label"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "addendum_to_contract_Tb")
