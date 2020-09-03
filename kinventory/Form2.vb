@@ -2108,7 +2108,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
             If reportpasedout.Checked = True Then
                 phasedout = " a.phasedout like '%yes%'"
             Else
-                phasedout = " a.phasedout = ''"
+                phasedout = " a.phasedout=a.phasedout "
             End If
             If reporttoorder.Checked = True Then
                 toorder = " a.toorder='yes'"
