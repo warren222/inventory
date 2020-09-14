@@ -40,6 +40,8 @@ Partial Class Form9
         Me.KryptonGroup1 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.KryptonGroup4 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.KryptonGroup3 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.cboxserver = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel3 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.Panel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -59,7 +61,7 @@ Partial Class Form9
         'KryptonButton1
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton1.Location = New System.Drawing.Point(228, 287)
+        Me.KryptonButton1.Location = New System.Drawing.Point(228, 316)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton1.Size = New System.Drawing.Size(79, 26)
@@ -74,7 +76,7 @@ Partial Class Form9
         'KryptonButton2
         '
         Me.KryptonButton2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton2.Location = New System.Drawing.Point(143, 287)
+        Me.KryptonButton2.Location = New System.Drawing.Point(143, 316)
         Me.KryptonButton2.Name = "KryptonButton2"
         Me.KryptonButton2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton2.Size = New System.Drawing.Size(79, 26)
@@ -100,7 +102,7 @@ Partial Class Form9
         '
         'password
         '
-        Me.password.Location = New System.Drawing.Point(41, 96)
+        Me.password.Location = New System.Drawing.Point(41, 89)
         Me.password.Name = "password"
         Me.password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.password.Size = New System.Drawing.Size(253, 27)
@@ -124,7 +126,7 @@ Partial Class Form9
         '
         'KryptonLabel1
         '
-        Me.KryptonLabel1.Location = New System.Drawing.Point(18, 71)
+        Me.KryptonLabel1.Location = New System.Drawing.Point(18, 64)
         Me.KryptonLabel1.Name = "KryptonLabel1"
         Me.KryptonLabel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel1.Size = New System.Drawing.Size(74, 24)
@@ -157,7 +159,7 @@ Partial Class Form9
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
         Me.Panel4.Controls.Add(Me.remoteaccess)
         Me.Panel4.Controls.Add(Me.localaccess)
-        Me.Panel4.Location = New System.Drawing.Point(0, 223)
+        Me.Panel4.Location = New System.Drawing.Point(0, 260)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(337, 43)
         Me.Panel4.TabIndex = 39
@@ -192,7 +194,7 @@ Partial Class Form9
         Me.Panel1.Controls.Add(Me.KryptonGroup4)
         Me.Panel1.Location = New System.Drawing.Point(-1, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(334, 333)
+        Me.Panel1.Size = New System.Drawing.Size(334, 369)
         Me.Panel1.TabIndex = 40
         '
         'Panel3
@@ -245,10 +247,12 @@ Partial Class Form9
         '
         'KryptonGroup1.Panel
         '
+        Me.KryptonGroup1.Panel.Controls.Add(Me.cboxserver)
         Me.KryptonGroup1.Panel.Controls.Add(Me.KryptonLabel11)
         Me.KryptonGroup1.Panel.Controls.Add(Me.KryptonLabel1)
         Me.KryptonGroup1.Panel.Controls.Add(Me.user)
         Me.KryptonGroup1.Panel.Controls.Add(Me.password)
+        Me.KryptonGroup1.Panel.Controls.Add(Me.KryptonLabel3)
         Me.KryptonGroup1.Size = New System.Drawing.Size(332, 204)
         Me.KryptonGroup1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.KryptonGroup1.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
@@ -261,7 +265,7 @@ Partial Class Form9
         Me.KryptonGroup4.Location = New System.Drawing.Point(0, 98)
         Me.KryptonGroup4.Margin = New System.Windows.Forms.Padding(0)
         Me.KryptonGroup4.Name = "KryptonGroup4"
-        Me.KryptonGroup4.Size = New System.Drawing.Size(332, 223)
+        Me.KryptonGroup4.Size = New System.Drawing.Size(332, 264)
         Me.KryptonGroup4.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.KryptonGroup4.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.KryptonGroup4.StateCommon.Border.DrawBorders = CType((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
@@ -280,7 +284,7 @@ Partial Class Form9
         Me.KryptonGroup3.Panel.Controls.Add(Me.KryptonButton2)
         Me.KryptonGroup3.Panel.Controls.Add(Me.Panel1)
         Me.KryptonGroup3.Panel.Controls.Add(Me.myaccess)
-        Me.KryptonGroup3.Size = New System.Drawing.Size(338, 334)
+        Me.KryptonGroup3.Size = New System.Drawing.Size(339, 374)
         Me.KryptonGroup3.StateCommon.Border.Color1 = System.Drawing.Color.Aqua
         Me.KryptonGroup3.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
             Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
@@ -289,12 +293,34 @@ Partial Class Form9
         Me.KryptonGroup3.StateCommon.Border.Width = 3
         Me.KryptonGroup3.TabIndex = 451
         '
+        'cboxserver
+        '
+        Me.cboxserver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxserver.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxserver.FormattingEnabled = True
+        Me.cboxserver.Items.AddRange(New Object() {"Server1", "Server2"})
+        Me.cboxserver.Location = New System.Drawing.Point(41, 144)
+        Me.cboxserver.Name = "cboxserver"
+        Me.cboxserver.Size = New System.Drawing.Size(253, 24)
+        Me.cboxserver.TabIndex = 0
+        '
+        'KryptonLabel3
+        '
+        Me.KryptonLabel3.Location = New System.Drawing.Point(18, 122)
+        Me.KryptonLabel3.Name = "KryptonLabel3"
+        Me.KryptonLabel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel3.Size = New System.Drawing.Size(53, 24)
+        Me.KryptonLabel3.StateCommon.ShortText.Color1 = System.Drawing.Color.White
+        Me.KryptonLabel3.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel3.TabIndex = 27
+        Me.KryptonLabel3.Values.Text = "Server"
+        '
         'Form9
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Green
-        Me.ClientSize = New System.Drawing.Size(342, 340)
+        Me.ClientSize = New System.Drawing.Size(341, 377)
         Me.Controls.Add(Me.KryptonGroup3)
         Me.Controls.Add(Me.KryptonLabel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -345,4 +371,6 @@ Partial Class Form9
     Friend WithEvents KryptonGroup3 As ComponentFactory.Krypton.Toolkit.KryptonGroup
     Friend WithEvents KryptonGroup1 As ComponentFactory.Krypton.Toolkit.KryptonGroup
     Friend WithEvents KryptonGroup4 As ComponentFactory.Krypton.Toolkit.KryptonGroup
+    Friend WithEvents cboxserver As ComboBox
+    Friend WithEvents KryptonLabel3 As ComponentFactory.Krypton.Toolkit.KryptonLabel
 End Class

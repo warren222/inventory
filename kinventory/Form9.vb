@@ -18,27 +18,33 @@
     End Sub
 
     Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If localaccess.Checked = True Then
-            myaccess.Text = "192.168.1.21,49107"
-        Else
-            myaccess.Text = "121.58.229.248,49107"
-        End If
+        cboxserver.SelectedIndex = 0
+        selectserver()
+
     End Sub
 
     Private Sub localaccess_CheckedChanged(sender As Object, e As EventArgs) Handles localaccess.CheckedChanged
-        If localaccess.Checked = True Then
-            myaccess.Text = "192.168.1.21,49107"
-        Else
-            myaccess.Text = "121.58.229.248,49107"
-        End If
+        selectserver()
     End Sub
 
     Private Sub remoteaccess_CheckedChanged(sender As Object, e As EventArgs) Handles remoteaccess.CheckedChanged
-        If localaccess.Checked = True Then
-            myaccess.Text = "192.168.1.21,49107"
-        Else
-            myaccess.Text = "121.58.229.248,49107"
-        End If
+        selectserver()
+    End Sub
+    Private Sub selectserver()
+        Select Case cboxserver.SelectedIndex
+            Case 0
+                If localaccess.Checked = True Then
+                    myaccess.Text = "192.168.1.21,49107"
+                Else
+                    myaccess.Text = "121.58.229.248,49107"
+                End If
+            Case 1
+                If localaccess.Checked = True Then
+                    myaccess.Text = "192.168.1.240,49107"
+                Else
+                    myaccess.Text = "124.105.102.151,49107"
+                End If
+        End Select
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -66,5 +72,9 @@
         If e.KeyData = Keys.Enter Then
             KryptonButton1.PerformClick()
         End If
+    End Sub
+
+    Private Sub cboxserver_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxserver.SelectedIndexChanged
+        selectserver()
     End Sub
 End Class
