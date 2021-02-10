@@ -153,7 +153,13 @@ Public Class genreferenceFRM
     End Sub
 
     Private Sub GridView_SelectionChanged(sender As Object, e As EventArgs) Handles GridView.SelectionChanged
-
+        Dim selecteditems As DataGridViewSelectedRowCollection = GridView.SelectedRows
+        Dim xx As ArrayList = New ArrayList(selecteditems.Count)
+        Dim yy As ArrayList = New ArrayList(selecteditems.Count)
+        For Each row As DataGridViewRow In selecteditems
+            xx.Add(row.Cells("project_label").Value.ToString)
+            yy.Add(row.Cells("original jo").Value.ToString)
+        Next
     End Sub
 
     Private Sub GridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView.CellDoubleClick

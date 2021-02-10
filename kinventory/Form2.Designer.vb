@@ -49,10 +49,11 @@ Partial Class Form2
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.KryptonSplitContainer3 = New ComponentFactory.Krypton.Toolkit.KryptonSplitContainer()
-        Me.KryptonLabel76 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.KryptonLabel77 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.stocktoprows = New System.Windows.Forms.ComboBox()
         Me.stocksgridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.KryptonLabel76 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.stocktoprows = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel77 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.stocknoinput = New System.Windows.Forms.TextBox()
         Me.stocksStocksno = New System.Windows.Forms.ComboBox()
         Me.KryptonGroup7 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
@@ -328,7 +329,6 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -345,6 +345,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2.SuspendLayout()
         Me.KryptonSplitContainer3.SuspendLayout()
         CType(Me.stocksgridview, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         CType(Me.KryptonGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup7.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup7.Panel.SuspendLayout()
@@ -451,7 +452,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -610,42 +610,9 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 793
+        Me.KryptonSplitContainer3.SplitterDistance = 788
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
-        '
-        'KryptonLabel76
-        '
-        Me.KryptonLabel76.Location = New System.Drawing.Point(13, 10)
-        Me.KryptonLabel76.Name = "KryptonLabel76"
-        Me.KryptonLabel76.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel76.Size = New System.Drawing.Size(71, 19)
-        Me.KryptonLabel76.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel76.TabIndex = 468
-        Me.KryptonLabel76.Values.Text = "Top Rows"
-        '
-        'KryptonLabel77
-        '
-        Me.KryptonLabel77.Location = New System.Drawing.Point(234, 10)
-        Me.KryptonLabel77.Name = "KryptonLabel77"
-        Me.KryptonLabel77.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel77.Size = New System.Drawing.Size(69, 19)
-        Me.KryptonLabel77.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel77.TabIndex = 469
-        Me.KryptonLabel77.Values.Text = "No. Rows"
-        '
-        'stocktoprows
-        '
-        Me.stocktoprows.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.stocktoprows.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.stocktoprows.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.stocktoprows.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stocktoprows.FormattingEnabled = True
-        Me.stocktoprows.Items.AddRange(New Object() {"500", "1,000", "5,000", "10,000", "50,000", "100,000", "500,000", "1,000,000", "1,500,000", "2,000,000"})
-        Me.stocktoprows.Location = New System.Drawing.Point(90, 10)
-        Me.stocktoprows.Name = "stocktoprows"
-        Me.stocktoprows.Size = New System.Drawing.Size(138, 23)
-        Me.stocktoprows.TabIndex = 467
         '
         'stocksgridview
         '
@@ -664,7 +631,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(793, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(788, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -683,6 +650,50 @@ Partial Class Form2
         Me.stocksgridview.StateCommon.HeaderColumn.Content.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.stocksgridview.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
         Me.stocksgridview.TabIndex = 0
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.KryptonLabel76)
+        Me.Panel2.Controls.Add(Me.stocktoprows)
+        Me.Panel2.Controls.Add(Me.KryptonLabel77)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(788, 46)
+        Me.Panel2.TabIndex = 470
+        '
+        'KryptonLabel76
+        '
+        Me.KryptonLabel76.Location = New System.Drawing.Point(13, 10)
+        Me.KryptonLabel76.Name = "KryptonLabel76"
+        Me.KryptonLabel76.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel76.Size = New System.Drawing.Size(71, 19)
+        Me.KryptonLabel76.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel76.TabIndex = 468
+        Me.KryptonLabel76.Values.Text = "Top Rows"
+        '
+        'stocktoprows
+        '
+        Me.stocktoprows.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.stocktoprows.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.stocktoprows.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.stocktoprows.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.stocktoprows.FormattingEnabled = True
+        Me.stocktoprows.Items.AddRange(New Object() {"500", "1,000", "5,000", "10,000", "50,000", "100,000", "500,000", "1,000,000", "1,500,000", "2,000,000"})
+        Me.stocktoprows.Location = New System.Drawing.Point(90, 10)
+        Me.stocktoprows.Name = "stocktoprows"
+        Me.stocktoprows.Size = New System.Drawing.Size(138, 23)
+        Me.stocktoprows.TabIndex = 467
+        '
+        'KryptonLabel77
+        '
+        Me.KryptonLabel77.Location = New System.Drawing.Point(234, 10)
+        Me.KryptonLabel77.Name = "KryptonLabel77"
+        Me.KryptonLabel77.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel77.Size = New System.Drawing.Size(69, 19)
+        Me.KryptonLabel77.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel77.TabIndex = 469
+        Me.KryptonLabel77.Values.Text = "No. Rows"
         '
         'stocknoinput
         '
@@ -4269,17 +4280,6 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.KryptonLabel76)
-        Me.Panel2.Controls.Add(Me.stocktoprows)
-        Me.Panel2.Controls.Add(Me.KryptonLabel77)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(793, 46)
-        Me.Panel2.TabIndex = 470
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4309,6 +4309,8 @@ Partial Class Form2
         CType(Me.KryptonSplitContainer3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonSplitContainer3.ResumeLayout(False)
         CType(Me.stocksgridview, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         CType(Me.KryptonGroup7.Panel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup7.Panel.ResumeLayout(False)
         CType(Me.KryptonGroup7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4434,8 +4436,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

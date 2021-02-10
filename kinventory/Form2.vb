@@ -3359,7 +3359,7 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub reference_TextChanged(sender As Object, e As EventArgs) Handles reference.TextChanged
-        genjo("input", reference.Text, jo, "trans_tb", "jo")
+        'genjo("input", reference.Text, jo, "trans_tb", "jo")
     End Sub
     Public Sub lref()
         Try
