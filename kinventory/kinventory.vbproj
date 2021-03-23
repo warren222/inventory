@@ -425,6 +425,12 @@
     <Compile Include="updatereferenceFRM.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UpdateStockNo.Designer.vb">
+      <DependentUpon>UpdateStockNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateStockNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="accountinginventory.resx">
@@ -568,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="updatereferenceFRM.resx">
       <DependentUpon>updatereferenceFRM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateStockNo.resx">
+      <DependentUpon>UpdateStockNo.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

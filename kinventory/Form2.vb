@@ -1232,10 +1232,12 @@ select
         Dim a As String = transreference.Text
         Dim b As String = transjo.Text
         Dim c As String = transactioncosthead.Text
+        Dim d As String = transactiontypecolor.Text
 
         Dim acol As String = "a.reference"
         Dim bcol As String = "a.jo"
         Dim ccol As String = "b.costhead"
+        Dim dcol As String = "b.typecolor"
 
         If a = "" Then
             a = "" & acol & ""
@@ -1252,11 +1254,17 @@ select
         Else
             c = "'" & c & "'"
         End If
+        If d = "" Then
+            d = "" & dcol & ""
+        Else
+            d = "'" & d & "'"
+        End If
 
         where = "           where
                             " & acol & " = " & a & " and 
                             " & bcol & " = " & b & " and 
                             " & ccol & " = " & c & " and 
+                            " & dcol & " = " & d & " and 
                             " & tr & "
                             " & dtt & " "
 
@@ -1366,12 +1374,19 @@ select
         reallocate.transno.Items.Clear()
         reallocate.jo.Items.Clear()
         chagexrate.transno.Items.Clear()
+        UpdateStockNo.transno.Items.Clear()
+        UpdateStockNo.reference.Items.Clear()
+        UpdateStockNo.jo.Items.Clear()
+        UpdateStockNo.xyz.Items.Clear()
+        UpdateStockNo.transtype.Items.Clear()
         For Each item As DataGridViewRow In selecteditem
             Dim x As String = item.Cells("transno").Value.ToString
             Dim y As String = item.Cells("stockno").Value.ToString
             Dim z As String = item.Cells("reference").Value.ToString
             Dim a As String = item.Cells("qty").Value.ToString
             Dim b As String = item.Cells("jo").Value.ToString
+            Dim xyz As String = item.Cells("xyz").Value.ToString
+            Dim transtype As String = item.Cells("transtype").Value.ToString
             transnocombo.Items.Add(x)
             transqtycombo.Items.Add(a)
             Form6.transno.Items.Add(x)
@@ -1380,6 +1395,11 @@ select
             reallocate.transno.Items.Add(x)
             reallocate.jo.Items.Add(b)
             chagexrate.transno.Items.Add(x)
+            UpdateStockNo.transno.Items.Add(x)
+            UpdateStockNo.reference.Items.Add(z)
+            UpdateStockNo.jo.Items.Add(b)
+            UpdateStockNo.xyz.Items.Add(xyz)
+            UpdateStockNo.transtype.Items.Add(transtype)
         Next
     End Sub
 
@@ -2120,43 +2140,43 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
 
             Dim condition As String
-                Dim a As String = reportsupplier.Text
-                Dim b As String = reportheader.Text
-                Dim c As String = reportcosthead.Text
-                Dim d As String = reporttypecolor.Text
-                Dim f As String = reportstatus.Text
+            Dim a As String = reportsupplier.Text
+            Dim b As String = reportheader.Text
+            Dim c As String = reportcosthead.Text
+            Dim d As String = reporttypecolor.Text
+            Dim f As String = reportstatus.Text
 
-                Dim acol As String = "a.supplier"
-                Dim bcol As String = "a.header"
-                Dim ccol As String = "a.costhead"
-                Dim dcol As String = "a.typecolor"
-                Dim fcol As String = "a.status"
+            Dim acol As String = "a.supplier"
+            Dim bcol As String = "a.header"
+            Dim ccol As String = "a.costhead"
+            Dim dcol As String = "a.typecolor"
+            Dim fcol As String = "a.status"
 
-                If a = "" Then
-                    a = " a.supplier = a.supplier"
-                Else
-                    a = " a.supplier = '" & a & "'"
-                End If
-                If b = "" Then
-                    b = " a.header = a.header"
-                Else
-                    b = " a.header = '" & b & "'"
-                End If
-                If c = "" Then
-                    c = " a.costhead = a.costhead"
-                Else
-                    c = " a.costhead = '" & c & "'"
-                End If
-                If d = "" Then
-                    d = " a.typecolor = a.typecolor"
-                Else
-                    d = " a.typecolor = '" & d & "'"
-                End If
-                If f = "" Then
-                    f = " a.status = a.status"
-                Else
-                    f = " a.status = '" & f & "'"
-                End If
+            If a = "" Then
+                a = " a.supplier = a.supplier"
+            Else
+                a = " a.supplier = '" & a & "'"
+            End If
+            If b = "" Then
+                b = " a.header = a.header"
+            Else
+                b = " a.header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " a.costhead = a.costhead"
+            Else
+                c = " a.costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " a.typecolor = a.typecolor"
+            Else
+                d = " a.typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " a.status = a.status"
+            Else
+                f = " a.status = '" & f & "'"
+            End If
 
 
 
@@ -3469,5 +3489,15 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     Private Sub ProductionAllocationDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductionAllocationDateToolStripMenuItem.Click
         Form6.KryptonLabel1.Text = "Production Allocation date"
         Form6.ShowDialog()
+    End Sub
+
+    Private Sub transactiontypecolor_KeyDown(sender As Object, e As KeyEventArgs) Handles transactiontypecolor.KeyDown
+        If e.KeyData = Keys.Enter Then
+            KryptonButton11.PerformClick()
+        End If
+    End Sub
+
+    Private Sub UpdateStocknoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateStocknoToolStripMenuItem.Click
+        UpdateStockNo.ShowDialog()
     End Sub
 End Class

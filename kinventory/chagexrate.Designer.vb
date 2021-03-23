@@ -195,7 +195,7 @@ Partial Class chagexrate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(195, 300)
+        Me.ClientSize = New System.Drawing.Size(196, 307)
         Me.Controls.Add(Me.KryptonCheckBox3)
         Me.Controls.Add(Me.discount)
         Me.Controls.Add(Me.KryptonCheckBox2)
@@ -207,6 +207,8 @@ Partial Class chagexrate
         Me.Controls.Add(Me.KryptonButton1)
         Me.Controls.Add(Me.xrate)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.MaximumSize = New System.Drawing.Size(212, 346)
+        Me.MinimumSize = New System.Drawing.Size(212, 346)
         Me.Name = "chagexrate"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)

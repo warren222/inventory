@@ -883,6 +883,21 @@ on a.stockno = b.stockno"
             Form2.transactioncosthead.DisplayMember = "costhead"
             Form2.transactioncosthead.SelectedIndex = -1
 
+
+            Dim typecolords As New DataSet
+            Dim typecolorbs As New BindingSource
+            typecolords.Clear()
+
+            Dim typecolor As String = "Select distinct b.typecolor from stocks_tb As b inner join trans_tb As a On a.stockno = b.stockno"
+            sqlcmd = New SqlCommand(typecolor, sqlcon)
+            da = New SqlDataAdapter
+            da.SelectCommand = sqlcmd
+            da.Fill(typecolords, "stocks_tb")
+            typecolorbs.DataSource = typecolords
+            typecolorbs.DataMember = "stocks_tb"
+            Form2.transactiontypecolor.DataSource = typecolorbs
+            Form2.transactiontypecolor.DisplayMember = "typecolor"
+            Form2.transactiontypecolor.SelectedIndex = -1
             notifycritical()
             tmanagecols()
         Catch ex As Exception

@@ -1172,4 +1172,8 @@ and typecolor = '" & newtypecolor.Text & "' and articleno = '" & newarticleno.Te
     Private Sub KryptonCheckBox8_CheckedChanged(sender As Object, e As EventArgs) Handles KryptonCheckBox8.CheckedChanged
 
     End Sub
+
+    Private Sub KryptonPanel1_Paint(sender As Object, e As PaintEventArgs) Handles KryptonPanel1.Paint
+
+    End Sub
 End Class
