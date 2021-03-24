@@ -68,6 +68,8 @@ Public Class UpdateStockNo
             ProgressBar2.Visible = False
             KryptonButton1.Visible = True
         End If
+        Form2.KryptonButton11.PerformClick()
+        Me.Close()
     End Sub
     Private Function Exist(ByVal costhead As String, ByVal color As String, ByVal articleno As String) As Boolean
         Dim bol As Boolean = False
