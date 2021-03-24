@@ -114,7 +114,7 @@ xrate=@xrate,
 ufactor=@ufactor,
 netamount=(@unitprice*@xrate)*(qty*@ufactor)
 where transno = '" & transno & "'"
-                sqlcmd = New SqlCommand(str, sql.sqlcon)
+                sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
@@ -127,7 +127,7 @@ where transno = '" & transno & "'"
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
                 sqlcon.Open()
                 Dim find As String = "select * from reference_tb where reference='" & reference & "' and jo = '" & jo & "' and stockno='" & stockno & "'"
-                sqlcmd = New SqlCommand(find, sql.sqlcon)
+                sqlcmd = New SqlCommand(find, sqlcon)
                 Dim read As SqlDataReader = sqlcmd.ExecuteReader
                 If read.HasRows = True Then
                     read.Close()
@@ -136,7 +136,7 @@ where transno = '" & transno & "'"
                     Dim insert As String = "
 declare @id as integer = (select max(id)+1 from reference_tb)
 insert into reference_tb (id,reference,jo,stockno) values(@id,'" & reference & "','" & jo & "','" & stockno & "')"
-                    sqlcmd = New SqlCommand(insert, sql.sqlcon)
+                    sqlcmd = New SqlCommand(insert, sqlcon)
                     sqlcmd.ExecuteNonQuery()
                 End If
             End Using
@@ -171,7 +171,7 @@ insert into reference_tb (id,reference,jo,stockno) values(@id,'" & reference & "
                                     stockorder=@order-@receiptorder,
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
-                sqlcmd = New SqlCommand(str, sql.sqlcon)
+                sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.ExecuteNonQuery()
 
 
@@ -194,7 +194,7 @@ update reference_tb set
                                     totalissue=@totalissue,
                                     totalreturn=@return
                                     where stockno='" & stockno & "' and reference='" & reference & "' and jo = '" & jo & "' "
-                sqlcmd = New SqlCommand(bny, sql.sqlcon)
+                sqlcmd = New SqlCommand(bny, sqlcon)
                 sqlcmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
