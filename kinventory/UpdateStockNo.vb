@@ -39,6 +39,9 @@ Public Class UpdateStockNo
             MessageBox.Show("Operation Cancelled", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Exit Sub
         End If
+        ProgressBar2.Visible = True
+        ProgressBar2.Maximum = transno.Items.Count
+        ProgressBar2.Value = 0
         For i As Integer = 0 To transno.Items.Count - 1
             If (transtype.Items(i).ToString() = "Order" And Not xyz.Items(i).ToString() = "") Or
         (transtype.Items(i).ToString() = "Receipt" And xyz.Items(i).ToString() = "") Or
@@ -48,6 +51,8 @@ Public Class UpdateStockNo
         (transtype.Items(i).ToString() = "Issue" And Not xyz.Items(i).ToString() = "") Then
             Else
                 If Exist(costhead.Items(i).ToString, newtypecolor.Text, articleno.Items(i).ToString) Then
+                    KryptonButton1.Visible = False
+                    ProgressBar2.Value += 1
                     Dim newstockno As String = GetStockno(costhead.Items(i).ToString, newtypecolor.Text, articleno.Items(i).ToString)
                     updatenewstockno(transno.Items(i).ToString(), newstockno)
                     findnewreference(newstockno, reference.Items(i).ToString(), jo.Items(i).ToString())
@@ -57,6 +62,12 @@ Public Class UpdateStockNo
                 End If
             End If
         Next
+
+        If ProgressBar2.Value = ProgressBar2.Maximum Then
+            MessageBox.Show("Complete", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ProgressBar2.Visible = False
+            KryptonButton1.Visible = True
+        End If
     End Sub
     Private Function Exist(ByVal costhead As String, ByVal color As String, ByVal articleno As String) As Boolean
         Dim bol As Boolean = False

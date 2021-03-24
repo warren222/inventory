@@ -33,6 +33,7 @@ Partial Class UpdateStockNo
         Me.transtype = New System.Windows.Forms.ComboBox()
         Me.articleno = New System.Windows.Forms.ComboBox()
         Me.costhead = New System.Windows.Forms.ComboBox()
+        Me.ProgressBar2 = New System.Windows.Forms.ProgressBar()
         CType(Me.KryptonGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup4.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup4.Panel.SuspendLayout()
@@ -41,7 +42,7 @@ Partial Class UpdateStockNo
         '
         'KryptonGroup4
         '
-        Me.KryptonGroup4.Location = New System.Drawing.Point(132, 24)
+        Me.KryptonGroup4.Location = New System.Drawing.Point(129, 12)
         Me.KryptonGroup4.Margin = New System.Windows.Forms.Padding(0)
         Me.KryptonGroup4.Name = "KryptonGroup4"
         '
@@ -73,7 +74,7 @@ Partial Class UpdateStockNo
         '
         'KryptonLabel25
         '
-        Me.KryptonLabel25.Location = New System.Drawing.Point(25, 24)
+        Me.KryptonLabel25.Location = New System.Drawing.Point(22, 12)
         Me.KryptonLabel25.Name = "KryptonLabel25"
         Me.KryptonLabel25.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel25.Size = New System.Drawing.Size(86, 22)
@@ -93,7 +94,7 @@ Partial Class UpdateStockNo
         'KryptonButton1
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton1.Location = New System.Drawing.Point(289, 70)
+        Me.KryptonButton1.Location = New System.Drawing.Point(286, 58)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton1.Size = New System.Drawing.Size(75, 29)
@@ -171,12 +172,23 @@ Partial Class UpdateStockNo
         Me.costhead.Size = New System.Drawing.Size(263, 21)
         Me.costhead.TabIndex = 476
         '
+        'ProgressBar2
+        '
+        Me.ProgressBar2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ProgressBar2.Location = New System.Drawing.Point(-3, 93)
+        Me.ProgressBar2.Name = "ProgressBar2"
+        Me.ProgressBar2.Size = New System.Drawing.Size(405, 26)
+        Me.ProgressBar2.TabIndex = 478
+        Me.ProgressBar2.Visible = False
+        '
         'UpdateStockNo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(399, 116)
+        Me.Controls.Add(Me.ProgressBar2)
         Me.Controls.Add(Me.articleno)
         Me.Controls.Add(Me.costhead)
         Me.Controls.Add(Me.transtype)
@@ -212,4 +224,5 @@ Partial Class UpdateStockNo
     Friend WithEvents transtype As ComboBox
     Friend WithEvents articleno As ComboBox
     Friend WithEvents costhead As ComboBox
+    Friend WithEvents ProgressBar2 As ProgressBar
 End Class
