@@ -1379,6 +1379,8 @@ select
         UpdateStockNo.jo.Items.Clear()
         UpdateStockNo.xyz.Items.Clear()
         UpdateStockNo.transtype.Items.Clear()
+        UpdateStockNo.costhead.Items.Clear()
+        UpdateStockNo.articleno.Items.Clear()
         For Each item As DataGridViewRow In selecteditem
             Dim x As String = item.Cells("transno").Value.ToString
             Dim y As String = item.Cells("stockno").Value.ToString
@@ -1387,6 +1389,8 @@ select
             Dim b As String = item.Cells("jo").Value.ToString
             Dim xyz As String = item.Cells("xyz").Value.ToString
             Dim transtype As String = item.Cells("transtype").Value.ToString
+            Dim costhead As String = item.Cells("costhead").Value.ToString
+            Dim articleno As String = item.Cells("articleno").Value.ToString
             transnocombo.Items.Add(x)
             transqtycombo.Items.Add(a)
             Form6.transno.Items.Add(x)
@@ -1400,6 +1404,8 @@ select
             UpdateStockNo.jo.Items.Add(b)
             UpdateStockNo.xyz.Items.Add(xyz)
             UpdateStockNo.transtype.Items.Add(transtype)
+            UpdateStockNo.costhead.Items.Add(costhead)
+            UpdateStockNo.articleno.Items.Add(articleno)
         Next
     End Sub
 

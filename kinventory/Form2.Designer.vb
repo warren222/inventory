@@ -44,6 +44,7 @@ Partial Class Form2
         Me.ReallocateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeXrateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateReferenceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateStocknoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.KryptonSplitContainer6 = New ComponentFactory.Krypton.Toolkit.KryptonSplitContainer()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -203,6 +204,7 @@ Partial Class Form2
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.KryptonSplitContainer5 = New ComponentFactory.Krypton.Toolkit.KryptonSplitContainer()
         Me.KryptonGroup6 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.transactiontypecolor = New System.Windows.Forms.ComboBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.KryptonLabel73 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.transjo = New System.Windows.Forms.ComboBox()
@@ -222,6 +224,7 @@ Partial Class Form2
         Me.KryptonLabel38 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.transtransaction = New System.Windows.Forms.ComboBox()
         Me.KryptonLabel42 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.KryptonLabel78 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.transgridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.transqtycombo = New System.Windows.Forms.ComboBox()
         Me.KryptonLabel56 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -326,9 +329,6 @@ Partial Class Form2
         Me.PHASEDoUTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsumptionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.KryptonLabel78 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.transactiontypecolor = New System.Windows.Forms.ComboBox()
-        Me.UpdateStocknoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
@@ -518,6 +518,12 @@ Partial Class Form2
         Me.UpdateReferenceToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.UpdateReferenceToolStripMenuItem.Text = "UpdateReference"
         '
+        'UpdateStocknoToolStripMenuItem
+        '
+        Me.UpdateStocknoToolStripMenuItem.Name = "UpdateStocknoToolStripMenuItem"
+        Me.UpdateStocknoToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.UpdateStocknoToolStripMenuItem.Text = "Update Type/Color"
+        '
         'Timer1
         '
         '
@@ -613,7 +619,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 783
+        Me.KryptonSplitContainer3.SplitterDistance = 778
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -634,7 +640,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(783, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(778, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -662,7 +668,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(783, 46)
+        Me.Panel2.Size = New System.Drawing.Size(778, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -2764,6 +2770,18 @@ Partial Class Form2
         Me.KryptonGroup6.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup6.TabIndex = 0
         '
+        'transactiontypecolor
+        '
+        Me.transactiontypecolor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.transactiontypecolor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.transactiontypecolor.DropDownHeight = 206
+        Me.transactiontypecolor.FormattingEnabled = True
+        Me.transactiontypecolor.IntegralHeight = False
+        Me.transactiontypecolor.Location = New System.Drawing.Point(73, 230)
+        Me.transactiontypecolor.Name = "transactiontypecolor"
+        Me.transactiontypecolor.Size = New System.Drawing.Size(164, 24)
+        Me.transactiontypecolor.TabIndex = 468
+        '
         'Button4
         '
         Me.Button4.Location = New System.Drawing.Point(14, 171)
@@ -2968,6 +2986,16 @@ Partial Class Form2
         Me.KryptonLabel42.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KryptonLabel42.TabIndex = 453
         Me.KryptonLabel42.Values.Text = "Date"
+        '
+        'KryptonLabel78
+        '
+        Me.KryptonLabel78.Location = New System.Drawing.Point(-1, 230)
+        Me.KryptonLabel78.Name = "KryptonLabel78"
+        Me.KryptonLabel78.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel78.Size = New System.Drawing.Size(76, 19)
+        Me.KryptonLabel78.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel78.TabIndex = 469
+        Me.KryptonLabel78.Values.Text = "Type/Color"
         '
         'transgridview
         '
@@ -4284,34 +4312,6 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Name = "ConsumptionToolStripMenuItem"
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
-        '
-        'KryptonLabel78
-        '
-        Me.KryptonLabel78.Location = New System.Drawing.Point(-1, 230)
-        Me.KryptonLabel78.Name = "KryptonLabel78"
-        Me.KryptonLabel78.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel78.Size = New System.Drawing.Size(76, 19)
-        Me.KryptonLabel78.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel78.TabIndex = 469
-        Me.KryptonLabel78.Values.Text = "Type/Color"
-        '
-        'transactiontypecolor
-        '
-        Me.transactiontypecolor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.transactiontypecolor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.transactiontypecolor.DropDownHeight = 206
-        Me.transactiontypecolor.FormattingEnabled = True
-        Me.transactiontypecolor.IntegralHeight = False
-        Me.transactiontypecolor.Location = New System.Drawing.Point(73, 230)
-        Me.transactiontypecolor.Name = "transactiontypecolor"
-        Me.transactiontypecolor.Size = New System.Drawing.Size(164, 24)
-        Me.transactiontypecolor.TabIndex = 468
-        '
-        'UpdateStocknoToolStripMenuItem
-        '
-        Me.UpdateStocknoToolStripMenuItem.Name = "UpdateStocknoToolStripMenuItem"
-        Me.UpdateStocknoToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
-        Me.UpdateStocknoToolStripMenuItem.Text = "Update stockno"
         '
         'Form2
         '

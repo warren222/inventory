@@ -5,75 +5,11 @@ Public Class UpdateStockNo
     Dim sql As New sql
     Dim sqlcmd As New SqlCommand
     Private Sub UpdateStockNo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-    Private Sub newcosthead_MouseDown(sender As Object, e As MouseEventArgs) Handles newcosthead.MouseDown
-        newstockno.Text = ""
-        'newtypecolor.SelectedIndex = -1
-        'newarticleno.SelectedIndex = -1
-        Dim x As Integer = newcosthead.SelectedIndex
-        Try
-            sql.sqlcon.Open()
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            Dim str As String = "select distinct costhead from stocks_tb order by costhead asc"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newcosthead.DataSource = bs
-            newcosthead.DisplayMember = "costhead"
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-        If x > newcosthead.Items.Count - 1 Then
-            newcosthead.SelectedIndex = -1
-        Else
-            newcosthead.SelectedIndex = x
-        End If
+        typecolorgen1()
     End Sub
 
-    Private Sub newtypecolor_MouseDown(sender As Object, e As MouseEventArgs) Handles newtypecolor.MouseDown
-        newstockno.Text = ""
-        'newarticleno.SelectedIndex = -1
-        Dim x As Integer = newtypecolor.SelectedIndex
-        If newcosthead.Text = "" Then
-            typecolorgen1()
-        Else
-            typecolorgen(newcosthead.Text)
-        End If
-        If x > newtypecolor.Items.Count - 1 Then
-            newtypecolor.SelectedIndex = -1
-        Else
-            newtypecolor.SelectedIndex = x
-        End If
-    End Sub
-    Public Sub typecolorgen(ByVal costhead As String)
-        Try
-            sql.sqlcon.Open()
-            Dim str As String = "select distinct typecolor FROM STOCKS_TB WHERE COSTHEAD = '" & costhead & "' order by typecolor asc"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newtypecolor.DataSource = bs
-            newtypecolor.DisplayMember = "typecolor"
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-    End Sub
+
+
     Public Sub typecolorgen1()
         Try
             sql.sqlcon.Open()
@@ -96,116 +32,7 @@ Public Class UpdateStockNo
         End Try
     End Sub
 
-    Private Sub newarticleno_MouseDown(sender As Object, e As MouseEventArgs) Handles newarticleno.MouseDown
 
-        Dim i As Integer = newarticleno.SelectedIndex
-        If newcosthead.Text = "" And newtypecolor.Text = "" Then
-            articlenogen1()
-        ElseIf Not newcosthead.Text = "" And newtypecolor.Text = "" Then
-            articlenogen2(newcosthead.Text)
-        ElseIf newcosthead.Text = "" And Not newtypecolor.Text = "" Then
-            articlenogen3(newtypecolor.Text)
-        Else
-            articlenogen(newcosthead.Text, newtypecolor.Text)
-        End If
-        If i > newarticleno.Items.Count - 1 Then
-            newarticleno.SelectedIndex = -1
-        Else
-            newarticleno.SelectedIndex = i
-        End If
-    End Sub
-    Public Sub articlenogen(ByVal costhead As String, ByVal typecolor As String)
-        Try
-            sql.sqlcon.Open()
-            Dim str As String = "select articleno,stockno FROM STOCKS_TB where costhead = '" & costhead & "' and typecolor= '" & typecolor & "' order by articleno asc"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newarticleno.DataSource = bs
-            newarticleno.DisplayMember = "articleno"
-            newstockno.DataBindings.Clear()
-            newstockno.DataBindings.Add("text", bs, "stockno")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-    End Sub
-    Public Sub articlenogen1()
-        Try
-            sql.sqlcon.Open()
-            Dim str As String = "select distinct articleno,stockno FROM STOCKS_TB order by articleno asc"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newarticleno.DataSource = bs
-            newarticleno.DisplayMember = "articleno"
-            newstockno.DataBindings.Clear()
-            newstockno.DataBindings.Add("text", bs, "stockno")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-    End Sub
-    Public Sub articlenogen2(ByVal costhead As String)
-        Try
-            sql.sqlcon.Open()
-            Dim str As String = "select distinct articleno,stockno FROM STOCKS_TB where costhead = '" & costhead & "' order by articleno asc"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newarticleno.DataSource = bs
-            newarticleno.DisplayMember = "articleno"
-            newstockno.DataBindings.Clear()
-            newstockno.DataBindings.Add("text", bs, "stockno")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-    End Sub
-    Public Sub articlenogen3(ByVal typecolor As String)
-        Try
-            sql.sqlcon.Open()
-            Dim str As String = "select distinct articleno,stockno FROM STOCKS_TB where typecolor = '" & typecolor & "' order by articleno asc"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "stocks_tb")
-            bs.DataSource = ds
-            bs.DataMember = "stocks_tb"
-            newarticleno.DataSource = bs
-            newarticleno.DisplayMember = "articleno"
-            newstockno.DataBindings.Clear()
-            newstockno.DataBindings.Add("text", bs, "stockno")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
-        End Try
-    End Sub
 
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
         If MessageBox.Show("Update record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
@@ -220,12 +47,57 @@ Public Class UpdateStockNo
         (transtype.Items(i).ToString() = "Issue" And xyz.Items(i).ToString() = "") Or
         (transtype.Items(i).ToString() = "Issue" And Not xyz.Items(i).ToString() = "") Then
             Else
-                updatenewstockno(transno.Items(i).ToString(), newstockno.Text)
-                findnewreference(newstockno.Text, reference.Items(i).ToString(), jo.Items(i).ToString())
-                updatestock(newstockno.Text, reference.Items(i).ToString(), jo.Items(i).ToString())
+                If Exist(costhead.Items(i).ToString, newtypecolor.Text, articleno.Items(i).ToString) Then
+                    Dim newstockno As String = GetStockno(costhead.Items(i).ToString, newtypecolor.Text, articleno.Items(i).ToString)
+                    updatenewstockno(transno.Items(i).ToString(), newstockno)
+                    findnewreference(newstockno, reference.Items(i).ToString(), jo.Items(i).ToString())
+                    updatestock(newstockno, reference.Items(i).ToString(), jo.Items(i).ToString())
+                Else
+
+                End If
             End If
         Next
     End Sub
+    Private Function Exist(ByVal costhead As String, ByVal color As String, ByVal articleno As String) As Boolean
+        Dim bol As Boolean = False
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "select stockno from stocks_tb where costhead = '" & costhead & "' and typecolor = '" & color & "' and articleno = '" & articleno & "'"
+                Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                    Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                        If rd.HasRows Then
+                            bol = True
+                        Else
+                            bol = False
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return bol
+    End Function
+    Private Function GetStockno(ByVal costhead As String, ByVal color As String, ByVal articleno As String) As String
+        Dim stockno As String = ""
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "select stockno from stocks_tb where costhead = '" & costhead & "' and typecolor = '" & color & "' and articleno = '" & articleno & "'"
+                Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                    Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                        While rd.Read
+                            stockno = rd(0).ToString()
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return stockno
+    End Function
     Public Sub updatenewstockno(ByVal transno As String, ByVal stockno As String)
         Try
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
