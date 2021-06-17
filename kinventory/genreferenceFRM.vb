@@ -205,6 +205,9 @@ Public Class genreferenceFRM
                 changereferenceFRM.reference.Text = project
                 changereferenceFRM.jo.Text = pjo
                 changereferenceFRM.Button3.PerformClick()
+            ElseIf Me.Text = "copy alloc" Then
+                CopyTransaction.tboxreference.Text = project
+                CopyTransaction.tboxjo.Text = pjo
             End If
         Next
 

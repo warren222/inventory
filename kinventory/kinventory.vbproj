@@ -196,6 +196,12 @@
     <Compile Include="checklisted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CopyTansaction.Designer.vb">
+      <DependentUpon>CopyTansaction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CopyTansaction.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="cuttinglist.Designer.vb">
       <DependentUpon>cuttinglist.vb</DependentUpon>
     </Compile>
@@ -456,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="checklisted.resx">
       <DependentUpon>checklisted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CopyTansaction.resx">
+      <DependentUpon>CopyTansaction.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cuttinglist.resx">
       <DependentUpon>cuttinglist.vb</DependentUpon>

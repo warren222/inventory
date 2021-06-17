@@ -1363,7 +1363,8 @@ select
             transactionmenustrip.Show(transgridview, New Point(e.X, e.Y))
         End If
     End Sub
-
+    Public transnoAlist As New ArrayList
+    Public stocknoAlist As New ArrayList
     Private Sub transgridview_SelectionChanged(sender As Object, e As EventArgs) Handles transgridview.SelectionChanged
         Dim selecteditem As DataGridViewSelectedRowCollection = transgridview.SelectedRows
         transnocombo.Items.Clear()
@@ -1381,6 +1382,8 @@ select
         UpdateStockNo.transtype.Items.Clear()
         UpdateStockNo.costhead.Items.Clear()
         UpdateStockNo.articleno.Items.Clear()
+        transnoAlist = New ArrayList
+        stocknoAlist = New ArrayList
         For Each item As DataGridViewRow In selecteditem
             Dim x As String = item.Cells("transno").Value.ToString
             Dim y As String = item.Cells("stockno").Value.ToString
@@ -1391,6 +1394,7 @@ select
             Dim transtype As String = item.Cells("transtype").Value.ToString
             Dim costhead As String = item.Cells("costhead").Value.ToString
             Dim articleno As String = item.Cells("articleno").Value.ToString
+
             transnocombo.Items.Add(x)
             transqtycombo.Items.Add(a)
             Form6.transno.Items.Add(x)
@@ -1406,6 +1410,8 @@ select
             UpdateStockNo.transtype.Items.Add(transtype)
             UpdateStockNo.costhead.Items.Add(costhead)
             UpdateStockNo.articleno.Items.Add(articleno)
+            transnoAlist.Add(item.Cells("transno").Value.ToString)
+            stocknoAlist.Add(item.Cells("stockno").Value.ToString)
         Next
     End Sub
 
@@ -3505,5 +3511,9 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     Private Sub UpdateStocknoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateStocknoToolStripMenuItem.Click
         UpdateStockNo.ShowDialog()
+    End Sub
+
+    Private Sub CopyTransToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyTransToolStripMenuItem.Click
+        CopyTransaction.ShowDialog()
     End Sub
 End Class

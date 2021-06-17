@@ -161,7 +161,6 @@ Partial Class Form2
         Me.receiptcosthead = New System.Windows.Forms.ComboBox()
         Me.receiptGridView = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.issueDataGridView = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.KryptonGroup5 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -201,6 +200,7 @@ Partial Class Form2
         Me.issuearticleno = New System.Windows.Forms.ComboBox()
         Me.issuetypecolor = New System.Windows.Forms.ComboBox()
         Me.issuecosthead = New System.Windows.Forms.ComboBox()
+        Me.issueDataGridView = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.KryptonSplitContainer5 = New ComponentFactory.Krypton.Toolkit.KryptonSplitContainer()
         Me.KryptonGroup6 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
@@ -332,6 +332,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CopyTransToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -390,7 +391,6 @@ Partial Class Form2
         Me.KryptonGroup3.SuspendLayout()
         CType(Me.receiptGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage5.SuspendLayout()
-        CType(Me.issueDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup5.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup5.Panel.SuspendLayout()
@@ -402,6 +402,7 @@ Partial Class Form2
         CType(Me.KryptonGroup4.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup4.Panel.SuspendLayout()
         Me.KryptonGroup4.SuspendLayout()
+        CType(Me.issueDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         CType(Me.KryptonSplitContainer5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer5.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -472,9 +473,9 @@ Partial Class Form2
         'transactionmenustrip
         '
         Me.transactionmenustrip.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem})
+        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.CopyTransToolStripMenuItem})
         Me.transactionmenustrip.Name = "transactionmenustrip"
-        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 180)
+        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 224)
         '
         'TransDateToolStripMenuItem
         '
@@ -619,7 +620,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 778
+        Me.KryptonSplitContainer3.SplitterDistance = 768
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -640,7 +641,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(778, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(768, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -668,7 +669,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(778, 46)
+        Me.Panel2.Size = New System.Drawing.Size(768, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -2131,7 +2132,6 @@ Partial Class Form2
         '
         'TabPage5
         '
-        Me.TabPage5.Controls.Add(Me.issueDataGridView)
         Me.TabPage5.Controls.Add(Me.Button3)
         Me.TabPage5.Controls.Add(Me.KryptonGroup5)
         Me.TabPage5.Controls.Add(Me.KryptonLabel71)
@@ -2140,6 +2140,7 @@ Partial Class Form2
         Me.TabPage5.Controls.Add(Me.KryptonLabel24)
         Me.TabPage5.Controls.Add(Me.issuereference)
         Me.TabPage5.Controls.Add(Me.KryptonGroup4)
+        Me.TabPage5.Controls.Add(Me.issueDataGridView)
         Me.TabPage5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.TabPage5.ImageIndex = 1
         Me.TabPage5.Location = New System.Drawing.Point(4, 25)
@@ -2149,46 +2150,6 @@ Partial Class Form2
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Issue"
         Me.TabPage5.UseVisualStyleBackColor = True
-        '
-        'issueDataGridView
-        '
-        Me.issueDataGridView.AllowUserToAddRows = False
-        Me.issueDataGridView.AllowUserToDeleteRows = False
-        Me.issueDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
-        Me.issueDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.issueDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        Me.issueDataGridView.ColumnHeadersHeight = 20
-        Me.issueDataGridView.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.issueDataGridView.Location = New System.Drawing.Point(260, 60)
-        Me.issueDataGridView.MultiSelect = False
-        Me.issueDataGridView.Name = "issueDataGridView"
-        Me.issueDataGridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
-        Me.issueDataGridView.ReadOnly = True
-        Me.issueDataGridView.RowHeadersWidth = 25
-        Me.issueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.issueDataGridView.Size = New System.Drawing.Size(863, 326)
-        Me.issueDataGridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
-        Me.issueDataGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
-        Me.issueDataGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.issueDataGridView.StateCommon.DataCell.Border.Width = 0
-        Me.issueDataGridView.StateCommon.DataCell.Content.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.issueDataGridView.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(67, Byte), Integer))
-        Me.issueDataGridView.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.issueDataGridView.StateCommon.HeaderColumn.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Dashed
-        Me.issueDataGridView.StateCommon.HeaderColumn.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.issueDataGridView.StateCommon.HeaderColumn.Border.Width = 0
-        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Color1 = System.Drawing.Color.White
-        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
-        Me.issueDataGridView.TabIndex = 17
         '
         'Button3
         '
@@ -2446,8 +2407,8 @@ Partial Class Form2
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToAddRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToDeleteRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToOrderColumns = True
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.LISTOFALLOCATIONGRIDVIEW.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -2507,8 +2468,8 @@ Partial Class Form2
         Me.issueDataGridView1.AllowUserToAddRows = False
         Me.issueDataGridView1.AllowUserToDeleteRows = False
         Me.issueDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.issueDataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.issueDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -2694,6 +2655,46 @@ Partial Class Form2
         Me.issuecosthead.Name = "issuecosthead"
         Me.issuecosthead.Size = New System.Drawing.Size(138, 23)
         Me.issuecosthead.TabIndex = 1
+        '
+        'issueDataGridView
+        '
+        Me.issueDataGridView.AllowUserToAddRows = False
+        Me.issueDataGridView.AllowUserToDeleteRows = False
+        Me.issueDataGridView.AllowUserToOrderColumns = True
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        Me.issueDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.issueDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.issueDataGridView.ColumnHeadersHeight = 20
+        Me.issueDataGridView.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.issueDataGridView.Location = New System.Drawing.Point(260, 60)
+        Me.issueDataGridView.MultiSelect = False
+        Me.issueDataGridView.Name = "issueDataGridView"
+        Me.issueDataGridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
+        Me.issueDataGridView.ReadOnly = True
+        Me.issueDataGridView.RowHeadersWidth = 25
+        Me.issueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.issueDataGridView.Size = New System.Drawing.Size(863, 326)
+        Me.issueDataGridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
+        Me.issueDataGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
+        Me.issueDataGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.issueDataGridView.StateCommon.DataCell.Border.Width = 0
+        Me.issueDataGridView.StateCommon.DataCell.Content.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.issueDataGridView.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(67, Byte), Integer))
+        Me.issueDataGridView.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.issueDataGridView.StateCommon.HeaderColumn.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Dashed
+        Me.issueDataGridView.StateCommon.HeaderColumn.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.issueDataGridView.StateCommon.HeaderColumn.Border.Width = 0
+        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Color1 = System.Drawing.Color.White
+        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.issueDataGridView.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
+        Me.issueDataGridView.TabIndex = 17
         '
         'TabPage3
         '
@@ -4313,6 +4314,12 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
+        'CopyTransToolStripMenuItem
+        '
+        Me.CopyTransToolStripMenuItem.Name = "CopyTransToolStripMenuItem"
+        Me.CopyTransToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.CopyTransToolStripMenuItem.Text = "Copy Trans"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4392,7 +4399,6 @@ Partial Class Form2
         CType(Me.receiptGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
-        CType(Me.issueDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KryptonGroup5.Panel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup5.Panel.ResumeLayout(False)
         Me.KryptonGroup5.Panel.PerformLayout()
@@ -4407,6 +4413,7 @@ Partial Class Form2
         Me.KryptonGroup4.Panel.PerformLayout()
         CType(Me.KryptonGroup4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup4.ResumeLayout(False)
+        CType(Me.issueDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.KryptonSplitContainer5.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonSplitContainer5.Panel1.ResumeLayout(False)
@@ -4769,4 +4776,5 @@ Partial Class Form2
     Friend WithEvents KryptonLabel78 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents transactiontypecolor As ComboBox
     Friend WithEvents UpdateStocknoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CopyTransToolStripMenuItem As ToolStripMenuItem
 End Class
