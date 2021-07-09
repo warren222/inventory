@@ -316,57 +316,54 @@ update locationtb set location = '" & location.Text & "' where id = '" & id.Text
     End Sub
     Public Sub inserthistory()
         Try
-            sql.sqlcon.Open()
-            TRANSTYPE.Text = Trim(TRANSTYPE.Text)
-            location.Text = Trim(location.Text)
-            setlocation.Text = Trim(setlocation.Text)
-            setqty.Text = Trim(setqty.Text)
-            REFERENCE.Text = Trim(REFERENCE.Text)
-
-            Dim getrloc As String = "select qty from locationtb where stockno = '" & stockno.Text & "' and location = '" & setlocation.Text & "'"
-            sqlcmd = New SqlCommand(getrloc, sql.sqlcon)
-            Dim lb As String
-            Dim rd As SqlDataReader = sqlcmd.ExecuteReader
-            While rd.Read
-                lb = rd(0).ToString
-            End While
-            rd.Close()
-            Dim EBL As Double = lb
-            Dim ROBALANCE As Double
-
-
-
-            Dim physical As String
-            Dim l As String = "declare @sd as varchar(50)=(select sum(qty) from locationtb where stockno = '" & stockno.Text & "')
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                TRANSTYPE.Text = Trim(TRANSTYPE.Text)
+                location.Text = Trim(location.Text)
+                setlocation.Text = Trim(setlocation.Text)
+                setqty.Text = Trim(setqty.Text)
+                REFERENCE.Text = Trim(REFERENCE.Text)
+                Dim getrloc As String = "select qty from locationtb where stockno = '" & stockno.Text & "' and location = '" & setlocation.Text & "'"
+                Dim lb As String
+                Using sqlcmd = New SqlCommand(getrloc, sqlcon)
+                    Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                        While rd.Read
+                            lb = rd(0).ToString
+                        End While
+                    End Using
+                End Using
+                Dim EBL As Double = lb
+                Dim ROBALANCE As Double
+                Dim physical As String
+                Dim l As String = "declare @sd as varchar(50)=(select sum(qty) from locationtb where stockno = '" & stockno.Text & "')
 select @sd"
-            sqlcmd = New SqlCommand(l, sql.sqlcon)
-            Dim read1 As SqlDataReader = sqlcmd.ExecuteReader
-            While read1.Read
-                physical = read1(0).ToString
-            End While
-            read1.Close()
-            Dim p As Double = physical
-            Dim q As Double = setqty.Text
-            Dim newbal As Double
-            If TRANSTYPE.Text = "Issue" Then
-                newbal = p - q
-                ROBALANCE = EBL - q
-            ElseIf TRANSTYPE.Text = "Receipt" Then
-                newbal = p + q
-                ROBALANCE = EBL + q
-            ElseIf TRANSTYPE.Text = "Return" Then
-                newbal = p + q
-                ROBALANCE = EBL + q
-            ElseIf TRANSTYPE.Text = "+Adjustment" Then
-                newbal = p + q
-                ROBALANCE = EBL + q
-            ElseIf TRANSTYPE.Text = "-Adjustment" Then
-                newbal = p - q
-                ROBALANCE = EBL - q
-            End If
-
-
-            Dim str As String = "
+                Using sqlcmd As SqlCommand = New SqlCommand(l, sqlcon)
+                    Using read1 As SqlDataReader = sqlcmd.ExecuteReader
+                        While read1.Read
+                            physical = read1(0).ToString
+                        End While
+                    End Using
+                End Using
+                Dim p As Double = physical
+                Dim q As Double = setqty.Text
+                Dim newbal As Double
+                If TRANSTYPE.Text = "Issue" Then
+                    newbal = p - q
+                    ROBALANCE = EBL - q
+                ElseIf TRANSTYPE.Text = "Receipt" Then
+                    newbal = p + q
+                    ROBALANCE = EBL + q
+                ElseIf TRANSTYPE.Text = "Return" Then
+                    newbal = p + q
+                    ROBALANCE = EBL + q
+                ElseIf TRANSTYPE.Text = "+Adjustment" Then
+                    newbal = p + q
+                    ROBALANCE = EBL + q
+                ElseIf TRANSTYPE.Text = "-Adjustment" Then
+                    newbal = p - q
+                    ROBALANCE = EBL - q
+                End If
+                Dim str As String = "
 declare @autonum as decimal(10,2)=(select max(id)+1 from lochistory)
 insert into lochistory
 (ID,
@@ -386,8 +383,10 @@ values
 "'" & REFERENCE.Text & "'," &
 "'" & setlocation.Text & "'," &
 "'" & setqty.Text & "','" & newbal & "','" & ROBALANCE & "')"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            sqlcmd.ExecuteNonQuery()
+                Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                    sqlcmd.ExecuteNonQuery()
+                End Using
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
