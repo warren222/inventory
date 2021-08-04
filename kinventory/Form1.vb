@@ -8,9 +8,11 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Form9.KryptonLabel2.Text = "Admin" Then
-            ManageAccountsToolStripMenuItem.Enabled = True
+            ManageAccountsToolStripMenuItem.Visible = True
+            ColorMngrToolStripMenuItem.Visible = True
         Else
             ManageAccountsToolStripMenuItem.Enabled = False
+            ColorMngrToolStripMenuItem.Visible = False
         End If
     End Sub
 
@@ -38,5 +40,9 @@
 
     Private Sub ManageColumnsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageColumnsToolStripMenuItem.Click
         managecolumns.ShowDialog()
+    End Sub
+
+    Private Sub ColorMngrToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ColorMngrToolStripMenuItem.Click
+        ColorManagerTool.Show()
     End Sub
 End Class

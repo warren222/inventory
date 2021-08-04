@@ -1365,6 +1365,8 @@ select
     End Sub
     Public transnoAlist As New ArrayList
     Public stocknoAlist As New ArrayList
+    Public referenceAlist As New ArrayList
+    Public joAlist As New ArrayList
     Private Sub transgridview_SelectionChanged(sender As Object, e As EventArgs) Handles transgridview.SelectionChanged
         Dim selecteditem As DataGridViewSelectedRowCollection = transgridview.SelectedRows
         transnocombo.Items.Clear()
@@ -1384,6 +1386,8 @@ select
         UpdateStockNo.articleno.Items.Clear()
         transnoAlist = New ArrayList
         stocknoAlist = New ArrayList
+        referenceAlist = New ArrayList
+        joAlist = New ArrayList
         For Each item As DataGridViewRow In selecteditem
             Dim x As String = item.Cells("transno").Value.ToString
             Dim y As String = item.Cells("stockno").Value.ToString
@@ -1412,6 +1416,8 @@ select
             UpdateStockNo.articleno.Items.Add(articleno)
             transnoAlist.Add(item.Cells("transno").Value.ToString)
             stocknoAlist.Add(item.Cells("stockno").Value.ToString)
+            referenceAlist.Add(item.Cells("reference").Value.ToString)
+            joAlist.Add(item.Cells("jo").Value.ToString)
         Next
     End Sub
 
@@ -3515,5 +3521,13 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     Private Sub CopyTransToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyTransToolStripMenuItem.Click
         CopyTransaction.ShowDialog()
+    End Sub
+
+    Private Sub ChangeColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeColorToolStripMenuItem.Click
+        ChangeColor.transnolist = transnoAlist
+        ChangeColor.stocknolist = stocknoAlist
+        ChangeColor.referencelist = referenceAlist
+        ChangeColor.jolist = joAlist
+        ChangeColor.Show()
     End Sub
 End Class

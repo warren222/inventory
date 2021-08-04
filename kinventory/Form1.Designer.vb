@@ -26,6 +26,7 @@ Partial Class Form1
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColorMngrToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,7 +49,7 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.LogOutToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ColorMngrToolStripMenuItem, Me.LogOutToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.FileToolStripMenuItem.Text = "System"
@@ -56,14 +57,20 @@ Partial Class Form1
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "Inventory"
         '
         'LogOutToolStripMenuItem
         '
         Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LogOutToolStripMenuItem.Text = "log out"
+        '
+        'ColorMngrToolStripMenuItem
+        '
+        Me.ColorMngrToolStripMenuItem.Name = "ColorMngrToolStripMenuItem"
+        Me.ColorMngrToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ColorMngrToolStripMenuItem.Text = "ColorMngr"
         '
         'AccountsToolStripMenuItem
         '
@@ -148,4 +155,5 @@ Partial Class Form1
     Friend WithEvents nickname As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ManageColumnsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ColorMngrToolStripMenuItem As ToolStripMenuItem
 End Class

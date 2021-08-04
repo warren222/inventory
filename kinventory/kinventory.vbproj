@@ -196,6 +196,18 @@
     <Compile Include="checklisted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Color\ChangeColor.Designer.vb">
+      <DependentUpon>ChangeColor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Color\ChangeColor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Color\ColorManagerTool.Designer.vb">
+      <DependentUpon>ColorManagerTool.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Color\ColorManagerTool.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CopyTansaction.Designer.vb">
       <DependentUpon>CopyTansaction.vb</DependentUpon>
     </Compile>
@@ -462,6 +474,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="checklisted.resx">
       <DependentUpon>checklisted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Color\ChangeColor.resx">
+      <DependentUpon>ChangeColor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Color\ColorManagerTool.resx">
+      <DependentUpon>ColorManagerTool.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CopyTansaction.resx">
       <DependentUpon>CopyTansaction.vb</DependentUpon>
