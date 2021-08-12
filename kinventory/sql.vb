@@ -563,7 +563,8 @@ order by A.articleno asc"
                         ByVal foilwithb As String,
                         ByVal foilcolor As String,
                         ByVal tofoil As String,
-                        ByVal toorder As String)
+                        ByVal toorder As String,
+                        ByVal SourceStockno As String)
         Try
             sqlcon.Open()
             Dim find As String = "select * from stocks_tb where costhead='" & costhead & "' and typecolor='" & typecolor & "' and articleno='" & articleno & "'"
@@ -626,8 +627,29 @@ INPUTTED)values(@id,'" & supplier & "'," &
                             "'" & foilcolor & "'," &
                             "'" & tofoil & "'," &
                             "'" & toorder & "'," &
-             "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
+             "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')
+
+
+                    declare @maxId as int = (select max(id) from ColorMngr_Tb)
+
+					insert into ColorMngr_Tb
+						  ([Id]
+						  ,[Source_Stockno]
+						  ,[Cpart_Stockno]
+						  ,[Color])
+					select 
+						  number = @maxId+ROW_NUMBER() OVER (ORDER BY t.Id)
+						  ,@id
+						  ,[Cpart_Stockno]
+						  ,[Color]
+					from ColorMngr_Tb as t
+
+					where t.Source_Stockno = @SourceStockno
+					and
+					not t.color in (select color from ColorMngr_Tb where Source_Stockno = @id and color = t.Color)   
+"
                 sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.Parameters.AddWithValue("@SourceStockno", SourceStockno)
                 sqlcmd.ExecuteNonQuery()
                 MessageBox.Show("New stocks Added!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If

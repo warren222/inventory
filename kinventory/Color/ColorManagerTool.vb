@@ -64,7 +64,7 @@ Public Class ColorManagerTool
         AddHandler bgw.RunWorkerCompleted, AddressOf bgw_RunWorkerCompleted
         bgw.WorkerSupportsCancellation = True
         bgw.WorkerReportsProgress = True
-        rowCbox.SelectedIndex = 0
+        rowCbox.SelectedIndex = 1
         initializeTables()
         initializeCMVariables()
         starter("loadColorMngr")
@@ -113,6 +113,8 @@ Public Class ColorManagerTool
             Case "cmColorSuggestion"
                 LoadingPBOX.Visible = False
             Case "cmCostheadSuggestion"
+                LoadingPBOX.Visible = False
+            Case "copy"
                 LoadingPBOX.Visible = False
         End Select
     End Sub
@@ -313,6 +315,9 @@ Public Class ColorManagerTool
             Case "cmCostheadSuggestion"
                 Query(action, "")
                 bgw.ReportProgress(0)
+            Case "copy"
+                Query(action, "")
+                bgw.ReportProgress(0)
         End Select
     End Sub
     Dim da As SqlDataAdapter = New SqlDataAdapter()
@@ -432,8 +437,8 @@ Public Class ColorManagerTool
         initializeCpartVariables()
         starter("loadCpart")
     End Sub
-    Dim _sourceStockno As String
-    Dim _cpartStockno As String
+    Dim _sourceStockno As String = ""
+    Dim _cpartStockno As String = ""
     Dim _id As New ArrayList
 
     Private Sub sourcegv_SelectionChanged(sender As Object, e As EventArgs) Handles sourcegv.SelectionChanged
@@ -453,7 +458,9 @@ Public Class ColorManagerTool
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         _colorAssigned = colorAssignedCbox.Text
-        starter("add")
+        If Not _sourceStockno = "" Then
+            starter("add")
+        End If
     End Sub
 
     Private Sub colorMngrgv_SelectionChanged(sender As Object, e As EventArgs) Handles colorMngrgv.SelectionChanged
@@ -461,6 +468,11 @@ Public Class ColorManagerTool
         _id = New ArrayList
         For Each row As DataGridViewRow In rows
             _id.Add(row.Cells("Id").Value.ToString())
+
+            CopyCounterpart._sourceStockno = row.Cells("Source_Stockno").Value.ToString()
+            CopyCounterpart.lblArticleno.Text = row.Cells("Articleno").Value.ToString()
+            CopyCounterpart.lblCosthead.Text = row.Cells("Costhead").Value.ToString()
+            CopyCounterpart.lblTypecolor.Text = row.Cells("Typecolor").Value.ToString()
         Next
     End Sub
 
@@ -537,5 +549,14 @@ Public Class ColorManagerTool
 
     Private Sub specifiedColorCbox_MouseDown(sender As Object, e As MouseEventArgs) Handles specifiedColorCbox.MouseDown
         starter("specifiedColorSuggestion")
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If CopyCounterpart._sourceStockno = "" Then
+            MessageBox.Show("please select a reference from the main table", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            CopyCounterpart.Show()
+        End If
+
     End Sub
 End Class

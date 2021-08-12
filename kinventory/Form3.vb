@@ -27,7 +27,8 @@ Public Class Form3
                          foilwithb.Text,
                          foilcolor.Text,
                          tofoil.Text,
-                         toorder.Text)
+                         toorder.Text,
+                         tboxSourceStockno.Text)
             'sql.loadstocks()
             Form2.KryptonButton1.PerformClick()
             Button1.PerformClick()
@@ -247,5 +248,9 @@ min.Text, colorbased.Text, xrate.Text,
         Finally
             sql.sqlcon.Close()
         End Try
+    End Sub
+
+    Private Sub KryptonButton3_Click(sender As Object, e As EventArgs) Handles KryptonButton3.Click
+        stocksReference.ShowDialog()
     End Sub
 End Class
