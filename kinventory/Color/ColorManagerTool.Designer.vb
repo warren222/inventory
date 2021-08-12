@@ -58,6 +58,8 @@ Partial Class ColorManagerTool
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.colorMngrgv = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.rowCbox = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.specifiedColorCbox = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -68,9 +70,8 @@ Partial Class ColorManagerTool
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cmCostheadCbox = New System.Windows.Forms.ComboBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.rowCbox = New System.Windows.Forms.ComboBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.TopPanel.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -455,6 +456,7 @@ Partial Class ColorManagerTool
         '
         'Button1
         '
+        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(683, 6)
         Me.Button1.Name = "Button1"
@@ -465,6 +467,7 @@ Partial Class ColorManagerTool
         '
         'Label1
         '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(422, 10)
@@ -475,6 +478,7 @@ Partial Class ColorManagerTool
         '
         'colorAssignedCbox
         '
+        Me.colorAssignedCbox.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.colorAssignedCbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.colorAssignedCbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.colorAssignedCbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -549,6 +553,31 @@ Partial Class ColorManagerTool
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(1216, 31)
         Me.Panel8.TabIndex = 3
+        '
+        'rowCbox
+        '
+        Me.rowCbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.rowCbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.rowCbox.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rowCbox.DropDownHeight = 206
+        Me.rowCbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.rowCbox.FormattingEnabled = True
+        Me.rowCbox.IntegralHeight = False
+        Me.rowCbox.Items.AddRange(New Object() {"100", "1000", "10000", "1000000", "10000000"})
+        Me.rowCbox.Location = New System.Drawing.Point(885, 3)
+        Me.rowCbox.Name = "rowCbox"
+        Me.rowCbox.Size = New System.Drawing.Size(113, 21)
+        Me.rowCbox.TabIndex = 20
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(855, 6)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(29, 13)
+        Me.Label14.TabIndex = 19
+        Me.Label14.Text = "rows"
         '
         'specifiedColorCbox
         '
@@ -653,6 +682,7 @@ Partial Class ColorManagerTool
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel7.Controls.Add(Me.Button6)
         Me.Panel7.Controls.Add(Me.Button4)
         Me.Panel7.Controls.Add(Me.Button1)
         Me.Panel7.Controls.Add(Me.colorAssignedCbox)
@@ -663,8 +693,20 @@ Partial Class ColorManagerTool
         Me.Panel7.Size = New System.Drawing.Size(1216, 33)
         Me.Panel7.TabIndex = 0
         '
+        'Button6
+        '
+        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(1004, -1)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(213, 34)
+        Me.Button6.TabIndex = 4
+        Me.Button6.Text = "copy counterparts"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Button4
         '
+        Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Location = New System.Drawing.Point(764, 6)
         Me.Button4.Name = "Button4"
@@ -672,31 +714,6 @@ Partial Class ColorManagerTool
         Me.Button4.TabIndex = 3
         Me.Button4.Text = "delete"
         Me.Button4.UseVisualStyleBackColor = True
-        '
-        'rowCbox
-        '
-        Me.rowCbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.rowCbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.rowCbox.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.rowCbox.DropDownHeight = 206
-        Me.rowCbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.rowCbox.FormattingEnabled = True
-        Me.rowCbox.IntegralHeight = False
-        Me.rowCbox.Items.AddRange(New Object() {"100", "1000", "10000", "1000000", "10000000"})
-        Me.rowCbox.Location = New System.Drawing.Point(885, 3)
-        Me.rowCbox.Name = "rowCbox"
-        Me.rowCbox.Size = New System.Drawing.Size(113, 21)
-        Me.rowCbox.TabIndex = 20
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(855, 6)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(29, 13)
-        Me.Label14.TabIndex = 19
-        Me.Label14.Text = "rows"
         '
         'ColorManagerTool
         '
@@ -781,4 +798,5 @@ Partial Class ColorManagerTool
     Friend WithEvents Label13 As Label
     Friend WithEvents rowCbox As ComboBox
     Friend WithEvents Label14 As Label
+    Friend WithEvents Button6 As Button
 End Class

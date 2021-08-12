@@ -208,6 +208,18 @@
     <Compile Include="Color\ColorManagerTool.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Color\CopyCounterpart.Designer.vb">
+      <DependentUpon>CopyCounterpart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Color\CopyCounterpart.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Color\stocksReference.Designer.vb">
+      <DependentUpon>stocksReference.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Color\stocksReference.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CopyTansaction.Designer.vb">
       <DependentUpon>CopyTansaction.vb</DependentUpon>
     </Compile>
@@ -480,6 +492,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Color\ColorManagerTool.resx">
       <DependentUpon>ColorManagerTool.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Color\CopyCounterpart.resx">
+      <DependentUpon>CopyCounterpart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Color\stocksReference.resx">
+      <DependentUpon>stocksReference.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CopyTansaction.resx">
       <DependentUpon>CopyTansaction.vb</DependentUpon>
