@@ -468,7 +468,7 @@ Public Class ColorManagerTool
         _id = New ArrayList
         For Each row As DataGridViewRow In rows
             _id.Add(row.Cells("Id").Value.ToString())
-
+            CopyToCpart._sourceStockno = row.Cells("Source_Stockno").Value.ToString()
             CopyCounterpart._sourceStockno = row.Cells("Source_Stockno").Value.ToString()
             CopyCounterpart.lblArticleno.Text = row.Cells("Articleno").Value.ToString()
             CopyCounterpart.lblCosthead.Text = row.Cells("Costhead").Value.ToString()
@@ -558,5 +558,29 @@ Public Class ColorManagerTool
             CopyCounterpart.Show()
         End If
 
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        If CopyToCpart._sourceStockno = "" Then
+            MessageBox.Show("please select a reference from the main table", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            CopyToCpart.Show()
+        End If
+    End Sub
+
+    Private Sub colorMngrgv_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles colorMngrgv.RowPostPaint
+        Dim grid As DataGridView = DirectCast(sender, DataGridView)
+        e.PaintHeader(DataGridViewPaintParts.Background)
+        Dim rowIdx As String = (e.RowIndex + 1).ToString()
+        Dim rowFont As New System.Drawing.Font("Microsoft Sans Serif", 8.0!,
+            System.Drawing.FontStyle.Regular,
+            System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Dim centerFormat = New StringFormat()
+        centerFormat.Alignment = StringAlignment.Far
+        centerFormat.LineAlignment = StringAlignment.Near
+
+        Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height)
+
+        e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
     End Sub
 End Class
