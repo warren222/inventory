@@ -22,8 +22,8 @@ Partial Class ColorManagerTool
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ColorManagerTool))
         Me.TopPanel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -70,6 +70,7 @@ Partial Class ColorManagerTool
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cmCostheadCbox = New System.Windows.Forms.ComboBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TopPanel.SuspendLayout()
@@ -133,8 +134,8 @@ Partial Class ColorManagerTool
         Me.sourcegv.AllowUserToAddRows = False
         Me.sourcegv.AllowUserToDeleteRows = False
         Me.sourcegv.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.sourcegv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.sourcegv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.sourcegv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.sourcegv.ColumnHeadersHeight = 30
         Me.sourcegv.Cursor = System.Windows.Forms.Cursors.Hand
@@ -273,8 +274,8 @@ Partial Class ColorManagerTool
         Me.cpartgv.AllowUserToAddRows = False
         Me.cpartgv.AllowUserToDeleteRows = False
         Me.cpartgv.AllowUserToOrderColumns = True
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.cpartgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cpartgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.cpartgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.cpartgv.ColumnHeadersHeight = 30
         Me.cpartgv.Cursor = System.Windows.Forms.Cursors.Hand
@@ -682,6 +683,7 @@ Partial Class ColorManagerTool
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel7.Controls.Add(Me.Button7)
         Me.Panel7.Controls.Add(Me.Button6)
         Me.Panel7.Controls.Add(Me.Button4)
         Me.Panel7.Controls.Add(Me.Button1)
@@ -693,16 +695,30 @@ Partial Class ColorManagerTool
         Me.Panel7.Size = New System.Drawing.Size(1216, 33)
         Me.Panel7.TabIndex = 0
         '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Button7.Location = New System.Drawing.Point(0, -1)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(213, 34)
+        Me.Button7.TabIndex = 5
+        Me.Button7.Text = "copy Cparts (auto)"
+        Me.Button7.UseVisualStyleBackColor = False
+        '
         'Button6
         '
         Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button6.Location = New System.Drawing.Point(1004, -1)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(213, 34)
         Me.Button6.TabIndex = 4
-        Me.Button6.Text = "copy counterparts"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Text = "copy Cparts (manual)"
+        Me.Button6.UseVisualStyleBackColor = False
         '
         'Button4
         '
@@ -799,4 +815,5 @@ Partial Class ColorManagerTool
     Friend WithEvents rowCbox As ComboBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
 End Class
