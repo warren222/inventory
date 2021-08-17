@@ -54,6 +54,7 @@ Partial Class Form3
         Me.colorbased = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.KryptonGroup7 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.KryptonButton3 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonLabel23 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.tboxSourceStockno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel18 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -85,7 +86,8 @@ Partial Class Form3
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.KryptonButton3 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
+        Me.tboxspecifiedcolor = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
+        Me.KryptonLabel24 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.Panel1.SuspendLayout()
         CType(Me.KryptonGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup7.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -523,6 +525,8 @@ Partial Class Form3
         '
         'KryptonGroup7.Panel
         '
+        Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonLabel24)
+        Me.KryptonGroup7.Panel.Controls.Add(Me.tboxspecifiedcolor)
         Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonButton3)
         Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonLabel23)
         Me.KryptonGroup7.Panel.Controls.Add(Me.tboxSourceStockno)
@@ -576,16 +580,54 @@ Partial Class Form3
         Me.KryptonGroup7.StateCommon.Border.Width = 3
         Me.KryptonGroup7.TabIndex = 455
         '
+        'KryptonButton3
+        '
+        Me.KryptonButton3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.KryptonButton3.Location = New System.Drawing.Point(638, 342)
+        Me.KryptonButton3.Name = "KryptonButton3"
+        Me.KryptonButton3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonButton3.Size = New System.Drawing.Size(67, 29)
+        Me.KryptonButton3.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StateCommon.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
+        Me.KryptonButton3.StateCommon.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias
+        Me.KryptonButton3.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StateCommon.Border.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
+        Me.KryptonButton3.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.KryptonButton3.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias
+        Me.KryptonButton3.StateCommon.Border.Rounding = 0
+        Me.KryptonButton3.StateCommon.Border.Width = 0
+        Me.KryptonButton3.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White
+        Me.KryptonButton3.StateCommon.Content.ShortText.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonButton3.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center
+        Me.KryptonButton3.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StateDisabled.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StateDisabled.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.KryptonButton3.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StateNormal.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
+        Me.KryptonButton3.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
+        Me.KryptonButton3.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
+        Me.KryptonButton3.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(8, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.KryptonButton3.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(8, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.KryptonButton3.StateTracking.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.KryptonButton3.TabIndex = 505
+        Me.KryptonButton3.Values.Text = "select"
+        '
         'KryptonLabel23
         '
-        Me.KryptonLabel23.Location = New System.Drawing.Point(352, 348)
+        Me.KryptonLabel23.Location = New System.Drawing.Point(466, 344)
         Me.KryptonLabel23.Name = "KryptonLabel23"
         Me.KryptonLabel23.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel23.Size = New System.Drawing.Size(190, 22)
+        Me.KryptonLabel23.Size = New System.Drawing.Size(71, 22)
         Me.KryptonLabel23.StateCommon.ShortText.Color1 = System.Drawing.Color.White
         Me.KryptonLabel23.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KryptonLabel23.TabIndex = 504
-        Me.KryptonLabel23.Values.Text = "Color Counterparts Reference"
+        Me.KryptonLabel23.Values.Text = "Reference"
         '
         'tboxSourceStockno
         '
@@ -1075,43 +1117,29 @@ Partial Class Form3
         Me.Panel2.Size = New System.Drawing.Size(653, 44)
         Me.Panel2.TabIndex = 459
         '
-        'KryptonButton3
+        'tboxspecifiedcolor
         '
-        Me.KryptonButton3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton3.Location = New System.Drawing.Point(638, 342)
-        Me.KryptonButton3.Name = "KryptonButton3"
-        Me.KryptonButton3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonButton3.Size = New System.Drawing.Size(67, 29)
-        Me.KryptonButton3.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StateCommon.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
-        Me.KryptonButton3.StateCommon.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias
-        Me.KryptonButton3.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StateCommon.Border.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
-        Me.KryptonButton3.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+        Me.tboxspecifiedcolor.Location = New System.Drawing.Point(348, 344)
+        Me.tboxspecifiedcolor.Multiline = True
+        Me.tboxspecifiedcolor.Name = "tboxspecifiedcolor"
+        Me.tboxspecifiedcolor.Size = New System.Drawing.Size(107, 27)
+        Me.tboxspecifiedcolor.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
             Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
             Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.KryptonButton3.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias
-        Me.KryptonButton3.StateCommon.Border.Rounding = 0
-        Me.KryptonButton3.StateCommon.Border.Width = 0
-        Me.KryptonButton3.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White
-        Me.KryptonButton3.StateCommon.Content.ShortText.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonButton3.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center
-        Me.KryptonButton3.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StateDisabled.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StateDisabled.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.KryptonButton3.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StateNormal.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
-        Me.KryptonButton3.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(135, Byte), Integer))
-        Me.KryptonButton3.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid
-        Me.KryptonButton3.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(CType(CType(8, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.KryptonButton3.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(CType(CType(8, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.KryptonButton3.StateTracking.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.KryptonButton3.TabIndex = 505
-        Me.KryptonButton3.Values.Text = "select"
+        Me.tboxspecifiedcolor.StateCommon.Border.Width = 3
+        Me.tboxspecifiedcolor.StateDisabled.Content.Color1 = System.Drawing.Color.Black
+        Me.tboxspecifiedcolor.TabIndex = 506
+        '
+        'KryptonLabel24
+        '
+        Me.KryptonLabel24.Location = New System.Drawing.Point(239, 344)
+        Me.KryptonLabel24.Name = "KryptonLabel24"
+        Me.KryptonLabel24.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel24.Size = New System.Drawing.Size(103, 22)
+        Me.KryptonLabel24.StateCommon.ShortText.Color1 = System.Drawing.Color.White
+        Me.KryptonLabel24.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel24.TabIndex = 507
+        Me.KryptonLabel24.Values.Text = "Specified Color"
         '
         'Form3
         '
@@ -1248,4 +1276,6 @@ Partial Class Form3
     Friend WithEvents KryptonLabel23 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents tboxSourceStockno As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonButton3 As ComponentFactory.Krypton.Toolkit.KryptonButton
+    Friend WithEvents KryptonLabel24 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents tboxspecifiedcolor As ComponentFactory.Krypton.Toolkit.KryptonTextBox
 End Class

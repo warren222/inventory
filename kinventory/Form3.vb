@@ -28,7 +28,8 @@ Public Class Form3
                          foilcolor.Text,
                          tofoil.Text,
                          toorder.Text,
-                         tboxSourceStockno.Text)
+                         tboxSourceStockno.Text,
+                         tboxspecifiedcolor.Text)
             'sql.loadstocks()
             Form2.KryptonButton1.PerformClick()
             Button1.PerformClick()
