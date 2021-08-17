@@ -564,7 +564,8 @@ order by A.articleno asc"
                         ByVal foilcolor As String,
                         ByVal tofoil As String,
                         ByVal toorder As String,
-                        ByVal SourceStockno As String)
+                        ByVal SourceStockno As String,
+                        ByVal SpecifiedColor As String)
         Try
             sqlcon.Open()
             Dim find As String = "select * from stocks_tb where costhead='" & costhead & "' and typecolor='" & typecolor & "' and articleno='" & articleno & "'"
@@ -629,6 +630,19 @@ INPUTTED)values(@id,'" & supplier & "'," &
                             "'" & toorder & "'," &
              "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')
 
+                    declare @new_Id as int = (select max(id)+1 from ColorMngr_Tb)
+                          insert into ColorMngr_Tb
+						  ([Id]
+						  ,[Source_Stockno]
+						  ,[Cpart_Stockno]
+						  ,[Color])
+                            values
+                            (@new_Id,
+                            @SourceStockno,
+                            @id,
+                            @SpecifiedColor)
+
+
 
                     declare @maxId as int = (select max(id) from ColorMngr_Tb)
 
@@ -650,6 +664,7 @@ INPUTTED)values(@id,'" & supplier & "'," &
 "
                 sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.Parameters.AddWithValue("@SourceStockno", SourceStockno)
+                sqlcmd.Parameters.AddWithValue("@SpecifiedColor", SpecifiedColor)
                 sqlcmd.ExecuteNonQuery()
                 MessageBox.Show("New stocks Added!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
