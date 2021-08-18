@@ -162,9 +162,43 @@ min.Text, colorbased.Text, xrate.Text,
             min.Visible = False
             KryptonLabel14.Visible = False
         End If
+
+        loadColorSuggestion()
     End Sub
+    Dim _colorAssignedds As New DataSet
+    Dim da As New SqlDataAdapter
+    Private Sub loadColorSuggestion()
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcon.Open()
+                sqlcmd.CommandText = "ColorManagerTool_Stp"
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.Parameters.AddWithValue("@Command", "ColorSuggestion")
 
-
+                _colorAssignedds = New DataSet
+                _colorAssignedds.Clear()
+                initializeDataset(sqlcmd, _colorAssignedds, "ColorMngr_Tb")
+                initializeDatasource(tboxspecifiedcolor, _colorAssignedds, "ColorMngr_Tb", "Color")
+            End Using
+        End Using
+    End Sub
+    Private Sub initializeDataset(ByVal sqlcmd As SqlCommand, ByVal dset As DataSet, ByVal tbl As String)
+        da.SelectCommand = sqlcmd
+        da.Fill(dset, tbl)
+    End Sub
+    Private Sub initializeDatasource(ByVal sender As Object, ByVal dset As DataSet, ByVal datamember As String, ByVal displaymember As String)
+        Dim x As Integer = sender.SelectedIndex
+        Dim newbs As New BindingSource
+        newbs.DataSource = dset
+        newbs.DataMember = datamember
+        sender.DataSource = newbs
+        sender.DisplayMember = displaymember
+        If x > sender.Items.Count - 1 Then
+            sender.SelectedIndex = -1
+        Else
+            sender.SelectedIndex = x
+        End If
+    End Sub
 
     Private Sub min_Leave(sender As Object, e As EventArgs) Handles min.Leave
         Dim name As String = "Minimum qty"

@@ -54,6 +54,7 @@ Partial Class Form3
         Me.colorbased = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.KryptonGroup7 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.KryptonLabel24 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonButton3 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonLabel23 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.tboxSourceStockno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
@@ -86,8 +87,8 @@ Partial Class Form3
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.tboxspecifiedcolor = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
-        Me.KryptonLabel24 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.KryptonGroup10 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.tboxspecifiedcolor = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         CType(Me.KryptonGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup7.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,6 +141,10 @@ Partial Class Form3
         CType(Me.KryptonPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.KryptonGroup10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.KryptonGroup10.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.KryptonGroup10.Panel.SuspendLayout()
+        Me.KryptonGroup10.SuspendLayout()
         Me.SuspendLayout()
         '
         'KryptonLabel3
@@ -525,8 +530,8 @@ Partial Class Form3
         '
         'KryptonGroup7.Panel
         '
+        Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonGroup10)
         Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonLabel24)
-        Me.KryptonGroup7.Panel.Controls.Add(Me.tboxspecifiedcolor)
         Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonButton3)
         Me.KryptonGroup7.Panel.Controls.Add(Me.KryptonLabel23)
         Me.KryptonGroup7.Panel.Controls.Add(Me.tboxSourceStockno)
@@ -579,6 +584,17 @@ Partial Class Form3
         Me.KryptonGroup7.StateCommon.Border.Rounding = 100
         Me.KryptonGroup7.StateCommon.Border.Width = 3
         Me.KryptonGroup7.TabIndex = 455
+        '
+        'KryptonLabel24
+        '
+        Me.KryptonLabel24.Location = New System.Drawing.Point(204, 344)
+        Me.KryptonLabel24.Name = "KryptonLabel24"
+        Me.KryptonLabel24.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel24.Size = New System.Drawing.Size(103, 22)
+        Me.KryptonLabel24.StateCommon.ShortText.Color1 = System.Drawing.Color.White
+        Me.KryptonLabel24.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel24.TabIndex = 507
+        Me.KryptonLabel24.Values.Text = "Specified Color"
         '
         'KryptonButton3
         '
@@ -1117,29 +1133,35 @@ Partial Class Form3
         Me.Panel2.Size = New System.Drawing.Size(653, 44)
         Me.Panel2.TabIndex = 459
         '
-        'tboxspecifiedcolor
+        'KryptonGroup10
         '
-        Me.tboxspecifiedcolor.Location = New System.Drawing.Point(348, 344)
-        Me.tboxspecifiedcolor.Multiline = True
-        Me.tboxspecifiedcolor.Name = "tboxspecifiedcolor"
-        Me.tboxspecifiedcolor.Size = New System.Drawing.Size(107, 27)
-        Me.tboxspecifiedcolor.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+        Me.KryptonGroup10.Location = New System.Drawing.Point(313, 344)
+        Me.KryptonGroup10.Margin = New System.Windows.Forms.Padding(0)
+        Me.KryptonGroup10.Name = "KryptonGroup10"
+        '
+        'KryptonGroup10.Panel
+        '
+        Me.KryptonGroup10.Panel.Controls.Add(Me.tboxspecifiedcolor)
+        Me.KryptonGroup10.Size = New System.Drawing.Size(150, 30)
+        Me.KryptonGroup10.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
             Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
             Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.tboxspecifiedcolor.StateCommon.Border.Width = 3
-        Me.tboxspecifiedcolor.StateDisabled.Content.Color1 = System.Drawing.Color.Black
-        Me.tboxspecifiedcolor.TabIndex = 506
+        Me.KryptonGroup10.StateCommon.Border.Rounding = 0
+        Me.KryptonGroup10.StateCommon.Border.Width = 3
+        Me.KryptonGroup10.TabIndex = 508
         '
-        'KryptonLabel24
+        'tboxspecifiedcolor
         '
-        Me.KryptonLabel24.Location = New System.Drawing.Point(239, 344)
-        Me.KryptonLabel24.Name = "KryptonLabel24"
-        Me.KryptonLabel24.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel24.Size = New System.Drawing.Size(103, 22)
-        Me.KryptonLabel24.StateCommon.ShortText.Color1 = System.Drawing.Color.White
-        Me.KryptonLabel24.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel24.TabIndex = 507
-        Me.KryptonLabel24.Values.Text = "Specified Color"
+        Me.tboxspecifiedcolor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.tboxspecifiedcolor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.tboxspecifiedcolor.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tboxspecifiedcolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.tboxspecifiedcolor.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tboxspecifiedcolor.FormattingEnabled = True
+        Me.tboxspecifiedcolor.Location = New System.Drawing.Point(0, 0)
+        Me.tboxspecifiedcolor.Name = "tboxspecifiedcolor"
+        Me.tboxspecifiedcolor.Size = New System.Drawing.Size(144, 24)
+        Me.tboxspecifiedcolor.TabIndex = 7
         '
         'Form3
         '
@@ -1209,6 +1231,10 @@ Partial Class Form3
         Me.KryptonPanel1.ResumeLayout(False)
         Me.KryptonPanel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        CType(Me.KryptonGroup10.Panel, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.KryptonGroup10.Panel.ResumeLayout(False)
+        CType(Me.KryptonGroup10, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.KryptonGroup10.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1277,5 +1303,6 @@ Partial Class Form3
     Friend WithEvents tboxSourceStockno As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonButton3 As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents KryptonLabel24 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Friend WithEvents tboxspecifiedcolor As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents KryptonGroup10 As ComponentFactory.Krypton.Toolkit.KryptonGroup
+    Friend WithEvents tboxspecifiedcolor As ComboBox
 End Class

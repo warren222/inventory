@@ -566,6 +566,7 @@ order by A.articleno asc"
                         ByVal toorder As String,
                         ByVal SourceStockno As String,
                         ByVal SpecifiedColor As String)
+
         Try
             sqlcon.Open()
             Dim find As String = "select * from stocks_tb where costhead='" & costhead & "' and typecolor='" & typecolor & "' and articleno='" & articleno & "'"
@@ -672,7 +673,38 @@ INPUTTED)values(@id,'" & supplier & "'," &
             MsgBox(ex.ToString)
         Finally
             sqlcon.Close()
+            If Not SourceStockno = "" Then
+                Query("getList", SourceStockno, "")
+                If _cpartStocknoList.Count > 0 Then
+                    For i As Integer = 0 To _cpartStocknoList.Count - 1
+                        Query("copy", SourceStockno, _cpartStocknoList(0).ToString())
+                    Next
+                End If
+            End If
+
         End Try
+    End Sub
+    Dim _cpartStocknoList As New ArrayList
+    Private Sub Query(ByVal command As String, ByVal _sourceStockno As String, ByVal _cpartStockno As String)
+        Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcon.Open()
+                sqlcmd.CommandText = "ColorManagerTool_Stp"
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.Parameters.AddWithValue("@Command", command)
+                sqlcmd.Parameters.AddWithValue("@SourceStockno", _sourceStockno)
+                sqlcmd.Parameters.AddWithValue("@CpartStockno", _cpartStockno)
+                If command = "getList" Then
+                    _cpartStocknoList = New ArrayList
+                    Dim rd As SqlDataReader = sqlcmd.ExecuteReader
+                    While rd.Read
+                        _cpartStocknoList.Add(rd(0).ToString())
+                    End While
+                Else
+                    sqlcmd.ExecuteNonQuery()
+                End If
+            End Using
+        End Using
     End Sub
     Public Sub updatestocks(ByVal stockno As String,
                ByVal ufactor As String,
