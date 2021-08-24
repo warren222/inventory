@@ -565,7 +565,8 @@ order by A.articleno asc"
                         ByVal tofoil As String,
                         ByVal toorder As String,
                         ByVal SourceStockno As String,
-                        ByVal SpecifiedColor As String)
+                        ByVal SpecifiedColor As String,
+                        ByVal createCounterparts As String)
 
         Try
             sqlcon.Open()
@@ -631,6 +632,8 @@ INPUTTED)values(@id,'" & supplier & "'," &
                             "'" & toorder & "'," &
              "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')
 
+if @CreateCounterparts = 'True'
+begin
                     declare @new_Id as int = (select max(id)+1 from ColorMngr_Tb)
                           insert into ColorMngr_Tb
 						  ([Id]
@@ -662,10 +665,12 @@ INPUTTED)values(@id,'" & supplier & "'," &
 					where t.Source_Stockno = @SourceStockno
 					and
 					not t.color in (select color from ColorMngr_Tb where Source_Stockno = @id and color = t.Color)   
+end
 "
                 sqlcmd = New SqlCommand(str, sqlcon)
                 sqlcmd.Parameters.AddWithValue("@SourceStockno", SourceStockno)
                 sqlcmd.Parameters.AddWithValue("@SpecifiedColor", SpecifiedColor)
+                sqlcmd.Parameters.AddWithValue("@CreateCounterparts", createCounterparts)
                 sqlcmd.ExecuteNonQuery()
                 MessageBox.Show("New stocks Added!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
@@ -673,14 +678,17 @@ INPUTTED)values(@id,'" & supplier & "'," &
             MsgBox(ex.ToString)
         Finally
             sqlcon.Close()
-            If Not SourceStockno = "" Then
-                Query("getList", SourceStockno, "")
-                If _cpartStocknoList.Count > 0 Then
-                    For i As Integer = 0 To _cpartStocknoList.Count - 1
-                        Query("copy", SourceStockno, _cpartStocknoList(0).ToString())
-                    Next
+            If createCounterparts = "True" Then
+                If Not SourceStockno = "" Then
+                    Query("getList", SourceStockno, "")
+                    If _cpartStocknoList.Count > 0 Then
+                        For i As Integer = 0 To _cpartStocknoList.Count - 1
+                            Query("copy", SourceStockno, _cpartStocknoList(0).ToString())
+                        Next
+                    End If
                 End If
             End If
+
 
         End Try
     End Sub

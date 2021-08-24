@@ -29,7 +29,8 @@ Public Class Form3
                          tofoil.Text,
                          toorder.Text,
                          tboxSourceStockno.Text,
-                         tboxspecifiedcolor.Text)
+                         tboxspecifiedcolor.Text,
+                         CheckBox1.Checked.ToString())
             'sql.loadstocks()
             Form2.KryptonButton1.PerformClick()
             Button1.PerformClick()
