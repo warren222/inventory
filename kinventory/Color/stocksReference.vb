@@ -177,4 +177,8 @@ Public Class stocksReference
         Form3.tboxSourceStockno.Text = _sourceStockno
         Me.Close()
     End Sub
+
+    Private Sub stocksReference_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Me.Dispose()
+    End Sub
 End Class
