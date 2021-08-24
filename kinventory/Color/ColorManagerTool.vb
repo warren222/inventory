@@ -132,10 +132,10 @@ Public Class ColorManagerTool
                 _colorMgbs.DataMember = "ColorMngr_Tb"
                 colorMngrgv.Columns(0).Visible = False
                 For i As Integer = 0 To colorMngrgv.Rows.Count - 1
-                    For x As Integer = 0 To 4
+                    For x As Integer = 0 To 5
                         colorMngrgv.Columns(x).DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192)
                     Next
-                    For x As Integer = 6 To 9
+                    For x As Integer = 7 To 11
                         colorMngrgv.Columns(x).DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 255)
                     Next
                 Next
