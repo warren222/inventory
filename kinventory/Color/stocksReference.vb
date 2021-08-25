@@ -17,6 +17,8 @@ Public Class stocksReference
     Dim _Costhead As String
     Dim _Color As String
     Dim _Article As String
+
+    Dim _cpartStocknoList As New ArrayList
     Private Sub initializeSourceVariables()
         _Article = sourceArticleCbox.Text
         _Color = sourceColorCbox.Text
@@ -46,6 +48,12 @@ Public Class stocksReference
                 LoadingPBOX.Visible = False
             Case "sourceCostheadSuggestion"
                 LoadingPBOX.Visible = False
+            Case "getList"
+                LoadingPBOX.Visible = False
+                Form3._cpartStocknoList = New ArrayList
+                Form3._cpartStocknoList = _cpartStocknoList
+                Form3.tboxSourceStockno.Text = _sourceStockno
+                Me.Close()
         End Select
     End Sub
 
@@ -77,6 +85,9 @@ Public Class stocksReference
             Case "sourceCostheadSuggestion"
                 Query(action, "")
                 bgw.ReportProgress(0)
+            Case "getList"
+                Query(action, "")
+                bgw.ReportProgress(0)
         End Select
     End Sub
 
@@ -100,6 +111,7 @@ Public Class stocksReference
                 sqlcmd.CommandText = "ColorManagerTool_Stp"
                 sqlcmd.CommandType = CommandType.StoredProcedure
                 sqlcmd.Parameters.AddWithValue("@Command", command)
+                sqlcmd.Parameters.AddWithValue("@SourceStockno", _sourceStockno)
                 sqlcmd.Parameters.AddWithValue("@Costhead", _Costhead)
                 sqlcmd.Parameters.AddWithValue("@Color", _Color)
                 sqlcmd.Parameters.AddWithValue("@Article", _Article)
@@ -123,6 +135,12 @@ Public Class stocksReference
                     _sourceCostheadds.Clear()
                     da.SelectCommand = sqlcmd
                     da.Fill(_sourceCostheadds, "Stocks_Tb")
+                ElseIf command = "getList" Then
+                    _cpartStocknoList = New ArrayList
+                    Dim rd As SqlDataReader = sqlcmd.ExecuteReader
+                    While rd.Read
+                        _cpartStocknoList.Add(rd(0).ToString())
+                    End While
                 Else
                     sqlcmd.ExecuteNonQuery()
                 End If
@@ -174,8 +192,9 @@ Public Class stocksReference
     End Sub
 
     Private Sub sourcegv_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles sourcegv.CellDoubleClick
-        Form3.tboxSourceStockno.Text = _sourceStockno
-        Me.Close()
+
+        starter("getList")
+
     End Sub
 
     Private Sub stocksReference_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

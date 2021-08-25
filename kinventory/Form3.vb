@@ -6,6 +6,8 @@ Public Class Form3
     Dim xm As Integer
     Dim ym As Integer
 
+    Public _cpartStocknoList As New ArrayList
+
     Public Sub btn2()
         If Me.Text = "New" Or Me.Text = "Copy" Then
             remove()
