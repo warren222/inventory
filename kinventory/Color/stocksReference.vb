@@ -193,8 +193,9 @@ Public Class stocksReference
 
     Private Sub sourcegv_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles sourcegv.CellDoubleClick
 
-        starter("getList")
-
+        'starter("getList")
+        Form3.tboxSourceStockno.Text = _sourceStockno
+        Me.Close()
     End Sub
 
     Private Sub stocksReference_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
