@@ -86,6 +86,16 @@ Public Class ColorManagerTool
                 LoadingPBOX.Visible = False
             Case "loadColorMngr"
                 LoadingPBOX.Visible = False
+            Case "isExist"
+                If isExist = True Then
+                    MessageBox.Show("Already exist!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    LoadingPBOX.Visible = False
+                Else
+
+                    If Not _sourceStockno = "" Then
+                        starter("add")
+                    End If
+                End If
             Case "add"
                 initializeCMVariables()
                 starter("loadColorMngr")
@@ -318,9 +328,13 @@ Public Class ColorManagerTool
             Case "copy"
                 Query(action, "")
                 bgw.ReportProgress(0)
+            Case "isExist"
+                Query(action, "")
+                bgw.ReportProgress(0)
         End Select
     End Sub
     Dim da As SqlDataAdapter = New SqlDataAdapter()
+    Dim isExist As Boolean = False
     Private Sub Query(ByVal command As String, ByVal id As String)
         Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
             Using sqlcmd As SqlCommand = sqlcon.CreateCommand
@@ -341,6 +355,13 @@ Public Class ColorManagerTool
                     _sourceds.Clear()
                     da.SelectCommand = sqlcmd
                     da.Fill(_sourceds, "Stocks_Tb")
+                ElseIf command = "isExist" Then
+                    Dim rd As SqlDataReader = sqlcmd.ExecuteReader
+                    If rd.HasRows Then
+                        isExist = True
+                    Else
+                        isExist = False
+                    End If
                 ElseIf command = "loadCpart" Then
                     _cpartds = New DataSet
                     _cpartds.Clear()
@@ -458,9 +479,7 @@ Public Class ColorManagerTool
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         _colorAssigned = colorAssignedCbox.Text
-        If Not _sourceStockno = "" Then
-            starter("add")
-        End If
+        starter("isExist")
     End Sub
 
     Private Sub colorMngrgv_SelectionChanged(sender As Object, e As EventArgs) Handles colorMngrgv.SelectionChanged
