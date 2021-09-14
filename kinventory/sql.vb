@@ -2597,7 +2597,7 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
         End Try
     End Sub
 
-    Public Sub searchstockstransaction(ByVal search As String, ByVal condition As String, ByVal stockno As String, ByVal transaction As String, ByVal reference As String, ByVal datetype As String)
+    Public Sub searchstockstransaction(ByVal search As String, ByVal condition As String, ByVal stockno As String, ByVal transaction As String, ByVal reference As String, ByVal datetype As String, ByVal order As String)
         Try
             sqlcon.Open()
             Dim ds As New DataSet
@@ -2630,7 +2630,7 @@ NETAMOUNT,
 INPUTTED
  from trans_tb " + "" & search & ""
 
-            sqlcmd = New SqlCommand(str1 + " order by " & datetype & " desc ", sqlcon)
+            sqlcmd = New SqlCommand(str1 + " order by " & datetype & " " & order & "", sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -2640,7 +2640,7 @@ INPUTTED
 
             Dim dss As New inventoryds
             dss.Clear()
-            sqlcmd = New SqlCommand(str1 + " order by " & datetype & " desc ", sqlcon)
+            sqlcmd = New SqlCommand(str1 + " order by " & datetype & " " & order & "", sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(dss.TRANS_TB)
             Form13.TRANS_TBBindingSource.DataSource = dss.TRANS_TB.DefaultView
@@ -2683,7 +2683,7 @@ INPUTTED
                 End If
             Next
 
-            Dim str11 As String = "select distinct reference from trans_tb " & search & ""
+            Dim str11 As String = "Select distinct reference from trans_tb " & search & ""
             Dim ds1 As New DataSet
             Dim da1 As New SqlDataAdapter
             Dim bs1 As New BindingSource
@@ -2697,8 +2697,8 @@ INPUTTED
             Dim str As String
 
 
-            If transaction = "Issu33333e" Then
-                str = "       declare @issue as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb " & condition & " AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
+            If transaction = "Issue" Then
+                str = "       Declare @issue As Decimal(10, 2) = (select  COALESCE(sum(qty),0) from trans_tb " & condition & " AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
                               declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb " & condition & " AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
                               declare @totalissue as decimal(10,2)=@issue+@issueallocation
                      select format(0,'N0'),FORMAT(0,'N0'),FORMAT(0,'N0'),
