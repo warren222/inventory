@@ -101,7 +101,7 @@ Public Class ChangeColor
                         updatenewstockno(_transno, newStockno)
                         findnewreference(newStockno, _reference, _jo)
                         updatestock(newStockno, _reference, _jo)
-                        updatestock(_sourceStockno, _reference, _jo)
+                        deletereference(_sourceStockno, _reference, _jo)
                     End If
 
                 Else
@@ -109,6 +109,24 @@ Public Class ChangeColor
                 End If
             End Using
         End Using
+    End Sub
+
+    Private Sub deletereference(sourceStockno As String, reference As String, jo As String)
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                Dim str As String = "delete from reference_tb where stockno = @stockno and reference  =  @reference  and jo = @jo"
+                Using sqlcmd As SqlCommand = New SqlCommand("", sqlcon)
+                    sqlcon.Open()
+                    sqlcmd.Parameters.AddWithValue("@stockno", sourceStockno)
+                    sqlcmd.Parameters.AddWithValue("@reference", reference)
+                    sqlcmd.Parameters.AddWithValue("@jo", jo)
+                    sqlcmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
     End Sub
 
     Private Sub initializeDataset(ByVal sqlcmd As SqlCommand, ByVal dset As DataSet, ByVal tbl As String)
