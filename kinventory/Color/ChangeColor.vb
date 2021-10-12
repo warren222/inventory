@@ -115,7 +115,7 @@ Public Class ChangeColor
         Try
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
                 Dim str As String = "delete from reference_tb where stockno = @stockno and reference  =  @reference  and jo = @jo"
-                Using sqlcmd As SqlCommand = New SqlCommand("", sqlcon)
+                Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
                     sqlcon.Open()
                     sqlcmd.Parameters.AddWithValue("@stockno", sourceStockno)
                     sqlcmd.Parameters.AddWithValue("@reference", reference)
