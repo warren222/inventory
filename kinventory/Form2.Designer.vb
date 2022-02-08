@@ -46,6 +46,7 @@ Partial Class Form2
         Me.UpdateReferenceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateStocknoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyTransToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.KryptonSplitContainer6 = New ComponentFactory.Krypton.Toolkit.KryptonSplitContainer()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -333,7 +334,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ChangeColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearJOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -474,9 +475,9 @@ Partial Class Form2
         'transactionmenustrip
         '
         Me.transactionmenustrip.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.CopyTransToolStripMenuItem, Me.ChangeColorToolStripMenuItem})
+        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.CopyTransToolStripMenuItem, Me.ChangeColorToolStripMenuItem, Me.ClearJOToolStripMenuItem})
         Me.transactionmenustrip.Name = "transactionmenustrip"
-        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 246)
+        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 268)
         '
         'TransDateToolStripMenuItem
         '
@@ -531,6 +532,12 @@ Partial Class Form2
         Me.CopyTransToolStripMenuItem.Name = "CopyTransToolStripMenuItem"
         Me.CopyTransToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.CopyTransToolStripMenuItem.Text = "Copy Trans"
+        '
+        'ChangeColorToolStripMenuItem
+        '
+        Me.ChangeColorToolStripMenuItem.Name = "ChangeColorToolStripMenuItem"
+        Me.ChangeColorToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.ChangeColorToolStripMenuItem.Text = "Change Color"
         '
         'Timer1
         '
@@ -627,7 +634,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 763
+        Me.KryptonSplitContainer3.SplitterDistance = 758
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -648,7 +655,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(763, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(758, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -676,7 +683,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(763, 46)
+        Me.Panel2.Size = New System.Drawing.Size(758, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -4321,11 +4328,11 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'ChangeColorToolStripMenuItem
+        'ClearJOToolStripMenuItem
         '
-        Me.ChangeColorToolStripMenuItem.Name = "ChangeColorToolStripMenuItem"
-        Me.ChangeColorToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
-        Me.ChangeColorToolStripMenuItem.Text = "Change Color"
+        Me.ClearJOToolStripMenuItem.Name = "ClearJOToolStripMenuItem"
+        Me.ClearJOToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.ClearJOToolStripMenuItem.Text = "Clear JO"
         '
         'Form2
         '
@@ -4785,4 +4792,5 @@ Partial Class Form2
     Friend WithEvents UpdateStocknoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CopyTransToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChangeColorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClearJOToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -3530,4 +3530,27 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
         ChangeColor.jolist = joAlist
         ChangeColor.Show()
     End Sub
+
+    Private Sub ClearJOToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearJOToolStripMenuItem.Click
+        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Then
+            If MessageBox.Show("Clear JO?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                Exit Sub
+            End If
+            ClearJO()
+        Else
+            MessageBox.Show("Invalid Access!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
+    Private Sub ClearJO()
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            sqlcon.Open()
+            For i As Integer = 0 To transnocombo.Items.Count - 1
+                Using sqlcmd As SqlCommand = New SqlCommand("update trans_tb set jo ='' where transno = " + transnocombo.Items(i) + "", sqlcon)
+                    sqlcmd.ExecuteNonQuery()
+                End Using
+            Next
+
+        End Using
+    End Sub
 End Class
