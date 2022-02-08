@@ -3543,14 +3543,21 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     End Sub
     Private Sub ClearJO()
-        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
-            sqlcon.Open()
-            For i As Integer = 0 To transnocombo.Items.Count - 1
-                Using sqlcmd As SqlCommand = New SqlCommand("update trans_tb set jo ='' where transno = " + transnocombo.Items(i) + "", sqlcon)
-                    sqlcmd.ExecuteNonQuery()
-                End Using
-            Next
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                For i As Integer = 0 To transnocombo.Items.Count - 1
+                    Using sqlcmd As SqlCommand = New SqlCommand("update trans_tb set jo ='' where transno = " + transnocombo.Items(i) + "", sqlcon)
+                        sqlcmd.ExecuteNonQuery()
+                    End Using
+                Next
 
-        End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            KryptonButton11.PerformClick()
+        End Try
+
     End Sub
 End Class
