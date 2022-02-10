@@ -2025,6 +2025,14 @@ a.*,
                 toorder = " toorder=toorder"
             End If
 
+            Dim excludezero As String
+            If excludeZeroCbox.Checked = True Then
+                excludezero = " PHYSICAL2 <> 0 "
+            Else
+                excludezero = " PHYSICAL2 = PHYSICAL2 "
+            End If
+
+
             Dim str As String
             'If reportsupplier.Text = "" And reportstatus.Text = "" Then
             '    str = "select * from stocks_tb where " & phasedout & " and " & toorder & ""
@@ -2067,7 +2075,7 @@ a.*,
             Else
                 f = " status = '" & f & "'"
             End If
-            str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+            str = "select * from stocks_tb where  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & " and " & excludezero & ""
 
 
 
@@ -2078,6 +2086,7 @@ a.*,
             Form7.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
             ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
             ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+
             Dim updateneedtoorder As String = "
 declare @buffmonth as decimal(10,2) = '" & mymonth.Text & "'
 update
