@@ -263,6 +263,8 @@ Partial Class Form2
         Me.refstock = New System.Windows.Forms.ComboBox()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.KryptonGroup9 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.ir = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
+        Me.excludeZeroCbox = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.esvp = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.esv = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.KryptonLabel59 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -276,7 +278,6 @@ Partial Class Form2
         Me.KryptonLabel53 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.mymonth = New System.Windows.Forms.NumericUpDown()
         Me.scr = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
-        Me.ir = New ComponentFactory.Krypton.Toolkit.KryptonRadioButton()
         Me.KryptonLabel52 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.myyear = New System.Windows.Forms.NumericUpDown()
         Me.KryptonButton19 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
@@ -335,8 +336,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.excludeZeroCbox = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -460,7 +460,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -643,7 +642,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1139, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 753
+        Me.KryptonSplitContainer3.SplitterDistance = 748
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -664,7 +663,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(753, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(748, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -692,7 +691,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(753, 46)
+        Me.Panel2.Size = New System.Drawing.Size(748, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -3522,7 +3521,8 @@ Partial Class Form2
         '
         'KryptonGroup9.Panel
         '
-        Me.KryptonGroup9.Panel.Controls.Add(Me.GroupBox1)
+        Me.KryptonGroup9.Panel.Controls.Add(Me.excludeZeroCbox)
+        Me.KryptonGroup9.Panel.Controls.Add(Me.ir)
         Me.KryptonGroup9.Panel.Controls.Add(Me.esvp)
         Me.KryptonGroup9.Panel.Controls.Add(Me.esv)
         Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonLabel59)
@@ -3545,9 +3545,33 @@ Partial Class Form2
         Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonLabel54)
         Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonButton18)
         Me.KryptonGroup9.Panel.Controls.Add(Me.reportsupplier)
+        Me.KryptonGroup9.Panel.Controls.Add(Me.Panel3)
         Me.KryptonGroup9.Size = New System.Drawing.Size(764, 298)
         Me.KryptonGroup9.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup9.TabIndex = 445
+        '
+        'ir
+        '
+        Me.ir.Checked = True
+        Me.ir.Location = New System.Drawing.Point(369, 86)
+        Me.ir.Name = "ir"
+        Me.ir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.ir.Size = New System.Drawing.Size(119, 19)
+        Me.ir.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ir.TabIndex = 450
+        Me.ir.Values.Text = "Inventory report"
+        '
+        'excludeZeroCbox
+        '
+        Me.excludeZeroCbox.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.excludeZeroCbox.Location = New System.Drawing.Point(369, 111)
+        Me.excludeZeroCbox.Name = "excludeZeroCbox"
+        Me.excludeZeroCbox.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.excludeZeroCbox.Size = New System.Drawing.Size(105, 19)
+        Me.excludeZeroCbox.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.excludeZeroCbox.TabIndex = 464
+        Me.excludeZeroCbox.Text = "Exclude Zero"
+        Me.excludeZeroCbox.Values.Text = "Exclude Zero"
         '
         'esvp
         '
@@ -3684,17 +3708,6 @@ Partial Class Form2
         Me.scr.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.scr.TabIndex = 451
         Me.scr.Values.Text = "Stock Control Report"
-        '
-        'ir
-        '
-        Me.ir.Checked = True
-        Me.ir.Location = New System.Drawing.Point(28, 24)
-        Me.ir.Name = "ir"
-        Me.ir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.ir.Size = New System.Drawing.Size(119, 19)
-        Me.ir.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ir.TabIndex = 450
-        Me.ir.Values.Text = "Inventory report"
         '
         'KryptonLabel52
         '
@@ -4337,27 +4350,13 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'excludeZeroCbox
+        'Panel3
         '
-        Me.excludeZeroCbox.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.excludeZeroCbox.Location = New System.Drawing.Point(28, 49)
-        Me.excludeZeroCbox.Name = "excludeZeroCbox"
-        Me.excludeZeroCbox.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.excludeZeroCbox.Size = New System.Drawing.Size(105, 19)
-        Me.excludeZeroCbox.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.excludeZeroCbox.TabIndex = 464
-        Me.excludeZeroCbox.Text = "Exclude Zero"
-        Me.excludeZeroCbox.Values.Text = "Exclude Zero"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.ir)
-        Me.GroupBox1.Controls.Add(Me.excludeZeroCbox)
-        Me.GroupBox1.Location = New System.Drawing.Point(352, 78)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(160, 84)
-        Me.GroupBox1.TabIndex = 465
-        Me.GroupBox1.TabStop = False
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Location = New System.Drawing.Point(359, 70)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(136, 73)
+        Me.Panel3.TabIndex = 465
         '
         'Form2
         '
@@ -4515,8 +4514,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -4821,5 +4818,5 @@ Partial Class Form2
     Friend WithEvents ChangeColorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearJOToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents excludeZeroCbox As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Panel3 As Panel
 End Class
