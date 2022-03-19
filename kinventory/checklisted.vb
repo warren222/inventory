@@ -52,6 +52,9 @@ Public Class checklisted
 
             Dim str As String = "select a.REFERENCE,a.JO,
 a.STOCKNO,
+b.TYPECOLOR,
+b.COSTHEAD,
+b.DESCRIPTION,
 a.ALLOCATION
 from reference_tb as a
 inner join
