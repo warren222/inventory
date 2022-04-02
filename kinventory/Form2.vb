@@ -3569,4 +3569,8 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
         End Try
 
     End Sub
+
+    Private Sub KryptonButton16_Click_1(sender As Object, e As EventArgs) Handles KryptonButton16.Click
+        FoilingAllocation.Show()
+    End Sub
 End Class

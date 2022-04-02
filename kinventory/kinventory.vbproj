@@ -165,6 +165,12 @@
     <Compile Include="adjustment.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Allocation_per_foil\Allocation_per_foil_FrmReport.Designer.vb">
+      <DependentUpon>Allocation_per_foil_FrmReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Allocation_per_foil\Allocation_per_foil_FrmReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AllTrans.Designer.vb">
       <DependentUpon>AllTrans.vb</DependentUpon>
     </Compile>
@@ -254,6 +260,12 @@
       <DependentUpon>editreference.vb</DependentUpon>
     </Compile>
     <Compile Include="editreference.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FoilingAllocation.Designer.vb">
+      <DependentUpon>FoilingAllocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FoilingAllocation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -478,6 +490,10 @@
     <EmbeddedResource Include="adjustment.resx">
       <DependentUpon>adjustment.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Allocation_per_foil\Allocation_per_foil_FrmReport.resx">
+      <DependentUpon>Allocation_per_foil_FrmReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Allocation_per_foil\Allocation_per_foil_RPT.rdlc" />
     <EmbeddedResource Include="AllTrans.resx">
       <DependentUpon>AllTrans.vb</DependentUpon>
     </EmbeddedResource>
@@ -524,6 +540,9 @@
       <DependentUpon>editreference.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="foilcolorREPORT.rdlc" />
+    <EmbeddedResource Include="FoilingAllocation.resx">
+      <DependentUpon>FoilingAllocation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

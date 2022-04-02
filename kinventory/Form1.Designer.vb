@@ -25,8 +25,8 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColorMngrToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -60,17 +60,17 @@ Partial Class Form1
         Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "Inventory"
         '
-        'LogOutToolStripMenuItem
-        '
-        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LogOutToolStripMenuItem.Text = "log out"
-        '
         'ColorMngrToolStripMenuItem
         '
         Me.ColorMngrToolStripMenuItem.Name = "ColorMngrToolStripMenuItem"
         Me.ColorMngrToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ColorMngrToolStripMenuItem.Text = "ColorMngr"
+        '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogOutToolStripMenuItem.Text = "log out"
         '
         'AccountsToolStripMenuItem
         '

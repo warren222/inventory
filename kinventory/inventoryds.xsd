@@ -100,6 +100,24 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Allocation_Per_Foil_Tbl" msprop:Generator_TableClassName="Allocation_Per_Foil_TblDataTable" msprop:Generator_TableVarName="tableAllocation_Per_Foil_Tbl" msprop:Generator_RowChangedName="Allocation_Per_Foil_TblRowChanged" msprop:Generator_TablePropName="Allocation_Per_Foil_Tbl" msprop:Generator_RowDeletingName="Allocation_Per_Foil_TblRowDeleting" msprop:Generator_RowChangingName="Allocation_Per_Foil_TblRowChanging" msprop:Generator_RowEvHandlerName="Allocation_Per_Foil_TblRowChangeEventHandler" msprop:Generator_RowDeletedName="Allocation_Per_Foil_TblRowDeleted" msprop:Generator_RowClassName="Allocation_Per_Foil_TblRow" msprop:Generator_UserTableName="Allocation_Per_Foil_Tbl" msprop:Generator_RowEvArgName="Allocation_Per_Foil_TblRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Articleno" msprop:Generator_ColumnVarNameInTable="columnArticleno" msprop:Generator_ColumnPropNameInRow="Articleno" msprop:Generator_ColumnPropNameInTable="ArticlenoColumn" msprop:Generator_UserColumnName="Articleno" type="xs:string" minOccurs="0" />
+              <xs:element name="Supplier" msprop:Generator_ColumnVarNameInTable="columnSupplier" msprop:Generator_ColumnPropNameInRow="Supplier" msprop:Generator_ColumnPropNameInTable="SupplierColumn" msprop:Generator_UserColumnName="Supplier" type="xs:string" minOccurs="0" />
+              <xs:element name="Costhead" msprop:Generator_ColumnVarNameInTable="columnCosthead" msprop:Generator_ColumnPropNameInRow="Costhead" msprop:Generator_ColumnPropNameInTable="CostheadColumn" msprop:Generator_UserColumnName="Costhead" type="xs:string" minOccurs="0" />
+              <xs:element name="TypeColor" msprop:Generator_ColumnVarNameInTable="columnTypeColor" msprop:Generator_ColumnPropNameInRow="TypeColor" msprop:Generator_ColumnPropNameInTable="TypeColorColumn" msprop:Generator_UserColumnName="TypeColor" type="xs:string" minOccurs="0" />
+              <xs:element name="Header" msprop:Generator_ColumnVarNameInTable="columnHeader" msprop:Generator_ColumnPropNameInRow="Header" msprop:Generator_ColumnPropNameInTable="HeaderColumn" msprop:Generator_UserColumnName="Header" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit" type="xs:string" minOccurs="0" />
+              <xs:element name="Physical" msprop:Generator_ColumnVarNameInTable="columnPhysical" msprop:Generator_ColumnPropNameInRow="Physical" msprop:Generator_ColumnPropNameInTable="PhysicalColumn" msprop:Generator_UserColumnName="Physical" type="xs:string" minOccurs="0" />
+              <xs:element name="Allocation" msprop:Generator_ColumnVarNameInTable="columnAllocation" msprop:Generator_ColumnPropNameInRow="Allocation" msprop:Generator_ColumnPropNameInTable="AllocationColumn" msprop:Generator_UserColumnName="Allocation" type="xs:string" minOccurs="0" />
+              <xs:element name="Allocation_Per_Foil" msprop:Generator_ColumnVarNameInTable="columnAllocation_Per_Foil" msprop:Generator_ColumnPropNameInRow="Allocation_Per_Foil" msprop:Generator_ColumnPropNameInTable="Allocation_Per_FoilColumn" msprop:Generator_UserColumnName="Allocation_Per_Foil" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" msprop:Generator_ColumnVarNameInTable="columnRemarks" msprop:Generator_ColumnPropNameInRow="Remarks" msprop:Generator_ColumnPropNameInTable="RemarksColumn" msprop:Generator_UserColumnName="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="Free" msprop:Generator_ColumnVarNameInTable="columnFree" msprop:Generator_ColumnPropNameInRow="Free" msprop:Generator_ColumnPropNameInTable="FreeColumn" msprop:Generator_UserColumnName="Free" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
