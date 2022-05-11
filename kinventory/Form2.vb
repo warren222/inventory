@@ -2452,6 +2452,8 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
             Form5.JO.Text = receiptGridView.Item("jo", e.RowIndex).Value.ToString
             Form5.XYZ.Text = receiptGridView.Item("xyz", e.RowIndex).Value.ToString
             description.Text = receiptGridView.Item("description", e.RowIndex).Value.ToString
+
+            cuttinglist.transno.Text = receiptGridView.Item("transno", e.RowIndex).Value.ToString
         End If
     End Sub
 

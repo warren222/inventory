@@ -167,7 +167,7 @@ update reference_tb set
         Try
             sql.sqlcon.Open()
             Dim newcancelalloc As String = "
-  declare @allocation as decimal(10,2)=(select  COALESCE(allocation,0) from reference_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "')+0
+declare @allocation as decimal(10,2)=(select  COALESCE(allocation,0) from reference_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "')+0
 declare @bal as decimal(10,2)=(select physical from stocks_tb where stockno = '" & stockno & "')
 
 declare @id as integer = (select max(transno)+1 from trans_tb)
