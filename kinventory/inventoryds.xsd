@@ -118,6 +118,22 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="FoilPerProject" msprop:Generator_TableClassName="FoilPerProjectDataTable" msprop:Generator_TableVarName="tableFoilPerProject" msprop:Generator_RowChangedName="FoilPerProjectRowChanged" msprop:Generator_TablePropName="FoilPerProject" msprop:Generator_RowDeletingName="FoilPerProjectRowDeleting" msprop:Generator_RowChangingName="FoilPerProjectRowChanging" msprop:Generator_RowEvHandlerName="FoilPerProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="FoilPerProjectRowDeleted" msprop:Generator_RowClassName="FoilPerProjectRow" msprop:Generator_UserTableName="FoilPerProject" msprop:Generator_RowEvArgName="FoilPerProjectRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="stockno" msprop:Generator_ColumnVarNameInTable="columnstockno" msprop:Generator_ColumnPropNameInRow="stockno" msprop:Generator_ColumnPropNameInTable="stocknoColumn" msprop:Generator_UserColumnName="stockno" type="xs:string" minOccurs="0" />
+              <xs:element name="jo" msprop:Generator_ColumnVarNameInTable="columnjo" msprop:Generator_ColumnPropNameInRow="jo" msprop:Generator_ColumnPropNameInTable="joColumn" msprop:Generator_UserColumnName="jo" type="xs:string" minOccurs="0" />
+              <xs:element name="Reference" msprop:Generator_ColumnVarNameInTable="columnReference" msprop:Generator_ColumnPropNameInRow="Reference" msprop:Generator_ColumnPropNameInTable="ReferenceColumn" msprop:Generator_UserColumnName="Reference" type="xs:string" minOccurs="0" />
+              <xs:element name="Costhead" msprop:Generator_ColumnVarNameInTable="columnCosthead" msprop:Generator_ColumnPropNameInRow="Costhead" msprop:Generator_ColumnPropNameInTable="CostheadColumn" msprop:Generator_UserColumnName="Costhead" type="xs:string" minOccurs="0" />
+              <xs:element name="Header" msprop:Generator_ColumnVarNameInTable="columnHeader" msprop:Generator_ColumnPropNameInRow="Header" msprop:Generator_ColumnPropNameInTable="HeaderColumn" msprop:Generator_UserColumnName="Header" type="xs:string" minOccurs="0" />
+              <xs:element name="TypeColor" msprop:Generator_ColumnVarNameInTable="columnTypeColor" msprop:Generator_ColumnPropNameInRow="TypeColor" msprop:Generator_ColumnPropNameInTable="TypeColorColumn" msprop:Generator_UserColumnName="TypeColor" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+              <xs:element name="Supplier" msprop:Generator_ColumnVarNameInTable="columnSupplier" msprop:Generator_ColumnPropNameInRow="Supplier" msprop:Generator_ColumnPropNameInTable="SupplierColumn" msprop:Generator_UserColumnName="Supplier" type="xs:string" minOccurs="0" />
+              <xs:element name="Articleno" msprop:Generator_ColumnVarNameInTable="columnArticleno" msprop:Generator_ColumnPropNameInRow="Articleno" msprop:Generator_ColumnPropNameInTable="ArticlenoColumn" msprop:Generator_UserColumnName="Articleno" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

@@ -208,6 +208,9 @@ Public Class genreferenceFRM
             ElseIf Me.Text = "copy alloc" Then
                 CopyTransaction.tboxreference.Text = project
                 CopyTransaction.tboxjo.Text = pjo
+            ElseIf Me.Text = "report" Then
+                Form2.reporttboxreference.Text = project
+                Form2.reporttboxjo.Text = pjo
             End If
         Next
 

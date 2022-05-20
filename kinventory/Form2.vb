@@ -3575,4 +3575,42 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     Private Sub KryptonButton16_Click_1(sender As Object, e As EventArgs) Handles KryptonButton16.Click
         FoilingAllocation.Show()
     End Sub
+
+    Private Sub reporttboxreference_MouseDown(sender As Object, e As MouseEventArgs)
+        genjo("report", reporttboxreference.Text, reporttboxjo, "trans_tb", "jo")
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        genreferenceFRM.Text = "report"
+        genreferenceFRM.ShowDialog()
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim ds = New inventoryds
+        ds.Clear()
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            Using cmd As SqlCommand = sqlcon.CreateCommand
+                sqlcon.Open()
+                With cmd
+                    .CommandText = "to_foil_per_project_stp"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.AddWithValue("@reference", reporttboxreference.Text)
+                    .Parameters.AddWithValue("@jo", reporttboxjo.Text)
+                End With
+                Dim da As SqlDataAdapter = New SqlDataAdapter
+                da.SelectCommand = cmd
+                da.Fill(ds.Allocation_Per_Foil_Tbl)
+                ToFoilPerProjectFrm.FoilPerProjectBindingSource.DataSource = ds.Allocation_Per_Foil_Tbl.DefaultView
+            End Using
+
+        End Using
+        Dim param1 As New ReportParameter("Project", reporttboxreference.Text)
+        Dim param2 As New ReportParameter("jo", reporttboxjo.Text)
+        ToFoilPerProjectFrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {param1})
+        ToFoilPerProjectFrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {param2})
+        ToFoilPerProjectFrm.ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
+        ToFoilPerProjectFrm.ReportViewer1.ZoomMode = ZoomMode.PageWidth
+        ToFoilPerProjectFrm.ShowDialog()
+
+    End Sub
 End Class

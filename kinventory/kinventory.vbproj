@@ -461,6 +461,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="sql.vb" />
+    <Compile Include="ToFoilPerProjectFrm.Designer.vb">
+      <DependentUpon>ToFoilPerProjectFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ToFoilPerProjectFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="transfer.Designer.vb">
       <DependentUpon>transfer.vb</DependentUpon>
     </Compile>
@@ -634,6 +640,7 @@
     <EmbeddedResource Include="Report4.rdlc" />
     <EmbeddedResource Include="Report5.rdlc" />
     <EmbeddedResource Include="Report6.rdlc" />
+    <EmbeddedResource Include="Report7.rdlc" />
     <EmbeddedResource Include="reportForms\ESVfrm.resx">
       <DependentUpon>ESVfrm.vb</DependentUpon>
     </EmbeddedResource>
@@ -642,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="report\ESVPrpt.rdlc" />
     <EmbeddedResource Include="report\ESVrpt.rdlc" />
+    <EmbeddedResource Include="ToFoilPerProjectFrm.resx">
+      <DependentUpon>ToFoilPerProjectFrm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="transfer.resx">
       <DependentUpon>transfer.vb</DependentUpon>
     </EmbeddedResource>
