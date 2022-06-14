@@ -268,6 +268,12 @@
     <Compile Include="FoilingAllocation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Foil_Yearly_ConsumptionReport.Designer.vb">
+      <DependentUpon>Foil_Yearly_ConsumptionReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Foil_Yearly_ConsumptionReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -549,6 +555,10 @@
     <EmbeddedResource Include="FoilingAllocation.resx">
       <DependentUpon>FoilingAllocation.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Foil_Yearly_ConsumptionReport.resx">
+      <DependentUpon>Foil_Yearly_ConsumptionReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Foil_Yearly_Consumption_RDLC.rdlc" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

@@ -35,6 +35,8 @@ Partial Public Class inventoryds
     
     Private tableFoilPerProject As FoilPerProjectDataTable
     
+    Private tablemonthly_consumption As monthly_consumptionDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -78,6 +80,9 @@ Partial Public Class inventoryds
             End If
             If (Not (ds.Tables("FoilPerProject")) Is Nothing) Then
                 MyBase.Tables.Add(New FoilPerProjectDataTable(ds.Tables("FoilPerProject")))
+            End If
+            If (Not (ds.Tables("monthly_consumption")) Is Nothing) Then
+                MyBase.Tables.Add(New monthly_consumptionDataTable(ds.Tables("monthly_consumption")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -143,6 +148,16 @@ Partial Public Class inventoryds
     Public ReadOnly Property FoilPerProject() As FoilPerProjectDataTable
         Get
             Return Me.tableFoilPerProject
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property monthly_consumption() As monthly_consumptionDataTable
+        Get
+            Return Me.tablemonthly_consumption
         End Get
     End Property
     
@@ -228,6 +243,9 @@ Partial Public Class inventoryds
             If (Not (ds.Tables("FoilPerProject")) Is Nothing) Then
                 MyBase.Tables.Add(New FoilPerProjectDataTable(ds.Tables("FoilPerProject")))
             End If
+            If (Not (ds.Tables("monthly_consumption")) Is Nothing) Then
+                MyBase.Tables.Add(New monthly_consumptionDataTable(ds.Tables("monthly_consumption")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -290,6 +308,12 @@ Partial Public Class inventoryds
                 Me.tableFoilPerProject.InitVars
             End If
         End If
+        Me.tablemonthly_consumption = CType(MyBase.Tables("monthly_consumption"),monthly_consumptionDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablemonthly_consumption) Is Nothing) Then
+                Me.tablemonthly_consumption.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -310,6 +334,8 @@ Partial Public Class inventoryds
         MyBase.Tables.Add(Me.tableAllocation_Per_Foil_Tbl)
         Me.tableFoilPerProject = New FoilPerProjectDataTable()
         MyBase.Tables.Add(Me.tableFoilPerProject)
+        Me.tablemonthly_consumption = New monthly_consumptionDataTable()
+        MyBase.Tables.Add(Me.tablemonthly_consumption)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -339,6 +365,12 @@ Partial Public Class inventoryds
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeFoilPerProject() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializemonthly_consumption() As Boolean
         Return false
     End Function
     
@@ -414,6 +446,9 @@ Partial Public Class inventoryds
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub FoilPerProjectRowChangeEventHandler(ByVal sender As Object, ByVal e As FoilPerProjectRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub monthly_consumptionRowChangeEventHandler(ByVal sender As Object, ByVal e As monthly_consumptionRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2517,6 +2552,8 @@ Partial Public Class inventoryds
         
         Private columnArticleno As Global.System.Data.DataColumn
         
+        Private columnArea As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -2633,6 +2670,14 @@ Partial Public Class inventoryds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AreaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnArea
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2669,9 +2714,9 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddFoilPerProjectRow(ByVal stockno As String, ByVal jo As String, ByVal Reference As String, ByVal Costhead As String, ByVal Header As String, ByVal TypeColor As String, ByVal Description As String, ByVal balance As String, ByVal Supplier As String, ByVal Articleno As String) As FoilPerProjectRow
+        Public Overloads Function AddFoilPerProjectRow(ByVal stockno As String, ByVal jo As String, ByVal Reference As String, ByVal Costhead As String, ByVal Header As String, ByVal TypeColor As String, ByVal Description As String, ByVal balance As String, ByVal Supplier As String, ByVal Articleno As String, ByVal Area As String) As FoilPerProjectRow
             Dim rowFoilPerProjectRow As FoilPerProjectRow = CType(Me.NewRow,FoilPerProjectRow)
-            Dim columnValuesArray() As Object = New Object() {stockno, jo, Reference, Costhead, Header, TypeColor, Description, balance, Supplier, Articleno}
+            Dim columnValuesArray() As Object = New Object() {stockno, jo, Reference, Costhead, Header, TypeColor, Description, balance, Supplier, Articleno, Area}
             rowFoilPerProjectRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFoilPerProjectRow)
             Return rowFoilPerProjectRow
@@ -2704,6 +2749,7 @@ Partial Public Class inventoryds
             Me.columnbalance = MyBase.Columns("balance")
             Me.columnSupplier = MyBase.Columns("Supplier")
             Me.columnArticleno = MyBase.Columns("Articleno")
+            Me.columnArea = MyBase.Columns("Area")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2729,6 +2775,8 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnSupplier)
             Me.columnArticleno = New Global.System.Data.DataColumn("Articleno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnArticleno)
+            Me.columnArea = New Global.System.Data.DataColumn("Area", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnArea)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2815,6 +2863,581 @@ Partial Public Class inventoryds
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "FoilPerProjectDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class monthly_consumptionDataTable
+        Inherits Global.System.Data.TypedTableBase(Of monthly_consumptionRow)
+        
+        Private columnarticleno As Global.System.Data.DataColumn
+        
+        Private columntypecolor As Global.System.Data.DataColumn
+        
+        Private columnmonth1 As Global.System.Data.DataColumn
+        
+        Private columnmonth2 As Global.System.Data.DataColumn
+        
+        Private columnmonth3 As Global.System.Data.DataColumn
+        
+        Private columnmonth4 As Global.System.Data.DataColumn
+        
+        Private columnmonth5 As Global.System.Data.DataColumn
+        
+        Private columnmonth6 As Global.System.Data.DataColumn
+        
+        Private columnmonth7 As Global.System.Data.DataColumn
+        
+        Private columnmonth8 As Global.System.Data.DataColumn
+        
+        Private columnmonth9 As Global.System.Data.DataColumn
+        
+        Private columnmonth10 As Global.System.Data.DataColumn
+        
+        Private columnmonth11 As Global.System.Data.DataColumn
+        
+        Private columnmonth12 As Global.System.Data.DataColumn
+        
+        Private columntotal As Global.System.Data.DataColumn
+        
+        Private columnave As Global.System.Data.DataColumn
+        
+        Private columntop1 As Global.System.Data.DataColumn
+        
+        Private columntop2 As Global.System.Data.DataColumn
+        
+        Private columntop3 As Global.System.Data.DataColumn
+        
+        Private columntop3_total As Global.System.Data.DataColumn
+        
+        Private columntop3_ave As Global.System.Data.DataColumn
+        
+        Private columnfoil_qty_order As Global.System.Data.DataColumn
+        
+        Private columnhighest_consumption As Global.System.Data.DataColumn
+        
+        Private columncritical As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "monthly_consumption"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property articlenoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnarticleno
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property typecolorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntypecolor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month5Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth5
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month6Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth6
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month7Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth7
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month8Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth8
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month9Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth9
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month10Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth10
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month11Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth11
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property month12Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmonth12
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntotal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property aveColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnave
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property top1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntop1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property top2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntop2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property top3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntop3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property top3_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntop3_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property top3_aveColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntop3_ave
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property foil_qty_orderColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfoil_qty_order
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property highest_consumptionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhighest_consumption
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property criticalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncritical
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As monthly_consumptionRow
+            Get
+                Return CType(Me.Rows(index),monthly_consumptionRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event monthly_consumptionRowChanging As monthly_consumptionRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event monthly_consumptionRowChanged As monthly_consumptionRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event monthly_consumptionRowDeleting As monthly_consumptionRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event monthly_consumptionRowDeleted As monthly_consumptionRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub Addmonthly_consumptionRow(ByVal row As monthly_consumptionRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function Addmonthly_consumptionRow( _
+                    ByVal articleno As String,  _
+                    ByVal typecolor As String,  _
+                    ByVal month1 As Integer,  _
+                    ByVal month2 As Integer,  _
+                    ByVal month3 As Integer,  _
+                    ByVal month4 As Integer,  _
+                    ByVal month5 As Integer,  _
+                    ByVal month6 As Integer,  _
+                    ByVal month7 As Integer,  _
+                    ByVal month8 As Integer,  _
+                    ByVal month9 As Integer,  _
+                    ByVal month10 As Integer,  _
+                    ByVal month11 As Integer,  _
+                    ByVal month12 As Integer,  _
+                    ByVal total As Integer,  _
+                    ByVal ave As Integer,  _
+                    ByVal top1 As Integer,  _
+                    ByVal top2 As Integer,  _
+                    ByVal top3 As Integer,  _
+                    ByVal top3_total As Integer,  _
+                    ByVal top3_ave As Integer,  _
+                    ByVal foil_qty_order As Integer,  _
+                    ByVal highest_consumption As Integer,  _
+                    ByVal critical As Integer) As monthly_consumptionRow
+            Dim rowmonthly_consumptionRow As monthly_consumptionRow = CType(Me.NewRow,monthly_consumptionRow)
+            Dim columnValuesArray() As Object = New Object() {articleno, typecolor, month1, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11, month12, total, ave, top1, top2, top3, top3_total, top3_ave, foil_qty_order, highest_consumption, critical}
+            rowmonthly_consumptionRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowmonthly_consumptionRow)
+            Return rowmonthly_consumptionRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As monthly_consumptionDataTable = CType(MyBase.Clone,monthly_consumptionDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New monthly_consumptionDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnarticleno = MyBase.Columns("articleno")
+            Me.columntypecolor = MyBase.Columns("typecolor")
+            Me.columnmonth1 = MyBase.Columns("month1")
+            Me.columnmonth2 = MyBase.Columns("month2")
+            Me.columnmonth3 = MyBase.Columns("month3")
+            Me.columnmonth4 = MyBase.Columns("month4")
+            Me.columnmonth5 = MyBase.Columns("month5")
+            Me.columnmonth6 = MyBase.Columns("month6")
+            Me.columnmonth7 = MyBase.Columns("month7")
+            Me.columnmonth8 = MyBase.Columns("month8")
+            Me.columnmonth9 = MyBase.Columns("month9")
+            Me.columnmonth10 = MyBase.Columns("month10")
+            Me.columnmonth11 = MyBase.Columns("month11")
+            Me.columnmonth12 = MyBase.Columns("month12")
+            Me.columntotal = MyBase.Columns("total")
+            Me.columnave = MyBase.Columns("ave")
+            Me.columntop1 = MyBase.Columns("top1")
+            Me.columntop2 = MyBase.Columns("top2")
+            Me.columntop3 = MyBase.Columns("top3")
+            Me.columntop3_total = MyBase.Columns("top3_total")
+            Me.columntop3_ave = MyBase.Columns("top3_ave")
+            Me.columnfoil_qty_order = MyBase.Columns("foil_qty_order")
+            Me.columnhighest_consumption = MyBase.Columns("highest_consumption")
+            Me.columncritical = MyBase.Columns("critical")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnarticleno = New Global.System.Data.DataColumn("articleno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnarticleno)
+            Me.columntypecolor = New Global.System.Data.DataColumn("typecolor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntypecolor)
+            Me.columnmonth1 = New Global.System.Data.DataColumn("month1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth1)
+            Me.columnmonth2 = New Global.System.Data.DataColumn("month2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth2)
+            Me.columnmonth3 = New Global.System.Data.DataColumn("month3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth3)
+            Me.columnmonth4 = New Global.System.Data.DataColumn("month4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth4)
+            Me.columnmonth5 = New Global.System.Data.DataColumn("month5", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth5)
+            Me.columnmonth6 = New Global.System.Data.DataColumn("month6", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth6)
+            Me.columnmonth7 = New Global.System.Data.DataColumn("month7", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth7)
+            Me.columnmonth8 = New Global.System.Data.DataColumn("month8", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth8)
+            Me.columnmonth9 = New Global.System.Data.DataColumn("month9", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth9)
+            Me.columnmonth10 = New Global.System.Data.DataColumn("month10", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth10)
+            Me.columnmonth11 = New Global.System.Data.DataColumn("month11", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth11)
+            Me.columnmonth12 = New Global.System.Data.DataColumn("month12", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmonth12)
+            Me.columntotal = New Global.System.Data.DataColumn("total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotal)
+            Me.columnave = New Global.System.Data.DataColumn("ave", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnave)
+            Me.columntop1 = New Global.System.Data.DataColumn("top1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntop1)
+            Me.columntop2 = New Global.System.Data.DataColumn("top2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntop2)
+            Me.columntop3 = New Global.System.Data.DataColumn("top3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntop3)
+            Me.columntop3_total = New Global.System.Data.DataColumn("top3_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntop3_total)
+            Me.columntop3_ave = New Global.System.Data.DataColumn("top3_ave", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntop3_ave)
+            Me.columnfoil_qty_order = New Global.System.Data.DataColumn("foil_qty_order", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfoil_qty_order)
+            Me.columnhighest_consumption = New Global.System.Data.DataColumn("highest_consumption", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhighest_consumption)
+            Me.columncritical = New Global.System.Data.DataColumn("critical", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncritical)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Newmonthly_consumptionRow() As monthly_consumptionRow
+            Return CType(Me.NewRow,monthly_consumptionRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New monthly_consumptionRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(monthly_consumptionRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.monthly_consumptionRowChangedEvent) Is Nothing) Then
+                RaiseEvent monthly_consumptionRowChanged(Me, New monthly_consumptionRowChangeEvent(CType(e.Row,monthly_consumptionRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.monthly_consumptionRowChangingEvent) Is Nothing) Then
+                RaiseEvent monthly_consumptionRowChanging(Me, New monthly_consumptionRowChangeEvent(CType(e.Row,monthly_consumptionRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.monthly_consumptionRowDeletedEvent) Is Nothing) Then
+                RaiseEvent monthly_consumptionRowDeleted(Me, New monthly_consumptionRowChangeEvent(CType(e.Row,monthly_consumptionRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.monthly_consumptionRowDeletingEvent) Is Nothing) Then
+                RaiseEvent monthly_consumptionRowDeleting(Me, New monthly_consumptionRowChangeEvent(CType(e.Row,monthly_consumptionRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Removemonthly_consumptionRow(ByVal row As monthly_consumptionRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As inventoryds = New inventoryds()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "monthly_consumptionDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -5304,6 +5927,21 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Area() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFoilPerProject.AreaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Area' in table 'FoilPerProject' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFoilPerProject.AreaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsstocknoNull() As Boolean
             Return Me.IsNull(Me.tableFoilPerProject.stocknoColumn)
         End Function
@@ -5420,6 +6058,683 @@ Partial Public Class inventoryds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetArticlenoNull()
             Me(Me.tableFoilPerProject.ArticlenoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAreaNull() As Boolean
+            Return Me.IsNull(Me.tableFoilPerProject.AreaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAreaNull()
+            Me(Me.tableFoilPerProject.AreaColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class monthly_consumptionRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablemonthly_consumption As monthly_consumptionDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablemonthly_consumption = CType(Me.Table,monthly_consumptionDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property articleno() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.articlenoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'articleno' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.articlenoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property typecolor() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.typecolorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'typecolor' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.typecolorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month1' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month2' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month3' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month4' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month5() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month5Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month5' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month5Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month6() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month6Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month6' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month6Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month7() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month7Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month7' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month7Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month8() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month8Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month8' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month8Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month9() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month9Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month9' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month9Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month10() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month10Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month10' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month10Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month11() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month11Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month11' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month11Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property month12() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.month12Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'month12' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.month12Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'total' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ave() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.aveColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ave' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.aveColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property top1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.top1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'top1' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.top1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property top2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.top2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'top2' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.top2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property top3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.top3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'top3' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.top3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property top3_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.top3_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'top3_total' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.top3_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property top3_ave() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.top3_aveColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'top3_ave' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.top3_aveColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property foil_qty_order() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.foil_qty_orderColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'foil_qty_order' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.foil_qty_orderColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property highest_consumption() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.highest_consumptionColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'highest_consumption' in table 'monthly_consumption' is DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.highest_consumptionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property critical() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablemonthly_consumption.criticalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'critical' in table 'monthly_consumption' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemonthly_consumption.criticalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsarticlenoNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.articlenoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetarticlenoNull()
+            Me(Me.tablemonthly_consumption.articlenoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IstypecolorNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.typecolorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SettypecolorNull()
+            Me(Me.tablemonthly_consumption.typecolorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth1Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth1Null()
+            Me(Me.tablemonthly_consumption.month1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth2Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth2Null()
+            Me(Me.tablemonthly_consumption.month2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth3Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth3Null()
+            Me(Me.tablemonthly_consumption.month3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth4Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth4Null()
+            Me(Me.tablemonthly_consumption.month4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth5Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month5Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth5Null()
+            Me(Me.tablemonthly_consumption.month5Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth6Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month6Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth6Null()
+            Me(Me.tablemonthly_consumption.month6Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth7Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month7Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth7Null()
+            Me(Me.tablemonthly_consumption.month7Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth8Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month8Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth8Null()
+            Me(Me.tablemonthly_consumption.month8Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth9Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month9Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth9Null()
+            Me(Me.tablemonthly_consumption.month9Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth10Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month10Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth10Null()
+            Me(Me.tablemonthly_consumption.month10Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth11Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month11Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth11Null()
+            Me(Me.tablemonthly_consumption.month11Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismonth12Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.month12Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmonth12Null()
+            Me(Me.tablemonthly_consumption.month12Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IstotalNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SettotalNull()
+            Me(Me.tablemonthly_consumption.totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsaveNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.aveColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetaveNull()
+            Me(Me.tablemonthly_consumption.aveColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istop1Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.top1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settop1Null()
+            Me(Me.tablemonthly_consumption.top1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istop2Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.top2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settop2Null()
+            Me(Me.tablemonthly_consumption.top2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istop3Null() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.top3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settop3Null()
+            Me(Me.tablemonthly_consumption.top3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istop3_totalNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.top3_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settop3_totalNull()
+            Me(Me.tablemonthly_consumption.top3_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istop3_aveNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.top3_aveColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settop3_aveNull()
+            Me(Me.tablemonthly_consumption.top3_aveColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isfoil_qty_orderNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.foil_qty_orderColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setfoil_qty_orderNull()
+            Me(Me.tablemonthly_consumption.foil_qty_orderColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ishighest_consumptionNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.highest_consumptionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Sethighest_consumptionNull()
+            Me(Me.tablemonthly_consumption.highest_consumptionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IscriticalNull() As Boolean
+            Return Me.IsNull(Me.tablemonthly_consumption.criticalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetcriticalNull()
+            Me(Me.tablemonthly_consumption.criticalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5589,6 +6904,42 @@ Partial Public Class inventoryds
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As FoilPerProjectRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class monthly_consumptionRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As monthly_consumptionRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As monthly_consumptionRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As monthly_consumptionRow
             Get
                 Return Me.eventRow
             End Get

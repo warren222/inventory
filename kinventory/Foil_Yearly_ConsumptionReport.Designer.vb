@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ToFoilPerProjectFrm
+Partial Class Foil_Yearly_ConsumptionReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,51 +23,51 @@ Partial Class ToFoilPerProjectFrm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.FoilPerProjectBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.inventoryds = New kinventory.inventoryds()
-        CType(Me.FoilPerProjectBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.monthly_consumptionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.inventoryds, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.monthly_consumptionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.FoilPerProjectBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "kinventory.Report7.rdlc"
+        ReportDataSource2.Name = "DataSet1"
+        ReportDataSource2.Value = Me.monthly_consumptionBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "kinventory.Foil_Yearly_Consumption_RDLC.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(512, 405)
+        Me.ReportViewer1.Size = New System.Drawing.Size(855, 415)
         Me.ReportViewer1.TabIndex = 0
-        '
-        'FoilPerProjectBindingSource
-        '
-        Me.FoilPerProjectBindingSource.DataMember = "FoilPerProject"
-        Me.FoilPerProjectBindingSource.DataSource = Me.inventoryds
         '
         'inventoryds
         '
         Me.inventoryds.DataSetName = "inventoryds"
         Me.inventoryds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ToFoilPerProjectFrm
+        'monthly_consumptionBindingSource
+        '
+        Me.monthly_consumptionBindingSource.DataMember = "monthly_consumption"
+        Me.monthly_consumptionBindingSource.DataSource = Me.inventoryds
+        '
+        'Foil_Yearly_ConsumptionReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(512, 405)
+        Me.ClientSize = New System.Drawing.Size(855, 415)
         Me.Controls.Add(Me.ReportViewer1)
-        Me.Name = "ToFoilPerProjectFrm"
-        Me.Text = "ToFoilPerProjectFrm"
-        CType(Me.FoilPerProjectBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Name = "Foil_Yearly_ConsumptionReport"
+        Me.Text = "Foil_Yearly_ConsumptionReport"
         CType(Me.inventoryds, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.monthly_consumptionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
-    Friend WithEvents FoilPerProjectBindingSource As BindingSource
+    Friend WithEvents monthly_consumptionBindingSource As BindingSource
     Friend WithEvents inventoryds As inventoryds
 End Class

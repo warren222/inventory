@@ -3613,4 +3613,41 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
         ToFoilPerProjectFrm.ShowDialog()
 
     End Sub
+    Dim _dateselector As String
+    Private Sub selectDate()
+        Dim monthconverter As String
+        Dim monthindex As Integer = cboxMonthPicker.SelectedIndex + 1
+        monthconverter = monthindex.ToString()
+        _dateselector = cboxYearPicker.Text + "-" + monthconverter + "-01"
+    End Sub
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        selectDate()
+        sendRequest()
+    End Sub
+    Private Sub sendRequest()
+        Try
+            Dim ds As New inventoryds
+            ds.Clear()
+            ds = New inventoryds
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Using cmd As SqlCommand = sqlcon.CreateCommand()
+                    cmd.CommandText = "foiling_yearly_consumption"
+                    cmd.CommandType = CommandType.StoredProcedure
+                    cmd.Parameters.AddWithValue("@month1", _dateselector)
+                    cmd.Parameters.AddWithValue("@articleno", cboxArticlenoPicker.Text)
+                    Dim da As SqlDataAdapter = New SqlDataAdapter
+                    da.SelectCommand = cmd
+                    da.Fill(ds.monthly_consumption)
+                    Foil_Yearly_ConsumptionReport.monthly_consumptionBindingSource.DataSource = ds.monthly_consumption.DefaultView
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            Dim param As ReportParameter = New ReportParameter("mm", _dateselector)
+            Foil_Yearly_ConsumptionReport.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {param})
+            Foil_Yearly_ConsumptionReport.Show()
+        End Try
+    End Sub
 End Class
