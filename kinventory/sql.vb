@@ -435,6 +435,21 @@ order by A.articleno asc"
             Form2.reportsupplier.DataSource = supplierbs
             Form2.reportsupplier.DisplayMember = "supplier"
             Form2.reportsupplier.SelectedIndex = -1
+
+
+
+            Dim artids As New DataSet
+            Dim artibs As New BindingSource
+            artids.Clear()
+            Dim str5 As String = "select distinct articleno from stocks_tb"
+            sqlcmd = New SqlCommand(str5, sqlcon)
+            da.SelectCommand = sqlcmd
+            da.Fill(artids, "stocks_tb")
+            artibs.DataSource = artids
+            artibs.DataMember = "stocks_tb"
+            Form2.cboxArticlenoPicker.DataSource = artibs
+            Form2.cboxArticlenoPicker.DisplayMember = "articleno"
+            Form2.cboxArticlenoPicker.SelectedIndex = -1
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

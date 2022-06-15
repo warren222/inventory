@@ -72,6 +72,7 @@ Public Class Form2
             transaction.Text = "Allocation"
             transaction.Enabled = False
         End If
+        cboxMonthPicker.SelectedIndex = 0
     End Sub
 
     Private Sub stocksgridview_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles stocksgridview.RowPostPaint

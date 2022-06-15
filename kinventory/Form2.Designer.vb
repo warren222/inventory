@@ -24,17 +24,17 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.transactionmenustrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TransDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -301,6 +301,14 @@ Partial Class Form2
         Me.reportsupplier = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.KryptonGroup11 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.cboxYearPicker = New System.Windows.Forms.NumericUpDown()
+        Me.KryptonLabel83 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.KryptonLabel82 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.cboxMonthPicker = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel81 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.cboxArticlenoPicker = New System.Windows.Forms.ComboBox()
         Me.KryptonButton16 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton33 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.vchk = New System.Windows.Forms.CheckBox()
@@ -344,14 +352,6 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cboxArticlenoPicker = New System.Windows.Forms.ComboBox()
-        Me.KryptonLabel81 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.cboxMonthPicker = New System.Windows.Forms.ComboBox()
-        Me.KryptonLabel82 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.KryptonLabel83 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.cboxYearPicker = New System.Windows.Forms.NumericUpDown()
-        Me.Button8 = New System.Windows.Forms.Button()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -462,6 +462,8 @@ Partial Class Form2
         CType(Me.KryptonGroup11.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup11.Panel.SuspendLayout()
         Me.KryptonGroup11.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.cboxYearPicker, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mydummyDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -475,8 +477,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.cboxYearPicker, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -659,7 +659,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 784
+        Me.KryptonSplitContainer3.SplitterDistance = 779
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -668,8 +668,8 @@ Partial Class Form2
         Me.stocksgridview.AllowUserToAddRows = False
         Me.stocksgridview.AllowUserToDeleteRows = False
         Me.stocksgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle24
         Me.stocksgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.stocksgridview.ColumnHeadersHeight = 30
         Me.stocksgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -680,7 +680,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(784, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(779, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -708,7 +708,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(784, 46)
+        Me.Panel2.Size = New System.Drawing.Size(779, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -1252,8 +1252,8 @@ Partial Class Form2
         Me.inputGridView.AllowUserToAddRows = False
         Me.inputGridView.AllowUserToDeleteRows = False
         Me.inputGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
         Me.inputGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.inputGridView.ColumnHeadersHeight = 20
         Me.inputGridView.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1311,8 +1311,8 @@ Partial Class Form2
         Me.inputDataGridView1.AllowUserToAddRows = False
         Me.inputDataGridView1.AllowUserToDeleteRows = False
         Me.inputDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle26
         Me.inputDataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1860,8 +1860,8 @@ Partial Class Form2
         Me.receiptDataGridView1.AllowUserToAddRows = False
         Me.receiptDataGridView1.AllowUserToDeleteRows = False
         Me.receiptDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.receiptDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.receiptDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
         Me.receiptDataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.receiptDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -2134,8 +2134,8 @@ Partial Class Form2
         Me.receiptGridView.AllowUserToAddRows = False
         Me.receiptGridView.AllowUserToDeleteRows = False
         Me.receiptGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.receiptGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.receiptGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle28
         Me.receiptGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -2446,8 +2446,8 @@ Partial Class Form2
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToAddRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToDeleteRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToOrderColumns = True
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle29.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle29
         Me.LISTOFALLOCATIONGRIDVIEW.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -2507,8 +2507,8 @@ Partial Class Form2
         Me.issueDataGridView1.AllowUserToAddRows = False
         Me.issueDataGridView1.AllowUserToDeleteRows = False
         Me.issueDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle30.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle30
         Me.issueDataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.issueDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -2700,8 +2700,8 @@ Partial Class Form2
         Me.issueDataGridView.AllowUserToAddRows = False
         Me.issueDataGridView.AllowUserToDeleteRows = False
         Me.issueDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle31.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle31
         Me.issueDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -3042,8 +3042,8 @@ Partial Class Form2
         Me.transgridview.AllowUserToAddRows = False
         Me.transgridview.AllowUserToDeleteRows = False
         Me.transgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.transgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle32.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.transgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle32
         Me.transgridview.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -3443,8 +3443,8 @@ Partial Class Form2
         Me.referenceDataGridView.AllowUserToAddRows = False
         Me.referenceDataGridView.AllowUserToDeleteRows = False
         Me.referenceDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle22.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.referenceDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle33.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.referenceDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
         Me.referenceDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -3992,6 +3992,103 @@ Partial Class Form2
         Me.KryptonGroup11.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup11.TabIndex = 460
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Button8)
+        Me.GroupBox1.Controls.Add(Me.cboxYearPicker)
+        Me.GroupBox1.Controls.Add(Me.KryptonLabel83)
+        Me.GroupBox1.Controls.Add(Me.KryptonLabel82)
+        Me.GroupBox1.Controls.Add(Me.cboxMonthPicker)
+        Me.GroupBox1.Controls.Add(Me.KryptonLabel81)
+        Me.GroupBox1.Controls.Add(Me.cboxArticlenoPicker)
+        Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 130)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(195, 154)
+        Me.GroupBox1.TabIndex = 465
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "foil yearly consumption"
+        '
+        'Button8
+        '
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Location = New System.Drawing.Point(6, 114)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(172, 23)
+        Me.Button8.TabIndex = 475
+        Me.Button8.Text = "process report"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'cboxYearPicker
+        '
+        Me.cboxYearPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxYearPicker.Location = New System.Drawing.Point(90, 86)
+        Me.cboxYearPicker.Maximum = New Decimal(New Integer() {2300, 0, 0, 0})
+        Me.cboxYearPicker.Minimum = New Decimal(New Integer() {1900, 0, 0, 0})
+        Me.cboxYearPicker.Name = "cboxYearPicker"
+        Me.cboxYearPicker.Size = New System.Drawing.Size(88, 22)
+        Me.cboxYearPicker.TabIndex = 474
+        Me.cboxYearPicker.Value = New Decimal(New Integer() {2000, 0, 0, 0})
+        '
+        'KryptonLabel83
+        '
+        Me.KryptonLabel83.Location = New System.Drawing.Point(90, 62)
+        Me.KryptonLabel83.Name = "KryptonLabel83"
+        Me.KryptonLabel83.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel83.Size = New System.Drawing.Size(35, 18)
+        Me.KryptonLabel83.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel83.TabIndex = 473
+        Me.KryptonLabel83.Values.Text = "year"
+        '
+        'KryptonLabel82
+        '
+        Me.KryptonLabel82.Location = New System.Drawing.Point(6, 65)
+        Me.KryptonLabel82.Name = "KryptonLabel82"
+        Me.KryptonLabel82.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel82.Size = New System.Drawing.Size(45, 18)
+        Me.KryptonLabel82.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel82.TabIndex = 471
+        Me.KryptonLabel82.Values.Text = "month"
+        '
+        'cboxMonthPicker
+        '
+        Me.cboxMonthPicker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxMonthPicker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxMonthPicker.DropDownHeight = 206
+        Me.cboxMonthPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxMonthPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxMonthPicker.FormattingEnabled = True
+        Me.cboxMonthPicker.IntegralHeight = False
+        Me.cboxMonthPicker.Items.AddRange(New Object() {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"})
+        Me.cboxMonthPicker.Location = New System.Drawing.Point(6, 88)
+        Me.cboxMonthPicker.Name = "cboxMonthPicker"
+        Me.cboxMonthPicker.Size = New System.Drawing.Size(78, 22)
+        Me.cboxMonthPicker.TabIndex = 470
+        '
+        'KryptonLabel81
+        '
+        Me.KryptonLabel81.Location = New System.Drawing.Point(6, 18)
+        Me.KryptonLabel81.Name = "KryptonLabel81"
+        Me.KryptonLabel81.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel81.Size = New System.Drawing.Size(61, 18)
+        Me.KryptonLabel81.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel81.TabIndex = 469
+        Me.KryptonLabel81.Values.Text = "article no"
+        '
+        'cboxArticlenoPicker
+        '
+        Me.cboxArticlenoPicker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxArticlenoPicker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxArticlenoPicker.DropDownHeight = 206
+        Me.cboxArticlenoPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxArticlenoPicker.FormattingEnabled = True
+        Me.cboxArticlenoPicker.IntegralHeight = False
+        Me.cboxArticlenoPicker.Location = New System.Drawing.Point(6, 40)
+        Me.cboxArticlenoPicker.Name = "cboxArticlenoPicker"
+        Me.cboxArticlenoPicker.Size = New System.Drawing.Size(172, 22)
+        Me.cboxArticlenoPicker.TabIndex = 461
+        '
         'KryptonButton16
         '
         Me.KryptonButton16.Location = New System.Drawing.Point(20, 82)
@@ -4069,8 +4166,8 @@ Partial Class Form2
         Me.mydummyDataGridView1.AllowUserToAddRows = False
         Me.mydummyDataGridView1.AllowUserToDeleteRows = False
         Me.mydummyDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.mydummyDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.mydummyDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
         Me.mydummyDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.mydummyDataGridView1.ColumnHeadersHeight = 20
         Me.mydummyDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
@@ -4452,102 +4549,6 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Button8)
-        Me.GroupBox1.Controls.Add(Me.cboxYearPicker)
-        Me.GroupBox1.Controls.Add(Me.KryptonLabel83)
-        Me.GroupBox1.Controls.Add(Me.KryptonLabel82)
-        Me.GroupBox1.Controls.Add(Me.cboxMonthPicker)
-        Me.GroupBox1.Controls.Add(Me.KryptonLabel81)
-        Me.GroupBox1.Controls.Add(Me.cboxArticlenoPicker)
-        Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 130)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(195, 154)
-        Me.GroupBox1.TabIndex = 465
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "foil yearly consumption"
-        '
-        'cboxArticlenoPicker
-        '
-        Me.cboxArticlenoPicker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboxArticlenoPicker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboxArticlenoPicker.DropDownHeight = 206
-        Me.cboxArticlenoPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboxArticlenoPicker.FormattingEnabled = True
-        Me.cboxArticlenoPicker.IntegralHeight = False
-        Me.cboxArticlenoPicker.Location = New System.Drawing.Point(6, 40)
-        Me.cboxArticlenoPicker.Name = "cboxArticlenoPicker"
-        Me.cboxArticlenoPicker.Size = New System.Drawing.Size(172, 22)
-        Me.cboxArticlenoPicker.TabIndex = 461
-        '
-        'KryptonLabel81
-        '
-        Me.KryptonLabel81.Location = New System.Drawing.Point(6, 18)
-        Me.KryptonLabel81.Name = "KryptonLabel81"
-        Me.KryptonLabel81.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel81.Size = New System.Drawing.Size(61, 18)
-        Me.KryptonLabel81.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel81.TabIndex = 469
-        Me.KryptonLabel81.Values.Text = "article no"
-        '
-        'cboxMonthPicker
-        '
-        Me.cboxMonthPicker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboxMonthPicker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboxMonthPicker.DropDownHeight = 206
-        Me.cboxMonthPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboxMonthPicker.FormattingEnabled = True
-        Me.cboxMonthPicker.IntegralHeight = False
-        Me.cboxMonthPicker.Items.AddRange(New Object() {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"})
-        Me.cboxMonthPicker.Location = New System.Drawing.Point(6, 88)
-        Me.cboxMonthPicker.Name = "cboxMonthPicker"
-        Me.cboxMonthPicker.Size = New System.Drawing.Size(78, 22)
-        Me.cboxMonthPicker.TabIndex = 470
-        '
-        'KryptonLabel82
-        '
-        Me.KryptonLabel82.Location = New System.Drawing.Point(6, 65)
-        Me.KryptonLabel82.Name = "KryptonLabel82"
-        Me.KryptonLabel82.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel82.Size = New System.Drawing.Size(45, 18)
-        Me.KryptonLabel82.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel82.TabIndex = 471
-        Me.KryptonLabel82.Values.Text = "month"
-        '
-        'KryptonLabel83
-        '
-        Me.KryptonLabel83.Location = New System.Drawing.Point(90, 62)
-        Me.KryptonLabel83.Name = "KryptonLabel83"
-        Me.KryptonLabel83.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.KryptonLabel83.Size = New System.Drawing.Size(35, 18)
-        Me.KryptonLabel83.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel83.TabIndex = 473
-        Me.KryptonLabel83.Values.Text = "year"
-        '
-        'cboxYearPicker
-        '
-        Me.cboxYearPicker.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboxYearPicker.Location = New System.Drawing.Point(90, 86)
-        Me.cboxYearPicker.Maximum = New Decimal(New Integer() {2300, 0, 0, 0})
-        Me.cboxYearPicker.Minimum = New Decimal(New Integer() {1900, 0, 0, 0})
-        Me.cboxYearPicker.Name = "cboxYearPicker"
-        Me.cboxYearPicker.Size = New System.Drawing.Size(88, 22)
-        Me.cboxYearPicker.TabIndex = 474
-        Me.cboxYearPicker.Value = New Decimal(New Integer() {1900, 0, 0, 0})
-        '
-        'Button8
-        '
-        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.Location = New System.Drawing.Point(6, 114)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(172, 23)
-        Me.Button8.TabIndex = 475
-        Me.Button8.Text = "process report"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4690,6 +4691,9 @@ Partial Class Form2
         Me.KryptonGroup11.Panel.PerformLayout()
         CType(Me.KryptonGroup11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonGroup11.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.cboxYearPicker, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mydummyDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KryptonSplitContainer1.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4704,9 +4708,6 @@ Partial Class Form2
         CType(Me.stocksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.referencebs, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.cboxYearPicker, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
