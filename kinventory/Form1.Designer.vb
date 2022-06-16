@@ -33,7 +33,6 @@ Partial Class Form1
         Me.accounttype = New System.Windows.Forms.Label()
         Me.nickname = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.CreateStocksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +49,7 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ColorMngrToolStripMenuItem, Me.LogOutToolStripMenuItem, Me.CreateStocksToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ColorMngrToolStripMenuItem, Me.LogOutToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.FileToolStripMenuItem.Text = "System"
@@ -123,12 +122,6 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(1088, 0)
         Me.Panel1.TabIndex = 459
         '
-        'CreateStocksToolStripMenuItem
-        '
-        Me.CreateStocksToolStripMenuItem.Name = "CreateStocksToolStripMenuItem"
-        Me.CreateStocksToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CreateStocksToolStripMenuItem.Text = "CreateStocks"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -163,5 +156,4 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ManageColumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColorMngrToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CreateStocksToolStripMenuItem As ToolStripMenuItem
 End Class
