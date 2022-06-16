@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.97</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.98</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>97</ApplicationRevision>
+    <ApplicationRevision>98</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
