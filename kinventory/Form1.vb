@@ -45,4 +45,6 @@
     Private Sub ColorMngrToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ColorMngrToolStripMenuItem.Click
         ColorManagerTool.Show()
     End Sub
+
+
 End Class

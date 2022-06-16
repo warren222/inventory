@@ -20,6 +20,7 @@ Public Class Form2
         If Form1.accounttype.Text = "Guest" Then
             'stocks
             KryptonButton2.Enabled = False
+            KryptonButton17.Enabled = False
             KryptonButton3.Enabled = False
             KryptonButton23.Enabled = False
             'input
@@ -32,6 +33,7 @@ Public Class Form2
             KryptonButton14.Enabled = False
         ElseIf Form1.accounttype.Text = "Admin" Then
             KryptonButton2.Enabled = True
+            KryptonButton17.Enabled = True
             KryptonButton3.Enabled = True
             KryptonButton23.Enabled = True
             'input
@@ -44,6 +46,7 @@ Public Class Form2
             KryptonButton14.Enabled = True
         ElseIf Form1.accounttype.Text = "Encoder" Then
             KryptonButton2.Enabled = False
+            KryptonButton17.Enabled = False
             KryptonButton3.Enabled = False
             KryptonButton23.Enabled = False
             'input
@@ -55,7 +58,9 @@ Public Class Form2
             'reference
             KryptonButton14.Enabled = True
         ElseIf Form1.accounttype.Text = "Allocation" Then
+
             KryptonButton2.Enabled = False
+            KryptonButton17.Enabled = False
             KryptonButton3.Enabled = False
             KryptonButton23.Enabled = False
             'input
@@ -3650,5 +3655,9 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
             Foil_Yearly_ConsumptionReport.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {param})
             Foil_Yearly_ConsumptionReport.Show()
         End Try
+    End Sub
+
+    Private Sub KryptonButton17_Click_1(sender As Object, e As EventArgs) Handles KryptonButton17.Click
+        CreateStocks_Frm.Show()
     End Sub
 End Class
