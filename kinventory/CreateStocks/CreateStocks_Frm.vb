@@ -31,6 +31,17 @@ Public Class CreateStocks_Frm
     Dim _qtyString As String
     Dim _unitString As String
     Dim _unitpriceString As String
+    Dim _locationString As String
+    Dim _headerString As String
+    Dim _colorBasedString As String
+    Dim _xrateString As String
+    Dim _ufactorString As String
+    Dim _monetaryString As String
+    Dim _foilaString As String
+    Dim _foilbString As String
+    Dim _foilcolorString As String
+    Dim _toorderString As String
+    Dim _tofoilString As String
     Sub bgw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
         Select Case action
             Case "Paste"
@@ -52,6 +63,17 @@ Public Class CreateStocks_Frm
                         _qtyString = _qtyList(pinterval).ToString
                         _unitString = _unitList(pinterval).ToString
                         _unitpriceString = _unitpriceList(pinterval).ToString
+                        _locationString = _locationList(pinterval).ToString
+                        _headerString = _headerList(pinterval).ToString
+                        _colorBasedString = _colorBasedList(pinterval).ToString
+                        _xrateString = _xrateList(pinterval).ToString
+                        _ufactorString = _ufactorList(pinterval).ToString
+                        _monetaryString = _monetaryList(pinterval).ToString
+                        _foilaString = _foilaList(pinterval).ToString
+                        _foilbString = _foilbList(pinterval).ToString
+                        _foilcolorString = _foilcolorList(pinterval).ToString
+                        _toorderString = _toorderList(pinterval).ToString
+                        _tofoilString = _tofoilList(pinterval).ToString
                         starter("Add")
                     Catch ex As Exception
                         MsgBox(ex.Message.ToString)
@@ -133,6 +155,16 @@ Public Class CreateStocks_Frm
                     sqlcommand.Parameters.AddWithValue("@Qty", _qtyString)
                     sqlcommand.Parameters.AddWithValue("@Unit", _unitString)
                     sqlcommand.Parameters.AddWithValue("@UnitPrice", _unitpriceString)
+                    sqlcommand.Parameters.AddWithValue("@Location", _locationString)
+                    sqlcommand.Parameters.AddWithValue("@Header", _headerString)
+                    sqlcommand.Parameters.AddWithValue("@ColorBased", _colorBasedString)
+                    sqlcommand.Parameters.AddWithValue("@Xrate", _xrateString)
+                    sqlcommand.Parameters.AddWithValue("@UFactor", _ufactorString)
+                    sqlcommand.Parameters.AddWithValue("@Monetary", _monetaryString)
+                    sqlcommand.Parameters.AddWithValue("@FoilA", _foilaString)
+                    sqlcommand.Parameters.AddWithValue("@FoilB", _foilbString)
+                    sqlcommand.Parameters.AddWithValue("@FoilColor", _foilcolorString)
+                    sqlcommand.Parameters.AddWithValue("@ToOrder", _toorderString)
                     sqlcommand.ExecuteNonQuery()
                 Catch ex As Exception
                     MsgBox(ex.Message.ToString())
@@ -160,7 +192,17 @@ Public Class CreateStocks_Frm
     Dim _qtyList As New ArrayList
     Dim _unitList As New ArrayList
     Dim _unitpriceList As New ArrayList
-
+    Dim _locationList As New ArrayList
+    Dim _headerList As New ArrayList
+    Dim _colorBasedList As New ArrayList
+    Dim _xrateList As New ArrayList
+    Dim _ufactorList As New ArrayList
+    Dim _monetaryList As New ArrayList
+    Dim _foilaList As New ArrayList
+    Dim _foilbList As New ArrayList
+    Dim _foilcolorList As New ArrayList
+    Dim _toorderList As New ArrayList
+    Dim _tofoilList As New ArrayList
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If MessageBox.Show("Create all stocks?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Exit Sub
@@ -174,6 +216,17 @@ Public Class CreateStocks_Frm
             _qtyList = New ArrayList
             _unitList = New ArrayList
             _unitpriceList = New ArrayList
+            _locationList = New ArrayList
+            _headerList = New ArrayList
+            _colorBasedList = New ArrayList
+            _xrateList = New ArrayList
+            _ufactorList = New ArrayList
+            _monetaryList = New ArrayList
+            _foilaList = New ArrayList
+            _foilbList = New ArrayList
+            _foilcolorList = New ArrayList
+            _toorderList = New ArrayList
+            _tofoilList = New ArrayList
             Try
                 For i As Integer = 0 To DataGridView1.Rows.Count - 2
                     Dim row As DataGridViewRow = DataGridView1.Rows(i)
@@ -184,7 +237,18 @@ Public Class CreateStocks_Frm
                     _descriptionList.Add(row.Cells("description").Value.ToString())
                     _qtyList.Add(IIf(String.IsNullOrEmpty(row.Cells("qty").Value.ToString()), "0", row.Cells("qty").Value.ToString()))
                     _unitList.Add(row.Cells("unit").Value.ToString())
-                    _unitpriceList.Add(IIf(String.IsNullOrEmpty(row.Cells("qty").Value.ToString()), "0", row.Cells("unitprice").Value.ToString()))
+                    _unitpriceList.Add(IIf(String.IsNullOrEmpty(row.Cells("unitprice").Value.ToString()), "0", row.Cells("unitprice").Value.ToString()))
+                    _locationList.Add(row.Cells("location").Value.ToString())
+                    _headerList.Add(row.Cells("header").Value.ToString())
+                    _colorBasedList.Add(row.Cells("colorbased").Value.ToString())
+                    _xrateList.Add(row.Cells("xrate").Value.ToString())
+                    _ufactorList.Add(row.Cells("ufactor").Value.ToString())
+                    _monetaryList.Add(row.Cells("monetary").Value.ToString())
+                    _foilaList.Add(row.Cells("foila").Value.ToString())
+                    _foilbList.Add(row.Cells("foilb").Value.ToString())
+                    _foilcolorList.Add(row.Cells("foilcolor").Value.ToString())
+                    _toorderList.Add(row.Cells("toorder").Value.ToString())
+                    _tofoilList.Add(row.Cells("tofoil").Value.ToString())
                 Next
 
 
@@ -198,6 +262,17 @@ Public Class CreateStocks_Frm
                 _qtyString = _qtyList(0).ToString
                 _unitString = _unitList(0).ToString
                 _unitpriceString = _unitpriceList(0).ToString
+                _locationString = _locationList(0).ToString
+                _headerString = _headerList(0).ToString
+                _colorBasedString = _colorBasedList(0).ToString
+                _xrateString = _xrateList(0).ToString
+                _ufactorString = _ufactorList(0).ToString
+                _monetaryString = _monetaryList(0).ToString
+                _foilaString = _foilaList(0).ToString
+                _foilbString = _foilbList(0).ToString
+                _foilcolorString = _foilcolorList(0).ToString
+                _toorderString = _toorderList(0).ToString
+                _tofoilString = _tofoilList(0).ToString
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
