@@ -236,7 +236,7 @@ Partial Class CreateStocks_Frm
         '
         Me.FoilA.HeaderText = "FoilA"
         Me.FoilA.Increment = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.FoilA.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.FoilA.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.FoilA.Minimum = New Decimal(New Integer() {0, 0, 0, 0})
         Me.FoilA.Name = "FoilA"
         Me.FoilA.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -247,7 +247,7 @@ Partial Class CreateStocks_Frm
         '
         Me.FoilB.HeaderText = "FoilB"
         Me.FoilB.Increment = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.FoilB.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.FoilB.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.FoilB.Minimum = New Decimal(New Integer() {0, 0, 0, 0})
         Me.FoilB.Name = "FoilB"
         Me.FoilB.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -263,11 +263,13 @@ Partial Class CreateStocks_Frm
         '
         Me.ToOrder.HeaderText = "ToOrder"
         Me.ToOrder.Name = "ToOrder"
+        Me.ToOrder.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
         'ToFoil
         '
         Me.ToFoil.HeaderText = "ToFoil"
         Me.ToFoil.Name = "ToFoil"
+        Me.ToFoil.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
         'CreateStocks_Frm
         '
