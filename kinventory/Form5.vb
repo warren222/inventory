@@ -9,34 +9,36 @@ Public Class Form5
 
     Public Sub GETBALANCEALLOCISSUE(ByVal stock As String, ByVal ref As String, ByVal jo As String, ByVal xyz As String)
         Try
-            sql.sqlcon.Open()
-            '  Dim x As String = "     declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' AND TRANSTYPE='Allocation')+0
-            '                          declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
-            '"
-            Dim allocationstr As String = "
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                '  Dim x As String = "     declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' AND TRANSTYPE='Allocation')+0
+                '                          declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
+                '"
+                Dim allocationstr As String = "
 declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' and jo = '" & jo & "' AND TRANSTYPE='Allocation')+0
 declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "'  and jo = '" & jo & "' AND TRANSTYPE='CancelAlloc')+0
         select @allocation-@cancelalloc from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' and jo = '" & jo & "'  AND TRANSTYPE='Allocation'"
-            sqlcmd = New SqlCommand(allocationstr, sql.sqlcon)
-            Dim read As SqlDataReader = sqlcmd.ExecuteReader
-            While read.Read
-                REFALLOC.Text = read(0).ToString
-            End While
-            read.Close()
+                sqlcmd = New SqlCommand(allocationstr, sqlcon)
+                Dim read As SqlDataReader = sqlcmd.ExecuteReader
+                While read.Read
+                    REFALLOC.Text = read(0).ToString
+                End While
+                read.Close()
 
-            Dim issuestr As String = "declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' and jo = '" & jo & "'  AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
+                Dim issuestr As String = "declare @issueallocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' and jo = '" & jo & "'  AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
         select @issueallocation AS XA from trans_tb where stockno ='" & stock & "' and reference = '" & ref & "' and jo = '" & jo & "'  AND TRANSTYPE='Issue' AND XYZ ='Allocation'"
-            sqlcmd = New SqlCommand(issuestr, sql.sqlcon)
-            Dim read2 As SqlDataReader = sqlcmd.ExecuteReader
-            While read2.Read
-                REFISSUE.Text = read2(0).ToString
-            End While
-            read2.Close()
+                sqlcmd = New SqlCommand(issuestr, sqlcon)
+                Dim read2 As SqlDataReader = sqlcmd.ExecuteReader
+                While read2.Read
+                    REFISSUE.Text = read2(0).ToString
+                End While
+                read2.Close()
+
+            End Using
+
 
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
     End Sub
 
@@ -160,22 +162,23 @@ declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_t
         If transtype.Text = "Issue" Then
             Dim maxtransaction As String
             Try
-                sql.sqlcon.Open()
-                Dim findmax As String = "select max(transno) from trans_tb where 
+                Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                    sqlcon.Open()
+
+                    Dim findmax As String = "select max(transno) from trans_tb where 
 stockno='" & stockno.Text & "' and 
 reference = '" & reference.Text & "' and
 JO = '" & JO.Text & "' AND
 transtype = 'Issue'"
-                sqlcmd = New SqlCommand(findmax, sql.sqlcon)
-                Dim read As SqlDataReader = sqlcmd.ExecuteReader
-                While read.Read
-                    maxtransaction = read(0).ToString
-                End While
-                read.Close()
+                    sqlcmd = New SqlCommand(findmax, sqlcon)
+                    Dim read As SqlDataReader = sqlcmd.ExecuteReader
+                    While read.Read
+                        maxtransaction = read(0).ToString
+                    End While
+                    read.Close()
+                End Using
             Catch ex As Exception
                 MsgBox(ex.ToString)
-            Finally
-                sql.sqlcon.Close()
             End Try
             If Not transno.Text = maxtransaction And Not initialqty.Text = qty.Text Then
                 MessageBox.Show("unable to update quantity
@@ -199,13 +202,13 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 justupdate = "update trans_tb set balqty = '" & v & "' where transno = '" & transno.Text & "'"
             End If
             Try
-                sql.sqlcon.Open()
-                sqlcmd = New SqlCommand(justupdate, sql.sqlcon)
-                sqlcmd.ExecuteNonQuery()
+                Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                    sqlcon.Open()
+                    sqlcmd = New SqlCommand(justupdate, sqlcon)
+                    sqlcmd.ExecuteNonQuery()
+                End Using
             Catch ex As Exception
                 MsgBox(ex.ToString)
-            Finally
-                sql.sqlcon.Close()
             End Try
         End If
         If transtype.Text = "Allocation" And xyzref.Text = "" Then
@@ -221,26 +224,28 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 If v >= 0 Then
                     'if bal qty is positive
                     Try
-                        sql.sqlcon.Open()
-                        Dim justupdate As String = "update trans_tb set balqty = '" & v & "' where transno = '" & transno.Text & "'"
-                        sqlcmd = New SqlCommand(justupdate, sql.sqlcon)
-                        sqlcmd.ExecuteNonQuery()
+                        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                            sqlcon.Open()
+                            Dim justupdate As String = "update trans_tb set balqty = '" & v & "' where transno = '" & transno.Text & "'"
+                            sqlcmd = New SqlCommand(justupdate, sqlcon)
+                            sqlcmd.ExecuteNonQuery()
+                        End Using
+
                     Catch ex As Exception
                         MsgBox(ex.ToString)
-                    Finally
-                        sql.sqlcon.Close()
                     End Try
                 ElseIf v < 0 Then
                     'if bal is negative , update balqty to 0 then loop to another allocation
                     Try
-                        sql.sqlcon.Open()
-                        Dim justupdate As String = "update trans_tb set balqty = 0 where transno = '" & transno.Text & "'"
-                        sqlcmd = New SqlCommand(justupdate, sql.sqlcon)
-                        sqlcmd.ExecuteNonQuery()
+                        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                            sqlcon.Open()
+                            Dim justupdate As String = "update trans_tb set balqty = 0 where transno = '" & transno.Text & "'"
+                            sqlcmd = New SqlCommand(justupdate, sqlcon)
+                            sqlcmd.ExecuteNonQuery()
+                        End Using
+
                     Catch ex As Exception
                         MsgBox(ex.ToString)
-                    Finally
-                        sql.sqlcon.Close()
                     End Try
                     loopissue.Text = v * -1
                     loadallocationlist(reference.Text, JO.Text, stockno.Text)
@@ -251,14 +256,14 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ElseIf result < 0 Then
                 'if result is negative then update balqty plus result multiply by negative one
                 Try
-                    sql.sqlcon.Open()
-                    Dim justupdate As String = "update trans_tb set balqty = balqty+" & (result * -1) & " where transno = '" & transno.Text & "'"
-                    sqlcmd = New SqlCommand(justupdate, sql.sqlcon)
-                    sqlcmd.ExecuteNonQuery()
+                    Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                        sqlcon.Open()
+                        Dim justupdate As String = "update trans_tb set balqty = balqty+" & (result * -1) & " where transno = '" & transno.Text & "'"
+                        sqlcmd = New SqlCommand(justupdate, sqlcon)
+                        sqlcmd.ExecuteNonQuery()
+                    End Using
                 Catch ex As Exception
                     MsgBox(ex.ToString)
-                Finally
-                    sql.sqlcon.Close()
                 End Try
             End If
         End If
@@ -300,20 +305,21 @@ proceed to latest issue", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
     Public Sub updatenewreference(ByVal transno As String, ByVal reference As String, ByVal jo As String)
         Try
-            sql.sqlcon.Open()
-            Dim str As String = "update trans_tb set reference = '" & reference & "',jo='" & jo & "' where transno = '" & transno & "'"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            sqlcmd.ExecuteNonQuery()
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "update trans_tb set reference = '" & reference & "',jo='" & jo & "' where transno = '" & transno & "'"
+                sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
     End Sub
     Public Sub updatenewstockno(ByVal transno As String, ByVal stockno As String)
         Try
-            sql.sqlcon.Open()
-            Dim str As String = "
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "
 declare @unitprice as decimal(10,2) = (select unitprice from stocks_tb where stockno = '" & stockno & "')
 Declare @xrate as decimal(10,2) = (select xrate from stocks_tb where stockno = '" & stockno & "')
 declare @ufactor decimal(10,2)= (select ufactor from stocks_tb where stockno = '" & stockno & "')
@@ -325,41 +331,41 @@ xrate=@xrate,
 ufactor=@ufactor,
 netamount=(@unitprice*@xrate)*(qty*@ufactor)
 where transno = '" & transno & "'"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            sqlcmd.ExecuteNonQuery()
-
+                sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
     End Sub
     Public Sub findnewreference(ByVal stockno As String, ByVal reference As String, ByVal jo As String)
         Try
-            sql.sqlcon.Open()
-            Dim find As String = "select * from reference_tb where reference='" & reference & "' and jo = '" & jo & "' and stockno='" & stockno & "'"
-            sqlcmd = New SqlCommand(find, sql.sqlcon)
-            Dim read As SqlDataReader = sqlcmd.ExecuteReader
-            If read.HasRows = True Then
-                read.Close()
-            Else
-                read.Close()
-                Dim insert As String = "
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim find As String = "select * from reference_tb where reference='" & reference & "' and jo = '" & jo & "' and stockno='" & stockno & "'"
+                sqlcmd = New SqlCommand(find, sqlcon)
+                Dim read As SqlDataReader = sqlcmd.ExecuteReader
+                If read.HasRows = True Then
+                    read.Close()
+                Else
+                    read.Close()
+                    Dim insert As String = "
 declare @id as integer = (select max(id)+1 from reference_tb)
 insert into reference_tb (id,reference,jo,stockno) values(@id,'" & reference & "','" & jo & "','" & stockno & "')"
-                sqlcmd = New SqlCommand(insert, sql.sqlcon)
-                sqlcmd.ExecuteNonQuery()
-            End If
+                    sqlcmd = New SqlCommand(insert, sqlcon)
+                    sqlcmd.ExecuteNonQuery()
+                End If
+            End Using
+
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
     End Sub
     Public Sub updatestock(ByVal stockno As String, ByVal reference As String, ByVal jo As String)
         Try
-            sql.sqlcon.Open()
-            Dim str As String = "
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "
                                     Declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation')+0
                                     Declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Order')+0
@@ -382,11 +388,11 @@ insert into reference_tb (id,reference,jo,stockno) values(@id,'" & reference & "
                                     stockorder=@order-@receiptorder,
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            sqlcmd.ExecuteNonQuery()
+                sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.ExecuteNonQuery()
 
 
-            Dim bny As String = "
+                Dim bny As String = "
                                     declare @allocation as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "' AND TRANSTYPE='Allocation')+0
                                     declare @cancelalloc as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "'  AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select  COALESCE(sum(qty),0) from trans_tb where stockno ='" & stockno & "' and reference = '" & reference & "' and jo = '" & jo & "'  AND TRANSTYPE='Order')+0
@@ -405,12 +411,12 @@ update reference_tb set
                                     totalissue=@totalissue,
                                     totalreturn=@return
                                     where stockno='" & stockno & "' and reference='" & reference & "' and jo = '" & jo & "' "
-            sqlcmd = New SqlCommand(bny, sql.sqlcon)
-            sqlcmd.ExecuteNonQuery()
+                sqlcmd = New SqlCommand(bny, sqlcon)
+                sqlcmd.ExecuteNonQuery()
+            End Using
+
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
     End Sub
 

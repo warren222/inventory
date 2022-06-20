@@ -2979,104 +2979,106 @@ INPUTTED
     End Sub
     Public Sub selectreference(ByVal stockno As String, ByVal reference As String, ByVal jo As String)
         Try
-            sqlcon.Open()
-            Dim ds As New DataSet
-            Dim da As New SqlDataAdapter
-            ds.Clear()
-            Dim bs As New BindingSource
-            Dim Str As String = "Select reference As [REFERENCE],JO
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                sqlcon.Open()
+                Dim ds As New DataSet
+                Dim da As New SqlDataAdapter
+                ds.Clear()
+                Dim bs As New BindingSource
+                Dim Str As String = "Select reference As [REFERENCE]
+      ,JO
       ,stockno as [STOCKNO]
       ,STOCKORDER as [ORDER]
       ,ALLOCATION as [ALLOCATION]
       ,TOTALRECEIPT as [RECEIPT]
       ,TOTALISSUE as [ISSUE],
-        TOTALRETURN AS [RETURN] from reference_tb where stockno='" & stockno & "'
+       TOTALRETURN AS [RETURN] from reference_tb where stockno='" & stockno & "'
         and reference='" & reference & "' 
         and jo = '" & jo & "'"
-            sqlcmd = New SqlCommand(Str, sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "reference_tb")
-            bs.DataSource = ds
-            bs.DataMember = "reference_tb"
-            Form5.referencegridview.DataSource = bs
-            Form5.referencegridview.Columns("stockno").Visible = False
+                sqlcmd = New SqlCommand(Str, sqlcon)
+                da.SelectCommand = sqlcmd
+                da.Fill(ds, "reference_tb")
+                bs.DataSource = ds
+                bs.DataMember = "reference_tb"
+                Form5.referencegridview.DataSource = bs
+                Form5.referencegridview.Columns("stockno").Visible = False
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sqlcon.Close()
         End Try
     End Sub
     Public Sub updatetransdates(ByVal transno As String, ByVal transdate As String, ByVal duedate As String, ByVal qty As String, ByVal xyzref As String, ByVal adjremarks As String)
         Try
-            sqlcon.Open()
-            Dim str As String = ""
-            'order
-            If Form5.transtype.Text = "Order" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Order" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "' where transno = '" & transno & "'"
-                'receipt
-            ElseIf Form5.transtype.Text = "Receipt" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "',qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Receipt" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "',qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                sqlcon.Open()
+                Dim str As String = ""
+                'order
+                If Form5.transtype.Text = "Order" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Order" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "' where transno = '" & transno & "'"
+                    'receipt
+                ElseIf Form5.transtype.Text = "Receipt" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "',qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Receipt" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "',qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & transno & "'
                        update trans_tb set qty = '" & qty & "',netamount=(xrate*(unitprice-((disc*0.01)*unitprice)))*(" & qty & "*ufactor) where transno = '" & xyzref & "'"
-                'allocation
-            ElseIf Form5.transtype.Text = "Allocation" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "', adjustmentqty='" & adjremarks & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Allocation" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "' where transno = '" & transno & "'"
-                'issue
-            ElseIf Form5.transtype.Text = "Issue" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Issue" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-                'return
-            ElseIf Form5.transtype.Text = "Return" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Return" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-                'Supply
-            ElseIf Form5.transtype.Text = "Supply" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Supply" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-                'Spare
-            ElseIf Form5.transtype.Text = "Spare" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "Spare" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-                '+Adjustment
-            ElseIf Form5.transtype.Text = "+Adjustment" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "+Adjustment" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-                '-Adjustment
-            ElseIf Form5.transtype.Text = "-Adjustment" And Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            ElseIf Form5.transtype.Text = "-Adjustment" And Not Form5.xyzref.Text = "" Then
-                str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
-            End If
-            If str = "" Then
-                MessageBox.Show("")
-            Else
-                sqlcmd = New SqlCommand(str, sqlcon)
-                sqlcmd.ExecuteNonQuery()
-                MessageBox.Show("transaction updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Form5.initialqty.Text = Form5.qty.Text
-            End If
+                    'allocation
+                ElseIf Form5.transtype.Text = "Allocation" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "', adjustmentqty='" & adjremarks & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Allocation" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "' where transno = '" & transno & "'"
+                    'issue
+                ElseIf Form5.transtype.Text = "Issue" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Issue" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                    'return
+                ElseIf Form5.transtype.Text = "Return" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Return" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                    'Supply
+                ElseIf Form5.transtype.Text = "Supply" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Supply" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                    'Spare
+                ElseIf Form5.transtype.Text = "Spare" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "Spare" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                    '+Adjustment
+                ElseIf Form5.transtype.Text = "+Adjustment" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "+Adjustment" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                    '-Adjustment
+                ElseIf Form5.transtype.Text = "-Adjustment" And Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                ElseIf Form5.transtype.Text = "-Adjustment" And Not Form5.xyzref.Text = "" Then
+                    str = "update trans_tb set transdate='" & transdate & "',duedate ='" & duedate & "', qty = '" & qty & "' where transno = '" & transno & "'"
+                End If
+                If str = "" Then
+                    MessageBox.Show("")
+                Else
+                    sqlcmd = New SqlCommand(str, sqlcon)
+                    sqlcmd.ExecuteNonQuery()
+                    MessageBox.Show("transaction updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Form5.initialqty.Text = Form5.qty.Text
+                End If
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sqlcon.Close()
         End Try
     End Sub
 
 
     Public Sub selecttransrec(ByVal transno As String)
         Try
-            sqlcon.Open()
-            Dim str As String = "select a.TRANSNO,
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                sqlcon.Open()
+                Dim str As String = "select a.TRANSNO,
 a.STOCKNO,
 b.COSTHEAD,
 b.TYPECOLOR,
@@ -3099,74 +3101,74 @@ a.xrate,
 a.disc
  from trans_tb as a inner join stocks_tb as b
 on a.stockno = b.stockno where a.transno='" & transno & "'"
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim da As New SqlDataAdapter
+                Dim ds As New DataSet
+                ds.Clear()
+                Dim da As New SqlDataAdapter
 
-            Dim bs As New BindingSource
-            sqlcmd = New SqlCommand(str, sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "trans_tb")
-            bs.DataSource = ds
-            bs.DataMember = "trans_tb"
+                Dim bs As New BindingSource
+                sqlcmd = New SqlCommand(str, sqlcon)
+                da.SelectCommand = sqlcmd
+                da.Fill(ds, "trans_tb")
+                bs.DataSource = ds
+                bs.DataMember = "trans_tb"
 
-            Form5.stockno.DataBindings.Clear()
-            Form5.costhead.DataBindings.Clear()
-            Form5.typecolor.DataBindings.Clear()
-            Form5.articleno.DataBindings.Clear()
-            Form5.description.DataBindings.Clear()
-            Form5.transtype.DataBindings.Clear()
-            Form5.transdate.DataBindings.Clear()
-            Form5.duedate.DataBindings.Clear()
-            Form5.qty.DataBindings.Clear()
-            Form5.initialqty.DataBindings.Clear()
-            Form5.balanceqty.DataBindings.Clear()
-            Form5.reference.DataBindings.Clear()
-            Form5.JO.DataBindings.Clear()
-            Form5.account.DataBindings.Clear()
-            Form5.controlno.DataBindings.Clear()
-            Form5.xyzref.DataBindings.Clear()
-            Form5.ADJUSTMENTREMARKS.DataBindings.Clear()
-            Form5.stockno.DataBindings.Add("text", bs, "stockno")
-            Form5.costhead.DataBindings.Add("text", bs, "COSTHEAD")
-            Form5.typecolor.DataBindings.Add("text", bs, "TYPECOLOR")
-            Form5.articleno.DataBindings.Add("text", bs, "ARTICLENO")
-            Form5.description.DataBindings.Add("text", bs, "DESCRIPTION")
-            Form5.transtype.DataBindings.Add("text", bs, "TRANSTYPE")
-            Form5.transdate.DataBindings.Add("text", bs, "TRANSDATE")
-            Form5.duedate.DataBindings.Add("text", bs, "DUEDATE")
-            Form5.qty.DataBindings.Add("text", bs, "QTY")
-            Form5.initialqty.DataBindings.Add("text", bs, "QTY")
-            Form5.balanceqty.DataBindings.Add("text", bs, "balqty")
-            Form5.reference.DataBindings.Add("text", bs, "REFERENCE")
-            Form5.JO.DataBindings.Add("text", bs, "JO")
-            Form5.account.DataBindings.Add("text", bs, "ACCOUNT")
-            Form5.controlno.DataBindings.Add("text", bs, "CONTROLNO")
-            Form5.xyzref.DataBindings.Add("text", bs, "xyzref")
-            Form5.ADJUSTMENTREMARKS.DataBindings.Add("text", bs, "adjustmentqty")
+                Form5.stockno.DataBindings.Clear()
+                Form5.costhead.DataBindings.Clear()
+                Form5.typecolor.DataBindings.Clear()
+                Form5.articleno.DataBindings.Clear()
+                Form5.description.DataBindings.Clear()
+                Form5.transtype.DataBindings.Clear()
+                Form5.transdate.DataBindings.Clear()
+                Form5.duedate.DataBindings.Clear()
+                Form5.qty.DataBindings.Clear()
+                Form5.initialqty.DataBindings.Clear()
+                Form5.balanceqty.DataBindings.Clear()
+                Form5.reference.DataBindings.Clear()
+                Form5.JO.DataBindings.Clear()
+                Form5.account.DataBindings.Clear()
+                Form5.controlno.DataBindings.Clear()
+                Form5.xyzref.DataBindings.Clear()
+                Form5.ADJUSTMENTREMARKS.DataBindings.Clear()
+                Form5.stockno.DataBindings.Add("text", bs, "stockno")
+                Form5.costhead.DataBindings.Add("text", bs, "COSTHEAD")
+                Form5.typecolor.DataBindings.Add("text", bs, "TYPECOLOR")
+                Form5.articleno.DataBindings.Add("text", bs, "ARTICLENO")
+                Form5.description.DataBindings.Add("text", bs, "DESCRIPTION")
+                Form5.transtype.DataBindings.Add("text", bs, "TRANSTYPE")
+                Form5.transdate.DataBindings.Add("text", bs, "TRANSDATE")
+                Form5.duedate.DataBindings.Add("text", bs, "DUEDATE")
+                Form5.qty.DataBindings.Add("text", bs, "QTY")
+                Form5.initialqty.DataBindings.Add("text", bs, "QTY")
+                Form5.balanceqty.DataBindings.Add("text", bs, "balqty")
+                Form5.reference.DataBindings.Add("text", bs, "REFERENCE")
+                Form5.JO.DataBindings.Add("text", bs, "JO")
+                Form5.account.DataBindings.Add("text", bs, "ACCOUNT")
+                Form5.controlno.DataBindings.Add("text", bs, "CONTROLNO")
+                Form5.xyzref.DataBindings.Add("text", bs, "xyzref")
+                Form5.ADJUSTMENTREMARKS.DataBindings.Add("text", bs, "adjustmentqty")
 
-            Form5.newcosthead.DataBindings.Clear()
-            Form5.newtypecolor.DataBindings.Clear()
-            Form5.newarticleno.DataBindings.Clear()
-            Form5.newstockno.DataBindings.Clear()
-            Form5.newstockno.DataBindings.Add("text", bs, "stockno")
-            Form5.newcosthead.DataBindings.Add("text", bs, "COSTHEAD")
-            Form5.newtypecolor.DataBindings.Add("text", bs, "TYPECOLOR")
-            Form5.newarticleno.DataBindings.Add("text", bs, "ARTICLENO")
+                Form5.newcosthead.DataBindings.Clear()
+                Form5.newtypecolor.DataBindings.Clear()
+                Form5.newarticleno.DataBindings.Clear()
+                Form5.newstockno.DataBindings.Clear()
+                Form5.newstockno.DataBindings.Add("text", bs, "stockno")
+                Form5.newcosthead.DataBindings.Add("text", bs, "COSTHEAD")
+                Form5.newtypecolor.DataBindings.Add("text", bs, "TYPECOLOR")
+                Form5.newarticleno.DataBindings.Add("text", bs, "ARTICLENO")
 
-            Form5.unit.DataBindings.Clear()
-            Form5.ufactor.DataBindings.Clear()
-            Form5.xrate.DataBindings.Clear()
-            Form5.discount.DataBindings.Clear()
+                Form5.unit.DataBindings.Clear()
+                Form5.ufactor.DataBindings.Clear()
+                Form5.xrate.DataBindings.Clear()
+                Form5.discount.DataBindings.Clear()
 
-            Form5.unit.DataBindings.Add("text", bs, "unitprice")
-            Form5.ufactor.DataBindings.Add("text", bs, "ufactor")
-            Form5.xrate.DataBindings.Add("text", bs, "xrate")
-            Form5.discount.DataBindings.Add("text", bs, "disc")
+                Form5.unit.DataBindings.Add("text", bs, "unitprice")
+                Form5.ufactor.DataBindings.Add("text", bs, "ufactor")
+                Form5.xrate.DataBindings.Add("text", bs, "xrate")
+                Form5.discount.DataBindings.Add("text", bs, "disc")
+            End Using
+
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sqlcon.Close()
         End Try
     End Sub
     Public Sub referencetb(ByVal top As String)
