@@ -590,7 +590,7 @@ update trans_tb set ufactor=@ufactor,unitprice=@unitprice,xrate=@xrate,netamount
             sql.sqlcon.Open()
             Dim str As String = "
                                     declare @allocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Allocation')+0
-                                    declare @cancelalloc as decimal(10,2)=(selec isnull(sum(isnull(qty,0)),0)from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
+                                    declare @cancelalloc as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0)from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Order')+0
                                     declare @return as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Return')+0
                                     declare @supply as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno ='" & stockno & "' AND TRANSTYPE='Supply')+0
