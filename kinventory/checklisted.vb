@@ -23,7 +23,8 @@ Public Class checklisted
             Dim ds As New DataSet
             Dim BS As New BindingSource
             ds.Clear()
-            Dim STR As String = "SELECT PROJECT_LABEL,CHECKLISTED FROM ADDENDUM_TO_CONTRACT_TB WHERE NOT CHECKLISTED ='' AND CA = ''"
+            Dim STR As String = "SELECT distinct PROJECT_LABEL,CHECKLISTED,PARENTJONO as JO FROM ADDENDUM_TO_CONTRACT_TB WHERE NOT CHECKLISTED ='' AND CA = ''
+                                 and PROJECT_LABEL+parentjono in (select reference+jo from [finaltrans].[dbo].[reference_tb] where ALLOCATION > 0 and not stockno = 0)"
             sqlcmd = New SqlCommand(STR, sql.sqlcon1)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "ADDENDUM_TO_CONTRACT_TB")
@@ -39,11 +40,12 @@ Public Class checklisted
 
     Private Sub CHECKLISTEDgridview_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles CHECKLISTEDgridview.CellClick
         If CHECKLISTEDgridview.RowCount >= 0 And e.RowIndex >= 0 Then
-            projectlabel.Text = CHECKLISTEDgridview.Item(0, e.RowIndex).Value.ToString
+            Dim row As DataGridViewRow = CHECKLISTEDgridview.Rows(e.RowIndex)
+            loadreference(row.Cells("project_label").Value.ToString, row.Cells("jo").Value.ToString)
         End If
-        loadreference(projectlabel.Text)
+
     End Sub
-    Public Sub loadreference(ByVal reference As String)
+    Public Sub loadreference(ByVal reference As String, ByVal jo As String)
         Try
             sql.sqlcon.Open()
             Dim ds As New DataSet
@@ -59,7 +61,7 @@ a.ALLOCATION
 from reference_tb as a
 inner join
 stocks_tb as b
-on a.stockno=b.stockno where a.reference like '%" & reference & "%' and a.allocation > 0"
+on a.stockno=b.stockno where a.reference = '" & reference & "' and jo = '" & jo & "' and a.allocation > 0 and not a.stockno = 0"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
@@ -121,9 +123,7 @@ on a.stockno=b.stockno where a.reference like '%" & reference & "%' and a.alloca
         KryptonButton3.PerformClick()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
-    End Sub
+
 
     Private Sub Panel3_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel3.MouseUp
         DRAG = False
@@ -146,7 +146,8 @@ on a.stockno=b.stockno where a.reference like '%" & reference & "%' and a.alloca
     Public Sub loadprojectlabelsearch()
         Try
             sql.sqlcon1.Open()
-            Dim STR As String = "SELECT DISTINCT PROJECT_LABEL FROM ADDENDUM_TO_CONTRACT_TB WHERE NOT CHECKLISTED ='' AND CA = ''"
+            Dim STR As String = "SELECT distinct PROJECT_LABEL FROM ADDENDUM_TO_CONTRACT_TB WHERE NOT CHECKLISTED ='' AND CA = ''
+                                 and PROJECT_LABEL+parentjono in (select reference+jo from [finaltrans].[dbo].[reference_tb] where ALLOCATION > 0 and not stockno = 0)"
             Dim DS As New DataSet
             DS.Clear()
             sqlcmd = New SqlCommand(STR, sql.sqlcon1)
@@ -173,7 +174,8 @@ on a.stockno=b.stockno where a.reference like '%" & reference & "%' and a.alloca
             Dim ds As New DataSet
             Dim BS As New BindingSource
             ds.Clear()
-            Dim STR As String = "SELECT PROJECT_LABEL,CHECKLISTED FROM ADDENDUM_TO_CONTRACT_TB WHERE project_label = '" & reference & "' and NOT CHECKLISTED ='' AND CA = ''"
+            Dim STR As String = "SELECT distinct PROJECT_LABEL,CHECKLISTED,PARENTJONO as JO FROM ADDENDUM_TO_CONTRACT_TB WHERE project_label = '" & reference & "' and NOT CHECKLISTED ='' AND CA = ''
+                                 and PROJECT_LABEL+parentjono in (select reference+jo from [finaltrans].[dbo].[reference_tb] where ALLOCATION > 0 and not stockno = 0)"
             sqlcmd = New SqlCommand(STR, sql.sqlcon1)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "ADDENDUM_TO_CONTRACT_TB")
