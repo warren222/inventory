@@ -185,6 +185,7 @@ insert into reference_tb (id,reference,jo,stockno) values(@id,'" & reference & "
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
                 sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.CommandTimeout = 600
                 sqlcmd.ExecuteNonQuery()
 
 
@@ -208,6 +209,7 @@ update reference_tb set
                                     totalreturn=@return
                                     where stockno='" & stockno & "' and reference='" & reference & "' and jo = '" & jo & "' "
                 sqlcmd = New SqlCommand(bny, sqlcon)
+                sqlcmd.CommandTimeout = 600
                 sqlcmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception

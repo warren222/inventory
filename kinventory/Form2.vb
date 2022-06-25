@@ -615,6 +615,7 @@ update trans_tb set ufactor=@ufactor,unitprice=@unitprice,xrate=@xrate,netamount
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
 
 
@@ -639,6 +640,7 @@ update reference_tb set
                                     totalreturn=@return
                                     where stockno='" & stockno & "' and reference='" & reference & "' and jo = '" & jo & "' "
             sqlcmd = New SqlCommand(bny, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
 
             'Dim NEWSTR As String = "
@@ -2298,6 +2300,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
         Catch ex As SqlException
             If ex.Number = 1205 Then

@@ -137,9 +137,11 @@ update reference_tb set
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
                 sqlcon.Open()
                 Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                    sqlcmd.CommandTimeout = 600
                     sqlcmd.ExecuteNonQuery()
                 End Using
                 Using sqlcmd As SqlCommand = New SqlCommand(bny, sqlcon)
+                    sqlcmd.CommandTimeout = 600
                     sqlcmd.ExecuteNonQuery()
                 End Using
             End Using

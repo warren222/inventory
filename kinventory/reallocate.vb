@@ -89,6 +89,7 @@ select
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
 
 

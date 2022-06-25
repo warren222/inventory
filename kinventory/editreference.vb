@@ -138,6 +138,7 @@ Public Class editreference
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
         Catch ex As SqlException
             If ex.Number = 1205 Then
