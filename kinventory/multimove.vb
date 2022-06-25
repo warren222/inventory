@@ -258,6 +258,7 @@ update trans_tb set qty = 0,xyzref='canceled' where stockno = '" & stockno & "' 
                                     issue=@totalissue
                                     where stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
+            sqlcmd.CommandTimeout = 600
             sqlcmd.ExecuteNonQuery()
         Catch ex As SqlException
             If ex.Number = 1205 Then
