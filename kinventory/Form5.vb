@@ -1184,4 +1184,15 @@ and typecolor = '" & newtypecolor.Text & "' and articleno = '" & newarticleno.Te
     Private Sub KryptonPanel1_Paint(sender As Object, e As PaintEventArgs) Handles KryptonPanel1.Paint
 
     End Sub
+
+    Private Sub KryptonCheckBox5_Click(sender As Object, e As EventArgs) Handles KryptonCheckBox5.Click
+        If IsNumeric(qty.Text) And IsNumeric(ufactor.Text) And IsNumeric(tboxTotalAmount.Text) Then
+            Dim quantity As Decimal = qty.Text
+            Dim unitfactor As Decimal = ufactor.Text
+            Dim totalamount As Decimal = tboxTotalAmount.Text
+            If quantity > 0 And unitfactor > 0 And totalamount > 0 Then
+                unit.Text = (totalamount / quantity) / unitfactor
+            End If
+        End If
+    End Sub
 End Class

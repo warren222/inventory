@@ -124,6 +124,8 @@ Partial Class Form5
         Me.KryptonButton25 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.LISTOFALLOCATIONGRIDVIEW = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
+        Me.KryptonLabel32 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.tboxTotalAmount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         CType(Me.referencegridview, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup3.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1040,6 +1042,8 @@ Partial Class Form5
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.tboxTotalAmount)
+        Me.Panel1.Controls.Add(Me.KryptonLabel32)
         Me.Panel1.Controls.Add(Me.KryptonCheckBox3)
         Me.Panel1.Controls.Add(Me.discount)
         Me.Panel1.Controls.Add(Me.KryptonCheckBox4)
@@ -1612,6 +1616,34 @@ Partial Class Form5
         Me.LISTOFALLOCATIONGRIDVIEW.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
         Me.LISTOFALLOCATIONGRIDVIEW.TabIndex = 455
         '
+        'KryptonLabel32
+        '
+        Me.KryptonLabel32.Location = New System.Drawing.Point(388, 484)
+        Me.KryptonLabel32.Name = "KryptonLabel32"
+        Me.KryptonLabel32.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel32.Size = New System.Drawing.Size(113, 22)
+        Me.KryptonLabel32.StateCommon.ShortText.Color1 = System.Drawing.Color.White
+        Me.KryptonLabel32.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel32.TabIndex = 486
+        Me.KryptonLabel32.Values.Text = "TOTAL AMOUNT"
+        '
+        'tboxTotalAmount
+        '
+        Me.tboxTotalAmount.Location = New System.Drawing.Point(389, 512)
+        Me.tboxTotalAmount.Multiline = True
+        Me.tboxTotalAmount.Name = "tboxTotalAmount"
+        Me.tboxTotalAmount.Size = New System.Drawing.Size(170, 29)
+        Me.tboxTotalAmount.StateCommon.Back.Color1 = System.Drawing.Color.White
+        Me.tboxTotalAmount.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.tboxTotalAmount.StateCommon.Border.Rounding = 0
+        Me.tboxTotalAmount.StateCommon.Border.Width = 4
+        Me.tboxTotalAmount.StateDisabled.Back.Color1 = System.Drawing.Color.White
+        Me.tboxTotalAmount.StateDisabled.Content.Color1 = System.Drawing.Color.Black
+        Me.tboxTotalAmount.TabIndex = 487
+        Me.tboxTotalAmount.Text = "0"
+        '
         'Form5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1781,4 +1813,6 @@ Partial Class Form5
     Friend WithEvents unit As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonCheckBox8 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents xrate As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents tboxTotalAmount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents KryptonLabel32 As ComponentFactory.Krypton.Toolkit.KryptonLabel
 End Class
