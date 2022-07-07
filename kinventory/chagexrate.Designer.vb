@@ -32,12 +32,14 @@ Partial Class chagexrate
         Me.ufactor = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonCheckBox3 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.discount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
+        Me.tboxTotalAmount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
+        Me.KryptonLabel32 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.SuspendLayout()
         '
         'KryptonButton1
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton1.Location = New System.Drawing.Point(107, 264)
+        Me.KryptonButton1.Location = New System.Drawing.Point(107, 318)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton1.Size = New System.Drawing.Size(75, 29)
@@ -87,7 +89,7 @@ Partial Class chagexrate
         'transno
         '
         Me.transno.FormattingEnabled = True
-        Me.transno.Location = New System.Drawing.Point(12, 326)
+        Me.transno.Location = New System.Drawing.Point(12, 394)
         Me.transno.Name = "transno"
         Me.transno.Size = New System.Drawing.Size(263, 21)
         Me.transno.TabIndex = 469
@@ -191,11 +193,40 @@ Partial Class chagexrate
         Me.discount.TabIndex = 475
         Me.discount.Text = "0"
         '
+        'tboxTotalAmount
+        '
+        Me.tboxTotalAmount.Location = New System.Drawing.Point(12, 283)
+        Me.tboxTotalAmount.Multiline = True
+        Me.tboxTotalAmount.Name = "tboxTotalAmount"
+        Me.tboxTotalAmount.Size = New System.Drawing.Size(170, 29)
+        Me.tboxTotalAmount.StateCommon.Back.Color1 = System.Drawing.Color.White
+        Me.tboxTotalAmount.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.tboxTotalAmount.StateCommon.Border.Rounding = 0
+        Me.tboxTotalAmount.StateCommon.Border.Width = 4
+        Me.tboxTotalAmount.StateDisabled.Back.Color1 = System.Drawing.Color.White
+        Me.tboxTotalAmount.StateDisabled.Content.Color1 = System.Drawing.Color.Black
+        Me.tboxTotalAmount.TabIndex = 488
+        Me.tboxTotalAmount.Text = "0"
+        '
+        'KryptonLabel32
+        '
+        Me.KryptonLabel32.Location = New System.Drawing.Point(12, 264)
+        Me.KryptonLabel32.Name = "KryptonLabel32"
+        Me.KryptonLabel32.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel32.Size = New System.Drawing.Size(113, 22)
+        Me.KryptonLabel32.StateCommon.ShortText.Color1 = System.Drawing.Color.Black
+        Me.KryptonLabel32.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel32.TabIndex = 489
+        Me.KryptonLabel32.Values.Text = "TOTAL AMOUNT"
+        '
         'chagexrate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(196, 307)
+        Me.ClientSize = New System.Drawing.Size(196, 361)
+        Me.Controls.Add(Me.tboxTotalAmount)
         Me.Controls.Add(Me.KryptonCheckBox3)
         Me.Controls.Add(Me.discount)
         Me.Controls.Add(Me.KryptonCheckBox2)
@@ -206,9 +237,10 @@ Partial Class chagexrate
         Me.Controls.Add(Me.transno)
         Me.Controls.Add(Me.KryptonButton1)
         Me.Controls.Add(Me.xrate)
+        Me.Controls.Add(Me.KryptonLabel32)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximumSize = New System.Drawing.Size(212, 346)
-        Me.MinimumSize = New System.Drawing.Size(212, 346)
+        Me.MaximumSize = New System.Drawing.Size(212, 400)
+        Me.MinimumSize = New System.Drawing.Size(212, 400)
         Me.Name = "chagexrate"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
@@ -226,4 +258,6 @@ Partial Class chagexrate
     Friend WithEvents ufactor As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonCheckBox3 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents discount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents tboxTotalAmount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents KryptonLabel32 As ComponentFactory.Krypton.Toolkit.KryptonLabel
 End Class

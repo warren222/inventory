@@ -335,4 +335,15 @@ update trans_tb set netamount=(xrate*(unitprice-((" & disc & "*0.01)*unitprice))
             discount.Focus()
         End If
     End Sub
+
+    Private Sub KryptonCheckBox1_Click(sender As Object, e As EventArgs) Handles KryptonCheckBox1.Click
+        If IsNumeric(Form2.tqty) And IsNumeric(ufactor.Text) And IsNumeric(tboxTotalAmount.Text) Then
+            Dim quantity As Decimal = Form2.tqty
+            Dim unitfactor As Decimal = ufactor.Text
+            Dim totalamount As Decimal = tboxTotalAmount.Text
+            If quantity > 0 And unitfactor > 0 And totalamount > 0 Then
+                unit.Text = (totalamount / quantity) / unitfactor
+            End If
+        End If
+    End Sub
 End Class

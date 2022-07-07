@@ -1375,6 +1375,7 @@ select
     Public stocknoAlist As New ArrayList
     Public referenceAlist As New ArrayList
     Public joAlist As New ArrayList
+    Public tqty As String
     Private Sub transgridview_SelectionChanged(sender As Object, e As EventArgs) Handles transgridview.SelectionChanged
         Dim selecteditem As DataGridViewSelectedRowCollection = transgridview.SelectedRows
         transnocombo.Items.Clear()
@@ -1396,11 +1397,12 @@ select
         stocknoAlist = New ArrayList
         referenceAlist = New ArrayList
         joAlist = New ArrayList
+
         For Each item As DataGridViewRow In selecteditem
             Dim x As String = item.Cells("transno").Value.ToString
             Dim y As String = item.Cells("stockno").Value.ToString
             Dim z As String = item.Cells("reference").Value.ToString
-            Dim a As String = item.Cells("qty").Value.ToString
+            tqty = item.Cells("qty").Value.ToString
             Dim b As String = item.Cells("jo").Value.ToString
             Dim xyz As String = item.Cells("xyz").Value.ToString
             Dim transtype As String = item.Cells("transtype").Value.ToString
@@ -1408,7 +1410,7 @@ select
             Dim articleno As String = item.Cells("articleno").Value.ToString
 
             transnocombo.Items.Add(x)
-            transqtycombo.Items.Add(a)
+            transqtycombo.Items.Add(tqty)
             Form6.transno.Items.Add(x)
             reallocate.stockno.Items.Add(y)
             reallocate.reference.Items.Add(z)
