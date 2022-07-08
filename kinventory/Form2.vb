@@ -1428,6 +1428,11 @@ select
             stocknoAlist.Add(item.Cells("stockno").Value.ToString)
             referenceAlist.Add(item.Cells("reference").Value.ToString)
             joAlist.Add(item.Cells("jo").Value.ToString)
+
+
+            chagexrate.xrate.Text = item.Cells("xrate").Value.ToString
+            chagexrate.ufactor.Text = item.Cells("ufactor").Value.ToString
+            chagexrate.discount.Text = item.Cells("disc").Value.ToString
         Next
     End Sub
 
