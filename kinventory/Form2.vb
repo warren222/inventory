@@ -1433,6 +1433,7 @@ select
             chagexrate.xrate.Text = item.Cells("xrate").Value.ToString
             chagexrate.ufactor.Text = item.Cells("ufactor").Value.ToString
             chagexrate.discount.Text = item.Cells("disc").Value.ToString
+            chagexrate.unit.Text = item.Cells("unitprice").Value.ToString
         Next
     End Sub
 
