@@ -854,10 +854,6 @@ update reference_tb set
             ElseIf myreceipt > order Then
                 MessageBox.Show("insufficient order", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Else
-
-
-
-
                 Dim transaction = "Receipt"
                 Dim duedate As String = ""
                 Dim account As String = ""
@@ -870,6 +866,34 @@ update reference_tb set
                 Dim amount As Double = 0
                 Dim ufactor As Double = 0
                 Dim disc As Double = 0
+
+                Dim rqty As Double = receiptqty.Text
+                Try
+                    sql.sqlcon.Open()
+                    Dim str As String = "select ufactor,unitprice,xrate,disc,unitprice-((disc*0.01)*unitprice) as discounted from trans_tb where transno = '" & receipttransno.Text & "'"
+                    sqlcmd = New SqlCommand(str, sql.sqlcon)
+                    Dim read As SqlDataReader = sqlcmd.ExecuteReader
+                    While read.Read
+                        ufactor = read(0).ToString
+                        disc = read(4).ToString
+                        rate = read(2).ToString
+                        disc = read(3).ToString
+                        unit = read(1).ToString
+                    End While
+
+                    read.Close()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                Finally
+                    sql.sqlcon.Close()
+                End Try
+
+                amount = (rqty * ufactor) * (disc * rate)
+
+
+
+
+
                 sql.newtransaction(receiptstockno.Text,
                        transaction,
                        transdate.Text,
@@ -905,11 +929,6 @@ update reference_tb set
             ElseIf myreceipt = order Then
                 MessageBox.Show("0 balance expected", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Else
-
-
-
-
-
                 Dim transaction = "Receipt"
                 Dim duedate As String = ""
                 Dim account As String = ""
