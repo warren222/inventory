@@ -861,6 +861,7 @@ update reference_tb set
                 Dim XYZ As String = "Order"
                 Dim remarks As String = ""
 
+                Dim discounted As Double
                 Dim unit As Double = 0
                 Dim rate As Double = 1
                 Dim amount As Double = 0
@@ -875,7 +876,7 @@ update reference_tb set
                     Dim read As SqlDataReader = sqlcmd.ExecuteReader
                     While read.Read
                         ufactor = read(0).ToString
-                        disc = read(4).ToString
+                        discounted = read(4).ToString
                         rate = read(2).ToString
                         disc = read(3).ToString
                         unit = read(1).ToString
@@ -888,7 +889,7 @@ update reference_tb set
                     sql.sqlcon.Close()
                 End Try
 
-                amount = (rqty * ufactor) * (disc * rate)
+                amount = (rqty * ufactor) * (discounted * rate)
 
 
 
