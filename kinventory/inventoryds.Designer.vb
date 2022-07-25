@@ -2714,7 +2714,7 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddFoilPerProjectRow(ByVal stockno As String, ByVal jo As String, ByVal Reference As String, ByVal Costhead As String, ByVal Header As String, ByVal TypeColor As String, ByVal Description As String, ByVal balance As String, ByVal Supplier As String, ByVal Articleno As String, ByVal Area As String) As FoilPerProjectRow
+        Public Overloads Function AddFoilPerProjectRow(ByVal stockno As String, ByVal jo As String, ByVal Reference As String, ByVal Costhead As String, ByVal Header As String, ByVal TypeColor As String, ByVal Description As String, ByVal balance As String, ByVal Supplier As String, ByVal Articleno As String, ByVal Area As Decimal) As FoilPerProjectRow
             Dim rowFoilPerProjectRow As FoilPerProjectRow = CType(Me.NewRow,FoilPerProjectRow)
             Dim columnValuesArray() As Object = New Object() {stockno, jo, Reference, Costhead, Header, TypeColor, Description, balance, Supplier, Articleno, Area}
             rowFoilPerProjectRow.ItemArray = columnValuesArray
@@ -2775,7 +2775,7 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnSupplier)
             Me.columnArticleno = New Global.System.Data.DataColumn("Articleno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnArticleno)
-            Me.columnArea = New Global.System.Data.DataColumn("Area", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnArea = New Global.System.Data.DataColumn("Area", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnArea)
         End Sub
         
@@ -5927,10 +5927,10 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Area() As String
+        Public Property Area() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableFoilPerProject.AreaColumn),String)
+                    Return CType(Me(Me.tableFoilPerProject.AreaColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'Area' in table 'FoilPerProject' is DBNull.", e)
                 End Try

@@ -9,9 +9,9 @@
     <Shape ID="DesignTable:TRANS_TB" ZOrder="6" X="28" Y="16" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:STOCKS_TB" ZOrder="5" X="204" Y="30" Height="257" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:STOCKSTB1" ZOrder="4" X="642" Y="218" Height="86" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
-    <Shape ID="DesignTable:Allocation_Per_Foil_Tbl" ZOrder="3" X="856" Y="50" Height="239" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
-    <Shape ID="DesignTable:FoilPerProject" ZOrder="2" X="429" Y="136" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
-    <Shape ID="DesignTable:monthly_consumption" ZOrder="1" X="575" Y="39" Height="257" Width="196" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:Allocation_Per_Foil_Tbl" ZOrder="1" X="856" Y="50" Height="239" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
+    <Shape ID="DesignTable:FoilPerProject" ZOrder="3" X="429" Y="136" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
+    <Shape ID="DesignTable:monthly_consumption" ZOrder="2" X="758" Y="288" Height="257" Width="196" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
