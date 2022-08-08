@@ -2334,6 +2334,7 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
             If ex.Number = 1205 Then
             Else
                 MsgBox(ex.ToString)
+                MsgBox(stockno)
             End If
         End Try
     End Sub
