@@ -215,7 +215,8 @@ values (@id,'" & stockno & "'," &
                                     select * into #sourcetb from(
                                                                 select right(remarks, charindex('=', reverse(remarks) + '=') - 1) as remarks from trans_tb where stockno = @stn and remarks <> '' and transtype = 'Allocation'
                                                                 ) as sourcetb
-                                    declare @clbal as decimal(10,2)=(select isnull(sum(isnull(CAST(remarks AS FLOAT),0)),0) from #sourcetb where try_convert(float, remarks) is not null)                                    declare @allocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno =@stn AND TRANSTYPE='Allocation')+0
+                                    declare @clbal as decimal(10,2)=(select isnull(sum(isnull(CAST(remarks AS FLOAT),0)),0) from #sourcetb where try_convert(float, remarks) is not null)                                    
+                                    declare @allocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno =@stn AND TRANSTYPE='Allocation')+0
                                     declare @cancelalloc as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno =@stn AND TRANSTYPE='CancelAlloc')+0
                                     declare @order as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno =@stn AND TRANSTYPE='Order')+0
                                     declare @return as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno =@stn AND TRANSTYPE='Return')+0
