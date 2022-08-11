@@ -1246,7 +1246,8 @@ select
 
         Dim dec As String = "
                             declare @sdate as date = '" & transadate.Text & "'
-                            declare @edate as date = '" & todate.Text & "'"
+                            declare @edate as date = '" & todate.Text & "'
+                            declare @rownum as int = @top"
 
         If all.Checked = True Then
             dtt = " and a.TRANSDATE = a.TRANSDATE"
@@ -1300,7 +1301,7 @@ select
                             " & dtt & " "
 
         Dim str As String = "" & dec & "
-                            select top " & top & " a.TRANSNO,
+                            select * from(select top (@rownum) a.TRANSNO,
                             a.STOCKNO,
                             b.COSTHEAD,
                             b.TYPECOLOR,
@@ -1329,11 +1330,11 @@ select
                             A.PRODUCTIONALLOCATION
                             from trans_tb as a inner join stocks_tb as b
                             on a.stockno = b.stockno
-                            " & where & " order by a.transdate desc"
+                            " & where & ") as trans_tb order by transdate desc"
         Dim count As String = "select format(count(a.TRANSNO),'n0'),format(sum(isnull(a.netamount,0)/isnull(a.xrate,0)),'n2') 
                               from trans_tb as a inner join stocks_tb as b on a.stockno = b.stockno
                             " & where & ""
-        sql.searchtransaction(str, count)
+        sql.searchtransaction(str, top, count)
 
     End Sub
     Private Sub KryptonButton11_Click(sender As Object, e As EventArgs) Handles KryptonButton11.Click
@@ -1921,12 +1922,13 @@ select
         Dim top As String = stocktoprows.Text
         top = top.Replace(",", "")
         Dim search As String = "
+declare @rownum as int = @top
 
-select top " & top & "
+select top (@rownum)
 a.*,
 (select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
  from stocks_tb as a " & condition & ""
-        sql.searchstocks(search)
+        sql.searchstocks(search, top)
     End Sub
 
     Private Sub KryptonButton15_Click(sender As Object, e As EventArgs) Handles KryptonButton15.Click

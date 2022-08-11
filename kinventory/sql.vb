@@ -28,12 +28,15 @@ Public Class sql
             Dim ds As New DataSet
             ds.Clear()
             top = top.Replace(",", "")
-            Dim str As String = "select top " & top & "
+            Dim str As String = "
+declare @rownum as int = @top
+select top (@rownum)
 a.*,
 (select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
  from stocks_tb AS A
 order by A.articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             Form2.stocksBindingSource.DataSource = Nothing
@@ -110,13 +113,14 @@ order by A.articleno asc"
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub searchstocks(ByVal search As String)
+    Public Sub searchstocks(ByVal search As String, ByVal top As String)
         Try
             sqlcon.Open()
             Dim ds As New DataSet
             Dim bs As New BindingSource
             ds.Clear()
             sqlcmd = New SqlCommand(search, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "stocks_tb")
             bs.DataSource = ds
@@ -884,8 +888,10 @@ UNIT='" & unit & "' where stockno='" & stockno & "'"
 
             ds.Clear()
             top = top.Replace(",", "")
-            Dim tops As String = "top " & top & " "
-            Dim str As String = "select " & tops & " a.TRANSNO,
+            Dim str As String = "
+declare @rownum as int = @top
+select * from(
+select top (@rownum) a.TRANSNO,
                                                     a.STOCKNO,
                                                     b.COSTHEAD,
                                                     b.TYPECOLOR,
@@ -913,9 +919,9 @@ UNIT='" & unit & "' where stockno='" & stockno & "'"
                                                     A.ADJUSTMENTQTY,
                                                     A.PRODUCTIONALLOCATION
                                                      from trans_tb as a inner join stocks_tb as b
-                                                    on a.stockno = b.stockno order by a.transdate desc"
+                                                    on a.stockno = b.stockno) as trans_tb order by transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
-
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da = New SqlDataAdapter
 
             da.SelectCommand = sqlcmd
@@ -2875,7 +2881,7 @@ INPUTTED
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub searchtransaction(ByVal search As String, ByVal count As String)
+    Public Sub searchtransaction(ByVal search As String, ByVal top As String, ByVal count As String)
         Try
             sqlcon.Open()
             Dim ds As New DataSet
@@ -2901,6 +2907,7 @@ INPUTTED
             ds.Clear()
 
             sqlcmd = New SqlCommand(search, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             Form2.transgridview.DataSource = Nothing
@@ -3189,8 +3196,10 @@ on a.stockno = b.stockno where a.transno='" & transno & "'"
             Dim ds As New DataSet
             ds.Clear()
             top = top.Replace(",", "")
-            Dim toprow As String = "top " & top & ""
-            Dim str As String = "select " & toprow & " a.REFERENCE,a.JO,
+            Dim str As String = "
+declare @rownum as int = @top
+select * from(
+select top (@rownum) a.REFERENCE,a.JO,
 a.STOCKNO,
 b.COSTHEAD,
 b.TYPECOLOR,
@@ -3205,8 +3214,11 @@ a.ADDRESS
 from reference_tb as a
 inner join
 stocks_tb as b
-on a.stockno=b.stockno order by a.reference asc,a.stockorder desc,a.allocation desc"
+on a.stockno=b.stockno
+) as reference_tb
+order by reference asc,stockorder desc,allocation desc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
             Form2.referenceDataGridView.DataSource = Nothing
@@ -3287,9 +3299,11 @@ on a.stockno=b.stockno order by a.reference asc,a.stockorder desc,a.allocation d
             sqlcon.Open()
             Dim ds As New DataSet
             top = top.Replace(",", "")
-            Dim toprows As String = "top " & top & ""
             ds.Clear()
-            Dim str As String = "select " & toprows & " a.REFERENCE,a.JO,
+            Dim str As String = "
+declare @rownum as int = @top
+select * from(
+select top (@rownum) a.REFERENCE,a.JO,
 a.STOCKNO,
 b.COSTHEAD,
 b.TYPECOLOR,
@@ -3304,8 +3318,9 @@ a.ADDRESS
 from reference_tb as a
 inner join
 stocks_tb as b
-on a.stockno=b.stockno " & where & " order by a.reference asc,a.stockorder desc,a.allocation desc"
+on a.stockno=b.stockno " & where & ") as reference_tb order by reference asc,stockorder desc,allocation desc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@top", top)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "reference_tb")
             Form2.referenceDataGridView.DataSource = Nothing
