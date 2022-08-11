@@ -2076,7 +2076,9 @@ order by b.articleno asc"
             Dim ds As New DataSet
             Dim bs As New BindingSource
             ds.Clear()
-            Dim Str As String = "select a.TRANSNO,
+            Dim Str As String = "
+declare @stn as int = @stockno
+select a.TRANSNO,
 a.STOCKNO,
 b.COSTHEAD,
 b.TYPECOLOR,
@@ -2098,9 +2100,10 @@ A.XRATE,
 A.NETAMOUNT
  from trans_tb as a
 inner join stocks_tb as b on a.stockno = b.stockno
-where a.reference='" & reference & "' and a.jo ='" & jo & "' and a.stockno = '" & stocksno & "' and a.transtype = 'Order' and a.xyzref=''
+where a.reference='" & reference & "' and a.jo ='" & jo & "' and a.stockno = @stn and a.transtype = 'Order' and a.xyzref=''
 order by b.articleno asc"
             sqlcmd = New SqlCommand(Str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@stockno", stocksno)
             da = New SqlDataAdapter
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
@@ -2214,7 +2217,9 @@ on b.stockno=a.stockno
             Dim da As New SqlDataAdapter
             ds.Clear()
             Dim bs As New BindingSource
-            Dim str As String = "select TRANSNO,
+            Dim str As String = "
+declare @stn as int = @stockno
+select TRANSNO,
 STOCKNO,
 TRANSTYPE,
 TRANSDATE,
@@ -2236,9 +2241,10 @@ UNITPRICE,
 XRATE,
 NETAMOUNT,
 INPUTTED from trans_tb where 
-stockno='" & stockno & "' and
+stockno=@stn and
 not (transtype = 'Allocation' or transtype = 'CancelAlloc' or transtype='Order' or transtype = 'Spare') order by transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@stockno", stockno)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -2311,23 +2317,24 @@ not (transtype = 'Allocation' or transtype = 'CancelAlloc' or transtype='Order' 
             Form4.referencegridview.DataSource = bs1
 
             Dim str2 As String = "
-                                    declare @allocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Allocation')+0
-declare @balqty as decimal(10,2)=(select isnull(sum(isnull(balqty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Allocation')+0
-                                    declare @cancelalloc as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
-                                    declare @order as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Order')+0
-                                    declare @return as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Return')+0
-                                    declare @supply as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Supply')+0
-                                    declare @spare as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Spare')+0
-                                    declare @addadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='+Adjustment')+0
-                                    declare @minadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='-Adjustment')+0
-                                    declare @receipt as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Receipt' AND NOT XYZ='Order')+0
-                                    declare @issue as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
-                                    declare @receiptorder as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Receipt' AND XYZ='Order')+0
-                                    declare @issueallocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
+                                    declare @stn as int = @stockno
+                                    declare @allocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Allocation')+0
+declare @balqty as decimal(10,2)=(select isnull(sum(isnull(balqty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Allocation')+0
+                                    declare @cancelalloc as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='CancelAlloc')+0
+                                    declare @order as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Order')+0
+                                    declare @return as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Return')+0
+                                    declare @supply as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Supply')+0
+                                    declare @spare as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Spare')+0
+                                    declare @addadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='+Adjustment')+0
+                                    declare @minadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='-Adjustment')+0
+                                    declare @receipt as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Receipt' AND NOT XYZ='Order')+0
+                                    declare @issue as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
+                                    declare @receiptorder as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Receipt' AND XYZ='Order')+0
+                                    declare @issueallocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
 
-declare @QTY as decimal(10,2)=(select qty from stocks_tb where stockno='" & stockno & "')
+declare @QTY as decimal(10,2)=(select qty from stocks_tb where stockno=@stn)
 
                                     declare @finalphysical as decimal(10,2)=(@QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment)
                                     declare @finalallocation as decimal(10,2)=@allocation-(@issueallocation+@cancelalloc)
@@ -2340,6 +2347,7 @@ select format(@finalphysical,'N0'),FORMAT(@finalallocation,'N0'),
 FORMAT(@finalfree,'N0'),FORMAT(@finalorder,'N0'),FORMAT(@finalissue,'N0'),
 FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             sqlcmd = New SqlCommand(str2, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@stockno", stockno)
             Dim read As SqlDataReader = sqlcmd.ExecuteReader
 
             While read.Read
@@ -2417,7 +2425,9 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             Dim da As New SqlDataAdapter
             ds.Clear()
             Dim bs As New BindingSource
-            Dim str As String = "select TRANSNO,
+            Dim str As String = "
+declare @stn as int = @stockno
+select TRANSNO,
 STOCKNO,
 TRANSTYPE,
 TRANSDATE,
@@ -2438,8 +2448,9 @@ UNITPRICE,
 ((ufactor * qty)*unitprice) as CURRENCY,
 XRATE,
 NETAMOUNT,
-INPUTTED from trans_tb where stockno='" & stockno & "' order by transdate desc"
+INPUTTED from trans_tb where stockno=@stn order by transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@stockno", stockno)
             da.SelectCommand = sqlcmd
             da.Fill(ds, "trans_tb")
             bs.DataSource = ds
@@ -2511,24 +2522,24 @@ INPUTTED from trans_tb where stockno='" & stockno & "' order by transdate desc"
             bs1.DataMember = "trans_tb"
             Form4.referencegridview.DataSource = bs1
 
-            Dim str2 As String = "
-                                    declare @allocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Allocation')+0
-declare @balqty as decimal(10,2)=(select isnull(sum(isnull(balqty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Allocation')+0
-                                    declare @cancelalloc as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='CancelAlloc')+0
-                                    declare @order as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Order')+0
-                                    declare @return as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Return')+0
-                                    declare @supply as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Supply')+0
-                                    declare @spare as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Spare')+0
-                                    declare @addadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='+Adjustment')+0
-                                    declare @minadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='-Adjustment')+0
-                                    declare @receipt as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Receipt' AND NOT XYZ='Order')+0
-                                    declare @issue as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
-                                    declare @receiptorder as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Receipt' AND XYZ='Order')+0
-                                    declare @issueallocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno='" & stockno & "' AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
+            Dim str2 As String = "  declare @stn as int = @stockno
+                                    declare @allocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Allocation')+0
+declare @balqty as decimal(10,2)=(select isnull(sum(isnull(balqty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Allocation')+0
+                                    declare @cancelalloc as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='CancelAlloc')+0
+                                    declare @order as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Order')+0
+                                    declare @return as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Return')+0
+                                    declare @supply as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Supply')+0
+                                    declare @spare as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Spare')+0
+                                    declare @addadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='+Adjustment')+0
+                                    declare @minadjustment as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='-Adjustment')+0
+                                    declare @receipt as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Receipt' AND NOT XYZ='Order')+0
+                                    declare @issue as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Issue' AND NOT XYZ ='Allocation')+0
+                                    declare @receiptorder as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Receipt' AND XYZ='Order')+0
+                                    declare @issueallocation as decimal(10,2)=(select isnull(sum(isnull(qty,0)),0) from trans_tb where stockno=@stn AND TRANSTYPE='Issue' AND XYZ ='Allocation')+0
                                     declare @totalreceipt as decimal(10,2)=@receipt+@receiptorder
                                     declare @totalissue as decimal(10,2)=@issue+@issueallocation
 
-declare @QTY as decimal(10,2)=(select qty from stocks_tb where stockno='" & stockno & "')
+declare @QTY as decimal(10,2)=(select qty from stocks_tb where stockno=@stn)
 
                                     declare @finalphysical as decimal(10,2)=(@QTY+@totalreceipt+@return+@addadjustment)-(@totalissue+@minadjustment)
                                     declare @finalallocation as decimal(10,2)=@allocation-(@issueallocation+@cancelalloc)
@@ -2541,6 +2552,7 @@ select format(@finalphysical,'N0'),FORMAT(@finalallocation,'N0'),
 FORMAT(@finalfree,'N0'),FORMAT(@finalorder,'N0'),FORMAT(@finalissue,'N0'),
 FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             sqlcmd = New SqlCommand(str2, sqlcon)
+            sqlcmd.Parameters.AddWithValue("@stockno", stockno)
             Dim read As SqlDataReader = sqlcmd.ExecuteReader
 
             While read.Read
@@ -3664,21 +3676,25 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             If read.HasRows = True Then
                 read.Close()
                 Dim str As String = "
-declare @consumption as decimal(10,2)=(select sum(qty) from trans_tb where stockno='" & stockno & "' and transtype='Issue' and year(transdate)='" & myyear & "')
-update consumptiontb set consumption=isnull(@consumption,0) where stockno='" & stockno & "' and myyear='" & myyear & "'
-UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno='" & stockno & "'"
+declare @stn as int = @stockno
+declare @consumption as decimal(10,2)=(select sum(qty) from trans_tb where stockno=@stn and transtype='Issue' and year(transdate)='" & myyear & "')
+update consumptiontb set consumption=isnull(@consumption,0) where stockno=@stn and myyear='" & myyear & "'
+UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno=@stn"
                 sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.Parameters.AddWithValue("@stockno", stockno)
                 sqlcmd.ExecuteNonQuery()
 
             Else
                 read.Close()
                 Dim str As String = "
-declare @consumption as decimal(10,2)=(select sum(qty) from trans_tb where stockno='" & stockno & "' and transtype='Issue' and year(transdate)='" & myyear & "')
+declare @stn as int = @stockno
+declare @consumption as decimal(10,2)=(select sum(qty) from trans_tb where stockno=@stn and transtype='Issue' and year(transdate)='" & myyear & "')
 insert into consumptiontb
 (stockno,consumption,myyear)values('" & stockno & "',isnull(@consumption,0),'" & myyear & "')
-UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno='" & stockno & "'
+UPDATE STOCKS_TB SET consumption=isnull(@consumption,0) where stockno=@stn
 "
                 sqlcmd = New SqlCommand(str, sqlcon)
+                sqlcmd.Parameters.AddWithValue("@stockno", stockno)
                 sqlcmd.ExecuteNonQuery()
 
             End If
