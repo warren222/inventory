@@ -890,7 +890,7 @@ UNIT='" & unit & "' where stockno='" & stockno & "'"
             top = top.Replace(",", "")
             Dim str As String = "
 declare @rownum as int = @top
-select * from(
+select * into #sourcetb from(
 select top (@rownum) a.TRANSNO,
                                                     a.STOCKNO,
                                                     b.COSTHEAD,
@@ -919,7 +919,8 @@ select top (@rownum) a.TRANSNO,
                                                     A.ADJUSTMENTQTY,
                                                     A.PRODUCTIONALLOCATION
                                                      from trans_tb as a inner join stocks_tb as b
-                                                    on a.stockno = b.stockno) as trans_tb order by transdate desc"
+                                                    on a.stockno = b.stockno order by transno desc) as sourcetb
+                                                    select * from(select * from #sourcetb) as trans_tb"
             sqlcmd = New SqlCommand(str, sqlcon)
             sqlcmd.Parameters.AddWithValue("@top", top)
             da = New SqlDataAdapter

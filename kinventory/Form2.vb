@@ -1301,7 +1301,7 @@ select
                             " & dtt & " "
 
         Dim str As String = "" & dec & "
-                            select * from(select top (@rownum) a.TRANSNO,
+                            select * into #sourcetb from(select top (@rownum) a.TRANSNO,
                             a.STOCKNO,
                             b.COSTHEAD,
                             b.TYPECOLOR,
@@ -1330,7 +1330,8 @@ select
                             A.PRODUCTIONALLOCATION
                             from trans_tb as a inner join stocks_tb as b
                             on a.stockno = b.stockno
-                            " & where & ") as trans_tb order by transdate desc"
+                            " & where & " order by transno desc) as sourcetb
+                            select * from(select * from #sourcetb) as trans_tb"
         Dim count As String = "select format(count(a.TRANSNO),'n0'),format(sum(isnull(a.netamount,0)/isnull(a.xrate,0)),'n2') 
                               from trans_tb as a inner join stocks_tb as b on a.stockno = b.stockno
                             " & where & ""
