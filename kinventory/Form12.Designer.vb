@@ -32,6 +32,7 @@ Partial Class Form12
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.xrate = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.transno = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'KryptonCheckBox3
@@ -136,7 +137,7 @@ Partial Class Form12
         'KryptonButton1
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton1.Location = New System.Drawing.Point(107, 264)
+        Me.KryptonButton1.Location = New System.Drawing.Point(30, 264)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton1.Size = New System.Drawing.Size(75, 29)
@@ -193,11 +194,21 @@ Partial Class Form12
         Me.transno.Size = New System.Drawing.Size(143, 21)
         Me.transno.TabIndex = 486
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(111, 264)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(71, 29)
+        Me.Button1.TabIndex = 487
+        Me.Button1.Text = "Cancel"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form12
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(196, 303)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.transno)
         Me.Controls.Add(Me.KryptonCheckBox3)
         Me.Controls.Add(Me.discount)
@@ -227,4 +238,5 @@ Partial Class Form12
     Friend WithEvents KryptonButton1 As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents xrate As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents transno As ComboBox
+    Friend WithEvents Button1 As Button
 End Class

@@ -34,12 +34,13 @@ Partial Class chagexrate
         Me.discount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.tboxTotalAmount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel32 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'KryptonButton1
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton1.Location = New System.Drawing.Point(107, 318)
+        Me.KryptonButton1.Location = New System.Drawing.Point(12, 318)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton1.Size = New System.Drawing.Size(75, 29)
@@ -221,11 +222,21 @@ Partial Class chagexrate
         Me.KryptonLabel32.TabIndex = 489
         Me.KryptonLabel32.Values.Text = "TOTAL AMOUNT"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(107, 318)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 29)
+        Me.Button1.TabIndex = 490
+        Me.Button1.Text = "Cancel"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'chagexrate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(196, 361)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.tboxTotalAmount)
         Me.Controls.Add(Me.KryptonCheckBox3)
         Me.Controls.Add(Me.discount)
@@ -260,4 +271,5 @@ Partial Class chagexrate
     Friend WithEvents discount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents tboxTotalAmount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonLabel32 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents Button1 As Button
 End Class

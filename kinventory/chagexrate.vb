@@ -346,4 +346,8 @@ update trans_tb set netamount=(xrate*(unitprice-((" & disc & "*0.01)*unitprice))
             End If
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
 End Class
