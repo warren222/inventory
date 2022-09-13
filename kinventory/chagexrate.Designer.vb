@@ -35,6 +35,10 @@ Partial Class chagexrate
         Me.tboxTotalAmount = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel32 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.KryptonCheckBox4 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.KryptonCheckBox5 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.KryptonCheckBox6 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.KryptonCheckBox7 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.SuspendLayout()
         '
         'KryptonButton1
@@ -231,11 +235,71 @@ Partial Class chagexrate
         Me.Button1.Text = "Cancel"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'KryptonCheckBox4
+        '
+        Me.KryptonCheckBox4.Checked = True
+        Me.KryptonCheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.KryptonCheckBox4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox4.Location = New System.Drawing.Point(92, 12)
+        Me.KryptonCheckBox4.Name = "KryptonCheckBox4"
+        Me.KryptonCheckBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonCheckBox4.Size = New System.Drawing.Size(88, 22)
+        Me.KryptonCheckBox4.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox4.TabIndex = 491
+        Me.KryptonCheckBox4.Text = "and stocks"
+        Me.KryptonCheckBox4.Values.Text = "and stocks"
+        '
+        'KryptonCheckBox5
+        '
+        Me.KryptonCheckBox5.Checked = True
+        Me.KryptonCheckBox5.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.KryptonCheckBox5.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox5.Location = New System.Drawing.Point(92, 75)
+        Me.KryptonCheckBox5.Name = "KryptonCheckBox5"
+        Me.KryptonCheckBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonCheckBox5.Size = New System.Drawing.Size(88, 22)
+        Me.KryptonCheckBox5.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox5.TabIndex = 492
+        Me.KryptonCheckBox5.Text = "and stocks"
+        Me.KryptonCheckBox5.Values.Text = "and stocks"
+        '
+        'KryptonCheckBox6
+        '
+        Me.KryptonCheckBox6.Checked = True
+        Me.KryptonCheckBox6.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.KryptonCheckBox6.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox6.Location = New System.Drawing.Point(92, 138)
+        Me.KryptonCheckBox6.Name = "KryptonCheckBox6"
+        Me.KryptonCheckBox6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonCheckBox6.Size = New System.Drawing.Size(88, 22)
+        Me.KryptonCheckBox6.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox6.TabIndex = 493
+        Me.KryptonCheckBox6.Text = "and stocks"
+        Me.KryptonCheckBox6.Values.Text = "and stocks"
+        '
+        'KryptonCheckBox7
+        '
+        Me.KryptonCheckBox7.Checked = True
+        Me.KryptonCheckBox7.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.KryptonCheckBox7.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox7.Location = New System.Drawing.Point(92, 201)
+        Me.KryptonCheckBox7.Name = "KryptonCheckBox7"
+        Me.KryptonCheckBox7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonCheckBox7.Size = New System.Drawing.Size(88, 22)
+        Me.KryptonCheckBox7.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox7.TabIndex = 494
+        Me.KryptonCheckBox7.Text = "and stocks"
+        Me.KryptonCheckBox7.Values.Text = "and stocks"
+        '
         'chagexrate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(196, 361)
+        Me.Controls.Add(Me.KryptonCheckBox7)
+        Me.Controls.Add(Me.KryptonCheckBox6)
+        Me.Controls.Add(Me.KryptonCheckBox5)
+        Me.Controls.Add(Me.KryptonCheckBox4)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.tboxTotalAmount)
         Me.Controls.Add(Me.KryptonCheckBox3)
@@ -272,4 +336,8 @@ Partial Class chagexrate
     Friend WithEvents tboxTotalAmount As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents KryptonLabel32 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents Button1 As Button
+    Friend WithEvents KryptonCheckBox4 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Friend WithEvents KryptonCheckBox5 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Friend WithEvents KryptonCheckBox6 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Friend WithEvents KryptonCheckBox7 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
 End Class
