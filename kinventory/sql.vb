@@ -3612,7 +3612,7 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             If Form2.reportpasedout.Checked = True Then
                 phasedout = " phasedout like '%yes%'"
             Else
-                phasedout = " phasedout not like '%yes%'"
+                phasedout = " phasedout = phasedout"
             End If
             If Form2.reporttoorder.Checked = True Then
                 toorder = " toorder='yes'"
