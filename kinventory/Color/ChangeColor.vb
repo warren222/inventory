@@ -101,6 +101,7 @@ Public Class ChangeColor
                         updatenewstockno(_transno, newStockno)
                         findnewreference(newStockno, _reference, _jo)
                         updatestock(newStockno, _reference, _jo)
+                        updatestock(_sourceStockno, _reference, _jo)
                         deletereference(_sourceStockno, _reference, _jo)
                     End If
 
