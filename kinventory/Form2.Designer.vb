@@ -61,6 +61,7 @@ Partial Class Form2
         Me.stocknoinput = New System.Windows.Forms.TextBox()
         Me.stocksStocksno = New System.Windows.Forms.ComboBox()
         Me.KryptonGroup7 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.KryptonButton17 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton23 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton3 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
@@ -352,7 +353,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.KryptonButton17 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
+        Me.cboxOldForm = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -660,7 +661,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 774
+        Me.KryptonSplitContainer3.SplitterDistance = 769
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -681,7 +682,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(774, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(769, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -709,7 +710,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(774, 46)
+        Me.Panel2.Size = New System.Drawing.Size(769, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -780,6 +781,19 @@ Partial Class Form2
         Me.KryptonGroup7.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.KryptonGroup7.StateCommon.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Dashed
         Me.KryptonGroup7.TabIndex = 1
+        '
+        'KryptonButton17
+        '
+        Me.KryptonButton17.Location = New System.Drawing.Point(29, 10)
+        Me.KryptonButton17.Name = "KryptonButton17"
+        Me.KryptonButton17.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
+        Me.KryptonButton17.Size = New System.Drawing.Size(112, 25)
+        Me.KryptonButton17.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
+            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.KryptonButton17.StateCommon.Border.Rounding = 0
+        Me.KryptonButton17.TabIndex = 10
+        Me.KryptonButton17.Values.Text = "Paste&Add Stocks"
         '
         'KryptonButton23
         '
@@ -3677,6 +3691,7 @@ Partial Class Form2
         '
         'KryptonGroup9.Panel
         '
+        Me.KryptonGroup9.Panel.Controls.Add(Me.cboxOldForm)
         Me.KryptonGroup9.Panel.Controls.Add(Me.excludeZeroCbox)
         Me.KryptonGroup9.Panel.Controls.Add(Me.ir)
         Me.KryptonGroup9.Panel.Controls.Add(Me.esvp)
@@ -4551,18 +4566,17 @@ Partial Class Form2
         Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
         '
-        'KryptonButton17
+        'cboxOldForm
         '
-        Me.KryptonButton17.Location = New System.Drawing.Point(29, 10)
-        Me.KryptonButton17.Name = "KryptonButton17"
-        Me.KryptonButton17.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
-        Me.KryptonButton17.Size = New System.Drawing.Size(112, 25)
-        Me.KryptonButton17.StateCommon.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) _
-            Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.KryptonButton17.StateCommon.Border.Rounding = 0
-        Me.KryptonButton17.TabIndex = 10
-        Me.KryptonButton17.Values.Text = "Paste&Add Stocks"
+        Me.cboxOldForm.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.cboxOldForm.Location = New System.Drawing.Point(369, 160)
+        Me.cboxOldForm.Name = "cboxOldForm"
+        Me.cboxOldForm.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.cboxOldForm.Size = New System.Drawing.Size(81, 19)
+        Me.cboxOldForm.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxOldForm.TabIndex = 466
+        Me.cboxOldForm.Text = "Old Form"
+        Me.cboxOldForm.Values.Text = "Old Form"
         '
         'Form2
         '
@@ -5044,4 +5058,5 @@ Partial Class Form2
     Friend WithEvents KryptonLabel81 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents cboxArticlenoPicker As ComboBox
     Friend WithEvents KryptonButton17 As ComponentFactory.Krypton.Toolkit.KryptonButton
+    Friend WithEvents cboxOldForm As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
 End Class

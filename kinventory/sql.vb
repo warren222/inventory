@@ -3447,6 +3447,7 @@ update stocks_tb set finalneedtoorder = needtoorder+(isnull(@totalneedtoorder,0)
             da.SelectCommand = sqlcmd
             da.Fill(ds.STOCKS_TB)
             Form7.STOCKS_TBBindingSource.DataSource = ds.STOCKS_TB.DefaultView
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally

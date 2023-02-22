@@ -2125,11 +2125,15 @@ a.*,
             Form8.ShowDialog()
         ElseIf scr.Checked = True Or esv.Checked = True Or esvp.Checked = True Then
             Dim parReportParam1 As New ReportParameter("buffermonth", Me.mymonth.Text)
+            Dim parReportParam2 As New ReportParameter("oldForm", cboxOldForm.Checked)
             Form7.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
-            ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
-            ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+            Form7.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam2})
 
-            Dim updateneedtoorder As String = "
+
+            ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+                ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+
+                Dim updateneedtoorder As String = "
 declare @buffmonth as decimal(10,2) = '" & mymonth.Text & "'
 update
 a
@@ -2138,9 +2142,9 @@ set a.needtoorder
 from STOCKS_TB as a
 inner join CONSUMPTIONTB as b
 on a.stockno=b.stockno where B.MYYEAR = '" & myyear.Text & "'"
-            Dim firststr As String = "
+                Dim firststr As String = "
 DECLARE @TOWEIGHT AS DECIMAL(10,2)=(select sum(isnull((a.UFACTOR*a.FINALNEEDTOORDER)*isnull(a.WEIGHT,0),0)) from STOCKS_TB as a where a.finalneedtoorder > 0 "
-            Dim str As String = "
+                Dim str As String = "
 select 
 a.STOCKNO,
 a.SUPPLIER,
@@ -2192,85 +2196,85 @@ from STOCKS_TB AS a
 inner join CONSUMPTIONTB as b
 on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
-            Dim phasedout As String
-            Dim toorder As String
-            If reportpasedout.Checked = True Then
-                phasedout = " a.phasedout like '%yes%'"
-            Else
-                phasedout = " a.phasedout=a.phasedout "
+                Dim phasedout As String
+                Dim toorder As String
+                If reportpasedout.Checked = True Then
+                    phasedout = " a.phasedout like '%yes%'"
+                Else
+                    phasedout = " a.phasedout=a.phasedout "
+                End If
+                If reporttoorder.Checked = True Then
+                    toorder = " a.toorder='yes'"
+                Else
+                    toorder = " a.toorder=a.toorder"
+                End If
+
+
+
+
+                Dim condition As String
+                Dim a As String = reportsupplier.Text
+                Dim b As String = reportheader.Text
+                Dim c As String = reportcosthead.Text
+                Dim d As String = reporttypecolor.Text
+                Dim f As String = reportstatus.Text
+
+                Dim acol As String = "a.supplier"
+                Dim bcol As String = "a.header"
+                Dim ccol As String = "a.costhead"
+                Dim dcol As String = "a.typecolor"
+                Dim fcol As String = "a.status"
+
+                If a = "" Then
+                    a = " a.supplier = a.supplier"
+                Else
+                    a = " a.supplier = '" & a & "'"
+                End If
+                If b = "" Then
+                    b = " a.header = a.header"
+                Else
+                    b = " a.header = '" & b & "'"
+                End If
+                If c = "" Then
+                    c = " a.costhead = a.costhead"
+                Else
+                    c = " a.costhead = '" & c & "'"
+                End If
+                If d = "" Then
+                    d = " a.typecolor = a.typecolor"
+                Else
+                    d = " a.typecolor = '" & d & "'"
+                End If
+                If f = "" Then
+                    f = " a.status = a.status"
+                Else
+                    f = " a.status = '" & f & "'"
+                End If
+
+
+
+                If reportpasedout.Checked = True And reporttoorder.Checked = True Then
+                    condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
+                Else
+                    condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+                End If
+
+                If scr.Checked = True Then
+                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                    sql.anualreporting(mystr, updateneedtoorder)
+                    Form7.ShowDialog()
+                ElseIf esv.Checked = True Then
+                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                    sql.anualreportingESV(mystr, updateneedtoorder)
+                    ESVfrm.ShowDialog()
+                ElseIf esvp.Checked = True Then
+                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                    sql.anualreportingESVP(mystr, updateneedtoorder)
+                    ESVPfrm.ShowDialog()
+                End If
+
+
             End If
-            If reporttoorder.Checked = True Then
-                toorder = " a.toorder='yes'"
-            Else
-                toorder = " a.toorder=a.toorder"
-            End If
-
-
-
-
-            Dim condition As String
-            Dim a As String = reportsupplier.Text
-            Dim b As String = reportheader.Text
-            Dim c As String = reportcosthead.Text
-            Dim d As String = reporttypecolor.Text
-            Dim f As String = reportstatus.Text
-
-            Dim acol As String = "a.supplier"
-            Dim bcol As String = "a.header"
-            Dim ccol As String = "a.costhead"
-            Dim dcol As String = "a.typecolor"
-            Dim fcol As String = "a.status"
-
-            If a = "" Then
-                a = " a.supplier = a.supplier"
-            Else
-                a = " a.supplier = '" & a & "'"
-            End If
-            If b = "" Then
-                b = " a.header = a.header"
-            Else
-                b = " a.header = '" & b & "'"
-            End If
-            If c = "" Then
-                c = " a.costhead = a.costhead"
-            Else
-                c = " a.costhead = '" & c & "'"
-            End If
-            If d = "" Then
-                d = " a.typecolor = a.typecolor"
-            Else
-                d = " a.typecolor = '" & d & "'"
-            End If
-            If f = "" Then
-                f = " a.status = a.status"
-            Else
-                f = " a.status = '" & f & "'"
-            End If
-
-
-
-            If reportpasedout.Checked = True And reporttoorder.Checked = True Then
-                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
-            Else
-                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
-            End If
-
-            If scr.Checked = True Then
-                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                sql.anualreporting(mystr, updateneedtoorder)
-                Form7.ShowDialog()
-            ElseIf esv.Checked = True Then
-                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                sql.anualreportingESV(mystr, updateneedtoorder)
-                ESVfrm.ShowDialog()
-            ElseIf esvp.Checked = True Then
-                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                sql.anualreportingESVP(mystr, updateneedtoorder)
-                ESVPfrm.ShowDialog()
-            End If
-
-
-        End If
     End Sub
 
 
