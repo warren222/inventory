@@ -46,5 +46,7 @@
         ColorManagerTool.Show()
     End Sub
 
-
+    Private Sub ASRefoilingQuotationSummaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ASRefoilingQuotationSummaryToolStripMenuItem.Click
+        ASRefoilingQuotationSummary.Show()
+    End Sub
 End Class
