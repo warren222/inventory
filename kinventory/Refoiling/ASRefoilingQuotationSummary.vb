@@ -83,4 +83,59 @@ Public Class ASRefoilingQuotationSummary
             End Using
         End Using
     End Sub
+
+    Private Sub gvProject_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvProject.CellDoubleClick
+        If e.RowIndex >= 0 And gvProject.ColumnCount >= 0 Then
+            Dim row As DataGridViewRow = gvProject.Rows(e.RowIndex)
+
+            ASRefoilingItem.jo = row.Cells("JO").Value.ToString()
+            ASRefoilingItem.project = row.Cells("PROJECT").Value.ToString()
+            ASRefoilingItem.color = row.Cells("COLOR").Value.ToString()
+            ASRefoilingItem.qdate = row.Cells("DATE").Value.ToString()
+            ASRefoilingItem.command = "Items"
+            ASRefoilingItem.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub gvProject_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles gvProject.RowPostPaint
+        Dim grid As DataGridView = DirectCast(sender, DataGridView)
+        e.PaintHeader(DataGridViewPaintParts.Background)
+        Dim rowIdx As String = (e.RowIndex + 1).ToString()
+        Dim rowFont As New System.Drawing.Font("Microsoft Sans Serif", 8.0!,
+            System.Drawing.FontStyle.Regular,
+            System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Dim centerFormat = New StringFormat()
+        centerFormat.Alignment = StringAlignment.Far
+        centerFormat.LineAlignment = StringAlignment.Near
+
+        Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height)
+
+        e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
+    End Sub
+
+    Private Sub gvColor_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles gvColor.RowPostPaint
+        Dim grid As DataGridView = DirectCast(sender, DataGridView)
+        e.PaintHeader(DataGridViewPaintParts.Background)
+        Dim rowIdx As String = (e.RowIndex + 1).ToString()
+        Dim rowFont As New System.Drawing.Font("Microsoft Sans Serif", 8.0!,
+            System.Drawing.FontStyle.Regular,
+            System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Dim centerFormat = New StringFormat()
+        centerFormat.Alignment = StringAlignment.Far
+        centerFormat.LineAlignment = StringAlignment.Near
+
+        Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height)
+
+        e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
+    End Sub
+
+    Private Sub gvColor_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvColor.CellDoubleClick
+        If e.RowIndex >= 0 And gvColor.ColumnCount >= 0 Then
+            Dim row As DataGridViewRow = gvColor.Rows(e.RowIndex)
+
+            ASRefoilingItem.color = row.Cells("COLOR").Value.ToString()
+            ASRefoilingItem.command = "ItemsByColor"
+            ASRefoilingItem.ShowDialog()
+        End If
+    End Sub
 End Class

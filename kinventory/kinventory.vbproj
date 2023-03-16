@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.125</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>125</ApplicationRevision>
+    <ApplicationRevision>126</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -460,6 +460,12 @@
     <Compile Include="reallocate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Refoiling\ASRefoilingItem.Designer.vb">
+      <DependentUpon>ASRefoilingItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Refoiling\ASRefoilingItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Refoiling\ASRefoilingQuotationSummary.Designer.vb">
       <DependentUpon>ASRefoilingQuotationSummary.vb</DependentUpon>
     </Compile>
@@ -658,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reallocate.resx">
       <DependentUpon>reallocate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refoiling\ASRefoilingItem.resx">
+      <DependentUpon>ASRefoilingItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refoiling\ASRefoilingQuotationSummary.resx">
       <DependentUpon>ASRefoilingQuotationSummary.vb</DependentUpon>
