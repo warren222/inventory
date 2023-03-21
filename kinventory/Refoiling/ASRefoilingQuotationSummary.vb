@@ -20,6 +20,8 @@ Public Class ASRefoilingQuotationSummary
         bgw.WorkerReportsProgress = True
         gvProject.DataSource = _projectbs
         gvColor.DataSource = _colorbs
+        cboxSearch.SelectedIndex = 0
+        _refoiling_Status = cboxSearch.Text
         starter("loadProject")
     End Sub
     Private Sub starter(ByVal act As String)
@@ -61,6 +63,7 @@ Public Class ASRefoilingQuotationSummary
                 bgw.ReportProgress(0)
         End Select
     End Sub
+    Public Shared _refoiling_Status As String
     Dim da As SqlDataAdapter = New SqlDataAdapter()
     Private Sub Query(ByVal command As String)
         Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
@@ -69,6 +72,7 @@ Public Class ASRefoilingQuotationSummary
                 sqlcmd.CommandText = "Refoiling_Area_Summary_Stp"
                 sqlcmd.CommandType = CommandType.StoredProcedure
                 sqlcmd.Parameters.AddWithValue("@Command", command)
+                sqlcmd.Parameters.AddWithValue("@Refoiling_Status", _refoiling_Status)
                 If command = "loadProject" Then
                     _projectds = New DataSet
                     _projectds.Clear()
@@ -137,5 +141,10 @@ Public Class ASRefoilingQuotationSummary
             ASRefoilingItem.command = "ItemsByColor"
             ASRefoilingItem.ShowDialog()
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        _refoiling_Status = cboxSearch.Text
+        starter("loadProject")
     End Sub
 End Class

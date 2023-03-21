@@ -71,7 +71,7 @@ Public Class ASRefoilingItem
                 sqlcmd.Parameters.AddWithValue("@Project", project)
                 sqlcmd.Parameters.AddWithValue("@Article_No", color)
                 sqlcmd.Parameters.AddWithValue("@Date", qdate)
-
+                sqlcmd.Parameters.AddWithValue("@Refoiling_Status", ASRefoilingQuotationSummary._refoiling_Status)
                 _projectds = New DataSet
                 _projectds.Clear()
                 da.SelectCommand = sqlcmd

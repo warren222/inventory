@@ -32,6 +32,9 @@ Partial Class ASRefoilingQuotationSummary
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cboxSearch = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvProject, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -42,24 +45,26 @@ Partial Class ASRefoilingQuotationSummary
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.DimGray
+        Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.LoadingPBOX)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(848, 49)
+        Me.Panel1.Size = New System.Drawing.Size(848, 104)
         Me.Panel1.TabIndex = 3
         '
         'LoadingPBOX
         '
         Me.LoadingPBOX.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.LoadingPBOX.Image = CType(resources.GetObject("LoadingPBOX.Image"), System.Drawing.Image)
-        Me.LoadingPBOX.Location = New System.Drawing.Point(710, 4)
+        Me.LoadingPBOX.Location = New System.Drawing.Point(711, 4)
         Me.LoadingPBOX.Name = "LoadingPBOX"
         Me.LoadingPBOX.Size = New System.Drawing.Size(137, 34)
         Me.LoadingPBOX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -93,7 +98,7 @@ Partial Class ASRefoilingQuotationSummary
         Me.gvProject.ReadOnly = True
         Me.gvProject.RowHeadersWidth = 40
         Me.gvProject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvProject.Size = New System.Drawing.Size(848, 210)
+        Me.gvProject.Size = New System.Drawing.Size(848, 173)
         Me.gvProject.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.gvProject.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.gvProject.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -121,7 +126,7 @@ Partial Class ASRefoilingQuotationSummary
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(848, 103)
+        Me.Panel3.Size = New System.Drawing.Size(848, 85)
         Me.Panel3.TabIndex = 5
         '
         'gvColor
@@ -139,7 +144,7 @@ Partial Class ASRefoilingQuotationSummary
         Me.gvColor.ReadOnly = True
         Me.gvColor.RowHeadersWidth = 40
         Me.gvColor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvColor.Size = New System.Drawing.Size(848, 66)
+        Me.gvColor.Size = New System.Drawing.Size(848, 48)
         Me.gvColor.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.gvColor.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.gvColor.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -183,7 +188,7 @@ Partial Class ASRefoilingQuotationSummary
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 49)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 104)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -194,9 +199,41 @@ Partial Class ASRefoilingQuotationSummary
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel3)
-        Me.SplitContainer1.Size = New System.Drawing.Size(848, 317)
-        Me.SplitContainer1.SplitterDistance = 210
+        Me.SplitContainer1.Size = New System.Drawing.Size(848, 262)
+        Me.SplitContainer1.SplitterDistance = 173
         Me.SplitContainer1.TabIndex = 6
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.cboxSearch)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 57)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(848, 47)
+        Me.Panel2.TabIndex = 594
+        '
+        'cboxSearch
+        '
+        Me.cboxSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxSearch.FormattingEnabled = True
+        Me.cboxSearch.Items.AddRange(New Object() {"All", "Approved"})
+        Me.cboxSearch.Location = New System.Drawing.Point(584, 13)
+        Me.cboxSearch.Name = "cboxSearch"
+        Me.cboxSearch.Size = New System.Drawing.Size(171, 21)
+        Me.cboxSearch.TabIndex = 0
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Location = New System.Drawing.Point(761, 11)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "search"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ASRefoilingQuotationSummary
         '
@@ -221,6 +258,7 @@ Partial Class ASRefoilingQuotationSummary
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -234,4 +272,7 @@ Partial Class ASRefoilingQuotationSummary
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents cboxSearch As ComboBox
 End Class
