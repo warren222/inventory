@@ -138,6 +138,13 @@ Public Class PhasedoutForm
             Next
         Else
         End If
+        If KryptonCheckBox19.Checked = True Then
+            For i As Integer = 0 To Form2.stocksStocksno.Items.Count - 1
+                Dim stockno As String = Form2.stocksStocksno.Items(i).ToString
+                upfoiling("unit = '" & unit.Text & "'", stockno)
+            Next
+        Else
+        End If
         Form2.KryptonButton1.PerformClick()
         Button1.PerformClick()
     End Sub
@@ -318,7 +325,9 @@ update stocks_tb set unitprice='" & myval & "' where stockno='" & stockno & "'"
         loadfoiling("foilwitha", foilwitha)
         loadfoiling("foilwithb", foilwithb)
         loadfoiling("foilcolor", foilcolor)
+        loadfoiling("unit", unit)
         loadweight()
+        unit.SelectedIndex = -1
     End Sub
     Public Sub loadfoiling(ByVal col As String, ByVal cbx As Object)
         Try
@@ -468,6 +477,7 @@ update stocks_tb set unitprice='" & myval & "' where stockno='" & stockno & "'"
         KryptonCheckBox16.Checked = False
         KryptonCheckBox17.Checked = False
         KryptonCheckBox18.Checked = False
+        KryptonCheckBox19.Checked = False
     End Sub
 
     Private Sub KryptonPanel1_MouseDown(sender As Object, e As MouseEventArgs) Handles KryptonPanel1.MouseDown

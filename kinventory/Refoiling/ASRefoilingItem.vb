@@ -24,12 +24,11 @@ Public Class ASRefoilingItem
         starter("Items")
         If command = "Items" Then
             lblProject.Text = project
+            lblDate.Text = qdate
         Else
             lblProject.Text = color
             lblDate.Text = ""
         End If
-
-        lblDate.Text = qdate
     End Sub
 
     Private Sub bgw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
