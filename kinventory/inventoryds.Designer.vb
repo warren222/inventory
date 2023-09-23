@@ -37,6 +37,8 @@ Partial Public Class inventoryds
     
     Private tablemonthly_consumption As monthly_consumptionDataTable
     
+    Private tableFOIL_PVC As FOIL_PVCDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -83,6 +85,9 @@ Partial Public Class inventoryds
             End If
             If (Not (ds.Tables("monthly_consumption")) Is Nothing) Then
                 MyBase.Tables.Add(New monthly_consumptionDataTable(ds.Tables("monthly_consumption")))
+            End If
+            If (Not (ds.Tables("FOIL_PVC")) Is Nothing) Then
+                MyBase.Tables.Add(New FOIL_PVCDataTable(ds.Tables("FOIL_PVC")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -158,6 +163,16 @@ Partial Public Class inventoryds
     Public ReadOnly Property monthly_consumption() As monthly_consumptionDataTable
         Get
             Return Me.tablemonthly_consumption
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property FOIL_PVC() As FOIL_PVCDataTable
+        Get
+            Return Me.tableFOIL_PVC
         End Get
     End Property
     
@@ -246,6 +261,9 @@ Partial Public Class inventoryds
             If (Not (ds.Tables("monthly_consumption")) Is Nothing) Then
                 MyBase.Tables.Add(New monthly_consumptionDataTable(ds.Tables("monthly_consumption")))
             End If
+            If (Not (ds.Tables("FOIL_PVC")) Is Nothing) Then
+                MyBase.Tables.Add(New FOIL_PVCDataTable(ds.Tables("FOIL_PVC")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -314,6 +332,12 @@ Partial Public Class inventoryds
                 Me.tablemonthly_consumption.InitVars
             End If
         End If
+        Me.tableFOIL_PVC = CType(MyBase.Tables("FOIL_PVC"),FOIL_PVCDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableFOIL_PVC) Is Nothing) Then
+                Me.tableFOIL_PVC.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -336,6 +360,8 @@ Partial Public Class inventoryds
         MyBase.Tables.Add(Me.tableFoilPerProject)
         Me.tablemonthly_consumption = New monthly_consumptionDataTable()
         MyBase.Tables.Add(Me.tablemonthly_consumption)
+        Me.tableFOIL_PVC = New FOIL_PVCDataTable()
+        MyBase.Tables.Add(Me.tableFOIL_PVC)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -371,6 +397,12 @@ Partial Public Class inventoryds
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializemonthly_consumption() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeFOIL_PVC() As Boolean
         Return false
     End Function
     
@@ -449,6 +481,9 @@ Partial Public Class inventoryds
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub monthly_consumptionRowChangeEventHandler(ByVal sender As Object, ByVal e As monthly_consumptionRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub FOIL_PVCRowChangeEventHandler(ByVal sender As Object, ByVal e As FOIL_PVCRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -3438,6 +3473,323 @@ Partial Public Class inventoryds
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "monthly_consumptionDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class FOIL_PVCDataTable
+        Inherits Global.System.Data.TypedTableBase(Of FOIL_PVCRow)
+        
+        Private columnFOILCOLOR As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_AREA As Global.System.Data.DataColumn
+        
+        Private columnNO_OF_ROLLS_TO_ORDER As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_AREA_OF_STOCKS As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_ROLLS_IN_STOCKS As Global.System.Data.DataColumn
+        
+        Private columnFOILCOLOR2 As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "FOIL_PVC"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FOILCOLORColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFOILCOLOR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_AREAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_AREA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NO_OF_ROLLS_TO_ORDERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNO_OF_ROLLS_TO_ORDER
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_AREA_OF_STOCKSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_AREA_OF_STOCKS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_ROLLS_IN_STOCKSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_ROLLS_IN_STOCKS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FOILCOLOR2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFOILCOLOR2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As FOIL_PVCRow
+            Get
+                Return CType(Me.Rows(index),FOIL_PVCRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event FOIL_PVCRowChanging As FOIL_PVCRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event FOIL_PVCRowChanged As FOIL_PVCRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event FOIL_PVCRowDeleting As FOIL_PVCRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event FOIL_PVCRowDeleted As FOIL_PVCRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddFOIL_PVCRow(ByVal row As FOIL_PVCRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddFOIL_PVCRow(ByVal FOILCOLOR As String, ByVal TOTAL_AREA As Decimal, ByVal NO_OF_ROLLS_TO_ORDER As Integer, ByVal TOTAL_AREA_OF_STOCKS As Decimal, ByVal TOTAL_ROLLS_IN_STOCKS As Integer, ByVal FOILCOLOR2 As String) As FOIL_PVCRow
+            Dim rowFOIL_PVCRow As FOIL_PVCRow = CType(Me.NewRow,FOIL_PVCRow)
+            Dim columnValuesArray() As Object = New Object() {FOILCOLOR, TOTAL_AREA, NO_OF_ROLLS_TO_ORDER, TOTAL_AREA_OF_STOCKS, TOTAL_ROLLS_IN_STOCKS, FOILCOLOR2}
+            rowFOIL_PVCRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowFOIL_PVCRow)
+            Return rowFOIL_PVCRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As FOIL_PVCDataTable = CType(MyBase.Clone,FOIL_PVCDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New FOIL_PVCDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnFOILCOLOR = MyBase.Columns("FOILCOLOR")
+            Me.columnTOTAL_AREA = MyBase.Columns("TOTAL_AREA")
+            Me.columnNO_OF_ROLLS_TO_ORDER = MyBase.Columns("NO_OF_ROLLS_TO_ORDER")
+            Me.columnTOTAL_AREA_OF_STOCKS = MyBase.Columns("TOTAL_AREA_OF_STOCKS")
+            Me.columnTOTAL_ROLLS_IN_STOCKS = MyBase.Columns("TOTAL_ROLLS_IN_STOCKS")
+            Me.columnFOILCOLOR2 = MyBase.Columns("FOILCOLOR2")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnFOILCOLOR = New Global.System.Data.DataColumn("FOILCOLOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFOILCOLOR)
+            Me.columnTOTAL_AREA = New Global.System.Data.DataColumn("TOTAL_AREA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_AREA)
+            Me.columnNO_OF_ROLLS_TO_ORDER = New Global.System.Data.DataColumn("NO_OF_ROLLS_TO_ORDER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNO_OF_ROLLS_TO_ORDER)
+            Me.columnTOTAL_AREA_OF_STOCKS = New Global.System.Data.DataColumn("TOTAL_AREA_OF_STOCKS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_AREA_OF_STOCKS)
+            Me.columnTOTAL_ROLLS_IN_STOCKS = New Global.System.Data.DataColumn("TOTAL_ROLLS_IN_STOCKS", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_ROLLS_IN_STOCKS)
+            Me.columnFOILCOLOR2 = New Global.System.Data.DataColumn("FOILCOLOR2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFOILCOLOR2)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewFOIL_PVCRow() As FOIL_PVCRow
+            Return CType(Me.NewRow,FOIL_PVCRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New FOIL_PVCRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(FOIL_PVCRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.FOIL_PVCRowChangedEvent) Is Nothing) Then
+                RaiseEvent FOIL_PVCRowChanged(Me, New FOIL_PVCRowChangeEvent(CType(e.Row,FOIL_PVCRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.FOIL_PVCRowChangingEvent) Is Nothing) Then
+                RaiseEvent FOIL_PVCRowChanging(Me, New FOIL_PVCRowChangeEvent(CType(e.Row,FOIL_PVCRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.FOIL_PVCRowDeletedEvent) Is Nothing) Then
+                RaiseEvent FOIL_PVCRowDeleted(Me, New FOIL_PVCRowChangeEvent(CType(e.Row,FOIL_PVCRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.FOIL_PVCRowDeletingEvent) Is Nothing) Then
+                RaiseEvent FOIL_PVCRowDeleting(Me, New FOIL_PVCRowChangeEvent(CType(e.Row,FOIL_PVCRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveFOIL_PVCRow(ByVal row As FOIL_PVCRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As inventoryds = New inventoryds()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "FOIL_PVCDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6739,6 +7091,184 @@ Partial Public Class inventoryds
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class FOIL_PVCRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableFOIL_PVC As FOIL_PVCDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableFOIL_PVC = CType(Me.Table,FOIL_PVCDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FOILCOLOR() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.FOILCOLORColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FOILCOLOR' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.FOILCOLORColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_AREA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_AREAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_AREA' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_AREAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NO_OF_ROLLS_TO_ORDER() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.NO_OF_ROLLS_TO_ORDERColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NO_OF_ROLLS_TO_ORDER' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.NO_OF_ROLLS_TO_ORDERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_AREA_OF_STOCKS() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKSColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_AREA_OF_STOCKS' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_ROLLS_IN_STOCKS() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKSColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_ROLLS_IN_STOCKS' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FOILCOLOR2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.FOILCOLOR2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FOILCOLOR2' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.FOILCOLOR2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsFOILCOLORNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.FOILCOLORColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetFOILCOLORNull()
+            Me(Me.tableFOIL_PVC.FOILCOLORColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_AREANull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_AREAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_AREANull()
+            Me(Me.tableFOIL_PVC.TOTAL_AREAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNO_OF_ROLLS_TO_ORDERNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.NO_OF_ROLLS_TO_ORDERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNO_OF_ROLLS_TO_ORDERNull()
+            Me(Me.tableFOIL_PVC.NO_OF_ROLLS_TO_ORDERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_AREA_OF_STOCKSNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_AREA_OF_STOCKSNull()
+            Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_ROLLS_IN_STOCKSNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_ROLLS_IN_STOCKSNull()
+            Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsFOILCOLOR2Null() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.FOILCOLOR2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetFOILCOLOR2Null()
+            Me(Me.tableFOIL_PVC.FOILCOLOR2Column) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -6940,6 +7470,42 @@ Partial Public Class inventoryds
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As monthly_consumptionRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class FOIL_PVCRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As FOIL_PVCRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As FOIL_PVCRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As FOIL_PVCRow
             Get
                 Return Me.eventRow
             End Get

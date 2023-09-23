@@ -4675,16 +4675,73 @@ accttype='" & acctype & "' where id = '" & id & "'"
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Public Sub getfoilcolor()
+    Public Sub getfoilcolor(ByVal data As String)
 
 
-        Dim str As String = "select *,isnull((((FOILWITHA+FOILWITHB)/1000.00)*(iif(UFACTOR<=1,5.8,UFACTOR)))*(iif(FREE<0,FREE*-1,FREE)),0) as area from stocks_tb where not foilcolor = '' and free < 0"
+        Dim str1 As String = "select *,isnull((((FOILWITHA+FOILWITHB)/1000.00)*(iif(UFACTOR<=1,5.8,UFACTOR)))*(iif(FREE<0,FREE*-1,FREE)),0) as area 
+        from stocks_tb where not foilcolor = '' and free < 0"
+
+        Dim str2 As String = "select * into #PVCSource from (
+SELECT [STOCKNO]
+      ,[SUPPLIER]
+      ,[COSTHEAD]
+      ,[UFACTOR]
+      ,[TYPECOLOR]
+      ,[MONETARY]
+      ,[ARTICLENO]
+      ,[INTERNAL_ART_NO]
+      ,[DISC]
+      ,[UNITPRICE]
+      ,[DESCRIPTION]
+      ,[QTY]
+      ,[UNIT]
+      ,[LOCATION]
+      ,[HEADER]
+      ,[PHYSICAL]
+      ,[ALLOCATION]
+      ,[CLBAL]
+      ,[FREE]
+      ,[STOCKORDER]
+      ,[MINIMUM]
+      ,[ISSUE]
+      ,[AVEUSAGE]
+      ,[STATUS]
+      ,[PHASEDOUT]
+      ,[COLORBASED]
+      ,[NEEDTOORDER]
+      ,[FINALNEEDTOORDER]
+      ,[INPUTTED]
+      ,[TOORDER]
+      ,[TOFOIL]
+      ,[BALALLOC]
+      ,[PHYSICAL2]
+      ,[WEIGHT]
+      ,[XRATE]
+      ,[NETAMOUNT]
+      ,[CONSUMPTION]
+      ,[FOILWITHA]=CAST(substring(articleno,charindex('-',articleno)+1, (charindex('x',articleno))-charindex('-',articleno)-1) AS INT)
+      ,[FOILWITHB]=CAST(substring(articleno, charindex('x',articleno)+1, len(articleno)) AS INT)
+      ,[FOILCOLOR]=TYPECOLOR
+      ,[PRODUCTIONALLOCATION]
+  FROM [stocks_tb]
+  where COSTHEAD = 'PVC FOIL') as PVCSource
+
+  select *,isnull(((((foilwitha/1000.00)*foilwithb))*(UFACTOR))*(iif(FREE<0,FREE*-1,FREE)),0) as area
+  from #PVCSource"
+
+        Dim query As String
+        If data = "PVC" Then
+            query = str2
+        Else
+            query = str1
+        End If
+
         Dim ds As New inventoryds
         ds.Clear()
         Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
             Try
                 sqlcon.Open()
-                Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                Using sqlcmd As SqlCommand = New SqlCommand(query, sqlcon)
                     Using da As SqlDataAdapter = New SqlDataAdapter()
                         da.SelectCommand = sqlcmd
                         da.Fill(ds.STOCKS_TB)

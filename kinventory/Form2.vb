@@ -3506,7 +3506,8 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub KryptonButton33_Click(sender As Object, e As EventArgs) Handles KryptonButton33.Click
-        sql.getfoilcolor()
+        sql.getfoilcolor("")
+        Form14.title = "For Foiling"
         Form14.ShowDialog()
     End Sub
 
@@ -3709,5 +3710,15 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     Private Sub KryptonButton17_Click_1(sender As Object, e As EventArgs) Handles KryptonButton17.Click
         CreateStocks_Frm.Show()
+    End Sub
+
+    Private Sub KryptonButton20_Click_1(sender As Object, e As EventArgs) Handles KryptonButton20.Click
+        sql.getfoilcolor("PVC")
+        Form14.title = "PVC Foil"
+        Form14.ShowDialog()
+    End Sub
+
+    Private Sub KryptonButton26_Click_1(sender As Object, e As EventArgs) Handles KryptonButton26.Click
+        FOILvsPVCreport.ShowDialog()
     End Sub
 End Class

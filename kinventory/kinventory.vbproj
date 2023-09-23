@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.129</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.134</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>129</ApplicationRevision>
+    <ApplicationRevision>134</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -272,6 +272,12 @@
       <DependentUpon>FoilingAllocation.vb</DependentUpon>
     </Compile>
     <Compile Include="FoilingAllocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FOILvsPVCreport.Designer.vb">
+      <DependentUpon>FOILvsPVCreport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FOILvsPVCreport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Foil_Yearly_ConsumptionReport.Designer.vb">
@@ -576,6 +582,9 @@
     <EmbeddedResource Include="FoilingAllocation.resx">
       <DependentUpon>FoilingAllocation.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FOILvsPVCreport.resx">
+      <DependentUpon>FOILvsPVCreport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Foil_Yearly_ConsumptionReport.resx">
       <DependentUpon>Foil_Yearly_ConsumptionReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -686,6 +695,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="report\ESVPrpt.rdlc" />
     <EmbeddedResource Include="report\ESVrpt.rdlc" />
+    <EmbeddedResource Include="report\FOIL_PVC_RPT.rdlc" />
     <EmbeddedResource Include="ToFoilPerProjectFrm.resx">
       <DependentUpon>ToFoilPerProjectFrm.vb</DependentUpon>
     </EmbeddedResource>
