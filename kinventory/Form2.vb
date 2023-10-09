@@ -3600,7 +3600,7 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub ClearJOToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearJOToolStripMenuItem.Click
-        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Then
+        If Form1.nickname.Text = "Noreen" Or Form1.nickname.Text = "Daniel" Or Form1.accounttype.Text = "Admin" Then
             If MessageBox.Show("Clear JO?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
                 Exit Sub
             End If

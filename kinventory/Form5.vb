@@ -124,7 +124,9 @@ declare @issueallocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) 
         End Try
     End Sub
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
-        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Or Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Lei" Or Form1.nickname.Text = "Daniel" Or
+        If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Or
+            Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Lei" Or Form1.nickname.Text = "Daniel" Or
+            Form1.nickname.Text = "Rosmar" Or Form1.nickname.Text = "Elmer" Or Form1.nickname.Text = "China" Or
             (Form1.nickname.Text = "jayson" And transtype.Text = "Allocation") Or
             (Form1.nickname.Text = "chad" And transtype.Text = "Allocation") Or
                 (Form1.nickname.Text = "aly" And transtype.Text = "Allocation") Or
