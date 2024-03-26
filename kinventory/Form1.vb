@@ -14,6 +14,13 @@
             ManageAccountsToolStripMenuItem.Enabled = False
             ColorMngrToolStripMenuItem.Visible = False
         End If
+
+        If nickname.Text = "Daniel" Or
+           nickname.Text = "Warren" Then
+            CuttingListMonitoringToolStripMenuItem.Visible = True
+        Else
+            CuttingListMonitoringToolStripMenuItem.Visible = False
+        End If
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -48,5 +55,19 @@
 
     Private Sub ASRefoilingQuotationSummaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ASRefoilingQuotationSummaryToolStripMenuItem.Click
         ASRefoilingQuotationSummary.Show()
+    End Sub
+
+    Private Sub CuttingListMonitoringToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuttingListMonitoringToolStripMenuItem.Click
+        ItemsToMonitor.Show()
+    End Sub
+
+    Private Sub AccountabilityMonitoringToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AccountabilityMonitoringToolStripMenuItem.Click
+        AccountabilityPage.Show()
+        AccountabilityPage.MdiParent = Me
+    End Sub
+
+    Private Sub WarehouseItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WarehouseItemsToolStripMenuItem.Click
+        AccountabilityItems.Show()
+        AccountabilityItems.MdiParent = Me
     End Sub
 End Class

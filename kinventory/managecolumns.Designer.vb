@@ -25,6 +25,7 @@ Partial Class managecolumns
         Me.supplier = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.CLBAL = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.header = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.mylocation = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.physical2 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
@@ -77,7 +78,7 @@ Partial Class managecolumns
         Me.tcosthead = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
-        Me.CLBAL = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.cboxDescription = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -108,6 +109,7 @@ Partial Class managecolumns
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.cboxDescription)
         Me.TabPage1.Controls.Add(Me.CLBAL)
         Me.TabPage1.Controls.Add(Me.header)
         Me.TabPage1.Controls.Add(Me.mylocation)
@@ -143,6 +145,18 @@ Partial Class managecolumns
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Stocks Columns"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'CLBAL
+        '
+        Me.CLBAL.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.CLBAL.Location = New System.Drawing.Point(275, 43)
+        Me.CLBAL.Name = "CLBAL"
+        Me.CLBAL.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.CLBAL.Size = New System.Drawing.Size(67, 19)
+        Me.CLBAL.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CLBAL.TabIndex = 76
+        Me.CLBAL.Text = "CLBAL"
+        Me.CLBAL.Values.Text = "CLBAL"
         '
         'header
         '
@@ -767,7 +781,7 @@ Partial Class managecolumns
         '
         'KryptonButton1
         '
-        Me.KryptonButton1.Location = New System.Drawing.Point(227, 424)
+        Me.KryptonButton1.Location = New System.Drawing.Point(237, 424)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton1.Size = New System.Drawing.Size(68, 25)
@@ -791,17 +805,17 @@ Partial Class managecolumns
         Me.KryptonButton2.TabIndex = 13
         Me.KryptonButton2.Values.Text = "Cancel"
         '
-        'CLBAL
+        'cboxDescription
         '
-        Me.CLBAL.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.CLBAL.Location = New System.Drawing.Point(275, 43)
-        Me.CLBAL.Name = "CLBAL"
-        Me.CLBAL.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.CLBAL.Size = New System.Drawing.Size(67, 19)
-        Me.CLBAL.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CLBAL.TabIndex = 76
-        Me.CLBAL.Text = "CLBAL"
-        Me.CLBAL.Values.Text = "CLBAL"
+        Me.cboxDescription.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.cboxDescription.Location = New System.Drawing.Point(275, 65)
+        Me.cboxDescription.Name = "cboxDescription"
+        Me.cboxDescription.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.cboxDescription.Size = New System.Drawing.Size(93, 19)
+        Me.cboxDescription.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxDescription.TabIndex = 77
+        Me.cboxDescription.Text = "Description"
+        Me.cboxDescription.Values.Text = "Description"
         '
         'managecolumns
         '
@@ -881,4 +895,5 @@ Partial Class managecolumns
     Friend WithEvents adjqty As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents header As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents CLBAL As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Friend WithEvents cboxDescription As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
 End Class

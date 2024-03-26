@@ -31,6 +31,9 @@ Public Class Form2
             KryptonButton8.Enabled = False
             'reference
             KryptonButton14.Enabled = False
+
+            physicaldatebtn.Enabled = False
+            updatedatabtn.Enabled = False
         ElseIf Form1.accounttype.Text = "Admin" Then
             KryptonButton2.Enabled = True
             KryptonButton17.Enabled = True
@@ -57,6 +60,9 @@ Public Class Form2
             KryptonButton8.Enabled = True
             'reference
             KryptonButton14.Enabled = True
+
+            physicaldatebtn.Enabled = False
+            updatedatabtn.Enabled = False
         ElseIf Form1.accounttype.Text = "Allocation" Then
 
             KryptonButton2.Enabled = False
@@ -71,13 +77,29 @@ Public Class Form2
             KryptonButton8.Enabled = False
             'reference
             KryptonButton14.Enabled = False
-            If Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Lei" Or Form1.nickname.Text = "Daniel" Then
+            If Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Nico" Or Form1.nickname.Text = "Lei" Then
                 KryptonButton14.Enabled = True
             End If
             transaction.Text = "Allocation"
             transaction.Enabled = False
+
+
+            physicaldatebtn.Enabled = False
+            updatedatabtn.Enabled = False
         End If
+        If Form1.nickname.Text = "Daniel" Or
+           Form1.nickname.Text = "Warren" Then
+            btnCLMonitoring.Visible = True
+            btnAddCLM.Visible = True
+            physicaldatebtn.Enabled = True
+            updatedatabtn.Enabled = True
+        Else
+            btnCLMonitoring.Visible = False
+            btnAddCLM.Visible = False
+        End If
+        cboxMonth1.SelectedIndex = Today.Month - 1
         cboxMonthPicker.SelectedIndex = 0
+        loadYear()
     End Sub
 
     Private Sub stocksgridview_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles stocksgridview.RowPostPaint
@@ -2131,9 +2153,9 @@ a.*,
 
 
             ESVfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
-                ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
+            ESVPfrm.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {parReportParam1})
 
-                Dim updateneedtoorder As String = "
+            Dim updateneedtoorder As String = "
 declare @buffmonth as decimal(10,2) = '" & mymonth.Text & "'
 update
 a
@@ -2142,9 +2164,9 @@ set a.needtoorder
 from STOCKS_TB as a
 inner join CONSUMPTIONTB as b
 on a.stockno=b.stockno where B.MYYEAR = '" & myyear.Text & "'"
-                Dim firststr As String = "
+            Dim firststr As String = "
 DECLARE @TOWEIGHT AS DECIMAL(10,2)=(select sum(isnull((a.UFACTOR*a.FINALNEEDTOORDER)*isnull(a.WEIGHT,0),0)) from STOCKS_TB as a where a.finalneedtoorder > 0 "
-                Dim str As String = "
+            Dim str As String = "
 select 
 a.STOCKNO,
 a.SUPPLIER,
@@ -2196,85 +2218,85 @@ from STOCKS_TB AS a
 inner join CONSUMPTIONTB as b
 on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
 
-                Dim phasedout As String
-                Dim toorder As String
-                If reportpasedout.Checked = True Then
-                    phasedout = " a.phasedout like '%yes%'"
-                Else
-                    phasedout = " a.phasedout=a.phasedout "
-                End If
-                If reporttoorder.Checked = True Then
-                    toorder = " a.toorder='yes'"
-                Else
-                    toorder = " a.toorder=a.toorder"
-                End If
-
-
-
-
-                Dim condition As String
-                Dim a As String = reportsupplier.Text
-                Dim b As String = reportheader.Text
-                Dim c As String = reportcosthead.Text
-                Dim d As String = reporttypecolor.Text
-                Dim f As String = reportstatus.Text
-
-                Dim acol As String = "a.supplier"
-                Dim bcol As String = "a.header"
-                Dim ccol As String = "a.costhead"
-                Dim dcol As String = "a.typecolor"
-                Dim fcol As String = "a.status"
-
-                If a = "" Then
-                    a = " a.supplier = a.supplier"
-                Else
-                    a = " a.supplier = '" & a & "'"
-                End If
-                If b = "" Then
-                    b = " a.header = a.header"
-                Else
-                    b = " a.header = '" & b & "'"
-                End If
-                If c = "" Then
-                    c = " a.costhead = a.costhead"
-                Else
-                    c = " a.costhead = '" & c & "'"
-                End If
-                If d = "" Then
-                    d = " a.typecolor = a.typecolor"
-                Else
-                    d = " a.typecolor = '" & d & "'"
-                End If
-                If f = "" Then
-                    f = " a.status = a.status"
-                Else
-                    f = " a.status = '" & f & "'"
-                End If
-
-
-
-                If reportpasedout.Checked = True And reporttoorder.Checked = True Then
-                    condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
-                Else
-                    condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
-                End If
-
-                If scr.Checked = True Then
-                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                    sql.anualreporting(mystr, updateneedtoorder)
-                    Form7.ShowDialog()
-                ElseIf esv.Checked = True Then
-                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                    sql.anualreportingESV(mystr, updateneedtoorder)
-                    ESVfrm.ShowDialog()
-                ElseIf esvp.Checked = True Then
-                    Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
-                    sql.anualreportingESVP(mystr, updateneedtoorder)
-                    ESVPfrm.ShowDialog()
-                End If
-
-
+            Dim phasedout As String
+            Dim toorder As String
+            If reportpasedout.Checked = True Then
+                phasedout = " a.phasedout like '%yes%'"
+            Else
+                phasedout = " a.phasedout=a.phasedout "
             End If
+            If reporttoorder.Checked = True Then
+                toorder = " a.toorder='yes'"
+            Else
+                toorder = " a.toorder=a.toorder"
+            End If
+
+
+
+
+            Dim condition As String
+            Dim a As String = reportsupplier.Text
+            Dim b As String = reportheader.Text
+            Dim c As String = reportcosthead.Text
+            Dim d As String = reporttypecolor.Text
+            Dim f As String = reportstatus.Text
+
+            Dim acol As String = "a.supplier"
+            Dim bcol As String = "a.header"
+            Dim ccol As String = "a.costhead"
+            Dim dcol As String = "a.typecolor"
+            Dim fcol As String = "a.status"
+
+            If a = "" Then
+                a = " a.supplier = a.supplier"
+            Else
+                a = " a.supplier = '" & a & "'"
+            End If
+            If b = "" Then
+                b = " a.header = a.header"
+            Else
+                b = " a.header = '" & b & "'"
+            End If
+            If c = "" Then
+                c = " a.costhead = a.costhead"
+            Else
+                c = " a.costhead = '" & c & "'"
+            End If
+            If d = "" Then
+                d = " a.typecolor = a.typecolor"
+            Else
+                d = " a.typecolor = '" & d & "'"
+            End If
+            If f = "" Then
+                f = " a.status = a.status"
+            Else
+                f = " a.status = '" & f & "'"
+            End If
+
+
+
+            If reportpasedout.Checked = True And reporttoorder.Checked = True Then
+                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and (" & phasedout & " or " & toorder & ")"
+            Else
+                condition = " and  " & a & " and " & b & " and " & c & " and " & d & " and " & f & " and " & phasedout & " and " & toorder & ""
+            End If
+
+            If scr.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                sql.anualreporting(mystr, updateneedtoorder)
+                Form7.ShowDialog()
+            ElseIf esv.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                sql.anualreportingESV(mystr, updateneedtoorder)
+                ESVfrm.ShowDialog()
+            ElseIf esvp.Checked = True Then
+                Dim mystr As String = "" & firststr & "" + condition + ")" + "" & str & "" + condition + " order by a.articleno asc"
+                sql.anualreportingESVP(mystr, updateneedtoorder)
+                ESVPfrm.ShowDialog()
+            End If
+
+
+        End If
     End Sub
 
 
@@ -3719,6 +3741,54 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     End Sub
 
     Private Sub KryptonButton26_Click_1(sender As Object, e As EventArgs) Handles KryptonButton26.Click
-        FOILvsPVCreport.ShowDialog()
+        If cboxMonth2.Text = "" Then
+            MsgBox("please select the end month in range")
+        Else
+            FOILvsPVCreport.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub loadYear()
+        Try
+            Using sqlconn As SqlConnection = New SqlConnection(sql.sqlconstr)
+                Using sqlcmd As SqlCommand = sqlconn.CreateCommand()
+                    sqlcmd.CommandText = "Year_List_Stp"
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        Dim ds As New DataSet
+                        ds.Clear()
+                        da.SelectCommand = sqlcmd
+                        da.Fill(ds, "year_tbl")
+                        cboxYear.DataSource = ds.Tables(0)
+                        cboxYear.DisplayMember = "Year"
+                        cboxYear.ValueMember = "Year"
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+
+    Private Sub cboxMonth2_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxMonth2.MouseDown
+        cboxMonth2.Items.Clear()
+        For i As Integer = cboxMonth1.SelectedIndex To 11 Step +1
+            cboxMonth2.Items.Add(cboxMonth1.Items(i))
+        Next
+    End Sub
+
+    Private Sub cboxMonth1_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxMonth1.MouseDown
+        cboxMonth2.SelectedIndex = -1
+    End Sub
+
+    Private Sub KryptonButton27_Click_1(sender As Object, e As EventArgs) Handles btnCLMonitoring.Click
+        CuttingListRecord._stockno = stocknoinput.Text
+        CuttingListRecord.ShowDialog()
+    End Sub
+
+    Private Sub KryptonButton28_Click_1(sender As Object, e As EventArgs) Handles btnAddCLM.Click
+        AddItemsToMonitor._stockno = stocknoinput.Text
+        AddItemsToMonitor.ShowDialog()
     End Sub
 End Class

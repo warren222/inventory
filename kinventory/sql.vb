@@ -47,7 +47,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("UFACTOR").Visible = False
             Form2.stocksgridview.Columns("MONETARY").Visible = False
             Form2.stocksgridview.Columns("UNITPRICE").Visible = True
-            Form2.stocksgridview.Columns("DESCRIPTION").Visible = False
+            Form2.stocksgridview.Columns("DESCRIPTION").Visible = True
             Form2.stocksgridview.Columns("UNIT").Visible = False
             Form2.stocksgridview.Columns("LOCATION").Visible = False
             Form2.stocksgridview.Columns("HEADER").Visible = False
@@ -131,7 +131,7 @@ order by A.articleno asc"
             Form2.stocksgridview.Columns("UFACTOR").Visible = False
             Form2.stocksgridview.Columns("MONETARY").Visible = False
             Form2.stocksgridview.Columns("UNITPRICE").Visible = True
-            Form2.stocksgridview.Columns("DESCRIPTION").Visible = False
+            Form2.stocksgridview.Columns("DESCRIPTION").Visible = True
             Form2.stocksgridview.Columns("UNIT").Visible = False
             Form2.stocksgridview.Columns("LOCATION").Visible = False
             Form2.stocksgridview.Columns("HEADER").Visible = False
@@ -4418,6 +4418,11 @@ accttype='" & acctype & "' where id = '" & id & "'"
                 Form2.stocksgridview.Columns("TYPECOLOR").Visible = True
             Else
                 Form2.stocksgridview.Columns("TYPECOLOR").Visible = False
+            End If
+            If managecolumns.cboxDescription.Checked = True Then
+                Form2.stocksgridview.Columns("DESCRIPTION").Visible = True
+            Else
+                Form2.stocksgridview.Columns("DESCRIPTION").Visible = False
             End If
             If managecolumns.articleno.Checked = True Then
                 Form2.stocksgridview.Columns("ARTICLENO").Visible = True

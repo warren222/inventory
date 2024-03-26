@@ -125,11 +125,11 @@ declare @issueallocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) 
     End Sub
     Private Sub KryptonButton1_Click(sender As Object, e As EventArgs) Handles KryptonButton1.Click
         If Form1.nickname.Text = "Noreen" Or Form1.accounttype.Text = "Admin" Or
-            Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Lei" Or Form1.nickname.Text = "Daniel" Or
+            Form1.nickname.Text = "Joy" Or Form1.nickname.Text = "Nico" Or Form1.nickname.Text = "Lei" Or Form1.nickname.Text = "Daniel" Or
             Form1.nickname.Text = "Rosmar" Or Form1.nickname.Text = "Elmer" Or Form1.nickname.Text = "China" Or
-            (Form1.nickname.Text = "jayson" And transtype.Text = "Allocation") Or
+            Form1.nickname.Text = "Yohan" Or Form1.nickname.Text = "aly" Or Form1.nickname.Text = "Grace" Or
+                        (Form1.nickname.Text = "jayson" And transtype.Text = "Allocation") Or
             (Form1.nickname.Text = "chad" And transtype.Text = "Allocation") Or
-                (Form1.nickname.Text = "aly" And transtype.Text = "Allocation") Or
                    (Form1.nickname.Text = "apa" And transtype.Text = "Allocation") Or
             (Form1.nickname.Text = "Juan" And transtype.Text = "Allocation") Then
             If KryptonCheckBox8.Checked = True Then
@@ -569,7 +569,7 @@ update reference_tb set
                    minimum adjustmment for this transaction is " & minimum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 qty.Focus()
             End If
-        ElseIf IsNumeric(qty.text) And transtype.text = "Issue" And xyz.text = "Allocation" Then
+        ElseIf IsNumeric(qty.Text) And transtype.Text = "Issue" And XYZ.Text = "Allocation" Then
             Dim initial As Double = initialqty.Text
             Dim newqty As Double = qty.Text
             Dim alloc As Double = REFALLOC.Text
@@ -586,7 +586,7 @@ update reference_tb set
                 MessageBox.Show("maximum quantity is " & maximum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 qty.Focus()
             End If
-        ElseIf IsNumeric(qty.text) And transtype.text = "Issue" And xyz.text = "" Then
+        ElseIf IsNumeric(qty.Text) And transtype.Text = "Issue" And XYZ.Text = "" Then
             'Dim initial As Double = initialqty.Text
             'Dim newqty As Double = qty.Text
             'Dim pscal As Double = physical.Text
@@ -637,41 +637,41 @@ update reference_tb set
                 turnfalse()
             End If
         ElseIf IsNumeric(qty.Text) And transtype.Text = "Issue" And XYZ.Text = "Allocation" Then
-                Dim initial As Double = initialqty.Text
-                Dim newqty As Double = qty.Text
-                Dim alloc As Double = REFALLOC.Text
-                Dim issue As Double = REFISSUE.Text
-                Dim pscal As Double = physical.Text
+            Dim initial As Double = initialqty.Text
+            Dim newqty As Double = qty.Text
+            Dim alloc As Double = REFALLOC.Text
+            Dim issue As Double = REFISSUE.Text
+            Dim pscal As Double = physical.Text
 
-                Dim cancelled As Double = (issue - initial)
-                Dim maximum As Double = alloc - cancelled
-                minadj.Text = maximum
-                KryptonLabel23.Text = "Maximum Qty"
-                Dim iss = cancelled + newqty
-                If iss > alloc Then
-                    Timer1.Stop()
-                    MessageBox.Show("maximum quantity is " & maximum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    qty.Focus()
-                End If
-            ElseIf IsNumeric(qty.Text) And transtype.Text = "Issue" And XYZ.Text = "" Then
-                'Dim initial As Double = initialqty.Text
-                'Dim newqty As Double = qty.Text
-                'Dim pscal As Double = physical.Text
+            Dim cancelled As Double = (issue - initial)
+            Dim maximum As Double = alloc - cancelled
+            minadj.Text = maximum
+            KryptonLabel23.Text = "Maximum Qty"
+            Dim iss = cancelled + newqty
+            If iss > alloc Then
+                Timer1.Stop()
+                MessageBox.Show("maximum quantity is " & maximum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                qty.Focus()
+            End If
+        ElseIf IsNumeric(qty.Text) And transtype.Text = "Issue" And XYZ.Text = "" Then
+            'Dim initial As Double = initialqty.Text
+            'Dim newqty As Double = qty.Text
+            'Dim pscal As Double = physical.Text
 
-                'Dim cancelled As Double = (pscal - initial)
-                'Dim maximum As Double = pscal - cancelled
-                'minadj.Text = maximum
-                'KryptonLabel23.Text = "Maximum Qty"
-                'Dim iss = cancelled + newqty
-                'If iss > pscal Then
-                '    Timer1.Stop()
-                '    MessageBox.Show("maximum quantity is " & maximum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                '    qty.Focus()
-                'End If
-            ElseIf IsNumeric(qty.Text) Then
-                Timer1.Stop()
-            Else
-                Timer1.Stop()
+            'Dim cancelled As Double = (pscal - initial)
+            'Dim maximum As Double = pscal - cancelled
+            'minadj.Text = maximum
+            'KryptonLabel23.Text = "Maximum Qty"
+            'Dim iss = cancelled + newqty
+            'If iss > pscal Then
+            '    Timer1.Stop()
+            '    MessageBox.Show("maximum quantity is " & maximum & "", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    qty.Focus()
+            'End If
+        ElseIf IsNumeric(qty.Text) Then
+            Timer1.Stop()
+        Else
+            Timer1.Stop()
             qty.Focus()
             MessageBox.Show("invalid qty", "error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -1064,20 +1064,20 @@ update reference_tb set
 
 
         Try
-                sql.sqlcon.Open()
-                Dim str As String = "select from stocks_tb where costhead='" & newcosthead.Text & "' and typecolor = '" & newtypecolor.Text & "'"
-                sqlcmd = New SqlCommand(str, sql.sqlcon)
-                Dim read As SqlDataReader = sqlcmd.ExecuteReader
-                If read.HasRows = True Then
-                    read.Close()
-                Else
-                    read.Close()
-                    newtypecolor.SelectedIndex = -1
-                End If
-            Catch ex As Exception
-            Finally
-                sql.sqlcon.Close()
-            End Try
+            sql.sqlcon.Open()
+            Dim str As String = "select from stocks_tb where costhead='" & newcosthead.Text & "' and typecolor = '" & newtypecolor.Text & "'"
+            sqlcmd = New SqlCommand(str, sql.sqlcon)
+            Dim read As SqlDataReader = sqlcmd.ExecuteReader
+            If read.HasRows = True Then
+                read.Close()
+            Else
+                read.Close()
+                newtypecolor.SelectedIndex = -1
+            End If
+        Catch ex As Exception
+        Finally
+            sql.sqlcon.Close()
+        End Try
 
 
         If Not newarticleno.Text = "" Then

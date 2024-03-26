@@ -1,9 +1,21 @@
 ﻿Imports System.Data.SqlClient
+Imports Microsoft.Reporting.WinForms
 
 Public Class FOILvsPVCreport
     Dim sql As New sql
     Private Sub FOILvsPVCreport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadReport()
+        Dim asof As String = ""
+        If Form2.cboxMonth1.Text = Form2.cboxMonth2.Text Then
+            asof = Form2.cboxMonth1.Text + " " + Form2.cboxYear.Text
+        Else
+            asof = Form2.cboxMonth1.Text + " - " + Form2.cboxMonth2.Text + " " + Form2.cboxYear.Text
+        End If
+        Dim param As ReportParameter = New ReportParameter("asof", asof)
+        ReportViewer1.LocalReport.SetParameters(New ReportParameter() {param})
+
+        ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
+        ReportViewer1.ZoomMode = ZoomMode.PageWidth
         ReportViewer1.RefreshReport()
     End Sub
     Private Sub loadReport()
@@ -12,8 +24,12 @@ Public Class FOILvsPVCreport
                 Try
                     Dim ds As New inventoryds
                     ds.Clear()
+                    Dim sdate As String = Form2.cboxYear.Text + "-" + Form2.cboxMonth1.Text + "-01"
+                    Dim edate As String = Form2.cboxYear.Text + "-" + Form2.cboxMonth2.Text + "-01"
                     sqlConnection.Open()
-                    sqlCommand.CommandText = "PVC_FOIL_Stp"
+                    sqlCommand.CommandText = "PVC_FOIL_Consumption_Stp"
+                    sqlCommand.Parameters.AddWithValue("@Sdate", sdate)
+                    sqlCommand.Parameters.AddWithValue("@Edate", edate)
                     sqlCommand.CommandType = CommandType.StoredProcedure
                     Using da As SqlDataAdapter = New SqlDataAdapter()
                         da.SelectCommand = sqlCommand

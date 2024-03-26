@@ -3536,6 +3536,14 @@ Partial Public Class inventoryds
         
         Private columnFOILCOLOR2 As Global.System.Data.DataColumn
         
+        Private columnTOTAL_AREA_CONSUMPTION As Global.System.Data.DataColumn
+        
+        Private columnNO_OF_ROLLS_CONSUMPTION As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_AREA_OF_STOCKS_CONSUMPTION As Global.System.Data.DataColumn
+        
+        Private columnTOTAL_ROLLS_IN_STOCKS_CONSUMPTION As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3620,6 +3628,38 @@ Partial Public Class inventoryds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_AREA_CONSUMPTIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_AREA_CONSUMPTION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NO_OF_ROLLS_CONSUMPTIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNO_OF_ROLLS_CONSUMPTION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_AREA_OF_STOCKS_CONSUMPTIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_AREA_OF_STOCKS_CONSUMPTION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TOTAL_ROLLS_IN_STOCKS_CONSUMPTIONColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTOTAL_ROLLS_IN_STOCKS_CONSUMPTION
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3656,9 +3696,9 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddFOIL_PVCRow(ByVal FOILCOLOR As String, ByVal TOTAL_AREA As Decimal, ByVal NO_OF_ROLLS_TO_ORDER As Integer, ByVal TOTAL_AREA_OF_STOCKS As Decimal, ByVal TOTAL_ROLLS_IN_STOCKS As Integer, ByVal FOILCOLOR2 As String) As FOIL_PVCRow
+        Public Overloads Function AddFOIL_PVCRow(ByVal FOILCOLOR As String, ByVal TOTAL_AREA As Decimal, ByVal NO_OF_ROLLS_TO_ORDER As Integer, ByVal TOTAL_AREA_OF_STOCKS As Decimal, ByVal TOTAL_ROLLS_IN_STOCKS As Integer, ByVal FOILCOLOR2 As String, ByVal TOTAL_AREA_CONSUMPTION As Decimal, ByVal NO_OF_ROLLS_CONSUMPTION As Integer, ByVal TOTAL_AREA_OF_STOCKS_CONSUMPTION As Decimal, ByVal TOTAL_ROLLS_IN_STOCKS_CONSUMPTION As Integer) As FOIL_PVCRow
             Dim rowFOIL_PVCRow As FOIL_PVCRow = CType(Me.NewRow,FOIL_PVCRow)
-            Dim columnValuesArray() As Object = New Object() {FOILCOLOR, TOTAL_AREA, NO_OF_ROLLS_TO_ORDER, TOTAL_AREA_OF_STOCKS, TOTAL_ROLLS_IN_STOCKS, FOILCOLOR2}
+            Dim columnValuesArray() As Object = New Object() {FOILCOLOR, TOTAL_AREA, NO_OF_ROLLS_TO_ORDER, TOTAL_AREA_OF_STOCKS, TOTAL_ROLLS_IN_STOCKS, FOILCOLOR2, TOTAL_AREA_CONSUMPTION, NO_OF_ROLLS_CONSUMPTION, TOTAL_AREA_OF_STOCKS_CONSUMPTION, TOTAL_ROLLS_IN_STOCKS_CONSUMPTION}
             rowFOIL_PVCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFOIL_PVCRow)
             Return rowFOIL_PVCRow
@@ -3687,6 +3727,10 @@ Partial Public Class inventoryds
             Me.columnTOTAL_AREA_OF_STOCKS = MyBase.Columns("TOTAL_AREA_OF_STOCKS")
             Me.columnTOTAL_ROLLS_IN_STOCKS = MyBase.Columns("TOTAL_ROLLS_IN_STOCKS")
             Me.columnFOILCOLOR2 = MyBase.Columns("FOILCOLOR2")
+            Me.columnTOTAL_AREA_CONSUMPTION = MyBase.Columns("TOTAL_AREA_CONSUMPTION")
+            Me.columnNO_OF_ROLLS_CONSUMPTION = MyBase.Columns("NO_OF_ROLLS_CONSUMPTION")
+            Me.columnTOTAL_AREA_OF_STOCKS_CONSUMPTION = MyBase.Columns("TOTAL_AREA_OF_STOCKS_CONSUMPTION")
+            Me.columnTOTAL_ROLLS_IN_STOCKS_CONSUMPTION = MyBase.Columns("TOTAL_ROLLS_IN_STOCKS_CONSUMPTION")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3704,6 +3748,14 @@ Partial Public Class inventoryds
             MyBase.Columns.Add(Me.columnTOTAL_ROLLS_IN_STOCKS)
             Me.columnFOILCOLOR2 = New Global.System.Data.DataColumn("FOILCOLOR2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFOILCOLOR2)
+            Me.columnTOTAL_AREA_CONSUMPTION = New Global.System.Data.DataColumn("TOTAL_AREA_CONSUMPTION", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_AREA_CONSUMPTION)
+            Me.columnNO_OF_ROLLS_CONSUMPTION = New Global.System.Data.DataColumn("NO_OF_ROLLS_CONSUMPTION", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNO_OF_ROLLS_CONSUMPTION)
+            Me.columnTOTAL_AREA_OF_STOCKS_CONSUMPTION = New Global.System.Data.DataColumn("TOTAL_AREA_OF_STOCKS_CONSUMPTION", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_AREA_OF_STOCKS_CONSUMPTION)
+            Me.columnTOTAL_ROLLS_IN_STOCKS_CONSUMPTION = New Global.System.Data.DataColumn("TOTAL_ROLLS_IN_STOCKS_CONSUMPTION", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTOTAL_ROLLS_IN_STOCKS_CONSUMPTION)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7197,6 +7249,68 @@ Partial Public Class inventoryds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_AREA_CONSUMPTION() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_AREA_CONSUMPTIONColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_AREA_CONSUMPTION' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_AREA_CONSUMPTIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NO_OF_ROLLS_CONSUMPTION() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.NO_OF_ROLLS_CONSUMPTIONColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NO_OF_ROLLS_CONSUMPTION' in table 'FOIL_PVC' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.NO_OF_ROLLS_CONSUMPTIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_AREA_OF_STOCKS_CONSUMPTION() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKS_CONSUMPTIONColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_AREA_OF_STOCKS_CONSUMPTION' in table 'FOIL_PVC' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKS_CONSUMPTIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TOTAL_ROLLS_IN_STOCKS_CONSUMPTION() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKS_CONSUMPTIONColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TOTAL_ROLLS_IN_STOCKS_CONSUMPTION' in table 'FOIL_PVC' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKS_CONSUMPTIONColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsFOILCOLORNull() As Boolean
             Return Me.IsNull(Me.tableFOIL_PVC.FOILCOLORColumn)
         End Function
@@ -7265,6 +7379,54 @@ Partial Public Class inventoryds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetFOILCOLOR2Null()
             Me(Me.tableFOIL_PVC.FOILCOLOR2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_AREA_CONSUMPTIONNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_AREA_CONSUMPTIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_AREA_CONSUMPTIONNull()
+            Me(Me.tableFOIL_PVC.TOTAL_AREA_CONSUMPTIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNO_OF_ROLLS_CONSUMPTIONNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.NO_OF_ROLLS_CONSUMPTIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNO_OF_ROLLS_CONSUMPTIONNull()
+            Me(Me.tableFOIL_PVC.NO_OF_ROLLS_CONSUMPTIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_AREA_OF_STOCKS_CONSUMPTIONNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKS_CONSUMPTIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_AREA_OF_STOCKS_CONSUMPTIONNull()
+            Me(Me.tableFOIL_PVC.TOTAL_AREA_OF_STOCKS_CONSUMPTIONColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTOTAL_ROLLS_IN_STOCKS_CONSUMPTIONNull() As Boolean
+            Return Me.IsNull(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKS_CONSUMPTIONColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTOTAL_ROLLS_IN_STOCKS_CONSUMPTIONNull()
+            Me(Me.tableFOIL_PVC.TOTAL_ROLLS_IN_STOCKS_CONSUMPTIONColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

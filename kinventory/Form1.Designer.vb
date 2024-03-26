@@ -26,14 +26,17 @@ Partial Class Form1
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColorMngrToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ASRefoilingQuotationSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CuttingListMonitoringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccountabilityMonitoringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.accounttype = New System.Windows.Forms.Label()
         Me.nickname = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.WarehouseItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +53,7 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ColorMngrToolStripMenuItem, Me.ASRefoilingQuotationSummaryToolStripMenuItem, Me.LogOutToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ColorMngrToolStripMenuItem, Me.ASRefoilingQuotationSummaryToolStripMenuItem, Me.CuttingListMonitoringToolStripMenuItem, Me.AccountabilityMonitoringToolStripMenuItem, Me.WarehouseItemsToolStripMenuItem, Me.LogOutToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.FileToolStripMenuItem.Text = "System"
@@ -67,17 +70,29 @@ Partial Class Form1
         Me.ColorMngrToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.ColorMngrToolStripMenuItem.Text = "ColorMngr"
         '
-        'LogOutToolStripMenuItem
-        '
-        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.LogOutToolStripMenuItem.Text = "log out"
-        '
         'ASRefoilingQuotationSummaryToolStripMenuItem
         '
         Me.ASRefoilingQuotationSummaryToolStripMenuItem.Name = "ASRefoilingQuotationSummaryToolStripMenuItem"
         Me.ASRefoilingQuotationSummaryToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.ASRefoilingQuotationSummaryToolStripMenuItem.Text = "AS Refoiling Quotation Summary"
+        '
+        'CuttingListMonitoringToolStripMenuItem
+        '
+        Me.CuttingListMonitoringToolStripMenuItem.Name = "CuttingListMonitoringToolStripMenuItem"
+        Me.CuttingListMonitoringToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.CuttingListMonitoringToolStripMenuItem.Text = "Cutting List Monitoring"
+        '
+        'AccountabilityMonitoringToolStripMenuItem
+        '
+        Me.AccountabilityMonitoringToolStripMenuItem.Name = "AccountabilityMonitoringToolStripMenuItem"
+        Me.AccountabilityMonitoringToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.AccountabilityMonitoringToolStripMenuItem.Text = "Accountability Monitoring"
+        '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.LogOutToolStripMenuItem.Text = "log out"
         '
         'AccountsToolStripMenuItem
         '
@@ -129,6 +144,12 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(1088, 0)
         Me.Panel1.TabIndex = 459
         '
+        'WarehouseItemsToolStripMenuItem
+        '
+        Me.WarehouseItemsToolStripMenuItem.Name = "WarehouseItemsToolStripMenuItem"
+        Me.WarehouseItemsToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.WarehouseItemsToolStripMenuItem.Text = "Warehouse Items"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -164,4 +185,7 @@ Partial Class Form1
     Friend WithEvents ManageColumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColorMngrToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ASRefoilingQuotationSummaryToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CuttingListMonitoringToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AccountabilityMonitoringToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WarehouseItemsToolStripMenuItem As ToolStripMenuItem
 End Class

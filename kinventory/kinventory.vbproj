@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.138</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.145</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>138</ApplicationRevision>
+    <ApplicationRevision>145</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -147,6 +147,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountabilityMonitoring\AccountabilityItems.Designer.vb">
+      <DependentUpon>AccountabilityItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityPage.Designer.vb">
+      <DependentUpon>AccountabilityPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityTransactions.Designer.vb">
+      <DependentUpon>AccountabilityTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityTransactions.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="accountinginventory.Designer.vb">
       <DependentUpon>accountinginventory.vb</DependentUpon>
     </Compile>
@@ -248,6 +266,42 @@
       <DependentUpon>cuttinglist.vb</DependentUpon>
     </Compile>
     <Compile Include="cuttinglist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\AddItemsToMonitor.Designer.vb">
+      <DependentUpon>AddItemsToMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\AddItemsToMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\CLStatusUpdate.Designer.vb">
+      <DependentUpon>CLStatusUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\CLStatusUpdate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\CuttingListRecord.Designer.vb">
+      <DependentUpon>CuttingListRecord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\CuttingListRecord.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\Input_Adjustment.Designer.vb">
+      <DependentUpon>Input_Adjustment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\Input_Adjustment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\ItemsToMonitor.Designer.vb">
+      <DependentUpon>ItemsToMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\ItemsToMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\TransactionRecord.Designer.vb">
+      <DependentUpon>TransactionRecord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListMonitoring\TransactionRecord.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DEFAULTITEMS.Designer.vb">
@@ -517,6 +571,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AccountabilityMonitoring\AccountabilityItems.resx">
+      <DependentUpon>AccountabilityItems.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountabilityMonitoring\AccountabilityPage.resx">
+      <DependentUpon>AccountabilityPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountabilityMonitoring\AccountabilityTransactions.resx">
+      <DependentUpon>AccountabilityTransactions.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="accountinginventory.resx">
       <DependentUpon>accountinginventory.vb</DependentUpon>
     </EmbeddedResource>
@@ -568,6 +631,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cuttinglist.resx">
       <DependentUpon>cuttinglist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\AddItemsToMonitor.resx">
+      <DependentUpon>AddItemsToMonitor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\CLStatusUpdate.resx">
+      <DependentUpon>CLStatusUpdate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\CuttingListRecord.resx">
+      <DependentUpon>CuttingListRecord.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\Input_Adjustment.resx">
+      <DependentUpon>Input_Adjustment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\ItemsToMonitor.resx">
+      <DependentUpon>ItemsToMonitor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuttingListMonitoring\TransactionRecord.resx">
+      <DependentUpon>TransactionRecord.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DEFAULTITEMS.resx">
       <DependentUpon>DEFAULTITEMS.vb</DependentUpon>

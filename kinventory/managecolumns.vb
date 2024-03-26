@@ -38,6 +38,12 @@ Public Class managecolumns
         Else
             articleno1 = " "
         End If
+        Dim description1 As String
+        If cboxDescription.Checked = True Then
+            description1 = "description "
+        Else
+            description1 = " "
+        End If
         Dim discount1 As String
         If disc.Checked = True Then
             discount1 = "disc "
@@ -177,7 +183,7 @@ Public Class managecolumns
             clbal1 = " "
         End If
         colmns = stockno1 + supplier1 +
-            costhead1 + typecolor1 + articleno1 +
+            costhead1 + typecolor1 + articleno1 + description1 +
             discount1 + unitprice1 + physical1 +
             allocation1 + free1 + stockorder1 +
             minimum1 + issue1 + status1 + phasedout1 +
@@ -374,8 +380,8 @@ Public Class managecolumns
             Dim str As String = "select stockscolumns,transcolumns from account_tb where nickname='" & Form1.nickname.Text & "'"
             Dim sqlcmd As New SqlCommand
             sqlcmd = New SqlCommand(str, sql.sqlcon)
-            Dim scolumns As String
-            Dim tcolumns As String
+            Dim scolumns As String = ""
+            Dim tcolumns As String = ""
             Dim read As SqlDataReader = sqlcmd.ExecuteReader
             While read.Read
                 scolumns = read(0).ToString
@@ -392,6 +398,11 @@ Public Class managecolumns
                 supplier.Checked = True
             Else
                 supplier.Checked = False
+            End If
+            If scolumns.Contains("description") Then
+                cboxDescription.Checked = True
+            Else
+                cboxDescription.Checked = False
             End If
             If scolumns.Contains("costhead") Then
                 costhead.Checked = True
