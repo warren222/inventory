@@ -103,14 +103,17 @@ Public Class AccountabilityPage
                 LoadingPBOX.Visible = False
                 lblAccount.Text = cboxAccount.Text
                 Dim qty_issue As Decimal = 0
-                Dim qty_return As Decimal = 0
+                Dim qty_return_good As Decimal = 0
+                Dim qty_return_used As Decimal = 0
                 For Each row As DataGridViewRow In GV.Rows
                     qty_issue += Convert.ToDecimal(row.Cells("Issue_Qty").Value.ToString)
-                    qty_return += Convert.ToDecimal(row.Cells("Return_Qty").Value.ToString)
+                    qty_return_good += Convert.ToDecimal(row.Cells("Return_Good").Value.ToString)
+                    qty_return_used += Convert.ToDecimal(row.Cells("Return_Used").Value.ToString)
                 Next
                 lblIssue.Text = qty_issue.ToString
-                lblReturn.Text = qty_return.ToString
-                lblBalance.Text = (qty_issue - qty_return).ToString
+                lblReturnUsed.Text = qty_return_used.ToString
+                lblReturnGood.Text = qty_return_good.ToString
+                lblBalance.Text = (qty_issue - (qty_return_good + qty_return_used)).ToString
             Case "Account_List"
                 LoadingPBOX.Visible = False
         End Select
@@ -137,5 +140,7 @@ Public Class AccountabilityPage
         End If
     End Sub
 
-
+    Private Sub GV_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles GV.RowPostPaint
+        sql._rowPostPaint(sender, e)
+    End Sub
 End Class

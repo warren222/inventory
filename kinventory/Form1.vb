@@ -21,6 +21,14 @@
         Else
             CuttingListMonitoringToolStripMenuItem.Visible = False
         End If
+
+        If nickname.Text = "Grace" Or nickname.Text = "Warren" Then
+            WarehouseItemsToolStripMenuItem.Visible = True
+            AccountabilityMonitoringToolStripMenuItem.Visible = True
+        Else
+            WarehouseItemsToolStripMenuItem.Visible = False
+            AccountabilityMonitoringToolStripMenuItem.Visible = False
+        End If
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

@@ -31,8 +31,49 @@ Public Class sql
             Dim str As String = "
 declare @rownum as int = @top
 select top (@rownum)
-a.*,
-(select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
+       a.[STOCKNO]
+      ,a.[SUPPLIER]
+      ,a.[COSTHEAD]
+      ,a.[UFACTOR]
+      ,a.[TYPECOLOR]
+      ,a.[MONETARY]
+      ,a.[ARTICLENO]
+      ,a.[INTERNAL_ART_NO]
+      ,a.[DISC]
+      ,a.[UNITPRICE]
+      ,a.[DESCRIPTION]
+      ,a.[QTY]
+      ,a.[UNIT]
+      ,a.[LOCATION]
+      ,a.[HEADER]
+      ,a.[PHYSICAL]
+      ,a.[ALLOCATION]
+      ,a.[CLBAL]
+      ,a.[FREE]
+      ,a.[STOCKORDER]
+      ,a.[MINIMUM]
+      ,a.[ISSUE]
+      ,a.[AVEUSAGE]
+      ,a.[STATUS]
+      ,a.[PHASEDOUT]
+      ,a.[COLORBASED]
+      ,a.[NEEDTOORDER]
+      ,a.[FINALNEEDTOORDER]
+      ,a.[INPUTTED]
+      ,a.[TOORDER]
+      ,a.[TOFOIL]
+      ,a.[BALALLOC]
+      ,a.[PHYSICAL2]
+      ,a.[WEIGHT]
+      ,a.[XRATE]
+      ,a.[NETAMOUNT]
+      ,a.[CONSUMPTION]
+      ,a.[FOILWITHA]
+      ,a.[FOILWITHB]
+      ,a.[FOILCOLOR]
+      ,a.[PRODUCTIONALLOCATION]
+      ,[ACCOUNTABILITY_MONITORING] = (case when a.[ACCOUNTABILITY_MONITORING] = 1 then 'True' else 'False' end)
+      ,(select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
  from stocks_tb AS A
 order by A.articleno asc"
             sqlcmd = New SqlCommand(str, sqlcon)
@@ -4395,6 +4436,21 @@ accttype='" & acctype & "' where id = '" & id & "'"
         Finally
             sqlcon.Close()
         End Try
+    End Sub
+    Public Sub _rowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs)
+        Dim grid As DataGridView = DirectCast(sender, DataGridView)
+        e.PaintHeader(DataGridViewPaintParts.Background)
+        Dim rowIdx As String = (e.RowIndex + 1).ToString()
+        Dim rowFont As New System.Drawing.Font("Microsoft Sans Serif", 8.0!,
+            System.Drawing.FontStyle.Regular,
+            System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Dim centerFormat = New StringFormat()
+        centerFormat.Alignment = StringAlignment.Far
+        centerFormat.LineAlignment = StringAlignment.Near
+
+        Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height)
+
+        e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
     End Sub
     Public Sub managecols()
         Try

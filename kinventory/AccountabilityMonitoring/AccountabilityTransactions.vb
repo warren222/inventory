@@ -19,6 +19,10 @@ Public Class AccountabilityTransactions
         bgw.WorkerReportsProgress = True
         GV.DataSource = _bs
         starter("Get_Transactions")
+        If _data_source = "Inventory" Then
+            cboxTransType.Items.Clear()
+            cboxTransType.Items.Add("Return Used")
+        End If
     End Sub
     Private Sub starter(ByVal act As String)
         If Not bgw.IsBusy = True Then
@@ -119,19 +123,25 @@ Public Class AccountabilityTransactions
                 lblItemDescription.Text = _description
                 lblDatasource.Text = _data_source
                 Dim qty_issue As Decimal = 0
-                Dim qty_return As Decimal = 0
+                Dim qty_returngood As Decimal = 0
+                Dim qty_returnused As Decimal = 0
+
                 For Each row As DataGridViewRow In GV.Rows
                     Dim transtype = row.Cells("TRANS_TYPE").Value.ToString
                     If transtype = "Issue" Then
                         qty_issue += Convert.ToDecimal(row.Cells("QTY").Value.ToString)
                     End If
-                    If transtype = "Return" Then
-                        qty_return += Convert.ToDecimal(row.Cells("QTY").Value.ToString)
+                    If transtype = "Return" Or transtype = "Return Good" Then
+                        qty_returngood += Convert.ToDecimal(row.Cells("QTY").Value.ToString)
+                    End If
+                    If transtype = "Return Used" Then
+                        qty_returnused += Convert.ToDecimal(row.Cells("QTY").Value.ToString)
                     End If
                 Next
                 lblIssue.Text = qty_issue.ToString
-                lblReturn.Text = qty_return.ToString
-                lblBalance.Text = (qty_issue - qty_return).ToString
+                lblReturnGood.Text = qty_returngood.ToString
+                lblReturnUsed.Text = qty_returnused.ToString
+                lblNeedtoReturn.Text = (qty_issue - (qty_returngood + qty_returnused)).ToString
             Case "Delete_Trans"
                 starter("Get_Transactions")
             Case "Add_Trans"
@@ -188,7 +198,7 @@ Public Class AccountabilityTransactions
         If cboxTransType.Text = "" Then
             errormessage += System.Environment.NewLine + "-Please select transaction type!"
         End If
-        If tboxTransDate.Text = "" Then
+        If dtpTransDate.Text = "" Then
             errormessage += System.Environment.NewLine + "-Please select date!"
         End If
 
@@ -198,12 +208,13 @@ Public Class AccountabilityTransactions
         End If
 
 
-        _transdate = tboxTransDate.Text
+        _transdate = dtpTransDate.Text
         _quantity = tboxQty.Text
         _transtype = cboxTransType.Text
         starter("Add_Trans")
     End Sub
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged, DateTimePicker1.MouseDown
-        tboxTransDate.Text = DateTimePicker1.Text
+
+    Private Sub GV_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles GV.RowPostPaint
+        sql._rowPostPaint(sender, e)
     End Sub
 End Class

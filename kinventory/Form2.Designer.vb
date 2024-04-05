@@ -361,6 +361,7 @@ Partial Class Form2
         Me.PHASEDoUTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsumptionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccountabilityMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
@@ -671,7 +672,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 476)
-        Me.KryptonSplitContainer3.SplitterDistance = 894
+        Me.KryptonSplitContainer3.SplitterDistance = 884
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -692,7 +693,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(894, 430)
+        Me.stocksgridview.Size = New System.Drawing.Size(884, 430)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -720,7 +721,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(894, 46)
+        Me.Panel2.Size = New System.Drawing.Size(884, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -4686,27 +4687,33 @@ Partial Class Form2
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PHASEDoUTToolStripMenuItem, Me.LocationToolStripMenuItem, Me.ConsumptionToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PHASEDoUTToolStripMenuItem, Me.LocationToolStripMenuItem, Me.ConsumptionToolStripMenuItem, Me.AccountabilityMonitorToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(148, 70)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(198, 114)
         '
         'PHASEDoUTToolStripMenuItem
         '
         Me.PHASEDoUTToolStripMenuItem.Name = "PHASEDoUTToolStripMenuItem"
-        Me.PHASEDoUTToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.PHASEDoUTToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.PHASEDoUTToolStripMenuItem.Text = "PhasedOut"
         '
         'LocationToolStripMenuItem
         '
         Me.LocationToolStripMenuItem.Name = "LocationToolStripMenuItem"
-        Me.LocationToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.LocationToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.LocationToolStripMenuItem.Text = "Location"
         '
         'ConsumptionToolStripMenuItem
         '
         Me.ConsumptionToolStripMenuItem.Name = "ConsumptionToolStripMenuItem"
-        Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.ConsumptionToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.ConsumptionToolStripMenuItem.Text = "Consumption"
+        '
+        'AccountabilityMonitorToolStripMenuItem
+        '
+        Me.AccountabilityMonitorToolStripMenuItem.Name = "AccountabilityMonitorToolStripMenuItem"
+        Me.AccountabilityMonitorToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.AccountabilityMonitorToolStripMenuItem.Text = "Accountability monitor"
         '
         'Form2
         '
@@ -5199,4 +5206,5 @@ Partial Class Form2
     Friend WithEvents KryptonLabel86 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents btnCLMonitoring As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents btnAddCLM As ComponentFactory.Krypton.Toolkit.KryptonButton
+    Friend WithEvents AccountabilityMonitorToolStripMenuItem As ToolStripMenuItem
 End Class

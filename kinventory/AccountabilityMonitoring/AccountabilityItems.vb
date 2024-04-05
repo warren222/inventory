@@ -14,6 +14,7 @@ Public Class AccountabilityItems
     Dim _dsAccount As New DataSet
     Dim _dsSearchAccount As New DataSet
     Dim _dsSearchItemDescription As New DataSet
+    Dim _dsReference As New DataSet
 
     Dim _searchItemDescription As String
     Dim _searchTranstype As String
@@ -35,8 +36,8 @@ Public Class AccountabilityItems
         _account = cboxAccount.Text
         _quantity = Convert.ToInt32(tboxQty.Text)
         _itemid = lblItemId.Text
-        _transdate = tboxTransDate.Text
-        _reference = tboxReference.Text
+        _transdate = dtpTransDate.Text
+        _reference = cboxReference.Text
     End Sub
     Private Sub AccountabilityItems_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler bgw.DoWork, AddressOf bgw_DoWork
@@ -73,6 +74,8 @@ Public Class AccountabilityItems
                 addbtnTrans()
             Case "Distinct_Description"
                 initializeDatasource(cboxSearchItemDescription, _dsSearchItemDescription, "Warehouse_Item_Tbl", "Item_Description", "Id")
+            Case "Distinct_Reference"
+                initializeDatasource(cboxReference, _dsReference, "Warehouse_Trans_Tbl", "Reference", "Reference")
             Case "Distinct_Account"
                 If _objectSender = "cboxSearchAccount" Then
                     initializeDatasource(cboxSearchAccount, _dsSearchAccount, "Warehouse_Trans_Tbl", "Account", "Account")
@@ -87,6 +90,7 @@ Public Class AccountabilityItems
             Case "Get"
                 LoadingPBOX.Visible = False
             Case "Add"
+                Dim x = _executeVal
                 InitializeSearchVariablesPage1()
                 starter("Get")
             Case "Update"
@@ -103,22 +107,30 @@ Public Class AccountabilityItems
                 lblAccount.Text = cboxSearchAccount.Text
 
                 Dim qty_issue As Integer = 0
-                Dim qty_return As Integer = 0
+                Dim qty_return_used As Integer = 0
+                Dim qty_return_good As Integer = 0
+
                 For Each row As DataGridViewRow In gvTrans.Rows
                     Dim transtype = row.Cells("Trans_Type").Value.ToString
                     If transtype = "Issue" Then
                         qty_issue += Convert.ToInt32(row.Cells("Qty").Value.ToString)
                     End If
-                    If transtype = "Return" Then
-                        qty_return += Convert.ToInt32(row.Cells("Qty").Value.ToString)
+                    If transtype = "Return Good" Then
+                        qty_return_good += Convert.ToInt32(row.Cells("Qty").Value.ToString)
+                    End If
+                    If transtype = "Return Used" Then
+                        qty_return_used += Convert.ToInt32(row.Cells("Qty").Value.ToString)
                     End If
                 Next
 
                 lblIssue.Text = qty_issue.ToString
-                lblReturn.Text = qty_return.ToString
-                lblBalance.Text = (qty_issue - qty_return).ToString
+                lblReturnGood.Text = qty_return_good.ToString
+                lblReturnUsed.Text = qty_return_used.ToString
+                lblNeedToReturn.Text = (qty_issue - (qty_return_good + qty_return_used)).ToString
 
             Case "Distinct_Description"
+                LoadingPBOX.Visible = False
+            Case "Distinct_Reference"
                 LoadingPBOX.Visible = False
             Case "Distinct_Account"
                 LoadingPBOX.Visible = False
@@ -128,9 +140,16 @@ Public Class AccountabilityItems
             Case "Delete_Trans"
                 InitializeSearchVariablesPage2()
                 starter("Get_Trans")
+            Case "Has_Record"
+                If _has_record = 0 Then
+                    starter("Delete")
+                Else
+                    MessageBox.Show("This item is currently being used. Please ask the programmer to execute this action.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    LoadingPBOX.Visible = False
+                End If
         End Select
     End Sub
-
+    Dim _has_record As Integer
     Private Sub bgw_DoWork(sender As Object, e As DoWorkEventArgs)
         Select Case action
             Case "Get"
@@ -143,6 +162,9 @@ Public Class AccountabilityItems
                 Query(action)
                 bgw.ReportProgress(0)
             Case "Delete"
+                Query(action)
+                bgw.ReportProgress(0)
+            Case "Has_Record"
                 Query(action)
                 bgw.ReportProgress(0)
             Case "Get_Trans"
@@ -160,6 +182,9 @@ Public Class AccountabilityItems
             Case "Delete_Trans"
                 Query_Page2(action, "", "", "")
                 bgw.ReportProgress(0)
+            Case "Distinct_Reference"
+                Query_Page2(action, "", "", "")
+                bgw.ReportProgress(0)
         End Select
     End Sub
     Dim _search As String
@@ -168,26 +193,37 @@ Public Class AccountabilityItems
     Private Sub InitializeSearchVariablesPage1()
         _search = tboxSearch.Text
     End Sub
+    Dim _executeVal As Integer
     Private Sub Query(ByVal command As String)
         Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
             Using sqlcmd As SqlCommand = sqlcon.CreateCommand
                 sqlcon.Open()
+
                 sqlcmd.CommandText = "Warehouse_Item_Stp"
                 sqlcmd.CommandType = CommandType.StoredProcedure
                 sqlcmd.Parameters.AddWithValue("@Command", command)
                 sqlcmd.Parameters.AddWithValue("@Search", _search)
                 sqlcmd.Parameters.AddWithValue("@Item_Description", _description)
                 sqlcmd.Parameters.AddWithValue("@Id", _id)
-                Using da As SqlDataAdapter = New SqlDataAdapter
-                    If command = "Get" Then
-                        _ds = New DataSet
-                        _ds.Clear()
-                        da.SelectCommand = sqlcmd
-                        da.Fill(_ds, "Warehouse_Item_Tbl")
-                    Else
-                        sqlcmd.ExecuteNonQuery()
-                    End If
-                End Using
+                If command = "Has_Record" Then
+                    Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                        While rd.Read
+                            _has_record = rd(0).ToString()
+                        End While
+                    End Using
+                Else
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        If command = "Get" Then
+                            _ds = New DataSet
+                            _ds.Clear()
+                            da.SelectCommand = sqlcmd
+                            da.Fill(_ds, "Warehouse_Item_Tbl")
+                        Else
+                            _executeVal = sqlcmd.ExecuteNonQuery().ToString
+                        End If
+                    End Using
+                End If
+
             End Using
         End Using
     End Sub
@@ -213,11 +249,15 @@ Public Class AccountabilityItems
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        _description = tboxDescription.Text
-        If btnAdd.Text = "Add" Then
-            starter("Add")
-        ElseIf btnAdd.Text = "Update" Then
-            starter("Update")
+        If tboxDescription.Text = "" Then
+            MessageBox.Show("Please add description!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            _description = tboxDescription.Text
+            If btnAdd.Text = "Add" Then
+                starter("Add")
+            ElseIf btnAdd.Text = "Update" Then
+                starter("Update")
+            End If
         End If
     End Sub
 
@@ -233,11 +273,13 @@ Public Class AccountabilityItems
             btnAdd.Text = "Update"
             btnCancel.Visible = True
             GV.Enabled = False
+            lblFormTitle.Text = "Update Form"
         End If
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         btnAdd.Text = "Add"
+        lblFormTitle.Text = "Add Form"
         btnCancel.Visible = False
         GV.Enabled = True
     End Sub
@@ -248,8 +290,9 @@ Public Class AccountabilityItems
                 If MessageBox.Show("Continue to delete the item", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
                     Exit Sub
                 End If
+
                 _id = GV.Item("Id", e.RowIndex).Value.ToString
-                starter("Delete")
+                starter("Has_Record")
             End If
         End If
     End Sub
@@ -290,6 +333,11 @@ Public Class AccountabilityItems
                         _dsSearchItemDescription.Clear()
                         da.SelectCommand = sqlcmd
                         da.Fill(_dsSearchItemDescription, "Warehouse_Item_Tbl")
+                    ElseIf command = "Distinct_Reference" Then
+                        _dsReference = New DataSet
+                        _dsReference.Clear()
+                        da.SelectCommand = sqlcmd
+                        da.Fill(_dsReference, "Warehouse_Trans_Tbl")
                     ElseIf command = "Distinct_Account" Then
                         If _objectSender = "cboxSearchAccount" Then
                             _dsSearchAccount = New DataSet
@@ -355,10 +403,10 @@ Public Class AccountabilityItems
         If cboxAccount.Text = "" Then
             errormessage += System.Environment.NewLine + "-Please select account!"
         End If
-        If tboxTransDate.Text = "" Then
+        If dtpTransDate.Text = "" Then
             errormessage += System.Environment.NewLine + "-Please select date!"
         End If
-        If tboxReference.Text = "" Then
+        If cboxReference.Text = "" Then
             errormessage += System.Environment.NewLine + "-Please fill reference field!"
         End If
 
@@ -383,7 +431,16 @@ Public Class AccountabilityItems
             End If
         End If
     End Sub
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged, DateTimePicker1.MouseDown
-        tboxTransDate.Text = DateTimePicker1.Text
+
+    Private Sub gvTrans_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles gvTrans.RowPostPaint
+        sql._rowPostPaint(sender, e)
+    End Sub
+
+    Private Sub GV_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles GV.RowPostPaint
+        sql._rowPostPaint(sender, e)
+    End Sub
+
+    Private Sub cboxReference_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxReference.MouseDown
+        starter("Distinct_Reference")
     End Sub
 End Class

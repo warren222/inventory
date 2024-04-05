@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.145</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.146</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>145</ApplicationRevision>
+    <ApplicationRevision>146</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -163,6 +163,12 @@
       <DependentUpon>AccountabilityTransactions.vb</DependentUpon>
     </Compile>
     <Compile Include="AccountabilityMonitoring\AccountabilityTransactions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityUpdate.Designer.vb">
+      <DependentUpon>AccountabilityUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountabilityMonitoring\AccountabilityUpdate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="accountinginventory.Designer.vb">
@@ -579,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccountabilityMonitoring\AccountabilityTransactions.resx">
       <DependentUpon>AccountabilityTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountabilityMonitoring\AccountabilityUpdate.resx">
+      <DependentUpon>AccountabilityUpdate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="accountinginventory.resx">
       <DependentUpon>accountinginventory.vb</DependentUpon>

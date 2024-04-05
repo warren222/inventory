@@ -97,6 +97,12 @@ Public Class Form2
             btnCLMonitoring.Visible = False
             btnAddCLM.Visible = False
         End If
+
+        If Form1.nickname.Text = "Grace" Or Form1.nickname.Text = "Warren" Then
+            AccountabilityMonitorToolStripMenuItem.Visible = True
+        Else
+            AccountabilityMonitorToolStripMenuItem.Visible = False
+        End If
         cboxMonth1.SelectedIndex = Today.Month - 1
         cboxMonthPicker.SelectedIndex = 0
         loadYear()
@@ -1701,13 +1707,16 @@ select
             End If
         End If
     End Sub
-
+    Public Shared sotcknoArrayList As New ArrayList
     Private Sub stocksgridview_SelectionChanged(sender As Object, e As EventArgs) Handles stocksgridview.SelectionChanged
         stocksStocksno.Items.Clear()
+        AccountabilityUpdate.stockList = New ArrayList
+        AccountabilityUpdate.stockList.Clear()
         Dim x As String = ""
         Dim selecteditems As DataGridViewSelectedRowCollection = stocksgridview.SelectedRows
         For Each selecteditem As DataGridViewRow In selecteditems
             x = selecteditem.Cells("stockno").Value.ToString
+            AccountabilityUpdate.stockList.Add(x)
             stocksStocksno.Items.Add(x)
         Next
     End Sub
@@ -1948,8 +1957,49 @@ select
 declare @rownum as int = @top
 
 select top (@rownum)
-a.*,
-(select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
+       a.[STOCKNO]
+      ,a.[SUPPLIER]
+      ,a.[COSTHEAD]
+      ,a.[UFACTOR]
+      ,a.[TYPECOLOR]
+      ,a.[MONETARY]
+      ,a.[ARTICLENO]
+      ,a.[INTERNAL_ART_NO]
+      ,a.[DISC]
+      ,a.[UNITPRICE]
+      ,a.[DESCRIPTION]
+      ,a.[QTY]
+      ,a.[UNIT]
+      ,a.[LOCATION]
+      ,a.[HEADER]
+      ,a.[PHYSICAL]
+      ,a.[ALLOCATION]
+      ,a.[CLBAL]
+      ,a.[FREE]
+      ,a.[STOCKORDER]
+      ,a.[MINIMUM]
+      ,a.[ISSUE]
+      ,a.[AVEUSAGE]
+      ,a.[STATUS]
+      ,a.[PHASEDOUT]
+      ,a.[COLORBASED]
+      ,a.[NEEDTOORDER]
+      ,a.[FINALNEEDTOORDER]
+      ,a.[INPUTTED]
+      ,a.[TOORDER]
+      ,a.[TOFOIL]
+      ,a.[BALALLOC]
+      ,a.[PHYSICAL2]
+      ,a.[WEIGHT]
+      ,a.[XRATE]
+      ,a.[NETAMOUNT]
+      ,a.[CONSUMPTION]
+      ,a.[FOILWITHA]
+      ,a.[FOILWITHB]
+      ,a.[FOILCOLOR]
+      ,a.[PRODUCTIONALLOCATION]
+      ,[ACCOUNTABILITY_MONITORING] = (case when a.[ACCOUNTABILITY_MONITORING] = 1 then 'True' else 'False' end)
+      ,(select sum(qty) from LOCATIONTB where STOCKNO=a.STOCKNO) as MYLOCATION
  from stocks_tb as a " & condition & ""
         sql.searchstocks(search, top)
     End Sub
@@ -3790,5 +3840,9 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
     Private Sub KryptonButton28_Click_1(sender As Object, e As EventArgs) Handles btnAddCLM.Click
         AddItemsToMonitor._stockno = stocknoinput.Text
         AddItemsToMonitor.ShowDialog()
+    End Sub
+
+    Private Sub AccountabilityMonitorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AccountabilityMonitorToolStripMenuItem.Click
+        AccountabilityUpdate.ShowDialog()
     End Sub
 End Class

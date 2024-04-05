@@ -29,30 +29,34 @@ Partial Class AccountabilityItems
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LoadingPBOX = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.tboxDescription = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.GV = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.tboxSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.tboxSearch = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.lblFormTitle = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.tboxDescription = New System.Windows.Forms.TextBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.GV = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.gvTrans = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.lblReturnUsed = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.lblReturnGood = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.lblIssue = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.lblBalance = New System.Windows.Forms.Label()
-        Me.lblReturn = New System.Windows.Forms.Label()
+        Me.lblNeedToReturn = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
         Me.lblItemId = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -63,11 +67,9 @@ Partial Class AccountabilityItems
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtpTransDate = New System.Windows.Forms.DateTimePicker()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.tboxTransDate = New System.Windows.Forms.TextBox()
-        Me.tboxReference = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -84,11 +86,13 @@ Partial Class AccountabilityItems
         Me.cboxSearchAccount = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.cboxReference = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        CType(Me.GV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        CType(Me.GV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -101,7 +105,7 @@ Partial Class AccountabilityItems
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.YellowGreen
+        Me.Panel1.BackColor = System.Drawing.Color.DeepPink
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.LoadingPBOX)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -123,9 +127,9 @@ Partial Class AccountabilityItems
         '
         'LoadingPBOX
         '
-        Me.LoadingPBOX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LoadingPBOX.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.LoadingPBOX.Image = CType(resources.GetObject("LoadingPBOX.Image"), System.Drawing.Image)
-        Me.LoadingPBOX.Location = New System.Drawing.Point(725, 0)
+        Me.LoadingPBOX.Location = New System.Drawing.Point(363, 0)
         Me.LoadingPBOX.Name = "LoadingPBOX"
         Me.LoadingPBOX.Size = New System.Drawing.Size(137, 34)
         Me.LoadingPBOX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -136,63 +140,117 @@ Partial Class AccountabilityItems
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel2.Controls.Add(Me.Label19)
-        Me.Panel2.Controls.Add(Me.btnCancel)
-        Me.Panel2.Controls.Add(Me.btnAdd)
-        Me.Panel2.Controls.Add(Me.tboxDescription)
-        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.Panel7)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(260, 458)
+        Me.Panel2.Size = New System.Drawing.Size(262, 458)
         Me.Panel2.TabIndex = 636
         '
-        'Label19
+        'Panel3
         '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(83, 78)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(101, 24)
-        Me.Label19.TabIndex = 648
-        Me.Label19.Text = "ADD FORM"
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Controls.Add(Me.tboxSearch)
+        Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(262, 100)
+        Me.Panel3.TabIndex = 650
         '
-        'btnCancel
+        'Label1
         '
-        Me.btnCancel.Location = New System.Drawing.Point(87, 185)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancel.TabIndex = 639
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        Me.btnCancel.Visible = False
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(17, 17)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 17)
+        Me.Label1.TabIndex = 635
+        Me.Label1.Text = "Search"
+        '
+        'tboxSearch
+        '
+        Me.tboxSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tboxSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tboxSearch.Location = New System.Drawing.Point(20, 37)
+        Me.tboxSearch.Name = "tboxSearch"
+        Me.tboxSearch.Size = New System.Drawing.Size(225, 23)
+        Me.tboxSearch.TabIndex = 636
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Location = New System.Drawing.Point(170, 66)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 637
+        Me.Button2.Text = "Search"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel7.Controls.Add(Me.lblFormTitle)
+        Me.Panel7.Controls.Add(Me.Label3)
+        Me.Panel7.Controls.Add(Me.tboxDescription)
+        Me.Panel7.Controls.Add(Me.btnAdd)
+        Me.Panel7.Controls.Add(Me.btnCancel)
+        Me.Panel7.Location = New System.Drawing.Point(12, 156)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(236, 157)
+        Me.Panel7.TabIndex = 649
+        '
+        'lblFormTitle
+        '
+        Me.lblFormTitle.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lblFormTitle.AutoSize = True
+        Me.lblFormTitle.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFormTitle.Location = New System.Drawing.Point(67, 9)
+        Me.lblFormTitle.Name = "lblFormTitle"
+        Me.lblFormTitle.Size = New System.Drawing.Size(101, 24)
+        Me.lblFormTitle.TabIndex = 648
+        Me.lblFormTitle.Text = "ADD FORM"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(3, 51)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(102, 17)
+        Me.Label3.TabIndex = 635
+        Me.Label3.Text = "Item Description"
+        '
+        'tboxDescription
+        '
+        Me.tboxDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tboxDescription.Location = New System.Drawing.Point(4, 71)
+        Me.tboxDescription.Name = "tboxDescription"
+        Me.tboxDescription.Size = New System.Drawing.Size(225, 23)
+        Me.tboxDescription.TabIndex = 636
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(168, 185)
+        Me.btnAdd.Location = New System.Drawing.Point(153, 100)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 637
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'tboxDescription
+        'btnCancel
         '
-        Me.tboxDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tboxDescription.Location = New System.Drawing.Point(18, 156)
-        Me.tboxDescription.Name = "tboxDescription"
-        Me.tboxDescription.Size = New System.Drawing.Size(225, 23)
-        Me.tboxDescription.TabIndex = 636
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(15, 136)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(102, 17)
-        Me.Label3.TabIndex = 635
-        Me.Label3.Text = "Item Description"
+        Me.btnCancel.Location = New System.Drawing.Point(72, 100)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.TabIndex = 639
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        Me.btnCancel.Visible = False
         '
         'GV
         '
@@ -206,12 +264,12 @@ Partial Class AccountabilityItems
         Me.GV.Cursor = System.Windows.Forms.Cursors.Hand
         Me.GV.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.GV.Location = New System.Drawing.Point(263, 48)
+        Me.GV.Location = New System.Drawing.Point(265, 3)
         Me.GV.Name = "GV"
         Me.GV.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.GV.RowHeadersWidth = 30
         Me.GV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GV.Size = New System.Drawing.Size(588, 413)
+        Me.GV.Size = New System.Drawing.Size(586, 458)
         Me.GV.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.GV.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.GV.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -227,48 +285,6 @@ Partial Class AccountabilityItems
         Me.GV.StateCommon.HeaderColumn.Content.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.GV.StateCommon.HeaderColumn.Content.Hint = ComponentFactory.Krypton.Toolkit.PaletteTextHint.AntiAlias
         Me.GV.TabIndex = 637
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.Button2)
-        Me.Panel3.Controls.Add(Me.tboxSearch)
-        Me.Panel3.Controls.Add(Me.Label1)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(263, 3)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(588, 45)
-        Me.Panel3.TabIndex = 638
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(505, 10)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 637
-        Me.Button2.Text = "Search"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'tboxSearch
-        '
-        Me.tboxSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tboxSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tboxSearch.Location = New System.Drawing.Point(274, 10)
-        Me.tboxSearch.Name = "tboxSearch"
-        Me.tboxSearch.Size = New System.Drawing.Size(225, 23)
-        Me.tboxSearch.TabIndex = 636
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(222, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(46, 17)
-        Me.Label1.TabIndex = 635
-        Me.Label1.Text = "Search"
         '
         'TabControl1
         '
@@ -286,7 +302,6 @@ Partial Class AccountabilityItems
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.GV)
-        Me.TabPage1.Controls.Add(Me.Panel3)
         Me.TabPage1.Controls.Add(Me.Panel2)
         Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
@@ -323,12 +338,12 @@ Partial Class AccountabilityItems
         Me.gvTrans.Cursor = System.Windows.Forms.Cursors.Hand
         Me.gvTrans.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gvTrans.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.gvTrans.Location = New System.Drawing.Point(196, 158)
+        Me.gvTrans.Location = New System.Drawing.Point(196, 169)
         Me.gvTrans.Name = "gvTrans"
         Me.gvTrans.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.gvTrans.RowHeadersWidth = 30
         Me.gvTrans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvTrans.Size = New System.Drawing.Size(655, 303)
+        Me.gvTrans.Size = New System.Drawing.Size(655, 292)
         Me.gvTrans.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.gvTrans.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.gvTrans.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -348,15 +363,18 @@ Partial Class AccountabilityItems
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.lblReturnUsed)
+        Me.Panel4.Controls.Add(Me.Label30)
+        Me.Panel4.Controls.Add(Me.Label31)
+        Me.Panel4.Controls.Add(Me.lblReturnGood)
+        Me.Panel4.Controls.Add(Me.Label23)
+        Me.Panel4.Controls.Add(Me.Label28)
         Me.Panel4.Controls.Add(Me.lblIssue)
         Me.Panel4.Controls.Add(Me.Label20)
         Me.Panel4.Controls.Add(Me.Label21)
-        Me.Panel4.Controls.Add(Me.lblBalance)
-        Me.Panel4.Controls.Add(Me.lblReturn)
+        Me.Panel4.Controls.Add(Me.lblNeedToReturn)
         Me.Panel4.Controls.Add(Me.Label24)
-        Me.Panel4.Controls.Add(Me.Label25)
         Me.Panel4.Controls.Add(Me.Label26)
-        Me.Panel4.Controls.Add(Me.Label27)
         Me.Panel4.Controls.Add(Me.lblItemId)
         Me.Panel4.Controls.Add(Me.Label11)
         Me.Panel4.Controls.Add(Me.Label12)
@@ -369,8 +387,74 @@ Partial Class AccountabilityItems
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(196, 68)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(655, 90)
+        Me.Panel4.Size = New System.Drawing.Size(655, 101)
         Me.Panel4.TabIndex = 0
+        '
+        'lblReturnUsed
+        '
+        Me.lblReturnUsed.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblReturnUsed.AutoSize = True
+        Me.lblReturnUsed.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReturnUsed.Location = New System.Drawing.Point(539, 52)
+        Me.lblReturnUsed.Name = "lblReturnUsed"
+        Me.lblReturnUsed.Size = New System.Drawing.Size(78, 17)
+        Me.lblReturnUsed.TabIndex = 663
+        Me.lblReturnUsed.Text = "Return Used"
+        '
+        'Label30
+        '
+        Me.Label30.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(521, 52)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(12, 17)
+        Me.Label30.TabIndex = 662
+        Me.Label30.Text = ":"
+        '
+        'Label31
+        '
+        Me.Label31.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(419, 52)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(78, 17)
+        Me.Label31.TabIndex = 661
+        Me.Label31.Text = "Return Used"
+        '
+        'lblReturnGood
+        '
+        Me.lblReturnGood.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblReturnGood.AutoSize = True
+        Me.lblReturnGood.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReturnGood.Location = New System.Drawing.Point(539, 35)
+        Me.lblReturnGood.Name = "lblReturnGood"
+        Me.lblReturnGood.Size = New System.Drawing.Size(80, 17)
+        Me.lblReturnGood.TabIndex = 660
+        Me.lblReturnGood.Text = "Return Good"
+        '
+        'Label23
+        '
+        Me.Label23.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(521, 35)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(12, 17)
+        Me.Label23.TabIndex = 659
+        Me.Label23.Text = ":"
+        '
+        'Label28
+        '
+        Me.Label28.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(419, 35)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(80, 17)
+        Me.Label28.TabIndex = 658
+        Me.Label28.Text = "Return Good"
         '
         'lblIssue
         '
@@ -399,77 +483,44 @@ Partial Class AccountabilityItems
         Me.Label21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(452, 18)
+        Me.Label21.Location = New System.Drawing.Point(419, 18)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(36, 17)
         Me.Label21.TabIndex = 655
         Me.Label21.Text = "Issue"
         '
-        'lblBalance
+        'lblNeedToReturn
         '
-        Me.lblBalance.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblBalance.AutoSize = True
-        Me.lblBalance.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBalance.Location = New System.Drawing.Point(539, 52)
-        Me.lblBalance.Name = "lblBalance"
-        Me.lblBalance.Size = New System.Drawing.Size(53, 17)
-        Me.lblBalance.TabIndex = 654
-        Me.lblBalance.Text = "Balance"
-        '
-        'lblReturn
-        '
-        Me.lblReturn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblReturn.AutoSize = True
-        Me.lblReturn.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReturn.Location = New System.Drawing.Point(539, 35)
-        Me.lblReturn.Name = "lblReturn"
-        Me.lblReturn.Size = New System.Drawing.Size(47, 17)
-        Me.lblReturn.TabIndex = 653
-        Me.lblReturn.Text = "Return"
+        Me.lblNeedToReturn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblNeedToReturn.AutoSize = True
+        Me.lblNeedToReturn.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNeedToReturn.Location = New System.Drawing.Point(539, 69)
+        Me.lblNeedToReturn.Name = "lblNeedToReturn"
+        Me.lblNeedToReturn.Size = New System.Drawing.Size(96, 17)
+        Me.lblNeedToReturn.TabIndex = 654
+        Me.lblNeedToReturn.Text = "Need To Return"
         '
         'Label24
         '
         Me.Label24.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(521, 52)
+        Me.Label24.Location = New System.Drawing.Point(521, 69)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(12, 17)
         Me.Label24.TabIndex = 652
         Me.Label24.Text = ":"
-        '
-        'Label25
-        '
-        Me.Label25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label25.AutoSize = True
-        Me.Label25.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(521, 35)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(12, 17)
-        Me.Label25.TabIndex = 651
-        Me.Label25.Text = ":"
         '
         'Label26
         '
         Me.Label26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(452, 52)
+        Me.Label26.Location = New System.Drawing.Point(419, 69)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(53, 17)
+        Me.Label26.Size = New System.Drawing.Size(96, 17)
         Me.Label26.TabIndex = 650
-        Me.Label26.Text = "Balance"
-        '
-        'Label27
-        '
-        Me.Label27.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(452, 35)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(47, 17)
-        Me.Label27.TabIndex = 649
-        Me.Label27.Text = "Return"
+        Me.Label26.Text = "Need To Return"
         '
         'lblItemId
         '
@@ -565,11 +616,10 @@ Partial Class AccountabilityItems
         '
         Me.Panel6.BackColor = System.Drawing.SystemColors.Control
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel6.Controls.Add(Me.DateTimePicker1)
+        Me.Panel6.Controls.Add(Me.cboxReference)
+        Me.Panel6.Controls.Add(Me.dtpTransDate)
         Me.Panel6.Controls.Add(Me.Label18)
         Me.Panel6.Controls.Add(Me.Label17)
-        Me.Panel6.Controls.Add(Me.tboxTransDate)
-        Me.Panel6.Controls.Add(Me.tboxReference)
         Me.Panel6.Controls.Add(Me.Button3)
         Me.Panel6.Controls.Add(Me.Label15)
         Me.Panel6.Controls.Add(Me.Label14)
@@ -584,14 +634,14 @@ Partial Class AccountabilityItems
         Me.Panel6.Size = New System.Drawing.Size(193, 393)
         Me.Panel6.TabIndex = 640
         '
-        'DateTimePicker1
+        'dtpTransDate
         '
-        Me.DateTimePicker1.CustomFormat = "yyyy-MMM-dd"
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(13, 120)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(116, 23)
-        Me.DateTimePicker1.TabIndex = 653
+        Me.dtpTransDate.CustomFormat = "yyyy-MMM-dd"
+        Me.dtpTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpTransDate.Location = New System.Drawing.Point(13, 144)
+        Me.dtpTransDate.Name = "dtpTransDate"
+        Me.dtpTransDate.Size = New System.Drawing.Size(116, 23)
+        Me.dtpTransDate.TabIndex = 653
         '
         'Label18
         '
@@ -607,25 +657,11 @@ Partial Class AccountabilityItems
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(13, 100)
+        Me.Label17.Location = New System.Drawing.Point(13, 124)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(69, 17)
         Me.Label17.TabIndex = 651
         Me.Label17.Text = "Trans Date"
-        '
-        'tboxTransDate
-        '
-        Me.tboxTransDate.Location = New System.Drawing.Point(13, 149)
-        Me.tboxTransDate.Name = "tboxTransDate"
-        Me.tboxTransDate.Size = New System.Drawing.Size(116, 23)
-        Me.tboxTransDate.TabIndex = 650
-        '
-        'tboxReference
-        '
-        Me.tboxReference.Location = New System.Drawing.Point(13, 305)
-        Me.tboxReference.Name = "tboxReference"
-        Me.tboxReference.Size = New System.Drawing.Size(160, 23)
-        Me.tboxReference.TabIndex = 649
         '
         'Button3
         '
@@ -641,7 +677,7 @@ Partial Class AccountabilityItems
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(46, 4)
+        Me.Label15.Location = New System.Drawing.Point(45, 28)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(101, 24)
         Me.Label15.TabIndex = 647
@@ -651,7 +687,7 @@ Partial Class AccountabilityItems
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(13, 230)
+        Me.Label14.Location = New System.Drawing.Point(13, 183)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(57, 17)
         Me.Label14.TabIndex = 646
@@ -659,7 +695,8 @@ Partial Class AccountabilityItems
         '
         'tboxQty
         '
-        Me.tboxQty.Location = New System.Drawing.Point(13, 250)
+        Me.tboxQty.Location = New System.Drawing.Point(13, 203)
+        Me.tboxQty.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.tboxQty.Name = "tboxQty"
         Me.tboxQty.Size = New System.Drawing.Size(116, 23)
         Me.tboxQty.TabIndex = 645
@@ -667,8 +704,10 @@ Partial Class AccountabilityItems
         '
         'cboxAccount
         '
+        Me.cboxAccount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxAccount.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboxAccount.FormattingEnabled = True
-        Me.cboxAccount.Location = New System.Drawing.Point(13, 199)
+        Me.cboxAccount.Location = New System.Drawing.Point(13, 258)
         Me.cboxAccount.Name = "cboxAccount"
         Me.cboxAccount.Size = New System.Drawing.Size(160, 24)
         Me.cboxAccount.TabIndex = 644
@@ -677,7 +716,7 @@ Partial Class AccountabilityItems
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(13, 179)
+        Me.Label13.Location = New System.Drawing.Point(13, 238)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(54, 17)
         Me.Label13.TabIndex = 643
@@ -687,8 +726,8 @@ Partial Class AccountabilityItems
         '
         Me.cboxTransType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboxTransType.FormattingEnabled = True
-        Me.cboxTransType.Items.AddRange(New Object() {"Issue", "Return"})
-        Me.cboxTransType.Location = New System.Drawing.Point(13, 64)
+        Me.cboxTransType.Items.AddRange(New Object() {"Receipt", "Issue", "Return Good", "Return Used"})
+        Me.cboxTransType.Location = New System.Drawing.Point(13, 89)
         Me.cboxTransType.Name = "cboxTransType"
         Me.cboxTransType.Size = New System.Drawing.Size(160, 24)
         Me.cboxTransType.TabIndex = 642
@@ -697,7 +736,7 @@ Partial Class AccountabilityItems
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(13, 44)
+        Me.Label6.Location = New System.Drawing.Point(13, 69)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(102, 17)
         Me.Label6.TabIndex = 641
@@ -724,7 +763,7 @@ Partial Class AccountabilityItems
         Me.cboxSearchTransType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboxSearchTransType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboxSearchTransType.FormattingEnabled = True
-        Me.cboxSearchTransType.Items.AddRange(New Object() {"All", "Issue", "Return"})
+        Me.cboxSearchTransType.Items.AddRange(New Object() {"All", "Issue", "Receipt", "Return Good", "Return Used"})
         Me.cboxSearchTransType.Location = New System.Drawing.Point(433, 31)
         Me.cboxSearchTransType.Name = "cboxSearchTransType"
         Me.cboxSearchTransType.Size = New System.Drawing.Size(160, 24)
@@ -795,6 +834,16 @@ Partial Class AccountabilityItems
         Me.Label4.TabIndex = 635
         Me.Label4.Text = "Account"
         '
+        'cboxReference
+        '
+        Me.cboxReference.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxReference.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxReference.FormattingEnabled = True
+        Me.cboxReference.Location = New System.Drawing.Point(13, 305)
+        Me.cboxReference.Name = "cboxReference"
+        Me.cboxReference.Size = New System.Drawing.Size(160, 24)
+        Me.cboxReference.TabIndex = 654
+        '
         'AccountabilityItems
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -807,10 +856,11 @@ Partial Class AccountabilityItems
         Me.Panel1.PerformLayout()
         CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.GV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        CType(Me.GV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
@@ -834,7 +884,6 @@ Partial Class AccountabilityItems
     Friend WithEvents btnAdd As Button
     Friend WithEvents tboxDescription As TextBox
     Friend WithEvents GV As ComponentFactory.Krypton.Toolkit.KryptonDataGridView
-    Friend WithEvents Panel3 As Panel
     Friend WithEvents Button2 As Button
     Friend WithEvents tboxSearch As TextBox
     Friend WithEvents Label1 As Label
@@ -870,19 +919,23 @@ Partial Class AccountabilityItems
     Friend WithEvents Button3 As Button
     Friend WithEvents cboxSearchTransType As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtpTransDate As DateTimePicker
     Friend WithEvents Label18 As Label
     Friend WithEvents Label17 As Label
-    Friend WithEvents tboxTransDate As TextBox
-    Friend WithEvents tboxReference As TextBox
     Friend WithEvents lblIssue As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label21 As Label
-    Friend WithEvents lblBalance As Label
-    Friend WithEvents lblReturn As Label
+    Friend WithEvents lblNeedToReturn As Label
     Friend WithEvents Label24 As Label
-    Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents Label27 As Label
-    Friend WithEvents Label19 As Label
+    Friend WithEvents lblFormTitle As Label
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents lblReturnUsed As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents lblReturnGood As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents cboxReference As ComboBox
 End Class
