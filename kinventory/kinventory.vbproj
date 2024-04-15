@@ -130,7 +130,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Transitions">
-      <HintPath>..\..\..\Downloads\Compressed\Transitions.dll</HintPath>
+      <HintPath>..\packages\Transitions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
