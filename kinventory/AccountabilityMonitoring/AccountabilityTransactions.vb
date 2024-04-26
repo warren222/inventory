@@ -66,6 +66,7 @@ Public Class AccountabilityTransactions
                 sqlcmd.Parameters.AddWithValue("@Account", _account)
                 sqlcmd.Parameters.AddWithValue("@Item_Id", _stockno)
                 sqlcmd.Parameters.AddWithValue("@Reference", _reference)
+                sqlcmd.Parameters.AddWithValue("@Requested_Date", _requested_date)
                 sqlcmd.Parameters.AddWithValue("@Trans_Date", _transdate)
                 sqlcmd.Parameters.AddWithValue("@Trans_Type", _transtype)
                 sqlcmd.Parameters.AddWithValue("@Qty", _quantity)
@@ -192,6 +193,7 @@ Public Class AccountabilityTransactions
     Dim _transdate As String
     Dim _quantity As String
     Dim _transtype As String
+    Dim _requested_date As String
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim errormessage As String = ""
 
@@ -211,6 +213,7 @@ Public Class AccountabilityTransactions
         _transdate = dtpTransDate.Text
         _quantity = tboxQty.Text
         _transtype = cboxTransType.Text
+        _requested_date = tboxRequestedDate.Text
         starter("Add_Trans")
     End Sub
 

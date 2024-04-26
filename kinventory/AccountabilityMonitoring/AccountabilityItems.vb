@@ -26,6 +26,7 @@ Public Class AccountabilityItems
     Dim _transid As String
     Dim _transdate As String
     Dim _reference As String
+    Dim _requested_date As String
     Public Sub InitializeSearchVariablesPage2()
         _searchItemDescription = cboxSearchItemDescription.Text
         _searchTranstype = cboxSearchTransType.Text
@@ -38,6 +39,7 @@ Public Class AccountabilityItems
         _itemid = lblItemId.Text
         _transdate = dtpTransDate.Text
         _reference = cboxReference.Text
+        _requested_date = tboxRequestedDate.Text
     End Sub
     Private Sub AccountabilityItems_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler bgw.DoWork, AddressOf bgw_DoWork
@@ -316,6 +318,7 @@ Public Class AccountabilityItems
                 sqlcmd.Parameters.AddWithValue("@Account", account)
                 sqlcmd.Parameters.AddWithValue("@Item_Id", _itemid)
                 sqlcmd.Parameters.AddWithValue("@Item_Description", itemdescription)
+                sqlcmd.Parameters.AddWithValue("@Requested_Date", _requested_date)
                 sqlcmd.Parameters.AddWithValue("@Reference", _reference)
                 sqlcmd.Parameters.AddWithValue("@Trans_Date", _transdate)
                 sqlcmd.Parameters.AddWithValue("@Trans_Type", transtype)
