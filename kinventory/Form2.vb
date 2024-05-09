@@ -88,7 +88,8 @@ Public Class Form2
             updatedatabtn.Enabled = False
         End If
         If Form1.nickname.Text = "Daniel" Or
-           Form1.nickname.Text = "Warren" Then
+           Form1.nickname.Text = "Warren" Or
+           Form1.nickname.Text = "Noreen" Then
             btnCLMonitoring.Visible = True
             btnAddCLM.Visible = True
             physicaldatebtn.Enabled = True
@@ -2774,9 +2775,6 @@ on a.stockno = b.stockno where b.myyear='" & myyear.Text & "'"
     Private Sub issueqty_Leave(sender As Object, e As EventArgs) Handles issueqty.Leave
         loopissue.Text = issueqty.Text
     End Sub
-
-
-
     Private Sub KryptonButton26_Click(sender As Object, e As EventArgs) Handles physicaldatebtn.Click
         'updatep2()
         'gettoupdate(transdate.Text)
