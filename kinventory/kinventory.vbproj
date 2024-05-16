@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://121.58.229.248:8083/inventoryUV/</InstallUrl>
     <PublisherName>Warren</PublisherName>
-    <MinimumRequiredVersion>1.0.0.149</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.150</MinimumRequiredVersion>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>149</ApplicationRevision>
+    <ApplicationRevision>150</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -330,6 +330,12 @@
       <DependentUpon>DEFAULTITEMS.vb</DependentUpon>
     </Compile>
     <Compile Include="DEFAULTITEMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryUpdate.Designer.vb">
+      <DependentUpon>DeliveryUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryUpdate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="editaddress.Designer.vb">
@@ -677,6 +683,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DEFAULTITEMS.resx">
       <DependentUpon>DEFAULTITEMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryUpdate.resx">
+      <DependentUpon>DeliveryUpdate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editaddress.resx">
       <DependentUpon>editaddress.vb</DependentUpon>

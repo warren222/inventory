@@ -23,9 +23,9 @@ Partial Class Form4
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.min = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel14 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel13 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -102,6 +102,8 @@ Partial Class Form4
         Me.KryptonLabel26 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel24 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonGroup4 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.radioDesc = New System.Windows.Forms.RadioButton()
+        Me.radioAsc = New System.Windows.Forms.RadioButton()
         Me.KryptonButton5 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton3 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
@@ -129,8 +131,7 @@ Partial Class Form4
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.KryptonGroup5 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
-        Me.radioAsc = New System.Windows.Forms.RadioButton()
-        Me.radioDesc = New System.Windows.Forms.RadioButton()
+        Me.UpdateDeliveryStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.KryptonGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonGroup2.Panel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonGroup2.Panel.SuspendLayout()
@@ -1015,8 +1016,8 @@ Partial Class Form4
         Me.mytransgridview.AllowUserToAddRows = False
         Me.mytransgridview.AllowUserToDeleteRows = False
         Me.mytransgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.mytransgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.mytransgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.mytransgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.mytransgridview.ColumnHeadersHeight = 20
         Me.mytransgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1104,8 +1105,8 @@ Partial Class Form4
         Me.referencegridview.AllowUserToAddRows = False
         Me.referencegridview.AllowUserToDeleteRows = False
         Me.referencegridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.referencegridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.referencegridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.referencegridview.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.referencegridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -1142,8 +1143,8 @@ Partial Class Form4
         Me.KryptonDataGridView1.AllowUserToAddRows = False
         Me.KryptonDataGridView1.AllowUserToDeleteRows = False
         Me.KryptonDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.KryptonDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.KryptonDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.KryptonDataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1156,7 +1157,7 @@ Partial Class Form4
         Me.KryptonDataGridView1.ReadOnly = True
         Me.KryptonDataGridView1.RowHeadersWidth = 25
         Me.KryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.KryptonDataGridView1.Size = New System.Drawing.Size(1763, 0)
+        Me.KryptonDataGridView1.Size = New System.Drawing.Size(1883, 0)
         Me.KryptonDataGridView1.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.KryptonDataGridView1.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.KryptonDataGridView1.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -1329,6 +1330,29 @@ Partial Class Form4
         Me.KryptonGroup4.Size = New System.Drawing.Size(161, 556)
         Me.KryptonGroup4.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup4.TabIndex = 0
+        '
+        'radioDesc
+        '
+        Me.radioDesc.AutoSize = True
+        Me.radioDesc.Checked = True
+        Me.radioDesc.Location = New System.Drawing.Point(89, 481)
+        Me.radioDesc.Name = "radioDesc"
+        Me.radioDesc.Size = New System.Drawing.Size(58, 21)
+        Me.radioDesc.TabIndex = 458
+        Me.radioDesc.TabStop = True
+        Me.radioDesc.Text = "Desc"
+        Me.radioDesc.UseVisualStyleBackColor = True
+        '
+        'radioAsc
+        '
+        Me.radioAsc.AutoSize = True
+        Me.radioAsc.Location = New System.Drawing.Point(8, 481)
+        Me.radioAsc.Name = "radioAsc"
+        Me.radioAsc.Size = New System.Drawing.Size(49, 21)
+        Me.radioAsc.TabIndex = 457
+        Me.radioAsc.TabStop = True
+        Me.radioAsc.Text = "Asc"
+        Me.radioAsc.UseVisualStyleBackColor = True
         '
         'KryptonButton5
         '
@@ -1546,14 +1570,14 @@ Partial Class Form4
         'transactionMenuStrip1
         '
         Me.transactionMenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.transactionMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateAmountToolStripMenuItem})
+        Me.transactionMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateAmountToolStripMenuItem, Me.UpdateDeliveryStatusToolStripMenuItem})
         Me.transactionMenuStrip1.Name = "transactionMenuStrip1"
-        Me.transactionMenuStrip1.Size = New System.Drawing.Size(160, 26)
+        Me.transactionMenuStrip1.Size = New System.Drawing.Size(193, 70)
         '
         'UpdateAmountToolStripMenuItem
         '
         Me.UpdateAmountToolStripMenuItem.Name = "UpdateAmountToolStripMenuItem"
-        Me.UpdateAmountToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.UpdateAmountToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
         Me.UpdateAmountToolStripMenuItem.Text = "Update Amount"
         '
         'KryptonPanel1
@@ -1636,28 +1660,11 @@ Partial Class Form4
         Me.KryptonGroup5.StateCommon.Border.Width = 1
         Me.KryptonGroup5.TabIndex = 459
         '
-        'radioAsc
+        'UpdateDeliveryStatusToolStripMenuItem
         '
-        Me.radioAsc.AutoSize = True
-        Me.radioAsc.Location = New System.Drawing.Point(8, 481)
-        Me.radioAsc.Name = "radioAsc"
-        Me.radioAsc.Size = New System.Drawing.Size(49, 21)
-        Me.radioAsc.TabIndex = 457
-        Me.radioAsc.TabStop = True
-        Me.radioAsc.Text = "Asc"
-        Me.radioAsc.UseVisualStyleBackColor = True
-        '
-        'radioDesc
-        '
-        Me.radioDesc.AutoSize = True
-        Me.radioDesc.Checked = True
-        Me.radioDesc.Location = New System.Drawing.Point(89, 481)
-        Me.radioDesc.Name = "radioDesc"
-        Me.radioDesc.Size = New System.Drawing.Size(58, 21)
-        Me.radioDesc.TabIndex = 458
-        Me.radioDesc.TabStop = True
-        Me.radioDesc.Text = "Desc"
-        Me.radioDesc.UseVisualStyleBackColor = True
+        Me.UpdateDeliveryStatusToolStripMenuItem.Name = "UpdateDeliveryStatusToolStripMenuItem"
+        Me.UpdateDeliveryStatusToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
+        Me.UpdateDeliveryStatusToolStripMenuItem.Text = "Update Delivery Status"
         '
         'Form4
         '
@@ -1854,4 +1861,5 @@ Partial Class Form4
     Friend WithEvents KryptonButton5 As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents radioDesc As RadioButton
     Friend WithEvents radioAsc As RadioButton
+    Friend WithEvents UpdateDeliveryStatusToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -2496,6 +2496,7 @@ UNITPRICE,
 ((ufactor * qty)*unitprice) as CURRENCY,
 XRATE,
 NETAMOUNT,
+DELIVERY_STATUS,
 INPUTTED from trans_tb where stockno=@stn order by transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
             sqlcmd.Parameters.AddWithValue("@stockno", stockno)
@@ -2702,6 +2703,7 @@ UNITPRICE,
 ((ufactor * qty)*unitprice) as CURRENCY,
 XRATE,
 NETAMOUNT,
+DELIVERY_STATUS,
 INPUTTED
  from trans_tb " + "" & search & ""
 
