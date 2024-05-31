@@ -130,7 +130,7 @@ Public Class Form4
         ElseIf transaction.Text = "Issue & Return" Then
             tr = "(transtype='Issue' or transtype='Return')"
         ElseIf transaction.Text = "Issue & Receipt & +Adjustment-" Then
-            TR = "(transtype='Issue' or transtype='Receipt' or transtype='+Adjustment' or transtype='-Adjustment')"
+            tr = "(transtype='Issue' or transtype='Receipt' or transtype='+Adjustment' or transtype='-Adjustment')"
         Else
             tr = "transtype='" & transaction.Text & "'"
         End If
@@ -414,13 +414,13 @@ Public Class Form4
 
 
         If mytransgridview.RowCount >= 0 Then
-                For i As Integer = 0 To mytransgridview.RowCount - 1 Step +1
-                    Dim x As String = mytransgridview.Rows(i).Cells("balqty").Value.ToString
-                    If Not x = "0.00" And Not x = "" Then
-                        mytransgridview.Rows(i).DefaultCellStyle.BackColor = Color.Khaki
-                    End If
-                Next
-            End If
+            For i As Integer = 0 To mytransgridview.RowCount - 1 Step +1
+                Dim x As String = mytransgridview.Rows(i).Cells("balqty").Value.ToString
+                If Not x = "0.00" And Not x = "" Then
+                    mytransgridview.Rows(i).DefaultCellStyle.BackColor = Color.Khaki
+                End If
+            Next
+        End If
 
     End Sub
 
@@ -559,11 +559,63 @@ Public Class Form4
     End Sub
 
     Private Sub KryptonButton5_Click(sender As Object, e As EventArgs) Handles KryptonButton5.Click
-        KryptonButton4.PerformClick()
+        SQL.ReportStp(stockno.Text,
+                               reference.Text,
+                               transaction.Text,
+                               cboxLocation.Text,
+                               DATETYPE.Text,
+                               DateExpressionMethod(),
+                               transadate.Text,
+                               todate.Text,
+                               OrderMethod())
         Form13.ShowDialog()
     End Sub
 
     Private Sub UpdateDeliveryStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateDeliveryStatusToolStripMenuItem.Click
         DeliveryUpdate.ShowDialog()
+    End Sub
+
+    Private Sub KryptonButton6_Click(sender As Object, e As EventArgs) Handles KryptonButton6.Click
+        SQL.WarehouseReportStp(stockno.Text,
+                               reference.Text,
+                               transaction.Text,
+                               cboxLocation.Text,
+                               DATETYPE.Text,
+                               DateExpressionMethod(),
+                               transadate.Text,
+                               todate.Text,
+                               OrderMethod())
+        WarehouseReport.Show()
+    End Sub
+    Private Function DateExpressionMethod() As String
+        Dim dateexpression As String
+        If thisdate.Checked Then
+            dateexpression = "ThisDate"
+        ElseIf all.Checked Then
+            dateexpression = "All"
+        ElseIf after.Checked Then
+            dateexpression = "After"
+        ElseIf before.Checked Then
+            dateexpression = "Before"
+        ElseIf tomydate.Checked Then
+            dateexpression = "ToDate"
+        Else
+            dateexpression = "All"
+        End If
+        Return dateexpression
+    End Function
+    Private Function OrderMethod() As String
+        Dim order As String
+        If radioAsc.Checked Then
+            order = "Asc"
+        ElseIf radioDesc.Checked Then
+            order = "Desc"
+        Else
+            order = "Desc"
+        End If
+        Return order
+    End Function
+    Private Sub mytransgridview_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles mytransgridview.RowPostPaint
+        SQL._rowPostPaint(sender, e)
     End Sub
 End Class

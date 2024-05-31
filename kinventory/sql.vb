@@ -2497,6 +2497,7 @@ UNITPRICE,
 XRATE,
 NETAMOUNT,
 DELIVERY_STATUS,
+LOCATION,
 INPUTTED from trans_tb where stockno=@stn order by transdate desc"
             sqlcmd = New SqlCommand(str, sqlcon)
             sqlcmd.Parameters.AddWithValue("@stockno", stockno)
@@ -2672,7 +2673,159 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             sqlcon.Close()
         End Try
     End Sub
+    Public Sub WarehouseReportStp(ByVal stockno As String,
+                                  ByVal reference As String,
+                                  ByVal transaction As String,
+                                  ByVal location As String,
+                                  ByVal datatype As String,
+                                  ByVal dateexpression As String,
+                                  ByVal sdate As String,
+                                  ByVal edate As String,
+                                  ByVal order As String)
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "WarehouseReport_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "warehouse_report")
+                    sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                    sqlcmd.Parameters.AddWithValue("@Reference", reference)
+                    sqlcmd.Parameters.AddWithValue("@Transaction", transaction)
+                    sqlcmd.Parameters.AddWithValue("@Location", location)
+                    sqlcmd.Parameters.AddWithValue("@DateType", datatype)
+                    sqlcmd.Parameters.AddWithValue("@DateExpression", dateexpression)
+                    sqlcmd.Parameters.AddWithValue("@Sdate", sdate)
+                    sqlcmd.Parameters.AddWithValue("@Edate", edate)
+                    sqlcmd.Parameters.AddWithValue("@Order", order)
+                    Dim dss As New inventoryds
+                    dss.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(dss.TRANS_TB)
+                        WarehouseReport.TRANS_TBBindingSource.DataSource = dss.TRANS_TB.DefaultView
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+    Public Sub ReportStp(ByVal stockno As String,
+                                  ByVal reference As String,
+                                  ByVal transaction As String,
+                                  ByVal location As String,
+                                  ByVal datatype As String,
+                                  ByVal dateexpression As String,
+                                  ByVal sdate As String,
+                                  ByVal edate As String,
+                                  ByVal order As String)
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "WarehouseReport_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "load")
+                    sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                    sqlcmd.Parameters.AddWithValue("@Reference", reference)
+                    sqlcmd.Parameters.AddWithValue("@Transaction", transaction)
+                    sqlcmd.Parameters.AddWithValue("@Location", location)
+                    sqlcmd.Parameters.AddWithValue("@DateType", datatype)
+                    sqlcmd.Parameters.AddWithValue("@DateExpression", dateexpression)
+                    sqlcmd.Parameters.AddWithValue("@Sdate", sdate)
+                    sqlcmd.Parameters.AddWithValue("@Edate", edate)
+                    sqlcmd.Parameters.AddWithValue("@Order", order)
+                    Dim dss As New inventoryds
+                    dss.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(dss.TRANS_TB)
+                        Form13.TRANS_TBBindingSource.DataSource = dss.TRANS_TB.DefaultView
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+    Public Sub LoadTransactions(ByVal stockno As String,
+                                  ByVal reference As String,
+                                  ByVal transaction As String,
+                                  ByVal location As String,
+                                  ByVal datatype As String,
+                                  ByVal dateexpression As String,
+                                  ByVal sdate As String,
+                                  ByVal edate As String,
+                                  ByVal order As String)
+        Try
+            Dim ds As New DataSet
+            ds.Clear()
+            Dim bs As New BindingSource
+            Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "WarehouseReport_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "load")
+                    sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                    sqlcmd.Parameters.AddWithValue("@Reference", reference)
+                    sqlcmd.Parameters.AddWithValue("@Transaction", transaction)
+                    sqlcmd.Parameters.AddWithValue("@Location", location)
+                    sqlcmd.Parameters.AddWithValue("@DateType", datatype)
+                    sqlcmd.Parameters.AddWithValue("@DateExpression", dateexpression)
+                    sqlcmd.Parameters.AddWithValue("@Sdate", sdate)
+                    sqlcmd.Parameters.AddWithValue("@Edate", edate)
+                    sqlcmd.Parameters.AddWithValue("@Order", order)
+                    Dim dss As New inventoryds
+                    ds.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(ds, "trans_tb")
+                        bs.DataSource = ds
+                        bs.DataMember = "trans_tb"
+                        Form4.mytransgridview.DataSource = bs
+                    End Using
 
+                    Form4.mytransgridview.Columns("TRANSDATE").DefaultCellStyle.Format = "yyyy-MMM-dd"
+                    Form4.mytransgridview.Columns("DUEDATE").DefaultCellStyle.Format = "yyyy-MMM-dd"
+                    Form4.mytransgridview.Columns("UFACTOR").DefaultCellStyle.Format = "N4"
+                    Form4.mytransgridview.Columns("UNITPRICE").DefaultCellStyle.Format = "N4"
+                    Form4.mytransgridview.Columns("XRATE").DefaultCellStyle.Format = "N2"
+                    Form4.mytransgridview.Columns("NETAMOUNT").DefaultCellStyle.Format = "N2"
+                    Form4.mytransgridview.Columns("CHECKER").DefaultCellStyle.Format = "N2"
+                    Form4.mytransgridview.Columns("CURRENCY").DefaultCellStyle.Format = "N2"
+                    Form4.mytransgridview.Columns("EXCESS").DefaultCellStyle.Format = "N2"
+                    Form4.mytransgridview.Columns("QTY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("UFACTOR").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("UNITPRICE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("XRATE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("NETAMOUNT").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("CHECKER").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("CURRENCY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("EXCESS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    Form4.mytransgridview.Columns("stockno").Visible = False
+
+                    For i As Integer = 0 To Form4.mytransgridview.RowCount - 1 Step +1
+                        Dim s As String = Form4.mytransgridview.Rows(i).Cells("balqty").Value.ToString
+                        Dim t As String = Form4.mytransgridview.Rows(i).Cells("transtype").Value.ToString
+                        If Not s = "0.00" And Not s = "" And t = "Allocation" Then
+                            Form4.mytransgridview.Rows(i).Cells("balqty").Style.ForeColor = Color.Red
+                        End If
+                    Next
+                    For i As Integer = 0 To Form4.mytransgridview.RowCount - 1 Step +1
+                        Dim s As String = Form4.mytransgridview.Rows(i).Cells("xyzref").Value.ToString
+                        Dim t As String = Form4.mytransgridview.Rows(i).Cells("transtype").Value.ToString
+                        If Not s = "" And t = "Order" Then
+                            Form4.mytransgridview.Rows(i).DefaultCellStyle.BackColor = Color.Pink
+                        End If
+                    Next
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
     Public Sub searchstockstransaction(ByVal search As String, ByVal condition As String, ByVal stockno As String, ByVal transaction As String, ByVal reference As String, ByVal datetype As String, ByVal order As String)
         Try
             sqlcon.Open()
@@ -2704,6 +2857,7 @@ UNITPRICE,
 XRATE,
 NETAMOUNT,
 DELIVERY_STATUS,
+LOCATION,
 INPUTTED
  from trans_tb " + "" & search & ""
 
@@ -2721,6 +2875,7 @@ INPUTTED
             da.SelectCommand = sqlcmd
             da.Fill(dss.TRANS_TB)
             Form13.TRANS_TBBindingSource.DataSource = dss.TRANS_TB.DefaultView
+            WarehouseReport.TRANS_TBBindingSource.DataSource = dss.TRANS_TB.DefaultView
 
 
             Form4.mytransgridview.Columns("TRANSDATE").DefaultCellStyle.Format = "yyyy-MMM-dd"
