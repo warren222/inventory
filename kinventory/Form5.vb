@@ -1206,4 +1206,14 @@ and typecolor = '" & newtypecolor.Text & "' and articleno = '" & newarticleno.Te
             End If
         End If
     End Sub
+
+    Private Sub cboxLocation_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocation.MouseDown
+        Dim I As Integer = cboxLocation.SelectedIndex
+        Form2.loadlocationcombo(cboxLocation, stockno.Text)
+        If I > cboxLocation.Items.Count - 1 Then
+            cboxLocation.SelectedIndex = -1
+        Else
+            cboxLocation.SelectedIndex = I
+        End If
+    End Sub
 End Class

@@ -112,11 +112,41 @@ Public Class Form4
         reference.Text = reference.Text.Replace("""", "")
         transaction.Text = transaction.Text.Replace("'", "")
         transaction.Text = transaction.Text.Replace("""", "")
-        If DATETYPE.SelectedIndex = 0 Then
-            datetypetransdate()
-        ElseIf DATETYPE.SelectedIndex = 1 Then
-            datetypeduedate()
-        End If
+        'If DATETYPE.SelectedIndex = 0 Then
+        '    datetypetransdate()
+        'ElseIf DATETYPE.SelectedIndex = 1 Then
+        '    datetypeduedate()
+        'End If
+        SQL.Form4_LoadTransactions(stockno.Text,
+                               reference.Text,
+                               transaction.Text,
+                               cboxLocation.Text,
+                               DATETYPE.Text,
+                               DateExpressionMethod(),
+                               transadate.Text,
+                               todate.Text,
+                               OrderMethod())
+        SQL.Form4_Distinct_Reference(stockno.Text,
+                               reference.Text,
+                               transaction.Text,
+                               cboxLocation.Text,
+                               DATETYPE.Text,
+                               DateExpressionMethod(),
+                               transadate.Text,
+                               todate.Text,
+                               OrderMethod())
+        SQL.Form4_Summary(stockno.Text,
+                               reference.Text,
+                               transaction.Text,
+                               cboxLocation.Text,
+                               DATETYPE.Text,
+                               DateExpressionMethod(),
+                               transadate.Text,
+                               todate.Text,
+                               OrderMethod())
+        referencegridview.SelectAll()
+        ProgressBar1.Value = 0
+        ProgressBar1.Maximum = referencegridview.RowCount
     End Sub
     Public Sub datetypeduedate()
         Dim mydatetype As String = " case when isdate(" & DATETYPE.Text & ")=1 then cast(" & DATETYPE.Text & " as date) end"
@@ -520,23 +550,30 @@ Public Class Form4
             SQL.sqlcon.Close()
         End Try
     End Sub
-
-    Private Sub KryptonDataGridView1_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles KryptonDataGridView1.RowPostPaint
-        Dim grid As DataGridView = DirectCast(sender, DataGridView)
-        e.PaintHeader(DataGridViewPaintParts.Background)
-        Dim rowIdx As String = (e.RowIndex + 1).ToString()
-        Dim rowFont As New System.Drawing.Font("Microsoft Sans Serif", 8.0!,
-            System.Drawing.FontStyle.Regular,
-            System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-
-        Dim centerFormat = New StringFormat()
-        centerFormat.Alignment = StringAlignment.Far
-        centerFormat.LineAlignment = StringAlignment.Near
-
-        Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height)
-
-        e.Graphics.DrawString(rowIdx, rowFont, SystemBrushes.ControlText, headerBounds, centerFormat)
+    Public Sub loadlocationcombo()
+        Using sqlcon As SqlConnection = New SqlConnection(SQL.sqlconstr)
+            sqlcon.Open()
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.CommandText = "WarehouseReport_Stp"
+                sqlcmd.Parameters.AddWithValue("@Command", "Distinct_Location")
+                sqlcmd.Parameters.AddWithValue("@Stockno", stockno.Text)
+                Dim ds As New DataSet
+                ds.Clear()
+                Dim bs As New BindingSource
+                Using sqlda As SqlDataAdapter = New SqlDataAdapter
+                    sqlda.SelectCommand = sqlcmd
+                    sqlda.Fill(ds, "LOCATIONTB")
+                    bs.DataSource = ds
+                    bs.DataMember = "LOCATIONTB"
+                End Using
+                cboxLocation.DataSource = bs
+                cboxLocation.ValueMember = "Location"
+                cboxLocation.DisplayMember = "Location"
+            End Using
+        End Using
     End Sub
+
 
     Private Sub KryptonButton3_Click(sender As Object, e As EventArgs) Handles KryptonButton3.Click
         SQL.srockstransactiontb2(stockno.Text)
@@ -559,7 +596,7 @@ Public Class Form4
     End Sub
 
     Private Sub KryptonButton5_Click(sender As Object, e As EventArgs) Handles KryptonButton5.Click
-        SQL.ReportStp(stockno.Text,
+        SQL.Form4_ReportStp(stockno.Text,
                                reference.Text,
                                transaction.Text,
                                cboxLocation.Text,
@@ -576,7 +613,7 @@ Public Class Form4
     End Sub
 
     Private Sub KryptonButton6_Click(sender As Object, e As EventArgs) Handles KryptonButton6.Click
-        SQL.WarehouseReportStp(stockno.Text,
+        SQL.Form4_WarehouseReportStp(stockno.Text,
                                reference.Text,
                                transaction.Text,
                                cboxLocation.Text,
@@ -617,5 +654,21 @@ Public Class Form4
     End Function
     Private Sub mytransgridview_RowPostPaint(sender As Object, e As DataGridViewRowPostPaintEventArgs) Handles mytransgridview.RowPostPaint
         SQL._rowPostPaint(sender, e)
+    End Sub
+
+    Private Sub cboxLocation_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocation.MouseDown
+        Dim I As Integer = cboxLocation.SelectedIndex
+        loadlocationcombo()
+        If I > cboxLocation.Items.Count - 1 Then
+            cboxLocation.SelectedIndex = -1
+        Else
+            cboxLocation.SelectedIndex = I
+        End If
+    End Sub
+
+    Private Sub cboxLocation_KeyDown(sender As Object, e As KeyEventArgs) Handles cboxLocation.KeyDown
+        If e.KeyData = Keys.Enter Then
+            KryptonButton4.PerformClick()
+        End If
     End Sub
 End Class

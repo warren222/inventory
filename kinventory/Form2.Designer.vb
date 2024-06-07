@@ -109,6 +109,8 @@ Partial Class Form2
         Me.KryptonLabel16 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.controlno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonGroup2 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.KryptonLabel87 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.cboxLocationInput = New System.Windows.Forms.ComboBox()
         Me.transarticleno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.currency = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel68 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -148,6 +150,8 @@ Partial Class Form2
         Me.KryptonLabel29 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.receiptreference = New System.Windows.Forms.ComboBox()
         Me.KryptonGroup3 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
+        Me.KryptonLabel88 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.cboxLocationReceipt = New System.Windows.Forms.ComboBox()
         Me.retainbal = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.receipttransno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.receiptorder = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
@@ -170,6 +174,8 @@ Partial Class Form2
         Me.Button3 = New System.Windows.Forms.Button()
         Me.KryptonGroup5 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.KryptonLabel89 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.cboxLocationIssue = New System.Windows.Forms.ComboBox()
         Me.KryptonLabel37 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.issueqty = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel32 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -612,8 +618,8 @@ Partial Class Form2
         Me.KryptonSplitContainer6.Panel2.Controls.Add(Me.description)
         Me.KryptonSplitContainer6.Panel2.Controls.Add(Me.KryptonLabel5)
         Me.KryptonSplitContainer6.Panel2.StateCommon.Color1 = System.Drawing.Color.White
-        Me.KryptonSplitContainer6.Size = New System.Drawing.Size(1234, 586)
-        Me.KryptonSplitContainer6.SplitterDistance = 510
+        Me.KryptonSplitContainer6.Size = New System.Drawing.Size(1234, 796)
+        Me.KryptonSplitContainer6.SplitterDistance = 692
         Me.KryptonSplitContainer6.SplitterWidth = 0
         Me.KryptonSplitContainer6.TabIndex = 1
         '
@@ -632,7 +638,7 @@ Partial Class Form2
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1234, 510)
+        Me.TabControl1.Size = New System.Drawing.Size(1234, 692)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 0
         '
@@ -644,8 +650,8 @@ Partial Class Form2
         Me.TabPage1.ImageIndex = 0
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage1.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Stocks"
         '
@@ -672,8 +678,8 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2.StateCommon.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
-        Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 475)
-        Me.KryptonSplitContainer3.SplitterDistance = 874
+        Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 657)
+        Me.KryptonSplitContainer3.SplitterDistance = 864
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -694,7 +700,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(874, 429)
+        Me.stocksgridview.Size = New System.Drawing.Size(864, 611)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -722,7 +728,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(874, 46)
+        Me.Panel2.Size = New System.Drawing.Size(864, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -1077,8 +1083,8 @@ Partial Class Form2
         Me.TabPage2.ImageIndex = 3
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage2.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Input"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -1111,7 +1117,7 @@ Partial Class Form2
         'KryptonSplitContainer2.Panel2
         '
         Me.KryptonSplitContainer2.Panel2.Controls.Add(Me.KryptonSplitContainer4)
-        Me.KryptonSplitContainer2.Size = New System.Drawing.Size(1220, 475)
+        Me.KryptonSplitContainer2.Size = New System.Drawing.Size(1220, 657)
         Me.KryptonSplitContainer2.SplitterDistance = 35
         Me.KryptonSplitContainer2.SplitterWidth = 4
         Me.KryptonSplitContainer2.TabIndex = 0
@@ -1267,7 +1273,7 @@ Partial Class Form2
         Me.KryptonSplitContainer4.Panel2.Controls.Add(Me.KryptonGroup2)
         Me.KryptonSplitContainer4.Panel2.StateCommon.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer4.Panel2MinSize = 240
-        Me.KryptonSplitContainer4.Size = New System.Drawing.Size(1220, 436)
+        Me.KryptonSplitContainer4.Size = New System.Drawing.Size(1220, 618)
         Me.KryptonSplitContainer4.SplitterDistance = 964
         Me.KryptonSplitContainer4.TabIndex = 1
         '
@@ -1297,8 +1303,8 @@ Partial Class Form2
         Me.KryptonSplitContainer7.Panel2.Controls.Add(Me.controlno)
         Me.KryptonSplitContainer7.Panel2.StateCommon.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer7.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
-        Me.KryptonSplitContainer7.Size = New System.Drawing.Size(964, 436)
-        Me.KryptonSplitContainer7.SplitterDistance = 340
+        Me.KryptonSplitContainer7.Size = New System.Drawing.Size(964, 618)
+        Me.KryptonSplitContainer7.SplitterDistance = 522
         Me.KryptonSplitContainer7.StateCommon.Separator.Back.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer7.StateCommon.Separator.Back.Color2 = System.Drawing.Color.White
         Me.KryptonSplitContainer7.TabIndex = 14
@@ -1320,7 +1326,7 @@ Partial Class Form2
         Me.inputGridView.ReadOnly = True
         Me.inputGridView.RowHeadersWidth = 25
         Me.inputGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.inputGridView.Size = New System.Drawing.Size(964, 340)
+        Me.inputGridView.Size = New System.Drawing.Size(964, 522)
         Me.inputGridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
         Me.inputGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.inputGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -1482,6 +1488,8 @@ Partial Class Form2
         '
         'KryptonGroup2.Panel
         '
+        Me.KryptonGroup2.Panel.Controls.Add(Me.KryptonLabel87)
+        Me.KryptonGroup2.Panel.Controls.Add(Me.cboxLocationInput)
         Me.KryptonGroup2.Panel.Controls.Add(Me.transarticleno)
         Me.KryptonGroup2.Panel.Controls.Add(Me.currency)
         Me.KryptonGroup2.Panel.Controls.Add(Me.KryptonLabel68)
@@ -1513,9 +1521,35 @@ Partial Class Form2
         Me.KryptonGroup2.Panel.Controls.Add(Me.KryptonLabel12)
         Me.KryptonGroup2.Panel.Controls.Add(Me.transtypecolor)
         Me.KryptonGroup2.Panel.Controls.Add(Me.transcosthead)
-        Me.KryptonGroup2.Size = New System.Drawing.Size(236, 519)
+        Me.KryptonGroup2.Size = New System.Drawing.Size(236, 701)
         Me.KryptonGroup2.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup2.TabIndex = 6
+        '
+        'KryptonLabel87
+        '
+        Me.KryptonLabel87.Location = New System.Drawing.Point(6, 401)
+        Me.KryptonLabel87.Name = "KryptonLabel87"
+        Me.KryptonLabel87.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel87.Size = New System.Drawing.Size(62, 19)
+        Me.KryptonLabel87.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel87.TabIndex = 57
+        Me.KryptonLabel87.Values.Text = "Location"
+        Me.KryptonLabel87.Visible = False
+        '
+        'cboxLocationInput
+        '
+        Me.cboxLocationInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxLocationInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxLocationInput.DropDownHeight = 206
+        Me.cboxLocationInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxLocationInput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxLocationInput.FormattingEnabled = True
+        Me.cboxLocationInput.IntegralHeight = False
+        Me.cboxLocationInput.Location = New System.Drawing.Point(89, 401)
+        Me.cboxLocationInput.Name = "cboxLocationInput"
+        Me.cboxLocationInput.Size = New System.Drawing.Size(139, 23)
+        Me.cboxLocationInput.TabIndex = 56
+        Me.cboxLocationInput.Visible = False
         '
         'transarticleno
         '
@@ -1758,7 +1792,7 @@ Partial Class Form2
         '
         'KryptonButton4
         '
-        Me.KryptonButton4.Location = New System.Drawing.Point(7, 400)
+        Me.KryptonButton4.Location = New System.Drawing.Point(7, 436)
         Me.KryptonButton4.Name = "KryptonButton4"
         Me.KryptonButton4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton4.Size = New System.Drawing.Size(208, 23)
@@ -1871,8 +1905,8 @@ Partial Class Form2
         Me.TabPage4.ImageIndex = 2
         Me.TabPage4.Location = New System.Drawing.Point(4, 25)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage4.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Receipt"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -1923,7 +1957,7 @@ Partial Class Form2
         Me.receiptDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.receiptDataGridView1.ColumnHeadersHeight = 20
         Me.receiptDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.receiptDataGridView1.Location = New System.Drawing.Point(260, 390)
+        Me.receiptDataGridView1.Location = New System.Drawing.Point(260, 572)
         Me.receiptDataGridView1.Name = "receiptDataGridView1"
         Me.receiptDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.receiptDataGridView1.ReadOnly = True
@@ -1979,6 +2013,8 @@ Partial Class Form2
         '
         'KryptonGroup3.Panel
         '
+        Me.KryptonGroup3.Panel.Controls.Add(Me.KryptonLabel88)
+        Me.KryptonGroup3.Panel.Controls.Add(Me.cboxLocationReceipt)
         Me.KryptonGroup3.Panel.Controls.Add(Me.retainbal)
         Me.KryptonGroup3.Panel.Controls.Add(Me.receipttransno)
         Me.KryptonGroup3.Panel.Controls.Add(Me.receiptorder)
@@ -1996,9 +2032,33 @@ Partial Class Form2
         Me.KryptonGroup3.Panel.Controls.Add(Me.receiptarticleno)
         Me.KryptonGroup3.Panel.Controls.Add(Me.receipttypecolor)
         Me.KryptonGroup3.Panel.Controls.Add(Me.receiptcosthead)
-        Me.KryptonGroup3.Size = New System.Drawing.Size(236, 367)
+        Me.KryptonGroup3.Size = New System.Drawing.Size(236, 442)
         Me.KryptonGroup3.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control
         Me.KryptonGroup3.TabIndex = 7
+        '
+        'KryptonLabel88
+        '
+        Me.KryptonLabel88.Location = New System.Drawing.Point(2, 341)
+        Me.KryptonLabel88.Name = "KryptonLabel88"
+        Me.KryptonLabel88.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel88.Size = New System.Drawing.Size(62, 19)
+        Me.KryptonLabel88.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel88.TabIndex = 59
+        Me.KryptonLabel88.Values.Text = "Location"
+        '
+        'cboxLocationReceipt
+        '
+        Me.cboxLocationReceipt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxLocationReceipt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxLocationReceipt.DropDownHeight = 206
+        Me.cboxLocationReceipt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxLocationReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxLocationReceipt.FormattingEnabled = True
+        Me.cboxLocationReceipt.IntegralHeight = False
+        Me.cboxLocationReceipt.Location = New System.Drawing.Point(85, 341)
+        Me.cboxLocationReceipt.Name = "cboxLocationReceipt"
+        Me.cboxLocationReceipt.Size = New System.Drawing.Size(139, 23)
+        Me.cboxLocationReceipt.TabIndex = 58
         '
         'retainbal
         '
@@ -2086,7 +2146,7 @@ Partial Class Form2
         '
         'KryptonButton5
         '
-        Me.KryptonButton5.Location = New System.Drawing.Point(49, 328)
+        Me.KryptonButton5.Location = New System.Drawing.Point(49, 394)
         Me.KryptonButton5.Name = "KryptonButton5"
         Me.KryptonButton5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton5.Size = New System.Drawing.Size(136, 23)
@@ -2205,7 +2265,7 @@ Partial Class Form2
         Me.receiptGridView.ReadOnly = True
         Me.receiptGridView.RowHeadersWidth = 25
         Me.receiptGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.receiptGridView.Size = New System.Drawing.Size(863, 312)
+        Me.receiptGridView.Size = New System.Drawing.Size(863, 494)
         Me.receiptGridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
         Me.receiptGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.receiptGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -2240,8 +2300,8 @@ Partial Class Form2
         Me.TabPage5.ImageIndex = 1
         Me.TabPage5.Location = New System.Drawing.Point(4, 25)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage5.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Issue"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -2279,6 +2339,8 @@ Partial Class Form2
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.KryptonLabel89)
+        Me.Panel1.Controls.Add(Me.cboxLocationIssue)
         Me.Panel1.Controls.Add(Me.KryptonLabel37)
         Me.Panel1.Controls.Add(Me.issueqty)
         Me.Panel1.Controls.Add(Me.KryptonLabel32)
@@ -2297,6 +2359,30 @@ Partial Class Form2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(861, 157)
         Me.Panel1.TabIndex = 452
+        '
+        'KryptonLabel89
+        '
+        Me.KryptonLabel89.Location = New System.Drawing.Point(557, 14)
+        Me.KryptonLabel89.Name = "KryptonLabel89"
+        Me.KryptonLabel89.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel89.Size = New System.Drawing.Size(62, 19)
+        Me.KryptonLabel89.StateCommon.ShortText.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel89.TabIndex = 448
+        Me.KryptonLabel89.Values.Text = "Location"
+        '
+        'cboxLocationIssue
+        '
+        Me.cboxLocationIssue.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxLocationIssue.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxLocationIssue.DropDownHeight = 206
+        Me.cboxLocationIssue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxLocationIssue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxLocationIssue.FormattingEnabled = True
+        Me.cboxLocationIssue.IntegralHeight = False
+        Me.cboxLocationIssue.Location = New System.Drawing.Point(640, 14)
+        Me.cboxLocationIssue.Name = "cboxLocationIssue"
+        Me.cboxLocationIssue.Size = New System.Drawing.Size(196, 23)
+        Me.cboxLocationIssue.TabIndex = 447
         '
         'KryptonLabel37
         '
@@ -2570,7 +2656,7 @@ Partial Class Form2
         Me.issueDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.issueDataGridView1.ColumnHeadersHeight = 20
         Me.issueDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.issueDataGridView1.Location = New System.Drawing.Point(260, 390)
+        Me.issueDataGridView1.Location = New System.Drawing.Point(260, 572)
         Me.issueDataGridView1.Name = "issueDataGridView1"
         Me.issueDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.issueDataGridView1.ReadOnly = True
@@ -2771,7 +2857,7 @@ Partial Class Form2
         Me.issueDataGridView.ReadOnly = True
         Me.issueDataGridView.RowHeadersWidth = 25
         Me.issueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.issueDataGridView.Size = New System.Drawing.Size(863, 312)
+        Me.issueDataGridView.Size = New System.Drawing.Size(863, 494)
         Me.issueDataGridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
         Me.issueDataGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.issueDataGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -2798,8 +2884,8 @@ Partial Class Form2
         Me.TabPage3.ImageIndex = 5
         Me.TabPage3.Location = New System.Drawing.Point(4, 25)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage3.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Trns. Mgr."
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -2829,7 +2915,7 @@ Partial Class Form2
         Me.KryptonSplitContainer5.Panel2.Controls.Add(Me.KryptonButton21)
         Me.KryptonSplitContainer5.Panel2.Controls.Add(Me.toprows)
         Me.KryptonSplitContainer5.Panel2.StateCommon.Color1 = System.Drawing.Color.White
-        Me.KryptonSplitContainer5.Size = New System.Drawing.Size(1220, 475)
+        Me.KryptonSplitContainer5.Size = New System.Drawing.Size(1220, 657)
         Me.KryptonSplitContainer5.SplitterDistance = 250
         Me.KryptonSplitContainer5.TabIndex = 0
         '
@@ -3112,7 +3198,7 @@ Partial Class Form2
         Me.transgridview.ReadOnly = True
         Me.transgridview.RowHeadersWidth = 40
         Me.transgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.transgridview.Size = New System.Drawing.Size(963, 436)
+        Me.transgridview.Size = New System.Drawing.Size(963, 618)
         Me.transgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.transgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.transgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -3226,8 +3312,8 @@ Partial Class Form2
         Me.TabPage7.ImageIndex = 4
         Me.TabPage7.Location = New System.Drawing.Point(4, 25)
         Me.TabPage7.Name = "TabPage7"
-        Me.TabPage7.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage7.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage7.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage7.TabIndex = 6
         Me.TabPage7.Text = "Reference"
         Me.TabPage7.UseVisualStyleBackColor = True
@@ -3257,7 +3343,7 @@ Partial Class Form2
         Me.KryptonSplitContainer8.Panel2.Controls.Add(Me.refstock)
         Me.KryptonSplitContainer8.Panel2.StateCommon.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer8.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
-        Me.KryptonSplitContainer8.Size = New System.Drawing.Size(1220, 475)
+        Me.KryptonSplitContainer8.Size = New System.Drawing.Size(1220, 657)
         Me.KryptonSplitContainer8.SplitterDistance = 170
         Me.KryptonSplitContainer8.StateCommon.Separator.Back.Color1 = System.Drawing.Color.White
         Me.KryptonSplitContainer8.StateCommon.Separator.Back.Color2 = System.Drawing.Color.White
@@ -3513,7 +3599,7 @@ Partial Class Form2
         Me.referenceDataGridView.ReadOnly = True
         Me.referenceDataGridView.RowHeadersWidth = 40
         Me.referenceDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.referenceDataGridView.Size = New System.Drawing.Size(1045, 442)
+        Me.referenceDataGridView.Size = New System.Drawing.Size(1045, 624)
         Me.referenceDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.referenceDataGridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.referenceDataGridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -3580,8 +3666,8 @@ Partial Class Form2
         Me.TabPage6.ImageIndex = 6
         Me.TabPage6.Location = New System.Drawing.Point(4, 25)
         Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage6.Size = New System.Drawing.Size(1226, 481)
+        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage6.Size = New System.Drawing.Size(1226, 663)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Report"
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -4362,7 +4448,7 @@ Partial Class Form2
         '
         Me.accountingheaderreportbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.accountingheaderreportbtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.accountingheaderreportbtn.Location = New System.Drawing.Point(748, 16)
+        Me.accountingheaderreportbtn.Location = New System.Drawing.Point(748, 44)
         Me.accountingheaderreportbtn.Name = "accountingheaderreportbtn"
         Me.accountingheaderreportbtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.accountingheaderreportbtn.Size = New System.Drawing.Size(186, 23)
@@ -4378,7 +4464,7 @@ Partial Class Form2
         '
         Me.accountingreportgbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.accountingreportgbtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.accountingreportgbtn.Location = New System.Drawing.Point(943, 16)
+        Me.accountingreportgbtn.Location = New System.Drawing.Point(943, 44)
         Me.accountingreportgbtn.Name = "accountingreportgbtn"
         Me.accountingreportgbtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.accountingreportgbtn.Size = New System.Drawing.Size(136, 23)
@@ -4394,7 +4480,7 @@ Partial Class Form2
         '
         Me.selectednetamount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.selectednetamount.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.selectednetamount.Location = New System.Drawing.Point(1089, 16)
+        Me.selectednetamount.Location = New System.Drawing.Point(1089, 44)
         Me.selectednetamount.Name = "selectednetamount"
         Me.selectednetamount.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.selectednetamount.Size = New System.Drawing.Size(136, 23)
@@ -4410,7 +4496,7 @@ Partial Class Form2
         '
         Me.ProgressBar2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ProgressBar2.Location = New System.Drawing.Point(363, 22)
+        Me.ProgressBar2.Location = New System.Drawing.Point(363, 50)
         Me.ProgressBar2.Name = "ProgressBar2"
         Me.ProgressBar2.Size = New System.Drawing.Size(379, 15)
         Me.ProgressBar2.TabIndex = 455
@@ -4420,7 +4506,7 @@ Partial Class Form2
         '
         Me.updatedatabtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.updatedatabtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.updatedatabtn.Location = New System.Drawing.Point(653, 49)
+        Me.updatedatabtn.Location = New System.Drawing.Point(653, 77)
         Me.updatedatabtn.Name = "updatedatabtn"
         Me.updatedatabtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.updatedatabtn.Size = New System.Drawing.Size(136, 23)
@@ -4436,7 +4522,7 @@ Partial Class Form2
         '
         Me.refreshdatabtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.refreshdatabtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.refreshdatabtn.Location = New System.Drawing.Point(798, 49)
+        Me.refreshdatabtn.Location = New System.Drawing.Point(798, 77)
         Me.refreshdatabtn.Name = "refreshdatabtn"
         Me.refreshdatabtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.refreshdatabtn.Size = New System.Drawing.Size(136, 23)
@@ -4452,7 +4538,7 @@ Partial Class Form2
         '
         Me.alltransactionsbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.alltransactionsbtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.alltransactionsbtn.Location = New System.Drawing.Point(943, 49)
+        Me.alltransactionsbtn.Location = New System.Drawing.Point(943, 77)
         Me.alltransactionsbtn.Name = "alltransactionsbtn"
         Me.alltransactionsbtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.alltransactionsbtn.Size = New System.Drawing.Size(136, 23)
@@ -4468,7 +4554,7 @@ Partial Class Form2
         '
         Me.notification.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.notification.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.notification.Location = New System.Drawing.Point(1088, 49)
+        Me.notification.Location = New System.Drawing.Point(1088, 77)
         Me.notification.Name = "notification"
         Me.notification.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.notification.Size = New System.Drawing.Size(136, 23)
@@ -4485,7 +4571,7 @@ Partial Class Form2
         '
         Me.allnetamountbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.allnetamountbtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.allnetamountbtn.Location = New System.Drawing.Point(508, 49)
+        Me.allnetamountbtn.Location = New System.Drawing.Point(508, 77)
         Me.allnetamountbtn.Name = "allnetamountbtn"
         Me.allnetamountbtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.allnetamountbtn.Size = New System.Drawing.Size(136, 23)
@@ -4501,7 +4587,7 @@ Partial Class Form2
         '
         Me.physicaldatebtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.physicaldatebtn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.physicaldatebtn.Location = New System.Drawing.Point(363, 49)
+        Me.physicaldatebtn.Location = New System.Drawing.Point(363, 77)
         Me.physicaldatebtn.Name = "physicaldatebtn"
         Me.physicaldatebtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.physicaldatebtn.Size = New System.Drawing.Size(136, 23)
@@ -4622,7 +4708,7 @@ Partial Class Form2
         '
         Me.KryptonSplitContainer1.Panel2.Controls.Add(Me.KryptonSplitContainer6)
         Me.KryptonSplitContainer1.Panel2.StateCommon.Color1 = System.Drawing.Color.White
-        Me.KryptonSplitContainer1.Size = New System.Drawing.Size(1234, 671)
+        Me.KryptonSplitContainer1.Size = New System.Drawing.Size(1234, 881)
         Me.KryptonSplitContainer1.SplitterDistance = 85
         Me.KryptonSplitContainer1.SplitterWidth = 0
         Me.KryptonSplitContainer1.TabIndex = 3
@@ -4722,7 +4808,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1234, 671)
+        Me.ClientSize = New System.Drawing.Size(1234, 881)
         Me.Controls.Add(Me.KryptonSplitContainer1)
         Me.MinimumSize = New System.Drawing.Size(1022, 601)
         Me.Name = "Form2"
@@ -5210,4 +5296,10 @@ Partial Class Form2
     Friend WithEvents btnCLMonitoring As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents btnAddCLM As ComponentFactory.Krypton.Toolkit.KryptonButton
     Friend WithEvents AccountabilityMonitorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KryptonLabel87 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents cboxLocationInput As ComboBox
+    Friend WithEvents KryptonLabel88 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents cboxLocationReceipt As ComboBox
+    Friend WithEvents KryptonLabel89 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents cboxLocationIssue As ComboBox
 End Class

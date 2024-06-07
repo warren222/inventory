@@ -747,13 +747,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.6875in</Height>
+    <Height>0.5in</Height>
     <Style />
   </Body>
   <Width>8.00001in</Width>
   <Page>
     <PageHeader>
-      <Height>1.05083in</Height>
+      <Height>0.9675in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -761,8 +761,8 @@
           <Source>Embedded</Source>
           <Value>kmdilogo</Value>
           <Sizing>FitProportional</Sizing>
-          <Height>0.5in</Height>
-          <Width>2.375in</Width>
+          <Height>0.76042in</Height>
+          <Width>3.51042in</Width>
           <Style>
             <Border>
               <Style>None</Style>

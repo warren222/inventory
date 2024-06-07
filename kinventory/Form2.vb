@@ -323,7 +323,7 @@ Public Class Form2
                       reference.Text, jo.Text,
                       account.Text,
                       controlno.Text,
-                               XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                               XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -353,7 +353,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -382,7 +382,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -409,7 +409,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -436,7 +436,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -463,7 +463,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -490,7 +490,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -517,7 +517,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -548,7 +548,7 @@ Public Class Form2
                    transqty.Text,
                    reference.Text, jo.Text,
                    account.Text,
-                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   controlno.Text, XYZ, XYZREF, remarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationInput.Text)
             updatestock(transstockno.Text, reference.Text, jo.Text)
             loadinputgridviews()
             'sql.loadstocks()
@@ -934,7 +934,7 @@ update reference_tb set
                        receiptqty.Text,
                       receiptreference.Text, receiptjo.Text,
                        account,
-                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unit, disc, rate, amount)
+                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unit, disc, rate, amount, cboxLocationReceipt.Text)
                 updatetransaction(receiptqty.Text, receipttransno.Text)
                 updatestock(receiptstockno.Text, receiptreference.Text, receiptjo.Text)
 
@@ -1007,7 +1007,7 @@ update reference_tb set
                        receiptqty.Text,
                       receiptreference.Text, receiptjo.Text,
                        account,
-                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unitTCT, disc, rate, amount)
+                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unitTCT, disc, rate, amount, cboxLocationReceipt.Text)
                 updatetransaction(receiptqty.Text, receipttransno.Text)
 
                 Dim bal = order - myreceipt
@@ -1177,7 +1177,7 @@ select
                    issueqty.Text,
                  issuereference.Text, issuejo.Text,
                    issueaccount.Text,
-                   issuecontrolno.Text, XYZ, xyzref, issueremarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text)
+                   issuecontrolno.Text, XYZ, xyzref, issueremarks.Text, ufactor.Text, unitprice.Text, disc.Text, xrate.Text, netamount.Text, cboxLocationIssue.Text)
 
             updatestock(issuestockno.Text, issuereference.Text, issuejo.Text)
 
@@ -1344,6 +1344,7 @@ select
                             a.JO,
                             a.ACCOUNT,
                             a.CONTROLNO,
+                            a.LOCATION,
                             A.XYZ,
                             a.EXCESS,
                             a.REMARKS,
@@ -1546,7 +1547,8 @@ select
             currentallocation.Visible = True
             KryptonLabel50.Visible = True
             remarks.Visible = True
-
+            cboxLocationInput.Visible = True
+            KryptonLabel87.Visible = True
         Else
             KryptonLabel17.Visible = False
             controlno.Visible = False
@@ -1560,6 +1562,13 @@ select
             KryptonLabel50.Visible = False
             remarks.Visible = False
             remarks.Text = ""
+            If transaction.Text = "Receipt" Then
+                cboxLocationInput.Visible = True
+                KryptonLabel87.Visible = True
+            Else
+                cboxLocationInput.Visible = False
+                KryptonLabel87.Visible = False
+            End If
         End If
         If transaction.Text = "Order" Or transaction.Text = "Receipt" Then
             unitprice.Visible = True
@@ -1595,6 +1604,7 @@ select
             currency.Text = 0
             'reference.Enabled = False
         End If
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -3842,5 +3852,56 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
 
     Private Sub AccountabilityMonitorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AccountabilityMonitorToolStripMenuItem.Click
         AccountabilityUpdate.ShowDialog()
+    End Sub
+
+    Private Sub cboxLocationInput_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocationInput.MouseDown
+        Dim I As Integer = cboxLocationInput.SelectedIndex
+        loadlocationcombo(cboxLocationInput, transstockno.Text)
+        If I > cboxLocationInput.Items.Count - 1 Then
+            cboxLocationInput.SelectedIndex = -1
+        Else
+            cboxLocationInput.SelectedIndex = I
+        End If
+    End Sub
+    Private Sub cboxLocationReceipt_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocationReceipt.MouseDown
+        Dim I As Integer = cboxLocationReceipt.SelectedIndex
+        loadlocationcombo(cboxLocationReceipt, receiptstockno.Text)
+        If I > cboxLocationReceipt.Items.Count - 1 Then
+            cboxLocationReceipt.SelectedIndex = -1
+        Else
+            cboxLocationReceipt.SelectedIndex = I
+        End If
+    End Sub
+    Private Sub cboxLocationIssue_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocationIssue.MouseDown
+        Dim I As Integer = cboxLocationIssue.SelectedIndex
+        loadlocationcombo(cboxLocationIssue, issuestockno.Text)
+        If I > cboxLocationIssue.Items.Count - 1 Then
+            cboxLocationIssue.SelectedIndex = -1
+        Else
+            cboxLocationIssue.SelectedIndex = I
+        End If
+    End Sub
+    Public Sub loadlocationcombo(ByVal obj As Object, ByVal stockno As String)
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            sqlcon.Open()
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.CommandText = "WarehouseReport_Stp"
+                sqlcmd.Parameters.AddWithValue("@Command", "Distinct_Location")
+                sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                Dim ds As New DataSet
+                ds.Clear()
+                Dim bs As New BindingSource
+                Using sqlda As SqlDataAdapter = New SqlDataAdapter
+                    sqlda.SelectCommand = sqlcmd
+                    sqlda.Fill(ds, "LOCATIONTB")
+                    bs.DataSource = ds
+                    bs.DataMember = "LOCATIONTB"
+                End Using
+                obj.DataSource = bs
+                obj.ValueMember = "Location"
+                obj.DisplayMember = "Location"
+            End Using
+        End Using
     End Sub
 End Class

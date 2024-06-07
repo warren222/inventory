@@ -946,6 +946,7 @@ select top (@rownum) a.TRANSNO,
                                                     a.JO,
                                                     a.ACCOUNT,
                                                     a.CONTROLNO,
+                                                    a.LOCATION,
                                                     A.XYZ,
                                                     A.EXCESS,
                                                     a.REMARKS,
@@ -1738,7 +1739,8 @@ on a.stockno = b.stockno"
                               ByVal XYZREF As String,
                               ByVal remarks As String, ByVal ufactor As String,
                               ByVal unitprice As String, ByVal disc As String,
-                              ByVal xrate As String, ByVal netamount As String)
+                              ByVal xrate As String, ByVal netamount As String,
+                              ByVal location As String)
         Try
             sqlcon.Open()
             Dim str As String
@@ -1818,24 +1820,25 @@ insert into trans_tb
             QTY,
             REFERENCE,JO,
             ACCOUNT,
-            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,INPUTTED) values (@id,'" & stockno & "'," &
+            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,location,INPUTTED) values (@id,'" & stockno & "'," &
          "'" & transtype & "'," &
          "'" & transdate & "'," &
          "'" & duedate & "'," &
          "'" & qty & "'," &
          "'" & reference & "'," &
-             "'" & jo & "'," &
+         "'" & jo & "'," &
          "'" & account & "'," &
          "'" & controlno & "'," &
-            "'" & xyz & "'," &
-              "'" & XYZREF & "'," &
+         "'" & xyz & "'," &
+         "'" & XYZREF & "'," &
          "'" & remarks & "'," &
-           "'" & newbal & "'," &
+         "'" & newbal & "'," &
              "'" & ufactor & "'," &
               "'" & unitprice & "'," &
                    "'" & disc & "'," &
                  "'" & xrate & "'," &
                     "'" & netamount & "'," &
+                      "'" & location & "'," &
             "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
             Else
                 str = "
@@ -1849,7 +1852,7 @@ insert into trans_tb
             QTY,
             REFERENCE,JO,
             ACCOUNT,
-            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,INPUTTED) values (@id,'" & stockno & "'," &
+            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,location,INPUTTED) values (@id,'" & stockno & "'," &
          "'" & transtype & "'," &
          "'" & transdate & "'," &
          "'" & duedate & "'," &
@@ -1866,7 +1869,8 @@ insert into trans_tb
               "'" & unitprice & "'," &
                     "'" & disc & "'," &
                  "'" & xrate & "'," &
-                    "'" & netamount & "'," &
+            "'" & netamount & "'," &
+            "'" & location & "'," &
             "'" & Form1.nickname.Text + " [" & Format(DateTime.Now, "dd/MM/yyyy") & "] " + "" & Format(DateTime.Now, "hh:mm tt") & "" & "')"
             End If
 
@@ -2333,25 +2337,7 @@ not (transtype = 'Allocation' or transtype = 'CancelAlloc' or transtype='Order' 
                 End If
             Next
 
-            Dim all As String
-            Dim ada As New SqlDataAdapter
-            Dim ads As New DataSet
-            ads.Clear()
-            Dim abs As New BindingSource
-            all = "
-                     select Reference,stockorder as StockOrder,allocation as Allocation
-                     ,totalreceipt as TotalReceipt,totalissue as TotalIssue,totalreturn as TotalReturn from reference_tb where stockno='" & stockno & "'"
-            sqlcmd = New SqlCommand(all, sqlcon)
-            ada.SelectCommand = sqlcmd
-            ada.Fill(ads, "reference_tb")
-            abs.DataSource = ads
-            abs.DataMember = "reference_tb"
-            Form4.KryptonDataGridView1.DataSource = abs
-            Form4.KryptonDataGridView1.Columns("StockOrder").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("Allocation").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalReceipt").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalIssue").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalReturn").DefaultCellStyle.Format = "N0"
+
 
             Dim str1 As String = "select distinct reference from trans_tb where stockno='" & stockno & "'"
             Dim ds1 As New DataSet
@@ -2541,25 +2527,7 @@ INPUTTED from trans_tb where stockno=@stn order by transdate desc"
                 End If
             Next
 
-            Dim all As String
-            Dim ada As New SqlDataAdapter
-            Dim ads As New DataSet
-            ads.Clear()
-            Dim abs As New BindingSource
-            all = "
-                     select Reference,stockorder as StockOrder,allocation as Allocation
-                     ,totalreceipt as TotalReceipt,totalissue as TotalIssue,totalreturn as TotalReturn from reference_tb where stockno='" & stockno & "'"
-            sqlcmd = New SqlCommand(all, sqlcon)
-            ada.SelectCommand = sqlcmd
-            ada.Fill(ads, "reference_tb")
-            abs.DataSource = ads
-            abs.DataMember = "reference_tb"
-            Form4.KryptonDataGridView1.DataSource = abs
-            Form4.KryptonDataGridView1.Columns("StockOrder").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("Allocation").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalReceipt").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalIssue").DefaultCellStyle.Format = "N0"
-            Form4.KryptonDataGridView1.Columns("TotalReturn").DefaultCellStyle.Format = "N0"
+
 
             Dim str1 As String = "select distinct reference from trans_tb where stockno='" & stockno & "'"
             Dim ds1 As New DataSet
@@ -2673,7 +2641,7 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             sqlcon.Close()
         End Try
     End Sub
-    Public Sub WarehouseReportStp(ByVal stockno As String,
+    Public Sub Form4_WarehouseReportStp(ByVal stockno As String,
                                   ByVal reference As String,
                                   ByVal transaction As String,
                                   ByVal location As String,
@@ -2711,7 +2679,7 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Public Sub ReportStp(ByVal stockno As String,
+    Public Sub Form4_ReportStp(ByVal stockno As String,
                                   ByVal reference As String,
                                   ByVal transaction As String,
                                   ByVal location As String,
@@ -2749,7 +2717,7 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Public Sub LoadTransactions(ByVal stockno As String,
+    Public Sub Form4_LoadTransactions(ByVal stockno As String,
                                   ByVal reference As String,
                                   ByVal transaction As String,
                                   ByVal location As String,
@@ -2825,6 +2793,129 @@ FORMAT(@finalreceipt,'N0'),FORMAT(@return,'N0'),format(@balqty,'N0')"
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+    Public Sub Form4_Distinct_Reference(ByVal stockno As String,
+                                  ByVal reference As String,
+                                  ByVal transaction As String,
+                                  ByVal location As String,
+                                  ByVal datatype As String,
+                                  ByVal dateexpression As String,
+                                  ByVal sdate As String,
+                                  ByVal edate As String,
+                                  ByVal order As String)
+        Dim ds As New DataSet
+        Dim bs As New BindingSource
+        Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcon.Open()
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.CommandText = "WarehouseReport_Stp"
+                sqlcmd.Parameters.AddWithValue("@Command", "Distinct_Reference")
+                sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                sqlcmd.Parameters.AddWithValue("@Reference", reference)
+                sqlcmd.Parameters.AddWithValue("@Transaction", transaction)
+                sqlcmd.Parameters.AddWithValue("@Location", location)
+                sqlcmd.Parameters.AddWithValue("@DateType", datatype)
+                sqlcmd.Parameters.AddWithValue("@DateExpression", dateexpression)
+                sqlcmd.Parameters.AddWithValue("@Sdate", sdate)
+                sqlcmd.Parameters.AddWithValue("@Edate", edate)
+                sqlcmd.Parameters.AddWithValue("@Order", order)
+                Using da As SqlDataAdapter = New SqlDataAdapter
+                    da.SelectCommand = sqlcmd
+                    da.Fill(ds, "trans_tb")
+                    bs.DataSource = ds
+                    bs.DataMember = "trans_tb"
+                    Form4.referencegridview.DataSource = bs
+                End Using
+            End Using
+        End Using
+    End Sub
+    Public Sub Form4_Summary(ByVal stockno As String,
+                                  ByVal reference As String,
+                                  ByVal transaction As String,
+                                  ByVal location As String,
+                                  ByVal datatype As String,
+                                  ByVal dateexpression As String,
+                                  ByVal sdate As String,
+                                  ByVal edate As String,
+                                  ByVal order As String)
+        Using sqlcon As SqlConnection = New SqlConnection(sqlconstr)
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                sqlcon.Open()
+                sqlcmd.CommandType = CommandType.StoredProcedure
+                sqlcmd.CommandText = "WarehouseReport_Stp"
+                sqlcmd.Parameters.AddWithValue("@Command", "Summary")
+                sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                sqlcmd.Parameters.AddWithValue("@Reference", reference)
+                sqlcmd.Parameters.AddWithValue("@Transaction", transaction)
+                sqlcmd.Parameters.AddWithValue("@Location", location)
+                sqlcmd.Parameters.AddWithValue("@DateType", datatype)
+                sqlcmd.Parameters.AddWithValue("@DateExpression", dateexpression)
+                sqlcmd.Parameters.AddWithValue("@Sdate", sdate)
+                sqlcmd.Parameters.AddWithValue("@Edate", edate)
+                sqlcmd.Parameters.AddWithValue("@Order", order)
+                Using read As SqlDataReader = sqlcmd.ExecuteReader
+                    While read.Read
+                        Form4.finalphysical.Text = read(0).ToString
+                        Form4.finalallocation.Text = read(1).ToString
+                        Form4.finalfree.Text = read(2).ToString
+                        Form4.finalorder.Text = read(3).ToString
+                        Form4.finalissue.Text = read(4).ToString
+                        Form4.finalreceipt.Text = read(5).ToString
+                        Form4.finalreturn.Text = read(6).ToString
+                        Form4.balalloc.Text = read(7).ToString
+                        If transaction = "" Then
+
+                        ElseIf transaction = "Allocation" Then
+                            Form4.finalphysical.Text = 0
+                            Form4.finalallocation.Text = read(1).ToString
+                            Form4.finalfree.Text = 0
+                            Form4.finalorder.Text = 0
+                            Form4.finalissue.Text = 0
+                            Form4.finalreceipt.Text = 0
+                            Form4.finalreturn.Text = 0
+                            Form4.balalloc.Text = read(7).ToString
+                        ElseIf transaction = "Order" Then
+                            Form4.finalphysical.Text = 0
+                            Form4.finalallocation.Text = 0
+                            Form4.finalfree.Text = 0
+                            Form4.finalorder.Text = read(3).ToString
+                            Form4.finalissue.Text = 0
+                            Form4.finalreceipt.Text = 0
+                            Form4.finalreturn.Text = 0
+                            Form4.balalloc.Text = 0
+                        ElseIf transaction = "Issue" Then
+                            Form4.finalphysical.Text = 0
+                            Form4.finalallocation.Text = 0
+                            Form4.finalfree.Text = 0
+                            Form4.finalorder.Text = 0
+                            Form4.finalissue.Text = read(4).ToString
+                            Form4.finalreceipt.Text = 0
+                            Form4.finalreturn.Text = 0
+                            Form4.balalloc.Text = 0
+                        ElseIf transaction = "Receipt" Then
+                            Form4.finalphysical.Text = 0
+                            Form4.finalallocation.Text = 0
+                            Form4.finalfree.Text = 0
+                            Form4.finalorder.Text = 0
+                            Form4.finalissue.Text = 0
+                            Form4.finalreceipt.Text = read(5).ToString
+                            Form4.finalreturn.Text = 0
+                            Form4.balalloc.Text = 0
+                        ElseIf transaction = "Return" Then
+                            Form4.finalphysical.Text = 0
+                            Form4.finalallocation.Text = 0
+                            Form4.finalfree.Text = 0
+                            Form4.finalorder.Text = 0
+                            Form4.finalissue.Text = 0
+                            Form4.finalreceipt.Text = 0
+                            Form4.finalreturn.Text = read(6).ToString
+                            Form4.balalloc.Text = 0
+                        End If
+                    End While
+                End Using
+            End Using
+        End Using
     End Sub
     Public Sub searchstockstransaction(ByVal search As String, ByVal condition As String, ByVal stockno As String, ByVal transaction As String, ByVal reference As String, ByVal datetype As String, ByVal order As String)
         Try
@@ -3044,35 +3135,7 @@ INPUTTED
             Form4.ProgressBar1.Maximum = Form4.referencegridview.RowCount
 
 
-            Dim ads As New DataSet
-            ads.Clear()
-            Dim abs As New BindingSource
-            Dim ada As New SqlDataAdapter
 
-            Dim refere As String
-            Form4.KryptonDataGridView1.DataSource = Nothing
-            Dim all As String
-            If transaction = "" Then
-                all = "
-                     select Reference,stockorder as StockOrder,allocation as Allocation
-                     ,totalreceipt as TotalReceipt,totalissue as TotalIssue,totalreturn as TotalReturn from reference_tb where stockno='" & stockno & "'"
-                sqlcmd = New SqlCommand(all, sqlcon)
-                ada.SelectCommand = sqlcmd
-                ada.Fill(ads, "reference_tb")
-            Else
-
-            End If
-
-            If transaction = "" Then
-                abs.DataSource = ads
-                abs.DataMember = "reference_tb"
-                Form4.KryptonDataGridView1.DataSource = abs
-                Form4.KryptonDataGridView1.Columns("StockOrder").DefaultCellStyle.Format = "N0"
-                Form4.KryptonDataGridView1.Columns("Allocation").DefaultCellStyle.Format = "N0"
-                Form4.KryptonDataGridView1.Columns("TotalReceipt").DefaultCellStyle.Format = "N0"
-                Form4.KryptonDataGridView1.Columns("TotalIssue").DefaultCellStyle.Format = "N0"
-                Form4.KryptonDataGridView1.Columns("TotalReturn").DefaultCellStyle.Format = "N0"
-            End If
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -3310,6 +3373,7 @@ a.REFERENCE,
 A.JO,
 a.ACCOUNT,
 a.CONTROLNO,
+a.LOCATION,
 a.xyzref,
 a.balqty,
 a.adjustmentqty,
@@ -3347,6 +3411,7 @@ on a.stockno = b.stockno where a.transno='" & transno & "'"
                 Form5.controlno.DataBindings.Clear()
                 Form5.xyzref.DataBindings.Clear()
                 Form5.ADJUSTMENTREMARKS.DataBindings.Clear()
+                Form5.cboxLocation.DataBindings.Clear()
                 Form5.stockno.DataBindings.Add("text", bs, "stockno")
                 Form5.costhead.DataBindings.Add("text", bs, "COSTHEAD")
                 Form5.typecolor.DataBindings.Add("text", bs, "TYPECOLOR")
@@ -3364,6 +3429,7 @@ on a.stockno = b.stockno where a.transno='" & transno & "'"
                 Form5.controlno.DataBindings.Add("text", bs, "CONTROLNO")
                 Form5.xyzref.DataBindings.Add("text", bs, "xyzref")
                 Form5.ADJUSTMENTREMARKS.DataBindings.Add("text", bs, "adjustmentqty")
+                Form5.cboxLocation.DataBindings.Add("text", bs, "location")
 
                 Form5.newcosthead.DataBindings.Clear()
                 Form5.newtypecolor.DataBindings.Clear()
