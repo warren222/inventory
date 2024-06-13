@@ -23,8 +23,8 @@ Partial Class Form4
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.min = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel14 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel13 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -924,7 +924,7 @@ Partial Class Form4
         Me.TabPage1.Controls.Add(Me.Panel2)
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
         Me.TabPage1.Size = New System.Drawing.Size(868, 663)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Header"
@@ -944,8 +944,8 @@ Partial Class Form4
         Me.TabPage2.Controls.Add(Me.KryptonSplitContainer1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(868, 663)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage2.Size = New System.Drawing.Size(869, 663)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transactions"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -966,8 +966,8 @@ Partial Class Form4
         '
         Me.KryptonSplitContainer1.Panel2.Controls.Add(Me.KryptonGroup4)
         Me.KryptonSplitContainer1.Panel2.StateCommon.Color1 = System.Drawing.Color.White
-        Me.KryptonSplitContainer1.Size = New System.Drawing.Size(862, 657)
-        Me.KryptonSplitContainer1.SplitterDistance = 683
+        Me.KryptonSplitContainer1.Size = New System.Drawing.Size(863, 657)
+        Me.KryptonSplitContainer1.SplitterDistance = 684
         Me.KryptonSplitContainer1.TabIndex = 0
         '
         'KryptonSplitContainer2
@@ -1006,7 +1006,7 @@ Partial Class Form4
         Me.KryptonSplitContainer2.Panel2.Controls.Add(Me.KryptonLabel26)
         Me.KryptonSplitContainer2.Panel2.Controls.Add(Me.KryptonLabel24)
         Me.KryptonSplitContainer2.Panel2.StateCommon.Color1 = System.Drawing.Color.White
-        Me.KryptonSplitContainer2.Size = New System.Drawing.Size(683, 657)
+        Me.KryptonSplitContainer2.Size = New System.Drawing.Size(684, 657)
         Me.KryptonSplitContainer2.SplitterDistance = 555
         Me.KryptonSplitContainer2.TabIndex = 0
         '
@@ -1015,8 +1015,8 @@ Partial Class Form4
         Me.mytransgridview.AllowUserToAddRows = False
         Me.mytransgridview.AllowUserToDeleteRows = False
         Me.mytransgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.mytransgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.mytransgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.mytransgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.mytransgridview.ColumnHeadersHeight = 20
         Me.mytransgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1027,7 +1027,7 @@ Partial Class Form4
         Me.mytransgridview.ReadOnly = True
         Me.mytransgridview.RowHeadersWidth = 25
         Me.mytransgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.mytransgridview.Size = New System.Drawing.Size(683, 555)
+        Me.mytransgridview.Size = New System.Drawing.Size(684, 555)
         Me.mytransgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.mytransgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.mytransgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -1104,8 +1104,8 @@ Partial Class Form4
         Me.referencegridview.AllowUserToAddRows = False
         Me.referencegridview.AllowUserToDeleteRows = False
         Me.referencegridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.referencegridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.referencegridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.referencegridview.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.referencegridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -1117,7 +1117,7 @@ Partial Class Form4
         Me.referencegridview.ReadOnly = True
         Me.referencegridview.RowHeadersWidth = 25
         Me.referencegridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.referencegridview.Size = New System.Drawing.Size(192, 141)
+        Me.referencegridview.Size = New System.Drawing.Size(193, 141)
         Me.referencegridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.referencegridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.referencegridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -1567,6 +1567,7 @@ Partial Class Form4
         'transactionMenuStrip1
         '
         Me.transactionMenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.transactionMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.transactionMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateAmountToolStripMenuItem, Me.UpdateDeliveryStatusToolStripMenuItem})
         Me.transactionMenuStrip1.Name = "transactionMenuStrip1"
         Me.transactionMenuStrip1.Size = New System.Drawing.Size(193, 48)

@@ -173,10 +173,10 @@ declare @issueallocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) 
                     sqlcon.Open()
 
                     Dim findmax As String = "select max(transno) from trans_tb where 
-stockno='" & stockno.Text & "' and 
-reference = '" & reference.Text & "' and
-JO = '" & JO.Text & "' AND
-transtype = 'Issue'"
+                                                                        stockno='" & stockno.Text & "' and 
+                                                                        reference = '" & reference.Text & "' and
+                                                                        JO = '" & JO.Text & "' AND
+                                                                        transtype = 'Issue'"
                     sqlcmd = New SqlCommand(findmax, sqlcon)
                     Dim read As SqlDataReader = sqlcmd.ExecuteReader
                     While read.Read

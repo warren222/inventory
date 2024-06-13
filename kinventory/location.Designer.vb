@@ -23,8 +23,8 @@ Partial Class locationform
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.KryptonLabel5 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.id = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel1 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -56,9 +56,12 @@ Partial Class locationform
         Me.KryptonButton6 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.KryptonButton7 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
-        Me.minusr = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.addr = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
+        Me.minusr = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.CboxHideZero = New System.Windows.Forms.ComboBox()
         Me.updatelocation = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel11 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.REFERENCE = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
@@ -81,13 +84,14 @@ Partial Class locationform
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         CType(Me.KryptonDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'KryptonLabel5
         '
-        Me.KryptonLabel5.Location = New System.Drawing.Point(39, 241)
+        Me.KryptonLabel5.Location = New System.Drawing.Point(39, 232)
         Me.KryptonLabel5.Name = "KryptonLabel5"
         Me.KryptonLabel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel5.Size = New System.Drawing.Size(26, 24)
@@ -99,7 +103,7 @@ Partial Class locationform
         'id
         '
         Me.id.Enabled = False
-        Me.id.Location = New System.Drawing.Point(131, 241)
+        Me.id.Location = New System.Drawing.Point(131, 232)
         Me.id.Multiline = True
         Me.id.Name = "id"
         Me.id.Size = New System.Drawing.Size(150, 29)
@@ -115,7 +119,7 @@ Partial Class locationform
         '
         'KryptonLabel1
         '
-        Me.KryptonLabel1.Location = New System.Drawing.Point(39, 297)
+        Me.KryptonLabel1.Location = New System.Drawing.Point(39, 264)
         Me.KryptonLabel1.Name = "KryptonLabel1"
         Me.KryptonLabel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel1.Size = New System.Drawing.Size(72, 24)
@@ -127,7 +131,7 @@ Partial Class locationform
         'stockno
         '
         Me.stockno.Enabled = False
-        Me.stockno.Location = New System.Drawing.Point(131, 297)
+        Me.stockno.Location = New System.Drawing.Point(131, 264)
         Me.stockno.Multiline = True
         Me.stockno.Name = "stockno"
         Me.stockno.Size = New System.Drawing.Size(150, 29)
@@ -179,9 +183,9 @@ Partial Class locationform
         Me.locationgridview.AllowUserToOrderColumns = True
         Me.locationgridview.AllowUserToResizeColumns = False
         Me.locationgridview.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.locationgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.locationgridview.ColumnHeadersHeight = 30
         Me.locationgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -194,7 +198,7 @@ Partial Class locationform
         Me.locationgridview.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
         Me.locationgridview.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White
         Me.locationgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.locationgridview.Size = New System.Drawing.Size(308, 244)
+        Me.locationgridview.Size = New System.Drawing.Size(308, 211)
         Me.locationgridview.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
         Me.locationgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.locationgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -623,24 +627,6 @@ Partial Class locationform
         Me.KryptonButton7.TabIndex = 478
         Me.KryptonButton7.Values.Text = "Summary"
         '
-        'minusr
-        '
-        Me.minusr.Enabled = False
-        Me.minusr.Location = New System.Drawing.Point(124, 307)
-        Me.minusr.Multiline = True
-        Me.minusr.Name = "minusr"
-        Me.minusr.Size = New System.Drawing.Size(105, 29)
-        Me.minusr.StateCommon.Back.Color1 = System.Drawing.Color.White
-        Me.minusr.StateCommon.Border.DrawBorders = CType((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
-        Me.minusr.StateCommon.Border.Rounding = 5
-        Me.minusr.StateCommon.Border.Width = 2
-        Me.minusr.StateCommon.Content.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.minusr.StateDisabled.Back.Color1 = System.Drawing.Color.White
-        Me.minusr.StateDisabled.Content.Color1 = System.Drawing.Color.Black
-        Me.minusr.TabIndex = 479
-        Me.minusr.Text = "0"
-        Me.minusr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'addr
         '
         Me.addr.Enabled = False
@@ -659,9 +645,28 @@ Partial Class locationform
         Me.addr.Text = "0"
         Me.addr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'minusr
+        '
+        Me.minusr.Enabled = False
+        Me.minusr.Location = New System.Drawing.Point(124, 307)
+        Me.minusr.Multiline = True
+        Me.minusr.Name = "minusr"
+        Me.minusr.Size = New System.Drawing.Size(105, 29)
+        Me.minusr.StateCommon.Back.Color1 = System.Drawing.Color.White
+        Me.minusr.StateCommon.Border.DrawBorders = CType((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right), ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)
+        Me.minusr.StateCommon.Border.Rounding = 5
+        Me.minusr.StateCommon.Border.Width = 2
+        Me.minusr.StateCommon.Content.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.minusr.StateDisabled.Back.Color1 = System.Drawing.Color.White
+        Me.minusr.StateDisabled.Content.Color1 = System.Drawing.Color.Black
+        Me.minusr.TabIndex = 479
+        Me.minusr.Text = "0"
+        Me.minusr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
+        Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.locationgridview)
         Me.Panel4.Controls.Add(Me.updatelocation)
         Me.Panel4.Controls.Add(Me.KryptonLabel11)
@@ -683,10 +688,40 @@ Partial Class locationform
         Me.Panel4.Size = New System.Drawing.Size(592, 459)
         Me.Panel4.TabIndex = 480
         '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(61, Byte), Integer))
+        Me.Panel5.Controls.Add(Me.Button2)
+        Me.Panel5.Controls.Add(Me.CboxHideZero)
+        Me.Panel5.Location = New System.Drawing.Point(0, 420)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(348, 39)
+        Me.Panel5.TabIndex = 488
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(116, 8)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(41, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "set"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'CboxHideZero
+        '
+        Me.CboxHideZero.BackColor = System.Drawing.Color.White
+        Me.CboxHideZero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboxHideZero.FormattingEnabled = True
+        Me.CboxHideZero.Items.AddRange(New Object() {"Hide", "Show"})
+        Me.CboxHideZero.Location = New System.Drawing.Point(39, 8)
+        Me.CboxHideZero.Name = "CboxHideZero"
+        Me.CboxHideZero.Size = New System.Drawing.Size(71, 21)
+        Me.CboxHideZero.TabIndex = 0
+        '
         'updatelocation
         '
         Me.updatelocation.Enabled = False
-        Me.updatelocation.Location = New System.Drawing.Point(131, 409)
+        Me.updatelocation.Location = New System.Drawing.Point(131, 360)
         Me.updatelocation.Multiline = True
         Me.updatelocation.Name = "updatelocation"
         Me.updatelocation.Size = New System.Drawing.Size(150, 29)
@@ -702,7 +737,7 @@ Partial Class locationform
         '
         'KryptonLabel11
         '
-        Me.KryptonLabel11.Location = New System.Drawing.Point(35, 374)
+        Me.KryptonLabel11.Location = New System.Drawing.Point(35, 328)
         Me.KryptonLabel11.Name = "KryptonLabel11"
         Me.KryptonLabel11.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel11.Size = New System.Drawing.Size(88, 24)
@@ -714,7 +749,7 @@ Partial Class locationform
         'REFERENCE
         '
         Me.REFERENCE.Enabled = False
-        Me.REFERENCE.Location = New System.Drawing.Point(131, 374)
+        Me.REFERENCE.Location = New System.Drawing.Point(131, 328)
         Me.REFERENCE.Multiline = True
         Me.REFERENCE.Name = "REFERENCE"
         Me.REFERENCE.Size = New System.Drawing.Size(150, 29)
@@ -730,7 +765,7 @@ Partial Class locationform
         '
         'KryptonLabel3
         '
-        Me.KryptonLabel3.Location = New System.Drawing.Point(35, 332)
+        Me.KryptonLabel3.Location = New System.Drawing.Point(35, 296)
         Me.KryptonLabel3.Name = "KryptonLabel3"
         Me.KryptonLabel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel3.Size = New System.Drawing.Size(90, 24)
@@ -746,9 +781,9 @@ Partial Class locationform
         Me.KryptonDataGridView1.AllowUserToOrderColumns = True
         Me.KryptonDataGridView1.AllowUserToResizeColumns = False
         Me.KryptonDataGridView1.AllowUserToResizeRows = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        Me.KryptonDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        Me.KryptonDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.KryptonDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.KryptonDataGridView1.ColumnHeadersHeight = 30
         Me.KryptonDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
@@ -791,7 +826,7 @@ Partial Class locationform
         'TRANSTYPE
         '
         Me.TRANSTYPE.Enabled = False
-        Me.TRANSTYPE.Location = New System.Drawing.Point(131, 332)
+        Me.TRANSTYPE.Location = New System.Drawing.Point(131, 296)
         Me.TRANSTYPE.Multiline = True
         Me.TRANSTYPE.Name = "TRANSTYPE"
         Me.TRANSTYPE.Size = New System.Drawing.Size(150, 29)
@@ -862,6 +897,7 @@ Partial Class locationform
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
         CType(Me.KryptonDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -913,4 +949,7 @@ Partial Class locationform
     Friend WithEvents updatelocation As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents minusr As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Friend WithEvents addr As ComponentFactory.Krypton.Toolkit.KryptonTextBox
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents CboxHideZero As ComboBox
 End Class

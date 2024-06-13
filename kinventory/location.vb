@@ -14,6 +14,7 @@ Public Class locationform
         l1.add(locationgridview, "Top", 66)
         l1.run()
         locationgridview.Size = New Size(308, 380)
+        CboxHideZero.SelectedIndex = 0
         LOADLOCATIONTB()
 
     End Sub
@@ -23,15 +24,17 @@ Public Class locationform
             ds.Clear()
             Dim bs As New BindingSource
             Dim str As String = "
-select 
+declare @Visibility as varchar(100) = '" & CboxHideZero.Text & "'
 
-LOCATION,sum(qty) AS QTY
-
-from LOCATIONTB group by location 
-
+select * from(
+select LOCATION,isnull(sum(isnull(qty,0)),0) AS QTY from LOCATIONTB group by location 
 union all
-
-select 'Total',sum(qty) from locationtb"
+select 'Total',isnull(sum(isnull(qty,0)),0) from locationtb) as tb
+where 
+((@Visibility = 'Hide' and QTY > 0 and not [LOCATION]='Total')or(@Visibility = 'Hide' and [LOCATION]='Total'))
+or
+(@Visibility = 'Show' and QTY = QTY)
+"
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             DA.SelectCommand = sqlcmd
             DA.Fill(ds, "locationtb")
@@ -54,9 +57,18 @@ select 'Total',sum(qty) from locationtb"
             Dim bs As New BindingSource
             ds.Clear()
             Dim str As String = "
-select * from locationtb where stockno = '" & stockno.Text & "'
+declare @Visibility as varchar(100) = '" & CboxHideZero.Text & "'
+
+select * from (
+select ID,STOCKNO,LOCATION,QTY from locationtb where stockno = '" & stockno.Text & "'
 union all
-select '','','Total',sum(qty) from locationtb where stockno = '" & stockno.Text & "'
+select '','','Total',isnull(sum(isnull(qty,0)),0) from locationtb where stockno = '" & stockno.Text & "'
+) as tb
+where 
+
+((@Visibility = 'Hide' and QTY > 0 and not [LOCATION]='Total')or(@Visibility = 'Hide' and [LOCATION]='Total'))
+or
+(@Visibility = 'Show' and QTY = QTY)
 "
             sqlcmd = New SqlCommand(str, sql.sqlcon)
             DA.SelectCommand = sqlcmd
@@ -535,7 +547,8 @@ values
         End If
     End Sub
 
-    Private Sub addr_TextChanged(sender As Object, e As EventArgs) Handles addr.TextChanged
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        loadsummary()
+        loadsetlocation()
     End Sub
 End Class
