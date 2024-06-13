@@ -144,6 +144,9 @@ declare @issueallocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) 
             If KryptonCheckBox3.Checked = True Then
                 chagexrate.changedisc(cuttinglist.transno.Text, discount.Text)
             End If
+            If KryptonCheckBox6.Checked = True Then
+                UpdateLocation(cuttinglist.transno.Text, cboxLocation.Text)
+            End If
 
             If Form1.accounttype.Text = "Allocation" Then
                 If transtype.Text = "Allocation" Then
@@ -159,6 +162,19 @@ declare @issueallocation as decimal(10,2)=(select  isnull(sum(isnull(qty,0)),0) 
         End If
 
     End Sub
+    Private Sub UpdateLocation(ByVal transno As String, ByVal location As String)
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            Dim str As String = "update trans_tb set location = @location where transno = @transno"
+            Using sqlcmd As SqlCommand = New SqlCommand(str, sqlcon)
+                sqlcon.Open()
+                sqlcmd.Parameters.AddWithValue("@location", location)
+                sqlcmd.Parameters.AddWithValue("@transno", transno)
+                sqlcmd.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
+
     Public Sub one()
         Dim x As Double
         If balanceqty.Text = "" Then
