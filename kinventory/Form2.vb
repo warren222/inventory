@@ -3904,4 +3904,8 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
             End Using
         End Using
     End Sub
+
+    Private Sub UpdateLocationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateLocationToolStripMenuItem.Click
+        UpdateLocation.ShowDialog()
+    End Sub
 End Class

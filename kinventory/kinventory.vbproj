@@ -585,6 +585,12 @@
     <Compile Include="transfer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UpdateLocation.Designer.vb">
+      <DependentUpon>UpdateLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateLocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="updatereferenceFRM.Designer.vb">
       <DependentUpon>updatereferenceFRM.vb</DependentUpon>
     </Compile>
@@ -823,6 +829,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="transfer.resx">
       <DependentUpon>transfer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateLocation.resx">
+      <DependentUpon>UpdateLocation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="updatereferenceFRM.resx">
       <DependentUpon>updatereferenceFRM.vb</DependentUpon>

@@ -22,7 +22,7 @@ Partial Class HISTORY
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.transactiongridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.stockno = New System.Windows.Forms.TextBox()
         Me.location = New System.Windows.Forms.TextBox()
@@ -47,10 +47,10 @@ Partial Class HISTORY
         Me.transactiongridview.AllowUserToOrderColumns = True
         Me.transactiongridview.AllowUserToResizeColumns = False
         Me.transactiongridview.AllowUserToResizeRows = False
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        Me.transactiongridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
-        Me.transactiongridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        Me.transactiongridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.transactiongridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.transactiongridview.ColumnHeadersHeight = 30
         Me.transactiongridview.Cursor = System.Windows.Forms.Cursors.Hand
         Me.transactiongridview.Location = New System.Drawing.Point(12, 44)

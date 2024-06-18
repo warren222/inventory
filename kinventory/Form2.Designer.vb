@@ -24,9 +24,9 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -110,9 +110,9 @@ Partial Class Form2
         Me.controlno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonGroup2 = New ComponentFactory.Krypton.Toolkit.KryptonGroup()
         Me.KryptonLabel87 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.cboxLocationInput = New System.Windows.Forms.ComboBox()
         Me.transarticleno = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.currency = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
+        Me.cboxLocationInput = New System.Windows.Forms.ComboBox()
         Me.KryptonLabel68 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.disc = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel67 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -371,6 +371,7 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.UpdateLocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -514,9 +515,9 @@ Partial Class Form2
         '
         Me.transactionmenustrip.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.transactionmenustrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.CopyTransToolStripMenuItem, Me.ChangeColorToolStripMenuItem, Me.ClearJOToolStripMenuItem})
+        Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.UpdateLocationToolStripMenuItem, Me.CopyTransToolStripMenuItem, Me.ChangeColorToolStripMenuItem, Me.ClearJOToolStripMenuItem})
         Me.transactionmenustrip.Name = "transactionmenustrip"
-        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 246)
+        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 290)
         '
         'TransDateToolStripMenuItem
         '
@@ -679,7 +680,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 512)
-        Me.KryptonSplitContainer3.SplitterDistance = 849
+        Me.KryptonSplitContainer3.SplitterDistance = 844
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -688,8 +689,8 @@ Partial Class Form2
         Me.stocksgridview.AllowUserToAddRows = False
         Me.stocksgridview.AllowUserToDeleteRows = False
         Me.stocksgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
         Me.stocksgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.stocksgridview.ColumnHeadersHeight = 30
         Me.stocksgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -700,7 +701,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(849, 466)
+        Me.stocksgridview.Size = New System.Drawing.Size(844, 466)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -728,7 +729,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(849, 46)
+        Me.Panel2.Size = New System.Drawing.Size(844, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -1314,8 +1315,8 @@ Partial Class Form2
         Me.inputGridView.AllowUserToAddRows = False
         Me.inputGridView.AllowUserToDeleteRows = False
         Me.inputGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle24
         Me.inputGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.inputGridView.ColumnHeadersHeight = 20
         Me.inputGridView.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1373,8 +1374,8 @@ Partial Class Form2
         Me.inputDataGridView1.AllowUserToAddRows = False
         Me.inputDataGridView1.AllowUserToDeleteRows = False
         Me.inputDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
         Me.inputDataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1536,21 +1537,6 @@ Partial Class Form2
         Me.KryptonLabel87.Values.Text = "Location"
         Me.KryptonLabel87.Visible = False
         '
-        'cboxLocationInput
-        '
-        Me.cboxLocationInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboxLocationInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboxLocationInput.DropDownHeight = 206
-        Me.cboxLocationInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboxLocationInput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboxLocationInput.FormattingEnabled = True
-        Me.cboxLocationInput.IntegralHeight = False
-        Me.cboxLocationInput.Location = New System.Drawing.Point(85, 228)
-        Me.cboxLocationInput.Name = "cboxLocationInput"
-        Me.cboxLocationInput.Size = New System.Drawing.Size(139, 23)
-        Me.cboxLocationInput.TabIndex = 56
-        Me.cboxLocationInput.Visible = False
-        '
         'transarticleno
         '
         Me.transarticleno.Enabled = False
@@ -1571,6 +1557,21 @@ Partial Class Form2
         Me.currency.TabIndex = 54
         Me.currency.Text = "0"
         Me.currency.Visible = False
+        '
+        'cboxLocationInput
+        '
+        Me.cboxLocationInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboxLocationInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxLocationInput.DropDownHeight = 206
+        Me.cboxLocationInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxLocationInput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxLocationInput.FormattingEnabled = True
+        Me.cboxLocationInput.IntegralHeight = False
+        Me.cboxLocationInput.Location = New System.Drawing.Point(85, 228)
+        Me.cboxLocationInput.Name = "cboxLocationInput"
+        Me.cboxLocationInput.Size = New System.Drawing.Size(139, 23)
+        Me.cboxLocationInput.TabIndex = 56
+        Me.cboxLocationInput.Visible = False
         '
         'KryptonLabel68
         '
@@ -4804,6 +4805,12 @@ Partial Class Form2
         Me.AccountabilityMonitorToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.AccountabilityMonitorToolStripMenuItem.Text = "Accountability monitor"
         '
+        'UpdateLocationToolStripMenuItem
+        '
+        Me.UpdateLocationToolStripMenuItem.Name = "UpdateLocationToolStripMenuItem"
+        Me.UpdateLocationToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.UpdateLocationToolStripMenuItem.Text = "Update Location"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -5302,4 +5309,5 @@ Partial Class Form2
     Friend WithEvents cboxLocationReceipt As ComboBox
     Friend WithEvents KryptonLabel89 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents cboxLocationIssue As ComboBox
+    Friend WithEvents UpdateLocationToolStripMenuItem As ToolStripMenuItem
 End Class
