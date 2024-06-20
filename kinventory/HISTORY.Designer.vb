@@ -22,7 +22,7 @@ Partial Class HISTORY
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.transactiongridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.stockno = New System.Windows.Forms.TextBox()
         Me.location = New System.Windows.Forms.TextBox()
@@ -47,9 +47,9 @@ Partial Class HISTORY
         Me.transactiongridview.AllowUserToOrderColumns = True
         Me.transactiongridview.AllowUserToResizeColumns = False
         Me.transactiongridview.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        Me.transactiongridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(19, Byte), Integer), CType(CType(36, Byte), Integer))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        Me.transactiongridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.transactiongridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.transactiongridview.ColumnHeadersHeight = 30
         Me.transactiongridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -119,8 +119,8 @@ Partial Class HISTORY
         '
         'KryptonGroup9.Panel
         '
-        Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonPanel1)
         Me.KryptonGroup9.Panel.Controls.Add(Me.transactiongridview)
+        Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonPanel1)
         Me.KryptonGroup9.Panel.Controls.Add(Me.KryptonButton1)
         Me.KryptonGroup9.Panel.Controls.Add(Me.stockno)
         Me.KryptonGroup9.Panel.Controls.Add(Me.location)

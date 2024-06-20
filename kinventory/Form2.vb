@@ -233,9 +233,9 @@ Public Class Form2
                 locationform.addr.Visible = True
                 locationform.minusr.Visible = False
                 locationform.balance.Text = transqty.Text
-                locationform.TRANSTYPE.Text = transaction.Text
-                locationform.stockno.Text = transstockno.Text
-                locationform.REFERENCE.Text = reference.Text
+                locationform.transtype = transaction.Text
+                locationform.stockno = transstockno.Text
+                locationform.reference = reference.Text
                 locationform.ShowDialog()
             ElseIf transaction.Text = "-Adjustment" Then
                 minadjustmentprocess()
@@ -247,9 +247,9 @@ Public Class Form2
                 locationform.addr.Visible = False
                 locationform.minusr.Visible = True
                 locationform.balance.Text = transqty.Text
-                locationform.TRANSTYPE.Text = transaction.Text
-                locationform.stockno.Text = transstockno.Text
-                locationform.REFERENCE.Text = reference.Text
+                locationform.transtype = transaction.Text
+                locationform.stockno = transstockno.Text
+                locationform.reference = reference.Text
                 locationform.ShowDialog()
             End If
             If transaction.Text = "Allocation" Then
@@ -292,9 +292,9 @@ Public Class Form2
                         locationform.addr.Visible = False
                         locationform.minusr.Visible = True
                         locationform.balance.Text = transqty.Text
-                        locationform.TRANSTYPE.Text = transaction.Text
-                        locationform.stockno.Text = transstockno.Text
-                        locationform.REFERENCE.Text = reference.Text
+                        locationform.transtype = transaction.Text
+                        locationform.stockno = transstockno.Text
+                        locationform.reference = reference.Text
                         locationform.ShowDialog()
                     Else
                         msgbox2.ShowDialog()
@@ -944,9 +944,9 @@ update reference_tb set
                 locationform.addr.Visible = True
                 locationform.minusr.Visible = False
                 locationform.balance.Text = receiptqty.Text
-                locationform.TRANSTYPE.Text = "Receipt"
-                locationform.stockno.Text = receiptstockno.Text
-                locationform.REFERENCE.Text = receiptreference.Text
+                locationform.transtype = "Receipt"
+                locationform.stockno = receiptstockno.Text
+                locationform.reference = receiptreference.Text
                 locationform.ShowDialog()
 
                 'sql.loadstocks()
@@ -1026,8 +1026,8 @@ update reference_tb set
                 locationform.addr.Visible = True
                 locationform.minusr.Visible = False
                 locationform.balance.Text = receiptqty.Text
-                locationform.TRANSTYPE.Text = "Receipt"
-                locationform.stockno.Text = receiptstockno.Text
+                locationform.transtype = "Receipt"
+                locationform.stockno = receiptstockno.Text
                 locationform.ShowDialog()
 
                 sql.selectreceiptreferencerecord(receiptreference.Text, receiptjo.Text)
@@ -1188,9 +1188,9 @@ select
             locationform.addr.Visible = False
             locationform.minusr.Visible = True
             locationform.balance.Text = issueqty.Text
-            locationform.TRANSTYPE.Text = "Issue"
-            locationform.stockno.Text = issuestockno.Text
-            locationform.REFERENCE.Text = issuereference.Text
+            locationform.transtype = "Issue"
+            locationform.stockno = issuestockno.Text
+            locationform.reference = issuereference.Text
             locationform.ShowDialog()
 
             'sql.loadstocks()
@@ -1728,6 +1728,7 @@ select
         For Each selecteditem As DataGridViewRow In selecteditems
             x = selecteditem.Cells("stockno").Value.ToString
             AccountabilityUpdate.stockList.Add(x)
+            stocknoinput.Text = x
             stocksStocksno.Items.Add(x)
         Next
     End Sub
@@ -3289,8 +3290,8 @@ on a.stockno = b.stockno where A.STOCKNO='" & STOCKNO & "' and a.TRANSTYPE='Rece
         locationform.minusr.Visible = True
         locationform.articleno.Text = Form3.articleno.Text
         locationform.balance.Text = "0"
-        locationform.stockno.Text = stocknoinput.Text
-        locationform.REFERENCE.Text = ""
+        locationform.stockno = stocknoinput.Text
+        locationform.reference = ""
         locationform.ShowDialog()
     End Sub
 
