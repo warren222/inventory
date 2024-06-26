@@ -173,7 +173,7 @@ Partial Class Form5
         '
         Me.controlno.Enabled = False
         Me.controlno.Location = New System.Drawing.Point(460, 146)
-        Me.controlno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.controlno.Margin = New System.Windows.Forms.Padding(4)
         Me.controlno.Multiline = True
         Me.controlno.Name = "controlno"
         Me.controlno.Size = New System.Drawing.Size(167, 33)
@@ -188,7 +188,7 @@ Partial Class Form5
         'KryptonLabel13
         '
         Me.KryptonLabel13.Location = New System.Drawing.Point(339, 146)
-        Me.KryptonLabel13.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel13.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel13.Name = "KryptonLabel13"
         Me.KryptonLabel13.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel13.Size = New System.Drawing.Size(100, 27)
@@ -200,7 +200,7 @@ Partial Class Form5
         'KryptonLabel4
         '
         Me.KryptonLabel4.Location = New System.Drawing.Point(15, 501)
-        Me.KryptonLabel4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel4.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel4.Name = "KryptonLabel4"
         Me.KryptonLabel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel4.Size = New System.Drawing.Size(84, 27)
@@ -212,7 +212,7 @@ Partial Class Form5
         'KryptonLabel22
         '
         Me.KryptonLabel22.Location = New System.Drawing.Point(339, 378)
-        Me.KryptonLabel22.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel22.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel22.Name = "KryptonLabel22"
         Me.KryptonLabel22.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel22.Size = New System.Drawing.Size(77, 27)
@@ -224,7 +224,7 @@ Partial Class Form5
         'KryptonLabel1
         '
         Me.KryptonLabel1.Location = New System.Drawing.Point(15, 146)
-        Me.KryptonLabel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel1.Name = "KryptonLabel1"
         Me.KryptonLabel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel1.Size = New System.Drawing.Size(85, 27)
@@ -237,7 +237,7 @@ Partial Class Form5
         '
         Me.stockno.Enabled = False
         Me.stockno.Location = New System.Drawing.Point(123, 146)
-        Me.stockno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.stockno.Margin = New System.Windows.Forms.Padding(4)
         Me.stockno.Multiline = True
         Me.stockno.Name = "stockno"
         Me.stockno.Size = New System.Drawing.Size(167, 33)
@@ -253,7 +253,7 @@ Partial Class Form5
         '
         Me.initialqty.Enabled = False
         Me.initialqty.Location = New System.Drawing.Point(460, 378)
-        Me.initialqty.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.initialqty.Margin = New System.Windows.Forms.Padding(4)
         Me.initialqty.Multiline = True
         Me.initialqty.Name = "initialqty"
         Me.initialqty.Size = New System.Drawing.Size(167, 33)
@@ -269,7 +269,7 @@ Partial Class Form5
         '
         Me.transno.Enabled = False
         Me.transno.Location = New System.Drawing.Point(123, 501)
-        Me.transno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.transno.Margin = New System.Windows.Forms.Padding(4)
         Me.transno.Multiline = True
         Me.transno.Name = "transno"
         Me.transno.Size = New System.Drawing.Size(167, 33)
@@ -284,7 +284,7 @@ Partial Class Form5
         'KryptonLabel16
         '
         Me.KryptonLabel16.Location = New System.Drawing.Point(15, 553)
-        Me.KryptonLabel16.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel16.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel16.Name = "KryptonLabel16"
         Me.KryptonLabel16.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel16.Size = New System.Drawing.Size(83, 27)
@@ -304,7 +304,7 @@ Partial Class Form5
         Me.referencegridview.ColumnHeadersHeight = 20
         Me.referencegridview.Cursor = System.Windows.Forms.Cursors.Hand
         Me.referencegridview.Location = New System.Drawing.Point(15, 587)
-        Me.referencegridview.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.referencegridview.Margin = New System.Windows.Forms.Padding(4)
         Me.referencegridview.Name = "referencegridview"
         Me.referencegridview.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.referencegridview.ReadOnly = True
@@ -334,7 +334,7 @@ Partial Class Form5
         '
         Me.account.Enabled = False
         Me.account.Location = New System.Drawing.Point(460, 204)
-        Me.account.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.account.Margin = New System.Windows.Forms.Padding(4)
         Me.account.Multiline = True
         Me.account.Name = "account"
         Me.account.Size = New System.Drawing.Size(167, 33)
@@ -349,7 +349,7 @@ Partial Class Form5
         'KryptonLabel12
         '
         Me.KryptonLabel12.Location = New System.Drawing.Point(339, 204)
-        Me.KryptonLabel12.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel12.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel12.Name = "KryptonLabel12"
         Me.KryptonLabel12.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel12.Size = New System.Drawing.Size(74, 27)
@@ -361,7 +361,7 @@ Partial Class Form5
         'KryptonLabel11
         '
         Me.KryptonLabel11.Location = New System.Drawing.Point(15, 22)
-        Me.KryptonLabel11.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel11.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel11.Name = "KryptonLabel11"
         Me.KryptonLabel11.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel11.Size = New System.Drawing.Size(87, 27)
@@ -374,7 +374,7 @@ Partial Class Form5
         '
         Me.reference.Enabled = False
         Me.reference.Location = New System.Drawing.Point(123, 22)
-        Me.reference.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.reference.Margin = New System.Windows.Forms.Padding(4)
         Me.reference.Multiline = True
         Me.reference.Name = "reference"
         Me.reference.Size = New System.Drawing.Size(504, 33)
@@ -389,7 +389,7 @@ Partial Class Form5
         'KryptonLabel5
         '
         Me.KryptonLabel5.Location = New System.Drawing.Point(15, 378)
-        Me.KryptonLabel5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel5.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel5.Name = "KryptonLabel5"
         Me.KryptonLabel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel5.Size = New System.Drawing.Size(88, 27)
@@ -402,7 +402,7 @@ Partial Class Form5
         '
         Me.typecolor.Enabled = False
         Me.typecolor.Location = New System.Drawing.Point(123, 320)
-        Me.typecolor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.typecolor.Margin = New System.Windows.Forms.Padding(4)
         Me.typecolor.Multiline = True
         Me.typecolor.Name = "typecolor"
         Me.typecolor.Size = New System.Drawing.Size(167, 33)
@@ -418,7 +418,7 @@ Partial Class Form5
         '
         Me.articleno.Enabled = False
         Me.articleno.Location = New System.Drawing.Point(123, 378)
-        Me.articleno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.articleno.Margin = New System.Windows.Forms.Padding(4)
         Me.articleno.Multiline = True
         Me.articleno.Name = "articleno"
         Me.articleno.Size = New System.Drawing.Size(167, 33)
@@ -434,7 +434,7 @@ Partial Class Form5
         '
         Me.costhead.Enabled = False
         Me.costhead.Location = New System.Drawing.Point(123, 262)
-        Me.costhead.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.costhead.Margin = New System.Windows.Forms.Padding(4)
         Me.costhead.Multiline = True
         Me.costhead.Name = "costhead"
         Me.costhead.Size = New System.Drawing.Size(167, 33)
@@ -449,7 +449,7 @@ Partial Class Form5
         'KryptonLabel3
         '
         Me.KryptonLabel3.Location = New System.Drawing.Point(15, 320)
-        Me.KryptonLabel3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel3.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel3.Name = "KryptonLabel3"
         Me.KryptonLabel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel3.Size = New System.Drawing.Size(94, 27)
@@ -461,7 +461,7 @@ Partial Class Form5
         'KryptonLabel2
         '
         Me.KryptonLabel2.Location = New System.Drawing.Point(15, 262)
-        Me.KryptonLabel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel2.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel2.Name = "KryptonLabel2"
         Me.KryptonLabel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel2.Size = New System.Drawing.Size(83, 27)
@@ -473,7 +473,7 @@ Partial Class Form5
         'KryptonLabel7
         '
         Me.KryptonLabel7.Location = New System.Drawing.Point(15, 204)
-        Me.KryptonLabel7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel7.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel7.Name = "KryptonLabel7"
         Me.KryptonLabel7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel7.Size = New System.Drawing.Size(86, 27)
@@ -486,7 +486,7 @@ Partial Class Form5
         '
         Me.transtype.Enabled = False
         Me.transtype.Location = New System.Drawing.Point(123, 204)
-        Me.transtype.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.transtype.Margin = New System.Windows.Forms.Padding(4)
         Me.transtype.Multiline = True
         Me.transtype.Name = "transtype"
         Me.transtype.Size = New System.Drawing.Size(167, 33)
@@ -501,7 +501,7 @@ Partial Class Form5
         'KryptonLabel6
         '
         Me.KryptonLabel6.Location = New System.Drawing.Point(15, 443)
-        Me.KryptonLabel6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel6.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel6.Name = "KryptonLabel6"
         Me.KryptonLabel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel6.Size = New System.Drawing.Size(98, 27)
@@ -514,7 +514,7 @@ Partial Class Form5
         '
         Me.description.Enabled = False
         Me.description.Location = New System.Drawing.Point(123, 443)
-        Me.description.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.description.Margin = New System.Windows.Forms.Padding(4)
         Me.description.Multiline = True
         Me.description.Name = "description"
         Me.description.Size = New System.Drawing.Size(504, 33)
@@ -529,7 +529,7 @@ Partial Class Form5
         'KryptonCheckButton1
         '
         Me.KryptonCheckButton1.Location = New System.Drawing.Point(315, 476)
-        Me.KryptonCheckButton1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckButton1.Name = "KryptonCheckButton1"
         Me.KryptonCheckButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonCheckButton1.Size = New System.Drawing.Size(23, 28)
@@ -543,7 +543,7 @@ Partial Class Form5
         'CheckBox39
         '
         Me.CheckBox39.Location = New System.Drawing.Point(315, 442)
-        Me.CheckBox39.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CheckBox39.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox39.Name = "CheckBox39"
         Me.CheckBox39.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.CheckBox39.Size = New System.Drawing.Size(23, 28)
@@ -557,7 +557,7 @@ Partial Class Form5
         'KryptonLabel9
         '
         Me.KryptonLabel9.Location = New System.Drawing.Point(23, 476)
-        Me.KryptonLabel9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel9.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel9.Name = "KryptonLabel9"
         Me.KryptonLabel9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel9.Size = New System.Drawing.Size(81, 27)
@@ -569,7 +569,7 @@ Partial Class Form5
         'KryptonLabel8
         '
         Me.KryptonLabel8.Location = New System.Drawing.Point(23, 442)
-        Me.KryptonLabel8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel8.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel8.Name = "KryptonLabel8"
         Me.KryptonLabel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel8.Size = New System.Drawing.Size(91, 27)
@@ -583,7 +583,7 @@ Partial Class Form5
         Me.DateTimePicker9.CustomFormat = "yyyy-MMM-dd"
         Me.DateTimePicker9.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker9.Location = New System.Drawing.Point(168, 443)
-        Me.DateTimePicker9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker9.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker9.Name = "DateTimePicker9"
         Me.DateTimePicker9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.DateTimePicker9.Size = New System.Drawing.Size(147, 25)
@@ -600,7 +600,7 @@ Partial Class Form5
         Me.KryptonDateTimePicker1.CustomFormat = "yyyy-MMM-dd"
         Me.KryptonDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.KryptonDateTimePicker1.Location = New System.Drawing.Point(168, 478)
-        Me.KryptonDateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonDateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonDateTimePicker1.Name = "KryptonDateTimePicker1"
         Me.KryptonDateTimePicker1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonDateTimePicker1.Size = New System.Drawing.Size(147, 25)
@@ -615,7 +615,7 @@ Partial Class Form5
         'duedate
         '
         Me.duedate.Location = New System.Drawing.Point(168, 476)
-        Me.duedate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.duedate.Margin = New System.Windows.Forms.Padding(4)
         Me.duedate.Multiline = True
         Me.duedate.Name = "duedate"
         Me.duedate.Size = New System.Drawing.Size(147, 28)
@@ -624,7 +624,7 @@ Partial Class Form5
         'transdate
         '
         Me.transdate.Location = New System.Drawing.Point(168, 442)
-        Me.transdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.transdate.Margin = New System.Windows.Forms.Padding(4)
         Me.transdate.Multiline = True
         Me.transdate.Name = "transdate"
         Me.transdate.Size = New System.Drawing.Size(147, 28)
@@ -634,7 +634,7 @@ Partial Class Form5
         '
         Me.KryptonButton2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.KryptonButton2.Location = New System.Drawing.Point(373, 660)
-        Me.KryptonButton2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton2.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton2.Name = "KryptonButton2"
         Me.KryptonButton2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton2.Size = New System.Drawing.Size(104, 43)
@@ -663,7 +663,7 @@ Partial Class Form5
         '
         Me.KryptonButton1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.KryptonButton1.Location = New System.Drawing.Point(261, 660)
-        Me.KryptonButton1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton1.Name = "KryptonButton1"
         Me.KryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton1.Size = New System.Drawing.Size(104, 43)
@@ -692,7 +692,7 @@ Partial Class Form5
         '
         Me.qty.Enabled = False
         Me.qty.Location = New System.Drawing.Point(168, 401)
-        Me.qty.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.qty.Margin = New System.Windows.Forms.Padding(4)
         Me.qty.Multiline = True
         Me.qty.Name = "qty"
         Me.qty.Size = New System.Drawing.Size(167, 33)
@@ -708,7 +708,7 @@ Partial Class Form5
         'KryptonLabel10
         '
         Me.KryptonLabel10.Location = New System.Drawing.Point(23, 401)
-        Me.KryptonLabel10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel10.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel10.Name = "KryptonLabel10"
         Me.KryptonLabel10.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel10.Size = New System.Drawing.Size(116, 27)
@@ -721,7 +721,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox1.Location = New System.Drawing.Point(25, 171)
-        Me.KryptonCheckBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox1.Name = "KryptonCheckBox1"
         Me.KryptonCheckBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox1.Size = New System.Drawing.Size(94, 27)
@@ -735,7 +735,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox2.Location = New System.Drawing.Point(25, 203)
-        Me.KryptonCheckBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox2.Name = "KryptonCheckBox2"
         Me.KryptonCheckBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox2.Size = New System.Drawing.Size(100, 27)
@@ -756,7 +756,7 @@ Partial Class Form5
         Me.newreference.FormattingEnabled = True
         Me.newreference.IntegralHeight = False
         Me.newreference.Location = New System.Drawing.Point(0, 0)
-        Me.newreference.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.newreference.Margin = New System.Windows.Forms.Padding(4)
         Me.newreference.Name = "newreference"
         Me.newreference.Size = New System.Drawing.Size(370, 28)
         Me.newreference.TabIndex = 451
@@ -765,7 +765,7 @@ Partial Class Form5
         '
         Me.newstockno.Enabled = False
         Me.newstockno.Location = New System.Drawing.Point(168, 171)
-        Me.newstockno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.newstockno.Margin = New System.Windows.Forms.Padding(4)
         Me.newstockno.Multiline = True
         Me.newstockno.Name = "newstockno"
         Me.newstockno.Size = New System.Drawing.Size(167, 33)
@@ -781,7 +781,7 @@ Partial Class Form5
         'KryptonLabel23
         '
         Me.KryptonLabel23.Location = New System.Drawing.Point(23, 362)
-        Me.KryptonLabel23.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel23.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel23.Name = "KryptonLabel23"
         Me.KryptonLabel23.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel23.Size = New System.Drawing.Size(117, 27)
@@ -793,7 +793,7 @@ Partial Class Form5
         'KryptonLabel17
         '
         Me.KryptonLabel17.Location = New System.Drawing.Point(25, 46)
-        Me.KryptonLabel17.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel17.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel17.Name = "KryptonLabel17"
         Me.KryptonLabel17.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel17.Size = New System.Drawing.Size(83, 27)
@@ -813,7 +813,7 @@ Partial Class Form5
         Me.newarticleno.FormattingEnabled = True
         Me.newarticleno.IntegralHeight = False
         Me.newarticleno.Location = New System.Drawing.Point(0, 0)
-        Me.newarticleno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.newarticleno.Margin = New System.Windows.Forms.Padding(4)
         Me.newarticleno.Name = "newarticleno"
         Me.newarticleno.Size = New System.Drawing.Size(303, 28)
         Me.newarticleno.TabIndex = 448
@@ -821,7 +821,7 @@ Partial Class Form5
         'KryptonLabel24
         '
         Me.KryptonLabel24.Location = New System.Drawing.Point(25, 129)
-        Me.KryptonLabel24.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel24.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel24.Name = "KryptonLabel24"
         Me.KryptonLabel24.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel24.Size = New System.Drawing.Size(88, 27)
@@ -834,7 +834,7 @@ Partial Class Form5
         '
         Me.minadj.Enabled = False
         Me.minadj.Location = New System.Drawing.Point(168, 362)
-        Me.minadj.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.minadj.Margin = New System.Windows.Forms.Padding(4)
         Me.minadj.Multiline = True
         Me.minadj.Name = "minadj"
         Me.minadj.Size = New System.Drawing.Size(167, 33)
@@ -859,7 +859,7 @@ Partial Class Form5
         Me.newtypecolor.FormattingEnabled = True
         Me.newtypecolor.IntegralHeight = False
         Me.newtypecolor.Location = New System.Drawing.Point(0, 0)
-        Me.newtypecolor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.newtypecolor.Margin = New System.Windows.Forms.Padding(4)
         Me.newtypecolor.Name = "newtypecolor"
         Me.newtypecolor.Size = New System.Drawing.Size(303, 28)
         Me.newtypecolor.TabIndex = 447
@@ -867,7 +867,7 @@ Partial Class Form5
         'KryptonLabel19
         '
         Me.KryptonLabel19.Location = New System.Drawing.Point(208, 9)
-        Me.KryptonLabel19.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel19.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel19.Name = "KryptonLabel19"
         Me.KryptonLabel19.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel19.Size = New System.Drawing.Size(129, 29)
@@ -879,7 +879,7 @@ Partial Class Form5
         'KryptonLabel25
         '
         Me.KryptonLabel25.Location = New System.Drawing.Point(25, 87)
-        Me.KryptonLabel25.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel25.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel25.Name = "KryptonLabel25"
         Me.KryptonLabel25.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel25.Size = New System.Drawing.Size(94, 27)
@@ -899,7 +899,7 @@ Partial Class Form5
         Me.newcosthead.FormattingEnabled = True
         Me.newcosthead.IntegralHeight = False
         Me.newcosthead.Location = New System.Drawing.Point(0, 0)
-        Me.newcosthead.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.newcosthead.Margin = New System.Windows.Forms.Padding(4)
         Me.newcosthead.Name = "newcosthead"
         Me.newcosthead.Size = New System.Drawing.Size(303, 28)
         Me.newcosthead.TabIndex = 446
@@ -907,7 +907,7 @@ Partial Class Form5
         'KryptonLabel21
         '
         Me.KryptonLabel21.Location = New System.Drawing.Point(743, 489)
-        Me.KryptonLabel21.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel21.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel21.Name = "KryptonLabel21"
         Me.KryptonLabel21.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel21.Size = New System.Drawing.Size(96, 23)
@@ -918,7 +918,7 @@ Partial Class Form5
         'KryptonLabel18
         '
         Me.KryptonLabel18.Location = New System.Drawing.Point(743, 453)
-        Me.KryptonLabel18.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel18.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel18.Name = "KryptonLabel18"
         Me.KryptonLabel18.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel18.Size = New System.Drawing.Size(100, 23)
@@ -930,7 +930,7 @@ Partial Class Form5
         '
         Me.REFISSUE.Enabled = False
         Me.REFISSUE.Location = New System.Drawing.Point(860, 489)
-        Me.REFISSUE.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.REFISSUE.Margin = New System.Windows.Forms.Padding(4)
         Me.REFISSUE.Multiline = True
         Me.REFISSUE.Name = "REFISSUE"
         Me.REFISSUE.Size = New System.Drawing.Size(136, 28)
@@ -941,7 +941,7 @@ Partial Class Form5
         '
         Me.REFALLOC.Enabled = False
         Me.REFALLOC.Location = New System.Drawing.Point(860, 453)
-        Me.REFALLOC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.REFALLOC.Margin = New System.Windows.Forms.Padding(4)
         Me.REFALLOC.Multiline = True
         Me.REFALLOC.Name = "REFALLOC"
         Me.REFALLOC.Size = New System.Drawing.Size(136, 28)
@@ -951,7 +951,7 @@ Partial Class Form5
         'KryptonLabel15
         '
         Me.KryptonLabel15.Location = New System.Drawing.Point(803, 417)
-        Me.KryptonLabel15.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel15.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel15.Name = "KryptonLabel15"
         Me.KryptonLabel15.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel15.Size = New System.Drawing.Size(44, 23)
@@ -963,7 +963,7 @@ Partial Class Form5
         '
         Me.XYZ.Enabled = False
         Me.XYZ.Location = New System.Drawing.Point(860, 417)
-        Me.XYZ.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.XYZ.Margin = New System.Windows.Forms.Padding(4)
         Me.XYZ.Multiline = True
         Me.XYZ.Name = "XYZ"
         Me.XYZ.Size = New System.Drawing.Size(136, 28)
@@ -973,7 +973,7 @@ Partial Class Form5
         '
         Me.xyzref.Enabled = False
         Me.xyzref.Location = New System.Drawing.Point(900, 224)
-        Me.xyzref.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.xyzref.Margin = New System.Windows.Forms.Padding(4)
         Me.xyzref.Multiline = True
         Me.xyzref.Name = "xyzref"
         Me.xyzref.Size = New System.Drawing.Size(167, 28)
@@ -982,7 +982,7 @@ Partial Class Form5
         'KryptonLabel20
         '
         Me.KryptonLabel20.Location = New System.Drawing.Point(715, 224)
-        Me.KryptonLabel20.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel20.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel20.Name = "KryptonLabel20"
         Me.KryptonLabel20.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel20.Size = New System.Drawing.Size(165, 23)
@@ -993,7 +993,7 @@ Partial Class Form5
         'KryptonButton3
         '
         Me.KryptonButton3.Location = New System.Drawing.Point(917, 320)
-        Me.KryptonButton3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton3.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton3.Name = "KryptonButton3"
         Me.KryptonButton3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton3.Size = New System.Drawing.Size(104, 28)
@@ -1011,7 +1011,7 @@ Partial Class Form5
         '
         Me.physical.Enabled = False
         Me.physical.Location = New System.Drawing.Point(860, 382)
-        Me.physical.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.physical.Margin = New System.Windows.Forms.Padding(4)
         Me.physical.Multiline = True
         Me.physical.Name = "physical"
         Me.physical.Size = New System.Drawing.Size(136, 28)
@@ -1020,7 +1020,7 @@ Partial Class Form5
         'KryptonLabel14
         '
         Me.KryptonLabel14.Location = New System.Drawing.Point(749, 382)
-        Me.KryptonLabel14.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel14.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel14.Name = "KryptonLabel14"
         Me.KryptonLabel14.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel14.Size = New System.Drawing.Size(95, 23)
@@ -1032,7 +1032,7 @@ Partial Class Form5
         '
         Me.itcame.Enabled = False
         Me.itcame.Location = New System.Drawing.Point(900, 172)
-        Me.itcame.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.itcame.Margin = New System.Windows.Forms.Padding(4)
         Me.itcame.Multiline = True
         Me.itcame.Name = "itcame"
         Me.itcame.Size = New System.Drawing.Size(167, 28)
@@ -1157,7 +1157,7 @@ Partial Class Form5
         Me.Panel1.Controls.Add(Me.duedate)
         Me.Panel1.Controls.Add(Me.KryptonLabel29)
         Me.Panel1.Location = New System.Drawing.Point(688, 46)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(765, 726)
         Me.Panel1.TabIndex = 447
@@ -1166,7 +1166,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox6.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox6.Location = New System.Drawing.Point(517, 207)
-        Me.KryptonCheckBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox6.Name = "KryptonCheckBox6"
         Me.KryptonCheckBox6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox6.Size = New System.Drawing.Size(90, 27)
@@ -1204,7 +1204,7 @@ Partial Class Form5
         Me.cboxLocation.FormattingEnabled = True
         Me.cboxLocation.IntegralHeight = False
         Me.cboxLocation.Location = New System.Drawing.Point(0, 0)
-        Me.cboxLocation.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboxLocation.Margin = New System.Windows.Forms.Padding(4)
         Me.cboxLocation.Name = "cboxLocation"
         Me.cboxLocation.Size = New System.Drawing.Size(222, 28)
         Me.cboxLocation.TabIndex = 447
@@ -1212,7 +1212,7 @@ Partial Class Form5
         'tboxTotalAmount
         '
         Me.tboxTotalAmount.Location = New System.Drawing.Point(519, 630)
-        Me.tboxTotalAmount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tboxTotalAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.tboxTotalAmount.Multiline = True
         Me.tboxTotalAmount.Name = "tboxTotalAmount"
         Me.tboxTotalAmount.Size = New System.Drawing.Size(227, 36)
@@ -1230,7 +1230,7 @@ Partial Class Form5
         'KryptonLabel32
         '
         Me.KryptonLabel32.Location = New System.Drawing.Point(517, 596)
-        Me.KryptonLabel32.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel32.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel32.Name = "KryptonLabel32"
         Me.KryptonLabel32.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel32.Size = New System.Drawing.Size(140, 27)
@@ -1243,7 +1243,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox3.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox3.Location = New System.Drawing.Point(519, 439)
-        Me.KryptonCheckBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox3.Name = "KryptonCheckBox3"
         Me.KryptonCheckBox3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox3.Size = New System.Drawing.Size(92, 27)
@@ -1256,7 +1256,7 @@ Partial Class Form5
         'discount
         '
         Me.discount.Location = New System.Drawing.Point(519, 474)
-        Me.discount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.discount.Margin = New System.Windows.Forms.Padding(4)
         Me.discount.Multiline = True
         Me.discount.Name = "discount"
         Me.discount.Size = New System.Drawing.Size(227, 36)
@@ -1275,7 +1275,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox4.Location = New System.Drawing.Point(519, 284)
-        Me.KryptonCheckBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox4.Name = "KryptonCheckBox4"
         Me.KryptonCheckBox4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox4.Size = New System.Drawing.Size(88, 27)
@@ -1288,7 +1288,7 @@ Partial Class Form5
         'ufactor
         '
         Me.ufactor.Location = New System.Drawing.Point(519, 319)
-        Me.ufactor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ufactor.Margin = New System.Windows.Forms.Padding(4)
         Me.ufactor.Multiline = True
         Me.ufactor.Name = "ufactor"
         Me.ufactor.Size = New System.Drawing.Size(227, 36)
@@ -1307,7 +1307,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox5.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox5.Location = New System.Drawing.Point(519, 362)
-        Me.KryptonCheckBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox5.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox5.Name = "KryptonCheckBox5"
         Me.KryptonCheckBox5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox5.Size = New System.Drawing.Size(98, 27)
@@ -1320,7 +1320,7 @@ Partial Class Form5
         'unit
         '
         Me.unit.Location = New System.Drawing.Point(519, 396)
-        Me.unit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.unit.Margin = New System.Windows.Forms.Padding(4)
         Me.unit.Multiline = True
         Me.unit.Name = "unit"
         Me.unit.Size = New System.Drawing.Size(227, 36)
@@ -1339,7 +1339,7 @@ Partial Class Form5
         '
         Me.KryptonCheckBox8.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
         Me.KryptonCheckBox8.Location = New System.Drawing.Point(519, 517)
-        Me.KryptonCheckBox8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonCheckBox8.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonCheckBox8.Name = "KryptonCheckBox8"
         Me.KryptonCheckBox8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonCheckBox8.Size = New System.Drawing.Size(76, 27)
@@ -1352,7 +1352,7 @@ Partial Class Form5
         'xrate
         '
         Me.xrate.Location = New System.Drawing.Point(519, 551)
-        Me.xrate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.xrate.Margin = New System.Windows.Forms.Padding(4)
         Me.xrate.Multiline = True
         Me.xrate.Name = "xrate"
         Me.xrate.Size = New System.Drawing.Size(227, 36)
@@ -1370,7 +1370,7 @@ Partial Class Form5
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(405, 235)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(72, 37)
         Me.Button3.TabIndex = 475
@@ -1381,7 +1381,7 @@ Partial Class Form5
         '
         Me.KryptonLabel31.Enabled = False
         Me.KryptonLabel31.Location = New System.Drawing.Point(64, 282)
-        Me.KryptonLabel31.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel31.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel31.Name = "KryptonLabel31"
         Me.KryptonLabel31.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel31.Size = New System.Drawing.Size(31, 27)
@@ -1421,7 +1421,7 @@ Partial Class Form5
         Me.NEWJO.FormattingEnabled = True
         Me.NEWJO.IntegralHeight = False
         Me.NEWJO.Location = New System.Drawing.Point(0, 0)
-        Me.NEWJO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NEWJO.Margin = New System.Windows.Forms.Padding(4)
         Me.NEWJO.Name = "NEWJO"
         Me.NEWJO.Size = New System.Drawing.Size(299, 28)
         Me.NEWJO.TabIndex = 451
@@ -1430,7 +1430,7 @@ Partial Class Form5
         '
         Me.KryptonButton5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.KryptonButton5.Location = New System.Drawing.Point(405, 543)
-        Me.KryptonButton5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton5.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton5.Name = "KryptonButton5"
         Me.KryptonButton5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton5.Size = New System.Drawing.Size(55, 33)
@@ -1459,7 +1459,7 @@ Partial Class Form5
         '
         Me.KryptonButton4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.KryptonButton4.Location = New System.Drawing.Point(343, 543)
-        Me.KryptonButton4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton4.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton4.Name = "KryptonButton4"
         Me.KryptonButton4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton4.Size = New System.Drawing.Size(55, 33)
@@ -1487,7 +1487,7 @@ Partial Class Form5
         'KryptonLabel28
         '
         Me.KryptonLabel28.Location = New System.Drawing.Point(23, 543)
-        Me.KryptonLabel28.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel28.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel28.Name = "KryptonLabel28"
         Me.KryptonLabel28.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel28.Size = New System.Drawing.Size(126, 27)
@@ -1499,7 +1499,7 @@ Partial Class Form5
         'adjustment
         '
         Me.adjustment.Location = New System.Drawing.Point(168, 543)
-        Me.adjustment.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.adjustment.Margin = New System.Windows.Forms.Padding(4)
         Me.adjustment.Multiline = True
         Me.adjustment.Name = "adjustment"
         Me.adjustment.Size = New System.Drawing.Size(167, 33)
@@ -1516,7 +1516,7 @@ Partial Class Form5
         'ADJUSTMENTREMARKS
         '
         Me.ADJUSTMENTREMARKS.Location = New System.Drawing.Point(29, 619)
-        Me.ADJUSTMENTREMARKS.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ADJUSTMENTREMARKS.Margin = New System.Windows.Forms.Padding(4)
         Me.ADJUSTMENTREMARKS.Multiline = True
         Me.ADJUSTMENTREMARKS.Name = "ADJUSTMENTREMARKS"
         Me.ADJUSTMENTREMARKS.Size = New System.Drawing.Size(448, 33)
@@ -1531,7 +1531,7 @@ Partial Class Form5
         'KryptonLabel29
         '
         Me.KryptonLabel29.Location = New System.Drawing.Point(23, 594)
-        Me.KryptonLabel29.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel29.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel29.Name = "KryptonLabel29"
         Me.KryptonLabel29.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel29.Size = New System.Drawing.Size(240, 27)
@@ -1572,7 +1572,7 @@ Partial Class Form5
         Me.Panel2.Controls.Add(Me.KryptonLabel12)
         Me.Panel2.Controls.Add(Me.reference)
         Me.Panel2.Location = New System.Drawing.Point(4, 4)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(636, 681)
         Me.Panel2.TabIndex = 448
@@ -1580,7 +1580,7 @@ Partial Class Form5
         'KryptonLabel30
         '
         Me.KryptonLabel30.Location = New System.Drawing.Point(237, 80)
-        Me.KryptonLabel30.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel30.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel30.Name = "KryptonLabel30"
         Me.KryptonLabel30.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel30.Size = New System.Drawing.Size(31, 27)
@@ -1593,7 +1593,7 @@ Partial Class Form5
         '
         Me.JO.Enabled = False
         Me.JO.Location = New System.Drawing.Point(280, 80)
-        Me.JO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.JO.Margin = New System.Windows.Forms.Padding(4)
         Me.JO.Multiline = True
         Me.JO.Name = "JO"
         Me.JO.Size = New System.Drawing.Size(347, 33)
@@ -1608,7 +1608,7 @@ Partial Class Form5
         'KryptonLabel27
         '
         Me.KryptonLabel27.Location = New System.Drawing.Point(339, 320)
-        Me.KryptonLabel27.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel27.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel27.Name = "KryptonLabel27"
         Me.KryptonLabel27.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel27.Size = New System.Drawing.Size(105, 27)
@@ -1621,7 +1621,7 @@ Partial Class Form5
         '
         Me.balanceqty.Enabled = False
         Me.balanceqty.Location = New System.Drawing.Point(460, 320)
-        Me.balanceqty.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.balanceqty.Margin = New System.Windows.Forms.Padding(4)
         Me.balanceqty.Multiline = True
         Me.balanceqty.Name = "balanceqty"
         Me.balanceqty.Size = New System.Drawing.Size(167, 33)
@@ -1640,7 +1640,7 @@ Partial Class Form5
         Me.KryptonPanel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.KryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.KryptonPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.KryptonPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonPanel1.Name = "KryptonPanel1"
         Me.KryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue
         Me.KryptonPanel1.Size = New System.Drawing.Size(1470, 47)
@@ -1652,7 +1652,7 @@ Partial Class Form5
         'KryptonLabel26
         '
         Me.KryptonLabel26.Location = New System.Drawing.Point(8, 9)
-        Me.KryptonLabel26.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonLabel26.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonLabel26.Name = "KryptonLabel26"
         Me.KryptonLabel26.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel26.Size = New System.Drawing.Size(118, 32)
@@ -1673,7 +1673,7 @@ Partial Class Form5
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button1.Location = New System.Drawing.Point(1406, 0)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(65, 47)
         Me.Button1.TabIndex = 1
@@ -1720,7 +1720,7 @@ Partial Class Form5
         'loopissue
         '
         Me.loopissue.Location = New System.Drawing.Point(1405, 282)
-        Me.loopissue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.loopissue.Margin = New System.Windows.Forms.Padding(4)
         Me.loopissue.Multiline = True
         Me.loopissue.Name = "loopissue"
         Me.loopissue.Size = New System.Drawing.Size(104, 28)
@@ -1730,7 +1730,7 @@ Partial Class Form5
         'KryptonButton25
         '
         Me.KryptonButton25.Location = New System.Drawing.Point(1405, 353)
-        Me.KryptonButton25.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KryptonButton25.Margin = New System.Windows.Forms.Padding(4)
         Me.KryptonButton25.Name = "KryptonButton25"
         Me.KryptonButton25.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.KryptonButton25.Size = New System.Drawing.Size(109, 28)
@@ -1751,7 +1751,7 @@ Partial Class Form5
         Me.ComboBox1.IntegralHeight = False
         Me.ComboBox1.ItemHeight = 18
         Me.ComboBox1.Location = New System.Drawing.Point(1405, 318)
-        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(108, 26)
         Me.ComboBox1.TabIndex = 456
@@ -1767,7 +1767,7 @@ Partial Class Form5
         Me.LISTOFALLOCATIONGRIDVIEW.ColumnHeadersHeight = 20
         Me.LISTOFALLOCATIONGRIDVIEW.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LISTOFALLOCATIONGRIDVIEW.Location = New System.Drawing.Point(1405, 412)
-        Me.LISTOFALLOCATIONGRIDVIEW.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LISTOFALLOCATIONGRIDVIEW.Margin = New System.Windows.Forms.Padding(4)
         Me.LISTOFALLOCATIONGRIDVIEW.Name = "LISTOFALLOCATIONGRIDVIEW"
         Me.LISTOFALLOCATIONGRIDVIEW.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.LISTOFALLOCATIONGRIDVIEW.ReadOnly = True
@@ -1817,7 +1817,7 @@ Partial Class Form5
         Me.Controls.Add(Me.REFALLOC)
         Me.Controls.Add(Me.REFISSUE)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form5"
         Me.Opacity = 0.96R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

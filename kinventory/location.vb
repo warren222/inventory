@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports Transitions
 Public Class locationform
     Dim sql As New sql
@@ -14,11 +15,130 @@ Public Class locationform
     Public Shared reference As String
     Public id As String
     Dim UpdateLocation As String
+    Dim HideZero As String
+    Dim bgw As New BackgroundWorker
+    Dim action As String
+
+    Dim _bsLocation_List As New BindingSource
+    Dim _bsDistinct_Location As New BindingSource
+    Dim _bsGet_Location_History As New BindingSource
+    Dim _dsGet_Location_History As New DataSet
+    Dim _dsLocation_List As New DataSet
+    Dim _dsDistinct_Location As New DataSet
+
     Private Sub location_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AddHandler bgw.DoWork, AddressOf bgw_DoWork
+        AddHandler bgw.ProgressChanged, AddressOf bgw_ProgressChanged
+        AddHandler bgw.RunWorkerCompleted, AddressOf bgw_RunWorkerCompleted
+        bgw.WorkerSupportsCancellation = True
+        bgw.WorkerReportsProgress = True
         CboxHideZero.SelectedIndex = 0
-        LoadLocationTb()
+
+        locationgridview.DataSource = _bsLocation_List
+        Starter("Get_Location_List")
+        location1load = True
+    End Sub
+    Private Sub Starter(ByVal act As String)
+        If Not bgw.IsBusy = True Then
+            action = act
+            HideZero = CboxHideZero.Text
+            LoadingPBOX.Visible = True
+            bgw.RunWorkerAsync()
+        Else
+            MessageBox.Show(Me, "i am busy try again later", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+    Private Sub bgw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
+        Select Case action
+            Case "Get_Location_List"
+                setlocation.Text = ""
+                currentqty.Text = "0"
+                LoadingPBOX.Visible = False
+                Starter("Get_Distinct_Location")
+            Case "Get_Distinct_Location"
+                LoadingPBOX.Visible = False
+                locationHistory = setlocation.Text
+                Starter("Get_Location_History")
+                location1load = False
+            Case "Get_Location_History"
+                LoadingPBOX.Visible = False
+        End Select
     End Sub
 
+    Private Sub bgw_ProgressChanged(sender As Object, e As ProgressChangedEventArgs)
+        Select Case action
+            Case "Get_Location_List"
+                _bsLocation_List.DataSource = _dsLocation_List
+                _bsLocation_List.DataMember = "locationtb"
+                With locationgridview
+                    .Columns("ID").Visible = False
+                    .Columns("STOCKNO").Visible = False
+                    .Columns("QTY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    .Columns("QTY").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("QTY").DefaultCellStyle.Format = "N2"
+                End With
+            Case "Get_Distinct_Location"
+                _bsDistinct_Location.DataSource = _dsDistinct_Location
+                _bsDistinct_Location.DataMember = "locationtb"
+                setlocation.DataSource = _bsDistinct_Location
+                setlocation.DisplayMember = "location"
+            Case "Get_Location_History"
+                _bsGet_Location_History.DataSource = _dsGet_Location_History
+                _bsGet_Location_History.DataMember = "lochistory"
+                With LocationHistoryGV
+                    .DataSource = _bsGet_Location_History
+                    .Columns("ID").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("qty").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("LOCATION").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("stockno").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("transdate").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("transtype").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("qty").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    .Columns("balqty").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("balqty").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    .Columns("RBALQTY").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                    .Columns("RBALQTY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    .Columns("qty").DefaultCellStyle.Format = "N2"
+                    .Columns("balqty").DefaultCellStyle.Format = "N2"
+                    .Columns("RBALQTY").DefaultCellStyle.Format = "N2"
+                End With
+        End Select
+    End Sub
+
+    Private Sub bgw_DoWork(sender As Object, e As DoWorkEventArgs)
+        Select Case action
+            Case "Get_Location_List"
+                LoadLocationTb()
+                bgw.ReportProgress(0)
+            Case "Get_Distinct_Location"
+                LoadSetLocation()
+                bgw.ReportProgress(0)
+            Case "Get_Location_History"
+                GetLocationHistory()
+                bgw.ReportProgress(0)
+        End Select
+    End Sub
+    Public Sub LoadSetLocation()
+        Try
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "LocationRecord_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "Get_Distinct_Location")
+                    sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
+                    _dsDistinct_Location = New DataSet
+                    _dsDistinct_Location.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(_dsDistinct_Location, "locationtb")
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
     Public Sub LoadLocationTb()
         Try
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
@@ -28,33 +148,17 @@ Public Class locationform
                     sqlcmd.CommandText = "LocationRecord_Stp"
                     sqlcmd.Parameters.AddWithValue("@Command", "Get_Location_List")
                     sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
-                    sqlcmd.Parameters.AddWithValue("@Visibility", CboxHideZero.Text)
-
-                    Dim ds As New DataSet
-                    Dim bs As New BindingSource
-                    ds.Clear()
-
+                    sqlcmd.Parameters.AddWithValue("@Visibility", HideZero)
+                    _dsLocation_List = New DataSet
+                    _dsLocation_List.Clear()
                     Using da As SqlDataAdapter = New SqlDataAdapter
                         da.SelectCommand = sqlcmd
-                        da.Fill(ds, "locationtb")
+                        da.Fill(_dsLocation_List, "locationtb")
                     End Using
-
-                    bs.DataSource = ds
-                    bs.DataMember = "locationtb"
-                    locationgridview.DataSource = bs
-                    locationgridview.Columns("ID").Visible = False
-                    locationgridview.Columns("STOCKNO").Visible = False
-                    locationgridview.Columns("QTY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                    locationgridview.Columns("QTY").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                    locationgridview.Columns("QTY").DefaultCellStyle.Format = "N2"
                 End Using
             End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            setlocation.Text = ""
-            currentqty.Text = "0"
-            LoadSetLocation()
         End Try
     End Sub
 
@@ -115,7 +219,7 @@ Public Class locationform
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
-            LoadLocationTb()
+            Starter("Get_Location_List")
         End Try
     End Sub
 
@@ -144,6 +248,7 @@ Public Class locationform
                     sqlcmd.CommandType = CommandType.StoredProcedure
                     sqlcmd.CommandText = "LocationRecord_Stp"
                     sqlcmd.Parameters.AddWithValue("@Command", "Update_Location")
+                    sqlcmd.Parameters.AddWithValue("@Id", id)
                     sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
                     sqlcmd.Parameters.AddWithValue("@Location", tboxLocation.Text)
                     sqlcmd.Parameters.AddWithValue("@UpdateLocation", UpdateLocation)
@@ -164,7 +269,7 @@ Public Class locationform
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
-            LoadLocationTb()
+            Starter("Get_Location_List")
         End Try
     End Sub
     Private Sub KryptonButton3_Click(sender As Object, e As EventArgs) Handles KryptonButton3.Click
@@ -226,7 +331,7 @@ Public Class locationform
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
-            LoadLocationTb()
+            Starter("Get_Location_List")
         End Try
     End Sub
 
@@ -294,37 +399,15 @@ Public Class locationform
             setlocation.SelectedIndex = i
         End If
     End Sub
-    Public Sub LoadSetLocation()
-        Try
-            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
-                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
-                    sqlcon.Open()
-                    sqlcmd.CommandType = CommandType.StoredProcedure
-                    sqlcmd.CommandText = "LocationRecord_Stp"
-                    sqlcmd.Parameters.AddWithValue("@Command", "Get_Distinct_Location")
-                    sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
-                    Dim ds As New DataSet
-                    ds.Clear()
-                    Dim bs As New BindingSource
-                    Using da As SqlDataAdapter = New SqlDataAdapter
-                        da.SelectCommand = sqlcmd
-                        da.Fill(ds, "locationtb")
-                        bs.DataSource = ds
-                        bs.DataMember = "locationtb"
-                        setlocation.DataSource = bs
-                        setlocation.DisplayMember = "location"
-                    End Using
-                End Using
-            End Using
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
 
+    Dim location1load As Boolean = False
     Private Sub setlocation_TextChanged(sender As Object, e As EventArgs) Handles setlocation.TextChanged
         GetLocationQty()
         lblLocationHeader.Text = setlocation.Text + " - History"
-        GetLocationHistory(setlocation.Text)
+        locationHistory = setlocation.Text
+        If location1load = False Then
+            Starter("Get_Location_History")
+        End If
     End Sub
     Private Sub GetLocationQty()
         Try
@@ -347,7 +430,8 @@ Public Class locationform
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Private Sub GetLocationHistory(ByVal location As String)
+
+    Private Sub GetLocationHistory()
         Try
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
                 Using sqlcmd As SqlCommand = sqlcon.CreateCommand
@@ -356,32 +440,13 @@ Public Class locationform
                     sqlcmd.CommandType = CommandType.StoredProcedure
                     sqlcmd.Parameters.AddWithValue("@Command", "Get_Location_History")
                     sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
-                    sqlcmd.Parameters.AddWithValue("@Location", location)
-                    Dim ds As New DataSet
-                    ds.Clear()
-                    Dim da As New SqlDataAdapter
-                    da.SelectCommand = sqlcmd
-                    da.Fill(ds, "lochistory")
-                    Dim bs As New BindingSource
-                    bs.DataSource = ds
-                    bs.DataMember = "lochistory"
-                    With LocationHistoryGV
-                        .DataSource = bs
-                        .Columns("ID").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("qty").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("LOCATION").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("stockno").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("transdate").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("transtype").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("qty").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                        .Columns("balqty").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("balqty").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                        .Columns("RBALQTY").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                        .Columns("RBALQTY").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                        .Columns("qty").DefaultCellStyle.Format = "N2"
-                        .Columns("balqty").DefaultCellStyle.Format = "N2"
-                        .Columns("RBALQTY").DefaultCellStyle.Format = "N2"
-                    End With
+                    sqlcmd.Parameters.AddWithValue("@Location", locationHistory)
+                    _dsGet_Location_History = New DataSet
+                    _dsGet_Location_History.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(_dsGet_Location_History, "lochistory")
+                    End Using
                 End Using
             End Using
         Catch ex As Exception
@@ -390,12 +455,13 @@ Public Class locationform
     End Sub
     Private Sub KryptonButton4_Click(sender As Object, e As EventArgs) Handles KryptonButton4.Click
         If balance.Text = 0 Then
+            MessageBox.Show("Insufficient balance!", "Transaction Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
-            inserthistory()
-            additional()
+            Inserthistory()
+            Additional()
             Dim loc As String = setlocation.Text
             setlocation.Text = ""
-            LoadLocationTb()
+            Starter("Get_Location_List")
             setlocation.Text = loc
         End If
 
@@ -535,30 +601,31 @@ Public Class locationform
             Dim x As Integer = balance.Text
             Dim y As Integer = setqty.Text
             If x < y Then
-                MessageBox.Show("0 transaction qty.", "Insufficient balance!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Insufficient balance!", "Transaction Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 setqty.Text = "0"
             Else
             End If
         Else
-            MessageBox.Show("Non numeric data detected! please input a valid number.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Nonnumeric data detected! please input a valid number.", "Set Adjustment Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             setqty.Focus()
         End If
     End Sub
 
     Private Sub KryptonButton5_Click(sender As Object, e As EventArgs) Handles KryptonButton5.Click
         If balance.Text = 0 Then
+            MessageBox.Show("Insufficient balance!", "Transaction Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
             Dim x As Integer = currentqty.Text
             Dim y As Integer = setqty.Text
 
             If x < y Then
-                MessageBox.Show("insufficient stocks", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Insufficient stocks!", "Current Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
-                inserthistory()
-                subtract()
+                Inserthistory()
+                Subtract()
                 Dim loc As String = setlocation.Text
                 setlocation.Text = ""
-                LoadLocationTb()
+                Starter("Get_Location_List")
                 setlocation.Text = loc
             End If
         End If
@@ -587,16 +654,15 @@ Public Class locationform
         End Try
     End Sub
 
-
+    Dim locationHistory As String
     Private Sub locationgridview_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles locationgridview.CellDoubleClick
-        'HISTORY.location.Text = location.Text
-        'HISTORY.stockno = stockno
-        'HISTORY.ShowDialog()
+
         If locationgridview.RowCount >= 0 And e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = locationgridview.Rows(e.RowIndex)
             Dim loc As String = row.Cells("location").Value.ToString()
             lblLocationHeader.Text = loc + " - History"
-            GetLocationHistory(loc)
+            locationHistory = loc
+            Starter("Get_Location_History")
         End If
 
     End Sub
@@ -614,7 +680,7 @@ Public Class locationform
     End Sub
 
     Private Sub KryptonButton8_Click(sender As Object, e As EventArgs) Handles KryptonButton8.Click
-        LoadLocationTb()
+        Starter("Get_Location_List")
     End Sub
 
     Private Sub TransferToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferToolStripMenuItem.Click
@@ -634,10 +700,14 @@ Public Class locationform
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        LoadLocationTb()
+        Starter("Get_Location_List")
     End Sub
 
     Private Sub KryptonButton7_Click(sender As Object, e As EventArgs) Handles KryptonButton7.Click
         LocationSummaryFRM.ShowDialog()
+    End Sub
+
+    Private Sub locationform_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Me.Dispose()
     End Sub
 End Class

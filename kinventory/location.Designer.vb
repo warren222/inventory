@@ -23,8 +23,9 @@ Partial Class locationform
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(locationform))
         Me.locationgridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
         Me.KryptonButton2 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
@@ -46,12 +47,16 @@ Partial Class locationform
         Me.lblLocationHeader = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.tboxLocation = New System.Windows.Forms.TextBox()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.LoadingPBOX = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.balance = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -65,9 +70,6 @@ Partial Class locationform
         Me.Label5 = New System.Windows.Forms.Label()
         Me.addr = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.locationgridview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel6.SuspendLayout()
@@ -80,6 +82,7 @@ Partial Class locationform
         Me.Panel1.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -90,8 +93,8 @@ Partial Class locationform
         Me.locationgridview.AllowUserToOrderColumns = True
         Me.locationgridview.AllowUserToResizeColumns = False
         Me.locationgridview.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.locationgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.locationgridview.ColumnHeadersHeight = 30
         Me.locationgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -202,12 +205,12 @@ Partial Class locationform
         Me.setlocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.setlocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.setlocation.DropDownHeight = 206
-        Me.setlocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.setlocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.setlocation.FormattingEnabled = True
         Me.setlocation.IntegralHeight = False
-        Me.setlocation.Location = New System.Drawing.Point(44, 51)
+        Me.setlocation.Location = New System.Drawing.Point(44, 43)
         Me.setlocation.Name = "setlocation"
-        Me.setlocation.Size = New System.Drawing.Size(156, 24)
+        Me.setlocation.Size = New System.Drawing.Size(156, 33)
         Me.setlocation.TabIndex = 19
         '
         'KryptonButton7
@@ -265,6 +268,7 @@ Partial Class locationform
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdjustmentToolStripMenuItem, Me.TransferToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(137, 48)
@@ -318,8 +322,8 @@ Partial Class locationform
         Me.LocationHistoryGV.AllowUserToAddRows = False
         Me.LocationHistoryGV.AllowUserToDeleteRows = False
         Me.LocationHistoryGV.AllowUserToOrderColumns = True
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LocationHistoryGV.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LocationHistoryGV.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.LocationHistoryGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.LocationHistoryGV.ColumnHeadersHeight = 20
         Me.LocationHistoryGV.Cursor = System.Windows.Forms.Cursors.Hand
@@ -399,6 +403,17 @@ Partial Class locationform
         Me.Panel12.Size = New System.Drawing.Size(412, 94)
         Me.Panel12.TabIndex = 462
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label8.Location = New System.Drawing.Point(30, 8)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(56, 17)
+        Me.Label8.TabIndex = 488
+        Me.Label8.Text = "Location"
+        '
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -410,6 +425,17 @@ Partial Class locationform
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(94, 94)
         Me.Panel1.TabIndex = 487
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label9.Location = New System.Drawing.Point(19, 8)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(54, 17)
+        Me.Label9.TabIndex = 489
+        Me.Label9.Text = "zero qty"
         '
         'tboxLocation
         '
@@ -444,6 +470,7 @@ Partial Class locationform
         '
         'Panel7
         '
+        Me.Panel7.Controls.Add(Me.LoadingPBOX)
         Me.Panel7.Controls.Add(Me.Panel2)
         Me.Panel7.Controls.Add(Me.KryptonButton7)
         Me.Panel7.Controls.Add(Me.articleno)
@@ -452,6 +479,17 @@ Partial Class locationform
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(1014, 175)
         Me.Panel7.TabIndex = 483
+        '
+        'LoadingPBOX
+        '
+        Me.LoadingPBOX.Image = CType(resources.GetObject("LoadingPBOX.Image"), System.Drawing.Image)
+        Me.LoadingPBOX.Location = New System.Drawing.Point(3, 94)
+        Me.LoadingPBOX.Name = "LoadingPBOX"
+        Me.LoadingPBOX.Size = New System.Drawing.Size(144, 74)
+        Me.LoadingPBOX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.LoadingPBOX.TabIndex = 643
+        Me.LoadingPBOX.TabStop = False
+        Me.LoadingPBOX.Visible = False
         '
         'Panel2
         '
@@ -477,168 +515,6 @@ Partial Class locationform
         Me.Panel2.Size = New System.Drawing.Size(709, 132)
         Me.Panel2.TabIndex = 488
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label1.Location = New System.Drawing.Point(206, 34)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(96, 17)
-        Me.Label1.TabIndex = 471
-        Me.Label1.Text = "Transaction Qty"
-        '
-        'balance
-        '
-        Me.balance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.balance.Enabled = False
-        Me.balance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.balance.Location = New System.Drawing.Point(209, 51)
-        Me.balance.Name = "balance"
-        Me.balance.Size = New System.Drawing.Size(149, 24)
-        Me.balance.TabIndex = 470
-        Me.balance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(41, 34)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 17)
-        Me.Label2.TabIndex = 472
-        Me.Label2.Text = "Select Location"
-        '
-        'KryptonButton5
-        '
-        Me.KryptonButton5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonButton5.Location = New System.Drawing.Point(528, 86)
-        Me.KryptonButton5.Name = "KryptonButton5"
-        Me.KryptonButton5.Size = New System.Drawing.Size(140, 34)
-        Me.KryptonButton5.TabIndex = 487
-        Me.KryptonButton5.Text = "- proceed to out"
-        Me.KryptonButton5.UseVisualStyleBackColor = True
-        '
-        'currentqty
-        '
-        Me.currentqty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.currentqty.Enabled = False
-        Me.currentqty.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.currentqty.Location = New System.Drawing.Point(44, 96)
-        Me.currentqty.Name = "currentqty"
-        Me.currentqty.Size = New System.Drawing.Size(156, 24)
-        Me.currentqty.TabIndex = 477
-        Me.currentqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'KryptonButton4
-        '
-        Me.KryptonButton4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonButton4.Location = New System.Drawing.Point(528, 51)
-        Me.KryptonButton4.Name = "KryptonButton4"
-        Me.KryptonButton4.Size = New System.Drawing.Size(140, 34)
-        Me.KryptonButton4.TabIndex = 486
-        Me.KryptonButton4.Text = "+ proceed to in"
-        Me.KryptonButton4.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label3.Location = New System.Drawing.Point(41, 79)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(125, 17)
-        Me.Label3.TabIndex = 478
-        Me.Label3.Text = "Current Location Qty"
-        '
-        'setqty
-        '
-        Me.setqty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.setqty.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.setqty.Location = New System.Drawing.Point(209, 96)
-        Me.setqty.Name = "setqty"
-        Me.setqty.Size = New System.Drawing.Size(149, 24)
-        Me.setqty.TabIndex = 485
-        Me.setqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(206, 79)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(117, 17)
-        Me.Label4.TabIndex = 479
-        Me.Label4.Text = "Set Adjustment Qty"
-        '
-        'minusr
-        '
-        Me.minusr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.minusr.Enabled = False
-        Me.minusr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minusr.Location = New System.Drawing.Point(367, 96)
-        Me.minusr.Name = "minusr"
-        Me.minusr.Size = New System.Drawing.Size(155, 24)
-        Me.minusr.TabIndex = 484
-        Me.minusr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label5.Location = New System.Drawing.Point(364, 34)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(130, 17)
-        Me.Label5.TabIndex = 481
-        Me.Label5.Text = "Expected Balance (In)"
-        '
-        'addr
-        '
-        Me.addr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.addr.Enabled = False
-        Me.addr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.addr.Location = New System.Drawing.Point(367, 51)
-        Me.addr.Name = "addr"
-        Me.addr.Size = New System.Drawing.Size(155, 24)
-        Me.addr.TabIndex = 483
-        Me.addr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label6.Location = New System.Drawing.Point(364, 79)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(140, 17)
-        Me.Label6.TabIndex = 482
-        Me.Label6.Text = "Expected Balance (Out)"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label8.Location = New System.Drawing.Point(30, 8)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(56, 17)
-        Me.Label8.TabIndex = 488
-        Me.Label8.Text = "Location"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label9.Location = New System.Drawing.Point(19, 8)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(54, 17)
-        Me.Label9.TabIndex = 489
-        Me.Label9.Text = "zero qty"
-        '
         'Label10
         '
         Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -650,6 +526,146 @@ Partial Class locationform
         Me.Label10.Size = New System.Drawing.Size(93, 19)
         Me.Label10.TabIndex = 488
         Me.Label10.Text = "INPUT FORM"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label1.Location = New System.Drawing.Point(206, 26)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(96, 17)
+        Me.Label1.TabIndex = 471
+        Me.Label1.Text = "Transaction Qty"
+        '
+        'balance
+        '
+        Me.balance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.balance.Enabled = False
+        Me.balance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.balance.Location = New System.Drawing.Point(209, 43)
+        Me.balance.Name = "balance"
+        Me.balance.Size = New System.Drawing.Size(149, 24)
+        Me.balance.TabIndex = 470
+        Me.balance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Red
+        Me.Label2.Location = New System.Drawing.Point(41, 26)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(93, 17)
+        Me.Label2.TabIndex = 472
+        Me.Label2.Text = "Select Location"
+        '
+        'KryptonButton5
+        '
+        Me.KryptonButton5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonButton5.Location = New System.Drawing.Point(528, 83)
+        Me.KryptonButton5.Name = "KryptonButton5"
+        Me.KryptonButton5.Size = New System.Drawing.Size(140, 34)
+        Me.KryptonButton5.TabIndex = 487
+        Me.KryptonButton5.Text = "- proceed to out"
+        Me.KryptonButton5.UseVisualStyleBackColor = True
+        '
+        'currentqty
+        '
+        Me.currentqty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.currentqty.Enabled = False
+        Me.currentqty.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.currentqty.Location = New System.Drawing.Point(44, 93)
+        Me.currentqty.Name = "currentqty"
+        Me.currentqty.Size = New System.Drawing.Size(156, 24)
+        Me.currentqty.TabIndex = 477
+        Me.currentqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'KryptonButton4
+        '
+        Me.KryptonButton4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonButton4.Location = New System.Drawing.Point(528, 43)
+        Me.KryptonButton4.Name = "KryptonButton4"
+        Me.KryptonButton4.Size = New System.Drawing.Size(140, 34)
+        Me.KryptonButton4.TabIndex = 486
+        Me.KryptonButton4.Text = "+ proceed to in"
+        Me.KryptonButton4.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label3.Location = New System.Drawing.Point(41, 76)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(125, 17)
+        Me.Label3.TabIndex = 478
+        Me.Label3.Text = "Current Location Qty"
+        '
+        'setqty
+        '
+        Me.setqty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.setqty.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.setqty.Location = New System.Drawing.Point(209, 93)
+        Me.setqty.Name = "setqty"
+        Me.setqty.Size = New System.Drawing.Size(149, 30)
+        Me.setqty.TabIndex = 485
+        Me.setqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(206, 76)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(117, 17)
+        Me.Label4.TabIndex = 479
+        Me.Label4.Text = "Set Adjustment Qty"
+        '
+        'minusr
+        '
+        Me.minusr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.minusr.Enabled = False
+        Me.minusr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.minusr.Location = New System.Drawing.Point(367, 93)
+        Me.minusr.Name = "minusr"
+        Me.minusr.Size = New System.Drawing.Size(155, 24)
+        Me.minusr.TabIndex = 484
+        Me.minusr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label5.Location = New System.Drawing.Point(364, 26)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(130, 17)
+        Me.Label5.TabIndex = 481
+        Me.Label5.Text = "Expected Balance (In)"
+        '
+        'addr
+        '
+        Me.addr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.addr.Enabled = False
+        Me.addr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addr.Location = New System.Drawing.Point(367, 43)
+        Me.addr.Name = "addr"
+        Me.addr.Size = New System.Drawing.Size(155, 24)
+        Me.addr.TabIndex = 483
+        Me.addr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label6.Location = New System.Drawing.Point(364, 76)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(140, 17)
+        Me.Label6.TabIndex = 482
+        Me.Label6.Text = "Expected Balance (Out)"
         '
         'locationform
         '
@@ -679,6 +695,7 @@ Partial Class locationform
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
         Me.Panel7.ResumeLayout(False)
+        CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
@@ -727,4 +744,5 @@ Partial Class locationform
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents LoadingPBOX As PictureBox
 End Class
