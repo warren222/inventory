@@ -24,17 +24,17 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.transactionmenustrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TransDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,6 +45,7 @@ Partial Class Form2
         Me.ChangeXrateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateReferenceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateStocknoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateLocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyTransToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearJOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -371,7 +372,6 @@ Partial Class Form2
         Me.stocksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.transBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.referencebs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.UpdateLocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.transactionmenustrip.SuspendLayout()
         CType(Me.KryptonSplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonSplitContainer6.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -517,7 +517,7 @@ Partial Class Form2
         Me.transactionmenustrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.transactionmenustrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransDateToolStripMenuItem, Me.DueDateToolStripMenuItem, Me.ProductionAllocationDateToolStripMenuItem, Me.CuttingListToolStripMenuItem, Me.ReallocateToolStripMenuItem, Me.ChangeXrateToolStripMenuItem, Me.UpdateReferenceToolStripMenuItem, Me.UpdateStocknoToolStripMenuItem, Me.UpdateLocationToolStripMenuItem, Me.CopyTransToolStripMenuItem, Me.ChangeColorToolStripMenuItem, Me.ClearJOToolStripMenuItem})
         Me.transactionmenustrip.Name = "transactionmenustrip"
-        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 290)
+        Me.transactionmenustrip.Size = New System.Drawing.Size(215, 268)
         '
         'TransDateToolStripMenuItem
         '
@@ -566,6 +566,12 @@ Partial Class Form2
         Me.UpdateStocknoToolStripMenuItem.Name = "UpdateStocknoToolStripMenuItem"
         Me.UpdateStocknoToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.UpdateStocknoToolStripMenuItem.Text = "Update Type/Color"
+        '
+        'UpdateLocationToolStripMenuItem
+        '
+        Me.UpdateLocationToolStripMenuItem.Name = "UpdateLocationToolStripMenuItem"
+        Me.UpdateLocationToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.UpdateLocationToolStripMenuItem.Text = "Update Location"
         '
         'CopyTransToolStripMenuItem
         '
@@ -680,7 +686,7 @@ Partial Class Form2
         Me.KryptonSplitContainer3.Panel2MinSize = 0
         Me.KryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile
         Me.KryptonSplitContainer3.Size = New System.Drawing.Size(1220, 512)
-        Me.KryptonSplitContainer3.SplitterDistance = 844
+        Me.KryptonSplitContainer3.SplitterDistance = 839
         Me.KryptonSplitContainer3.SplitterWidth = 10
         Me.KryptonSplitContainer3.TabIndex = 3
         '
@@ -689,8 +695,8 @@ Partial Class Form2
         Me.stocksgridview.AllowUserToAddRows = False
         Me.stocksgridview.AllowUserToDeleteRows = False
         Me.stocksgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.stocksgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.stocksgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.stocksgridview.ColumnHeadersHeight = 30
         Me.stocksgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -701,7 +707,7 @@ Partial Class Form2
         Me.stocksgridview.ReadOnly = True
         Me.stocksgridview.RowHeadersWidth = 40
         Me.stocksgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.stocksgridview.Size = New System.Drawing.Size(844, 466)
+        Me.stocksgridview.Size = New System.Drawing.Size(839, 466)
         Me.stocksgridview.StateCommon.Background.Color1 = System.Drawing.Color.White
         Me.stocksgridview.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.stocksgridview.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -729,7 +735,7 @@ Partial Class Form2
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(844, 46)
+        Me.Panel2.Size = New System.Drawing.Size(839, 46)
         Me.Panel2.TabIndex = 470
         '
         'KryptonLabel76
@@ -1315,8 +1321,8 @@ Partial Class Form2
         Me.inputGridView.AllowUserToAddRows = False
         Me.inputGridView.AllowUserToDeleteRows = False
         Me.inputGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.inputGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.inputGridView.ColumnHeadersHeight = 20
         Me.inputGridView.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1374,8 +1380,8 @@ Partial Class Form2
         Me.inputDataGridView1.AllowUserToAddRows = False
         Me.inputDataGridView1.AllowUserToDeleteRows = False
         Me.inputDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.inputDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.inputDataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1951,8 +1957,8 @@ Partial Class Form2
         Me.receiptDataGridView1.AllowUserToAddRows = False
         Me.receiptDataGridView1.AllowUserToDeleteRows = False
         Me.receiptDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle26.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.receiptDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.receiptDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.receiptDataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.receiptDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -2251,8 +2257,8 @@ Partial Class Form2
         Me.receiptGridView.AllowUserToAddRows = False
         Me.receiptGridView.AllowUserToDeleteRows = False
         Me.receiptGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.receiptGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.receiptGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.receiptGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -2589,8 +2595,8 @@ Partial Class Form2
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToAddRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToDeleteRows = False
         Me.LISTOFALLOCATIONGRIDVIEW.AllowUserToOrderColumns = True
-        DataGridViewCellStyle28.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LISTOFALLOCATIONGRIDVIEW.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.LISTOFALLOCATIONGRIDVIEW.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -2650,8 +2656,8 @@ Partial Class Form2
         Me.issueDataGridView1.AllowUserToAddRows = False
         Me.issueDataGridView1.AllowUserToDeleteRows = False
         Me.issueDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.issueDataGridView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.issueDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -2843,8 +2849,8 @@ Partial Class Form2
         Me.issueDataGridView.AllowUserToAddRows = False
         Me.issueDataGridView.AllowUserToDeleteRows = False
         Me.issueDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle30.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.issueDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.issueDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -3185,8 +3191,8 @@ Partial Class Form2
         Me.transgridview.AllowUserToAddRows = False
         Me.transgridview.AllowUserToDeleteRows = False
         Me.transgridview.AllowUserToOrderColumns = True
-        DataGridViewCellStyle31.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.transgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.transgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         Me.transgridview.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -3586,8 +3592,8 @@ Partial Class Form2
         Me.referenceDataGridView.AllowUserToAddRows = False
         Me.referenceDataGridView.AllowUserToDeleteRows = False
         Me.referenceDataGridView.AllowUserToOrderColumns = True
-        DataGridViewCellStyle32.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.referenceDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.referenceDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.referenceDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -4414,8 +4420,8 @@ Partial Class Form2
         Me.mydummyDataGridView1.AllowUserToAddRows = False
         Me.mydummyDataGridView1.AllowUserToDeleteRows = False
         Me.mydummyDataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle33.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.mydummyDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.mydummyDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.mydummyDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.mydummyDataGridView1.ColumnHeadersHeight = 20
         Me.mydummyDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
@@ -4804,12 +4810,6 @@ Partial Class Form2
         Me.AccountabilityMonitorToolStripMenuItem.Name = "AccountabilityMonitorToolStripMenuItem"
         Me.AccountabilityMonitorToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
         Me.AccountabilityMonitorToolStripMenuItem.Text = "Accountability monitor"
-        '
-        'UpdateLocationToolStripMenuItem
-        '
-        Me.UpdateLocationToolStripMenuItem.Name = "UpdateLocationToolStripMenuItem"
-        Me.UpdateLocationToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
-        Me.UpdateLocationToolStripMenuItem.Text = "Update Location"
         '
         'Form2
         '

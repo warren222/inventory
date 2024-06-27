@@ -1395,7 +1395,14 @@ select
     End Sub
 
     Private Sub issueaccount_MouseDown(sender As Object, e As MouseEventArgs) Handles issueaccount.MouseDown
+
+        Dim i As Integer = issueaccount.SelectedIndex
         sql.loadaccount()
+        If i > issueaccount.Items.Count - 1 Then
+            issueaccount.SelectedIndex = -1
+        Else
+            issueaccount.SelectedIndex = i
+        End If
     End Sub
 
     Private Sub transgridview_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles transgridview.CellDoubleClick

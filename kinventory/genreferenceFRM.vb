@@ -1,51 +1,101 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Public Class genreferenceFRM
     Dim sqlcmd As New SqlCommand
     Dim sql As New sql
     Dim da As New SqlDataAdapter
+    Dim bgw As New BackgroundWorker
+    Dim action As String
+    Dim _dsGet_Reference As New DataSet
+    Dim _bsGet_Reference As New BindingSource
+    Dim _dsGet_Data As New DataSet
+    Dim _bsGet_Data As New BindingSource
+    Dim _ref As String
     Private Sub genreferenceFRM_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        AddHandler bgw.DoWork, AddressOf bgw_DoWork
+        AddHandler bgw.ProgressChanged, AddressOf bgw_ProgressChanged
+        AddHandler bgw.RunWorkerCompleted, AddressOf bgw_RunWorkerCompleted
+        bgw.WorkerSupportsCancellation = True
+        bgw.WorkerReportsProgress = True
+        Loadreference()
+        Starter("Get_Reference")
     End Sub
-    Public Sub loadreference()
+    Private Sub Starter(ByVal act As String)
+        If Not bgw.IsBusy = True Then
+            action = act
+            LoadingPBOX.Visible = True
+            bgw.RunWorkerAsync()
+        Else
+            MessageBox.Show(Me, "i am busy try again later", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+    Private Sub bgw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
+        Select Case action
+            Case "Get_Reference"
+                LoadingPBOX.Visible = False
+            Case "Get_Data"
+                LoadingPBOX.Visible = False
+        End Select
+    End Sub
+
+    Private Sub bgw_ProgressChanged(sender As Object, e As ProgressChangedEventArgs)
+        Select Case action
+            Case "Get_Reference"
+                _bsGet_Reference.DataSource = _dsGet_Reference
+                _bsGet_Reference.DataMember = "Reference_Tbl"
+                reference.DataSource = _bsGet_Reference
+                reference.DisplayMember = "project_label"
+            Case "Get_Data"
+                _bsGet_Data.DataSource = _dsGet_Data
+                _bsGet_Data.DataMember = "Data_Tbl"
+                GridView.DataSource = _bsGet_Data
+                With GridView
+                    .Columns("job_order_no").Visible = False
+                    .Columns("label").Visible = False
+                    .Columns("sub_jo").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                End With
+                For i As Integer = 0 To GridView.RowCount - 1
+                    If GridView.Rows(i).Cells("label").Value = "1" Then
+                        GridView.Rows(i).Cells("project_label").Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
+                        GridView.Rows(i).Cells("sub_jo").Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
+                    End If
+                Next
+        End Select
+    End Sub
+
+    Private Sub bgw_DoWork(sender As Object, e As DoWorkEventArgs)
+        Select Case action
+            Case "Get_Reference"
+                Loadreference()
+                bgw.ReportProgress(0)
+            Case "Get_Data"
+                databaseform()
+                bgw.ReportProgress(0)
+        End Select
+    End Sub
+    Public Sub Loadreference()
         Try
-            sql.sqlcon.Close()
-            sql.sqlcon.Open()
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim str As String = " select distinct project_label from kmdidata.dbo.addendum_to_contract_tb 
-
-                                union 
-
-                                select distinct reference from reference_tb
-                                
-                                union 
-
-                                select distinct project_label from hauserdb.dbo.addendum_to_contract_tb "
-
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "addendum_to_contract_Tb")
-            Dim bs As New BindingSource
-            bs.DataSource = ds
-            bs.DataMember = "addendum_to_contract_tb"
-            reference.DataSource = bs
-            reference.DisplayMember = "project_label"
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "Assign_Reference_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "Get_Reference")
+                    _dsGet_Reference = New DataSet
+                    _dsGet_Reference.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(_dsGet_Reference, "Reference_Tbl")
+                    End Using
+                End Using
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon.Close()
         End Try
-    End Sub
-
-    Private Sub reference_textchange(sender As Object, e As EventArgs) Handles reference.TextChanged
-
-        ' databaseform()
     End Sub
     Function turnover() As Boolean
         Dim x As Boolean = False
         Try
-
             Dim cs As String = "select * from turnoveraccesstb"
             Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
                 sqlcon.Open()
@@ -59,97 +109,44 @@ Public Class genreferenceFRM
                     End Using
                 End Using
             End Using
-
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
         Return x
     End Function
-
-
     Public Sub databaseform()
         Try
-            Dim t As String
+            Dim t As Integer
             Dim x As Boolean = turnover()
             If x = True Then
-                t = "turn_over"
+                t = 1
             Else
-                t = "''"
+                t = 0
             End If
-            sql.sqlcon.Close()
-            sql.sqlcon.Open()
-            Dim ds As New DataSet
-            ds.Clear()
-            Dim str As String = "select 
-                                 distinct
-                                 job_order_no,
-                                 parentjono as [original jo],
-                                 sub_jo,
-                                 project_label,
-                                 FULLADD as address,
-                                 '0' as label 
-                                 from 
-                                 kmdidata.dbo.addendum_to_contract_tb 
-                                 where 
-                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = " & t & "
-
-                                 union 
-
-                                 select 
-                                 distinct 
-                                 jo,
-                                 jo,
-                                 jo,
-                                 reference,
-                                 address,
-                                 '1' as label 
-                                 from 
-                                 reference_tb 
-                                 where jo=''
-                                 and reference= '" & reference.Text & "'
-                                 
-                                 union
-
-                                 select 
-                                 distinct
-                                 job_order_no,
-                                 parentjono as [original jo],
-                                 sub_jo,
-                                 project_label,
-                                 FULLADD as address,
-                                 '0' as label 
-                                 from 
-                                 hauserdb.dbo.addendum_to_contract_tb 
-                                 where 
-                                 not lock = 1 and PROJECT_LABEL='" & reference.Text & "' and turn_over = " & t & " order by project_label"
-            sqlcmd = New SqlCommand(str, sql.sqlcon)
-            da.SelectCommand = sqlcmd
-            da.Fill(ds, "addendum_to_contract_Tb")
-            Dim bs As New BindingSource
-            bs.DataSource = ds
-            bs.DataMember = "addendum_to_contract_tb"
-            GridView.DataSource = bs
-            With GridView
-                .Columns("job_order_no").Visible = False
-                .Columns("label").Visible = False
-                .Columns("sub_jo").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            End With
-            For i As Integer = 0 To GridView.RowCount - 1
-                If GridView.Rows(i).Cells("label").Value = "1" Then
-                    GridView.Rows(i).Cells("project_label").Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
-                    GridView.Rows(i).Cells("sub_jo").Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
-                End If
-            Next
-
+            Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+                Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                    sqlcon.Open()
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.CommandText = "Assign_Reference_Stp"
+                    sqlcmd.Parameters.AddWithValue("@Command", "Get_Data")
+                    sqlcmd.Parameters.AddWithValue("@Turn_Over", t)
+                    sqlcmd.Parameters.AddWithValue("@Reference", _ref)
+                    _dsGet_Data = New DataSet
+                    _dsGet_Data.Clear()
+                    Using da As SqlDataAdapter = New SqlDataAdapter
+                        da.SelectCommand = sqlcmd
+                        da.Fill(_dsGet_Data, "Data_Tbl")
+                    End Using
+                End Using
+            End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
-        Finally
-            sql.sqlcon1.Close()
         End Try
     End Sub
 
     Private Sub KryptonButton5_Click(sender As Object, e As EventArgs) Handles KryptonButton5.Click
-        databaseform()
+        _ref = reference.Text
+        Starter("Get_Data")
     End Sub
 
     Private Sub GridView_SelectionChanged(sender As Object, e As EventArgs) Handles GridView.SelectionChanged
@@ -222,6 +219,7 @@ Public Class genreferenceFRM
         ElseIf Me.Text = "form5" Then
             Form5.newreference.Text = reference.Text
         End If
+        Me.Dispose()
     End Sub
 
     Private Sub reference_KeyDown(sender As Object, e As KeyEventArgs) Handles reference.KeyDown
@@ -231,12 +229,11 @@ Public Class genreferenceFRM
     End Sub
 
     Private Sub reference_MouseDown(sender As Object, e As MouseEventArgs) Handles reference.MouseDown
-        Dim sindex As Integer = reference.SelectedIndex
-        loadreference()
-        If sindex <= reference.Items.Count Then
-            reference.SelectedIndex = sindex
-        Else
+        Dim i As Integer = reference.SelectedIndex
+        If i > reference.Items.Count - 1 Then
             reference.SelectedIndex = -1
+        Else
+            reference.SelectedIndex = i
         End If
     End Sub
 End Class

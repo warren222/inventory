@@ -23,6 +23,7 @@ Partial Class genreferenceFRM
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(genreferenceFRM))
         Me.GridView = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.KryptonLabel8 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.reference = New System.Windows.Forms.ComboBox()
@@ -31,7 +32,12 @@ Partial Class genreferenceFRM
         Me.KryptonLabel4 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel2 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel1 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.KryptonLabel5 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.LoadingPBOX = New System.Windows.Forms.PictureBox()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView
@@ -44,14 +50,14 @@ Partial Class genreferenceFRM
         Me.GridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.GridView.ColumnHeadersHeight = 20
         Me.GridView.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.GridView.Location = New System.Drawing.Point(5, 42)
+        Me.GridView.Location = New System.Drawing.Point(5, 83)
         Me.GridView.MultiSelect = False
         Me.GridView.Name = "GridView"
         Me.GridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver
         Me.GridView.ReadOnly = True
         Me.GridView.RowHeadersWidth = 25
         Me.GridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView.Size = New System.Drawing.Size(679, 209)
+        Me.GridView.Size = New System.Drawing.Size(679, 168)
         Me.GridView.StateCommon.Background.Color1 = System.Drawing.SystemColors.Control
         Me.GridView.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList
         Me.GridView.StateCommon.DataCell.Border.DrawBorders = CType((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top Or ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) _
@@ -73,7 +79,7 @@ Partial Class genreferenceFRM
         '
         'KryptonLabel8
         '
-        Me.KryptonLabel8.Location = New System.Drawing.Point(12, 12)
+        Me.KryptonLabel8.Location = New System.Drawing.Point(12, 53)
         Me.KryptonLabel8.Name = "KryptonLabel8"
         Me.KryptonLabel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonLabel8.Size = New System.Drawing.Size(73, 19)
@@ -91,7 +97,7 @@ Partial Class genreferenceFRM
         Me.reference.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.reference.FormattingEnabled = True
         Me.reference.IntegralHeight = False
-        Me.reference.Location = New System.Drawing.Point(91, 12)
+        Me.reference.Location = New System.Drawing.Point(91, 53)
         Me.reference.Name = "reference"
         Me.reference.Size = New System.Drawing.Size(520, 24)
         Me.reference.TabIndex = 14
@@ -99,7 +105,7 @@ Partial Class genreferenceFRM
         'KryptonButton5
         '
         Me.KryptonButton5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.KryptonButton5.Location = New System.Drawing.Point(617, 12)
+        Me.KryptonButton5.Location = New System.Drawing.Point(617, 53)
         Me.KryptonButton5.Name = "KryptonButton5"
         Me.KryptonButton5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
         Me.KryptonButton5.Size = New System.Drawing.Size(67, 24)
@@ -176,12 +182,49 @@ Partial Class genreferenceFRM
         Me.KryptonLabel1.TabIndex = 36
         Me.KryptonLabel1.Values.Text = "Bold :"
         '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Honeydew
+        Me.Panel2.Controls.Add(Me.KryptonLabel5)
+        Me.Panel2.Controls.Add(Me.LoadingPBOX)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(690, 36)
+        Me.Panel2.TabIndex = 647
+        '
+        'KryptonLabel5
+        '
+        Me.KryptonLabel5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.KryptonLabel5.Location = New System.Drawing.Point(0, 0)
+        Me.KryptonLabel5.Name = "KryptonLabel5"
+        Me.KryptonLabel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
+        Me.KryptonLabel5.Size = New System.Drawing.Size(133, 36)
+        Me.KryptonLabel5.StateCommon.ShortText.Color1 = System.Drawing.Color.Black
+        Me.KryptonLabel5.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel5.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center
+        Me.KryptonLabel5.TabIndex = 645
+        Me.KryptonLabel5.Values.Text = "Assign Reference"
+        '
+        'LoadingPBOX
+        '
+        Me.LoadingPBOX.Dock = System.Windows.Forms.DockStyle.Right
+        Me.LoadingPBOX.Image = CType(resources.GetObject("LoadingPBOX.Image"), System.Drawing.Image)
+        Me.LoadingPBOX.Location = New System.Drawing.Point(617, 0)
+        Me.LoadingPBOX.Name = "LoadingPBOX"
+        Me.LoadingPBOX.Size = New System.Drawing.Size(73, 36)
+        Me.LoadingPBOX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.LoadingPBOX.TabIndex = 644
+        Me.LoadingPBOX.TabStop = False
+        Me.LoadingPBOX.Visible = False
+        '
         'genreferenceFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(690, 286)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.KryptonLabel3)
         Me.Controls.Add(Me.KryptonLabel4)
         Me.Controls.Add(Me.KryptonLabel2)
@@ -197,6 +240,9 @@ Partial Class genreferenceFRM
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "genreferenceFRM"
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -210,4 +256,7 @@ Partial Class genreferenceFRM
     Friend WithEvents KryptonLabel4 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents KryptonLabel2 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents KryptonLabel1 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents KryptonLabel5 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents LoadingPBOX As PictureBox
 End Class
