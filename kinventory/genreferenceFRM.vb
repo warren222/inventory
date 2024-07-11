@@ -32,6 +32,8 @@ Public Class genreferenceFRM
     Private Sub bgw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
         Select Case action
             Case "Get_Reference"
+                reference.DataSource = _bsGet_Reference
+                reference.DisplayMember = "project_label"
                 LoadingPBOX.Visible = False
             Case "Get_Data"
                 LoadingPBOX.Visible = False
@@ -43,8 +45,7 @@ Public Class genreferenceFRM
             Case "Get_Reference"
                 _bsGet_Reference.DataSource = _dsGet_Reference
                 _bsGet_Reference.DataMember = "Reference_Tbl"
-                reference.DataSource = _bsGet_Reference
-                reference.DisplayMember = "project_label"
+
             Case "Get_Data"
                 _bsGet_Data.DataSource = _dsGet_Data
                 _bsGet_Data.DataMember = "Data_Tbl"

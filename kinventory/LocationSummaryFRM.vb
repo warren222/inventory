@@ -76,8 +76,11 @@ Public Class LocationSummaryFRM
         End If
     End Sub
     Private Sub KryptonDataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles KryptonDataGridView1.CellDoubleClick
-        HISTORY._location = summarylocation
-        HISTORY.ShowDialog()
+        If KryptonDataGridView1.RowCount >= 0 And e.RowIndex >= 0 Then
+            summarylocation = KryptonDataGridView1.Item(0, e.RowIndex).Value.ToString
+            HISTORY._location = summarylocation
+            HISTORY.ShowDialog()
+        End If
     End Sub
     Public Sub LoadSetLocation()
         Try

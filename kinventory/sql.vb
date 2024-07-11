@@ -1820,7 +1820,9 @@ insert into trans_tb
             QTY,
             REFERENCE,JO,
             ACCOUNT,
-            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,location,INPUTTED) values (@id,'" & stockno & "'," &
+            CONTROLNO,XYZ,XYZREF,REMARKS,BALQTY,ufactor,unitprice,disc,xrate,netamount,location,INPUTTED) 
+ output inserted.TRANSNO
+values (@id,'" & stockno & "'," &
          "'" & transtype & "'," &
          "'" & transdate & "'," &
          "'" & duedate & "'," &
@@ -1875,7 +1877,19 @@ insert into trans_tb
             End If
 
             sqlcmd = New SqlCommand(str, sqlcon)
-            sqlcmd.ExecuteNonQuery()
+            'sqlcmd.ExecuteNonQuery()
+            Using rd As SqlDataReader = sqlcmd.ExecuteReader
+                While rd.Read
+                    If transtype = "Receipt" Then
+                        locationform.Update_Trans_Location_bool = True
+                        locationform.transno = rd(0).ToString
+                    Else
+                        locationform.Update_Trans_Location_bool = False
+                        locationform.transno = 0
+                    End If
+                End While
+            End Using
+
 
             Dim find As String = "select * from reference_tb where reference='" & reference & "' AND JO = '" & jo & "' and stockno='" & stockno & "'"
             sqlcmd = New SqlCommand(find, sqlcon)
@@ -1934,6 +1948,7 @@ a.TRANSDATE,
 a.DUEDATE,
 a.QTY,
 a.REFERENCE,
+a.JO,
 a.ACCOUNT,
 a.CONTROLNO,
 a.XYZ,
@@ -2140,6 +2155,7 @@ a.TRANSDATE,
 a.DUEDATE,
 a.QTY,
 a.REFERENCE,
+a.JO,
 a.ACCOUNT,
 a.CONTROLNO,
 a.XYZ,

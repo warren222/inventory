@@ -934,7 +934,7 @@ update reference_tb set
                        receiptqty.Text,
                       receiptreference.Text, receiptjo.Text,
                        account,
-                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unit, disc, rate, amount, cboxLocationReceipt.Text)
+                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unit, disc, rate, amount, "")
                 updatetransaction(receiptqty.Text, receipttransno.Text)
                 updatestock(receiptstockno.Text, receiptreference.Text, receiptjo.Text)
 
@@ -947,6 +947,7 @@ update reference_tb set
                 locationform.transtype = "Receipt"
                 locationform.stockno = receiptstockno.Text
                 locationform.reference = receiptreference.Text
+
                 locationform.ShowDialog()
 
                 'sql.loadstocks()
@@ -1007,7 +1008,7 @@ update reference_tb set
                        receiptqty.Text,
                       receiptreference.Text, receiptjo.Text,
                        account,
-                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unitTCT, disc, rate, amount, cboxLocationReceipt.Text)
+                       controlno, XYZ, receipttransno.Text, remarks, ufactor, unitTCT, disc, rate, amount, "")
                 updatetransaction(receiptqty.Text, receipttransno.Text)
 
                 Dim bal = order - myreceipt
@@ -1569,13 +1570,13 @@ select
             KryptonLabel50.Visible = False
             remarks.Visible = False
             remarks.Text = ""
-            If transaction.Text = "Receipt" Then
-                cboxLocationInput.Visible = True
-                KryptonLabel87.Visible = True
-            Else
-                cboxLocationInput.Visible = False
-                KryptonLabel87.Visible = False
-            End If
+            'If transaction.Text = "Receipt" Then
+            '    cboxLocationInput.Visible = True
+            '    KryptonLabel87.Visible = True
+            'Else
+            '    cboxLocationInput.Visible = False
+            '    KryptonLabel87.Visible = False
+            'End If
         End If
         If transaction.Text = "Order" Or transaction.Text = "Receipt" Then
             unitprice.Visible = True
@@ -3871,15 +3872,7 @@ insert into reference_tb (id,reference,jo,address,stockno) values(@id,'" & refer
             cboxLocationInput.SelectedIndex = I
         End If
     End Sub
-    Private Sub cboxLocationReceipt_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocationReceipt.MouseDown
-        Dim I As Integer = cboxLocationReceipt.SelectedIndex
-        loadlocationcombo(cboxLocationReceipt, receiptstockno.Text)
-        If I > cboxLocationReceipt.Items.Count - 1 Then
-            cboxLocationReceipt.SelectedIndex = -1
-        Else
-            cboxLocationReceipt.SelectedIndex = I
-        End If
-    End Sub
+
     Private Sub cboxLocationIssue_MouseDown(sender As Object, e As MouseEventArgs) Handles cboxLocationIssue.MouseDown
         Dim I As Integer = cboxLocationIssue.SelectedIndex
         loadlocationcombo(cboxLocationIssue, issuestockno.Text)

@@ -11,10 +11,12 @@ Public Class locationform
     Dim drag As Boolean
 
     Public Shared stockno As String
+    Public Shared transno As String
     Public Shared transtype As String
     Public Shared reference As String
     Public id As String
     Dim UpdateLocation As String
+    Public Shared Update_Trans_Location_bool As Boolean = False
     Dim HideZero As String
     Dim bgw As New BackgroundWorker
     Dim action As String
@@ -32,7 +34,7 @@ Public Class locationform
         AddHandler bgw.RunWorkerCompleted, AddressOf bgw_RunWorkerCompleted
         bgw.WorkerSupportsCancellation = True
         bgw.WorkerReportsProgress = True
-        CboxHideZero.SelectedIndex = 0
+        CboxHideZero.SelectedIndex = 1
 
         locationgridview.DataSource = _bsLocation_List
         Starter("Get_Location_List")
@@ -233,8 +235,6 @@ Public Class locationform
             transfer.location.Text = locationgridview.Item(2, e.RowIndex).Value.ToString
             transfer.currentqty.Text = locationgridview.Item(3, e.RowIndex).Value.ToString
         End If
-
-
     End Sub
 
     Private Sub KryptonButton2_Click(sender As Object, e As EventArgs) Handles KryptonButton2.Click
@@ -453,10 +453,15 @@ Public Class locationform
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+
     Private Sub KryptonButton4_Click(sender As Object, e As EventArgs) Handles KryptonButton4.Click
         If balance.Text = 0 Then
             MessageBox.Show("Insufficient balance!", "Transaction Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
+            If Update_Trans_Location_bool Then
+                Update_Trans_Location()
+            End If
             Inserthistory()
             Additional()
             Dim loc As String = setlocation.Text
@@ -465,6 +470,23 @@ Public Class locationform
             setlocation.Text = loc
         End If
 
+    End Sub
+    Private Sub Update_Trans_Location()
+        Using sqlcon As SqlConnection = New SqlConnection(sql.sqlconstr)
+            Using sqlcmd As SqlCommand = sqlcon.CreateCommand
+                Try
+                    sqlcon.Open()
+                    sqlcmd.CommandText = "LocationRecord_Stp"
+                    sqlcmd.CommandType = CommandType.StoredProcedure
+                    sqlcmd.Parameters.AddWithValue("Command", "Update_Trans_Location")
+                    sqlcmd.Parameters.AddWithValue("@Transno", transno)
+                    sqlcmd.Parameters.AddWithValue("@Location", setlocation.Text)
+                    sqlcmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            End Using
+        End Using
     End Sub
     Public Sub Additional()
         Try
@@ -607,6 +629,7 @@ Public Class locationform
             End If
         Else
             MessageBox.Show("Nonnumeric data detected! please input a valid number.", "Set Adjustment Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            setqty.Text = "0"
             setqty.Focus()
         End If
     End Sub
