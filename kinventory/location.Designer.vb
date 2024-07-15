@@ -23,8 +23,8 @@ Partial Class locationform
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(locationform))
         Me.locationgridview = New ComponentFactory.Krypton.Toolkit.KryptonDataGridView()
         Me.KryptonButton1 = New ComponentFactory.Krypton.Toolkit.KryptonButton()
@@ -54,6 +54,8 @@ Partial Class locationform
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.LoadingPBOX = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -82,6 +84,7 @@ Partial Class locationform
         Me.Panel1.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -93,8 +96,8 @@ Partial Class locationform
         Me.locationgridview.AllowUserToOrderColumns = True
         Me.locationgridview.AllowUserToResizeColumns = False
         Me.locationgridview.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.locationgridview.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.locationgridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.locationgridview.ColumnHeadersHeight = 30
         Me.locationgridview.Cursor = System.Windows.Forms.Cursors.Hand
@@ -174,11 +177,10 @@ Partial Class locationform
         'articleno
         '
         Me.articleno.AutoSize = False
-        Me.articleno.Dock = System.Windows.Forms.DockStyle.Top
-        Me.articleno.Location = New System.Drawing.Point(0, 0)
+        Me.articleno.Location = New System.Drawing.Point(281, 3)
         Me.articleno.Name = "articleno"
         Me.articleno.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue
-        Me.articleno.Size = New System.Drawing.Size(1014, 36)
+        Me.articleno.Size = New System.Drawing.Size(412, 36)
         Me.articleno.StateCommon.ShortText.Color1 = System.Drawing.Color.Black
         Me.articleno.StateCommon.ShortText.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.articleno.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center
@@ -322,8 +324,8 @@ Partial Class locationform
         Me.LocationHistoryGV.AllowUserToAddRows = False
         Me.LocationHistoryGV.AllowUserToDeleteRows = False
         Me.LocationHistoryGV.AllowUserToOrderColumns = True
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LocationHistoryGV.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LocationHistoryGV.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.LocationHistoryGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.LocationHistoryGV.ColumnHeadersHeight = 20
         Me.LocationHistoryGV.Cursor = System.Windows.Forms.Cursors.Hand
@@ -470,15 +472,36 @@ Partial Class locationform
         '
         'Panel7
         '
+        Me.Panel7.Controls.Add(Me.Panel3)
         Me.Panel7.Controls.Add(Me.LoadingPBOX)
         Me.Panel7.Controls.Add(Me.Panel2)
         Me.Panel7.Controls.Add(Me.KryptonButton7)
-        Me.Panel7.Controls.Add(Me.articleno)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(1014, 175)
         Me.Panel7.TabIndex = 483
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel3.Controls.Add(Me.articleno)
+        Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1014, 37)
+        Me.Panel3.TabIndex = 645
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.Location = New System.Drawing.Point(899, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(115, 37)
+        Me.Button1.TabIndex = 644
+        Me.Button1.Text = "C L O S E"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'LoadingPBOX
         '
@@ -674,7 +697,7 @@ Partial Class locationform
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1014, 564)
         Me.Controls.Add(Me.Panel6)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "locationform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "location"
@@ -695,6 +718,7 @@ Partial Class locationform
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
         Me.Panel7.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         CType(Me.LoadingPBOX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -745,4 +769,6 @@ Partial Class locationform
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents LoadingPBOX As PictureBox
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Button1 As Button
 End Class

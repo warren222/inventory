@@ -38,7 +38,7 @@ Public Class locationform
 
         locationgridview.DataSource = _bsLocation_List
         Starter("Get_Location_List")
-        location1load = True
+
     End Sub
     Private Sub Starter(ByVal act As String)
         If Not bgw.IsBusy = True Then
@@ -61,7 +61,7 @@ Public Class locationform
                 LoadingPBOX.Visible = False
                 locationHistory = setlocation.Text
                 Starter("Get_Location_History")
-                location1load = False
+
             Case "Get_Location_History"
                 LoadingPBOX.Visible = False
         End Select
@@ -373,22 +373,7 @@ Public Class locationform
 
     End Sub
 
-    Private Sub KryptonPanel1_MouseUp(sender As Object, e As MouseEventArgs)
-        drag = False
-    End Sub
 
-    Private Sub KryptonPanel1_MouseDown(sender As Object, e As MouseEventArgs)
-        drag = True
-        x = Cursor.Position.X - Me.Left
-        y = Cursor.Position.Y - Me.Top
-    End Sub
-
-    Private Sub KryptonPanel1_MouseMove(sender As Object, e As MouseEventArgs)
-        If drag Then
-            Me.Left = Cursor.Position.X - x
-            Me.Top = Cursor.Position.Y - y
-        End If
-    End Sub
 
     Private Sub setlocation_MouseDown(sender As Object, e As MouseEventArgs) Handles setlocation.MouseDown
         Dim i As Integer = setlocation.SelectedIndex
@@ -405,9 +390,9 @@ Public Class locationform
         GetLocationQty()
         lblLocationHeader.Text = setlocation.Text + " - History"
         locationHistory = setlocation.Text
-        If location1load = False Then
-            Starter("Get_Location_History")
-        End If
+        'If location1load = False Then
+        '    Starter("Get_Location_History")
+        'End If
     End Sub
     Private Sub GetLocationQty()
         Try
@@ -463,7 +448,9 @@ Public Class locationform
                 Update_Trans_Location()
             End If
             Inserthistory()
-            Additional()
+            'Additional()
+            balance.Text = balance.Text - setqty.Text
+            setqty.Text = 0
             Dim loc As String = setlocation.Text
             setlocation.Text = ""
             Starter("Get_Location_List")
@@ -498,13 +485,16 @@ Public Class locationform
                     sqlcmd.Parameters.AddWithValue("@Command", "Additional")
                     sqlcmd.Parameters.AddWithValue("@Stockno", stockno)
                     sqlcmd.Parameters.AddWithValue("@Location", setlocation.Text)
+                    sqlcmd.Parameters.AddWithValue("@Set_Qty", setqty.Text)
                     sqlcmd.ExecuteNonQuery()
-                    balance.Text = balance.Text - setqty.Text
-                    setqty.Text = 0
+
                 End Using
             End Using
         Catch ex As Exception
             MsgBox(ex.ToString)
+        Finally
+            balance.Text = balance.Text - setqty.Text
+            setqty.Text = 0
         End Try
     End Sub
 
@@ -585,7 +575,7 @@ Public Class locationform
                 End Using
             End Using
         Catch ex As Exception
-
+            MsgBox(ex.ToString)
         End Try
     End Sub
     Public Sub Inserthistory()
@@ -615,6 +605,7 @@ Public Class locationform
             Insert_Location_Record(newbal, robalance)
         Catch ex As Exception
             MsgBox(ex.ToString)
+
         End Try
     End Sub
 
@@ -645,7 +636,9 @@ Public Class locationform
                 MessageBox.Show("Insufficient stocks!", "Current Qty", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
                 Inserthistory()
-                Subtract()
+                balance.Text = balance.Text - setqty.Text
+                setqty.Text = 0
+                'Subtract()
                 Dim loc As String = setlocation.Text
                 setlocation.Text = ""
                 Starter("Get_Location_List")
@@ -732,5 +725,58 @@ Public Class locationform
 
     Private Sub locationform_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Me.Dispose()
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim x As String
+        Dim y As String
+        Try
+            sql.sqlcon.Open()
+            Dim str As String = "select sum(qty) from locationtb where stockno = '" & stockno & "'"
+            sqlcmd = New SqlCommand(str, sql.sqlcon)
+            Dim read As SqlDataReader = sqlcmd.ExecuteReader
+            While read.Read
+                x = read(0).ToString
+            End While
+            read.Close()
+
+            Dim str1 As String = "select physical from stocks_tb where stockno = '" & stockno & "'"
+            sqlcmd = New SqlCommand(str1, sql.sqlcon)
+            Dim read1 As SqlDataReader = sqlcmd.ExecuteReader
+            While read1.Read
+                y = read1(0).ToString
+            End While
+            read1.Close()
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            sql.sqlcon.Close()
+        End Try
+
+
+        If Not balance.Text = "0" Then
+            MessageBox.Show("use remaining balance", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ElseIf Not x = y Then
+            MessageBox.Show("location :" + x + " not equal to physical :" + y, "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            Me.Dispose()
+            Me.Close()
+        End If
+    End Sub
+    Private Sub KryptonPanel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel3.MouseUp, articleno.MouseUp
+        drag = False
+    End Sub
+
+    Private Sub KryptonPanel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel3.MouseDown, articleno.MouseDown
+        drag = True
+        x = Cursor.Position.X - Me.Left
+        y = Cursor.Position.Y - Me.Top
+    End Sub
+
+    Private Sub KryptonPanel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel3.MouseMove, articleno.MouseMove
+        If drag Then
+            Me.Left = Cursor.Position.X - x
+            Me.Top = Cursor.Position.Y - y
+        End If
     End Sub
 End Class
