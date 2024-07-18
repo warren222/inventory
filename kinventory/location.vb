@@ -35,7 +35,7 @@ Public Class locationform
         bgw.WorkerSupportsCancellation = True
         bgw.WorkerReportsProgress = True
         CboxHideZero.SelectedIndex = 1
-
+        setqty.Text = balance.Text
         locationgridview.DataSource = _bsLocation_List
         Starter("Get_Location_List")
 

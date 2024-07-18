@@ -34,7 +34,7 @@
         Select Case cboxserver.SelectedIndex
             Case 0
                 If localaccess.Checked = True Then
-                    myaccess.Text = "192.168.4.37,49107"
+                    myaccess.Text = "192.168.1.21,49107"
                 Else
                     myaccess.Text = "121.58.229.248,49107"
                 End If
@@ -45,7 +45,7 @@
                 'End If
             Case 1
                 If localaccess.Checked = True Then
-                    myaccess.Text = "192.168.4.37,49107"
+                    myaccess.Text = "192.168.1.21,49107"
                 Else
                     myaccess.Text = "124.105.102.151,49107"
                 End If
