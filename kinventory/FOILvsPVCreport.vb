@@ -28,6 +28,7 @@ Public Class FOILvsPVCreport
                     Dim edate As String = Form2.cboxYear.Text + "-" + Form2.cboxMonth2.Text + "-01"
                     sqlConnection.Open()
                     sqlCommand.CommandText = "PVC_FOIL_Consumption_Stp"
+                    sqlCommand.CommandTimeout = 300
                     sqlCommand.Parameters.AddWithValue("@Sdate", sdate)
                     sqlCommand.Parameters.AddWithValue("@Edate", edate)
                     sqlCommand.CommandType = CommandType.StoredProcedure
